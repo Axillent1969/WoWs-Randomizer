@@ -1,0 +1,320 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{108DC054-AA22-42B3-93F0-2791B2506588}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>WoWs_Randomizer</RootNamespace>
+    <AssemblyName>WoWs Randomizer</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>d:\repos\publish\WowsRandomizer\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>9</ApplicationRevision>
+    <ApplicationVersion>1.5.86.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Anchor.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>0289D683D43AF3C6F2C31DFD52CD7F6862DBEF47</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>
+    </ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsBase.4.6.1055.0\lib\WindowsBase.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="api\WG-API.cs" />
+    <Compile Include="forms\BuildManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\BuildManager.Designer.cs">
+      <DependentUpon>BuildManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\ChangeLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\ChangeLog.Designer.cs">
+      <DependentUpon>ChangeLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\CompareShip.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\CompareShip.Designer.cs">
+      <DependentUpon>CompareShip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\CompareTool.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\CompareTool.Designer.cs">
+      <DependentUpon>CompareTool.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\ExclusionList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\ExclusionList.Designer.cs">
+      <DependentUpon>ExclusionList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\HelpAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\HelpAbout.Designer.cs">
+      <DependentUpon>HelpAbout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\HelpBuildManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\HelpBuildManager.Designer.cs">
+      <DependentUpon>HelpBuildManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\HelpCompareTool.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\HelpCompareTool.Designer.cs">
+      <DependentUpon>HelpCompareTool.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\HelpInstall.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\HelpInstall.Designer.cs">
+      <DependentUpon>HelpInstall.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\HelpRandomizer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\HelpRandomizer.Designer.cs">
+      <DependentUpon>HelpRandomizer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\Randomizer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\Randomizer.Designer.cs">
+      <DependentUpon>Randomizer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\Settings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\Settings.Designer.cs">
+      <DependentUpon>Settings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\ShipSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\ShipSelector.Designer.cs">
+      <DependentUpon>ShipSelector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\ShipWiki.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\ShipWiki.Designer.cs">
+      <DependentUpon>ShipWiki.cs</DependentUpon>
+    </Compile>
+    <Compile Include="objects\modules\ModuleArtillery.cs" />
+    <Compile Include="objects\modules\ModuleTranslator.cs" />
+    <Compile Include="objects\modules\UpgradeCorrections.cs" />
+    <Compile Include="objects\ShipBuild.cs" />
+    <Compile Include="objects\ship\profile\Artillery.cs" />
+    <Compile Include="objects\ship\profile\Concealment.cs" />
+    <Compile Include="objects\ship\profile\DefaultProfile.cs" />
+    <Compile Include="objects\ship\profile\Engine.cs" />
+    <Compile Include="objects\ship\profile\Secondaries.cs" />
+    <Compile Include="objects\ship\profile\SecondariesData.cs" />
+    <Compile Include="objects\ship\profile\Shells.cs" />
+    <Compile Include="objects\MetaData.cs" />
+    <Compile Include="objects\ship\Module.cs" />
+    <Compile Include="objects\modules\ModuleData.cs" />
+    <Compile Include="objects\modules\ModuleImport.cs" />
+    <Compile Include="objects\player\PlayerData.cs" />
+    <Compile Include="objects\player\PlayerSearch.cs" />
+    <Compile Include="objects\player\PlayerShip.cs" />
+    <Compile Include="objects\player\PlayerShipImport.cs" />
+    <Compile Include="objects\Settings.cs" />
+    <Compile Include="objects\ship\Ship.cs" />
+    <Compile Include="objects\ship\ShipImage.cs" />
+    <Compile Include="objects\ship\ShipImporter.cs" />
+    <Compile Include="objects\ShipMetrics.cs" />
+    <Compile Include="objects\ship\ShipModule.cs" />
+    <Compile Include="objects\skills\Perk.cs" />
+    <Compile Include="objects\skills\Skill.cs" />
+    <Compile Include="objects\skills\SkillImporter.cs" />
+    <Compile Include="objects\consumables\Consumable.cs" />
+    <Compile Include="objects\consumables\ConsumableProfile.cs" />
+    <Compile Include="objects\consumables\ConsumablesImporter.cs" />
+    <Compile Include="objects\version\ProgramVersion.cs" />
+    <Compile Include="objects\version\VersionInfo.cs" />
+    <Compile Include="objects\version\VersionInfoImport.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="System\Windows\UI.cs" />
+    <Compile Include="utils\BinarySerialize.cs" />
+    <Compile Include="utils\metrics\ArtilleryExtractor.cs" />
+    <Compile Include="utils\metrics\TorpedoExtractor.cs" />
+    <Compile Include="utils\ProfileHandler.cs" />
+    <Compile Include="utils\unused\BoldLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="utils\BuildManagerHandler.cs" />
+    <Compile Include="utils\Commons.cs" />
+    <Compile Include="utils\enums\Countries.cs" />
+    <Compile Include="utils\enums\Enumeration.cs" />
+    <Compile Include="utils\KnownFolders.cs" />
+    <Compile Include="utils\unused\LabelEditor.cs" />
+    <Compile Include="utils\metrics\MetricsCompare.cs" />
+    <Compile Include="utils\metrics\MetricsDrawer.cs" />
+    <Compile Include="utils\metrics\MetricsExctractor.cs" />
+    <Compile Include="utils\metrics\MetricsTableComposer.cs" />
+    <Compile Include="utils\enums\ShipTypes.cs" />
+    <Compile Include="utils\specialFlags\Flags.cs" />
+    <EmbeddedResource Include="forms\BuildManager.resx">
+      <DependentUpon>BuildManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\ChangeLog.resx">
+      <DependentUpon>ChangeLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\CompareShip.resx">
+      <DependentUpon>CompareShip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\CompareTool.resx">
+      <DependentUpon>CompareTool.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\ExclusionList.resx">
+      <DependentUpon>ExclusionList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\HelpAbout.resx">
+      <DependentUpon>HelpAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\HelpBuildManager.resx">
+      <DependentUpon>HelpBuildManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\HelpCompareTool.resx">
+      <DependentUpon>HelpCompareTool.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\HelpInstall.resx">
+      <DependentUpon>HelpInstall.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\HelpRandomizer.resx">
+      <DependentUpon>HelpRandomizer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\Randomizer.resx">
+      <DependentUpon>Randomizer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\Settings.resx">
+      <DependentUpon>Settings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\ShipSelector.resx">
+      <DependentUpon>ShipSelector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\ShipWiki.resx">
+      <DependentUpon>ShipWiki.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Anchor.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

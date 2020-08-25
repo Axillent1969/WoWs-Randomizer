@@ -1,0 +1,49 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
+using WoWs_Randomizer.objects.modules;
+
+namespace WoWs_Randomizer.objects.module
+{
+    [Serializable]
+    class ModuleData
+    {
+        
+        [JsonProperty("profile")]
+        [field: NonSerialized] public Dictionary<string, Dictionary<string, object>> Profile { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+        [JsonProperty("image")]
+        public string ImageUrl { get; set; }
+        [JsonProperty("tag")]
+        public string Tag { get; set; }
+        [JsonProperty("module_id_str")]
+        public string IDString { get; set; }
+        [JsonProperty("module_id")]
+        public long ID { get; set; }
+        [JsonProperty("type")]
+        public string Type { get; set; }
+        [JsonProperty("price_credit")]
+        public long PriceCredits { get; set; }
+
+        public double HullHealth { get; set; }
+        public double EngineSpeed { get; set; }
+        public ModuleArtillery Artillery { get; set; }
+
+        public double FireDistance { get; set; }
+        public double FireDistanceIncrease { get; set; }
+
+        public double TorpedoSpeed { get; set; }
+        public double TorpedoReload { get; set; }
+        public double TorpedoRange { get; set; }
+        public double TorpedoDamage { get; set; }
+        public long FighterSquadrons { get; set; }
+        public long BomberSquadrons { get; set; }
+        public long TorpedoSquadrons { get; set; }
+
+    }
+}

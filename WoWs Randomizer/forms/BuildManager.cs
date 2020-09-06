@@ -696,6 +696,7 @@ namespace WoWs_Randomizer.forms
             }
             upgradeSelect.Tag = panel.Tag;
             upgradeSelect.Controls.Clear();
+
             List<Consumable> UpgradeSlotSelected = new List<Consumable>();
             selectedShip.Upgrades.Append<long>(4221751216);
 

@@ -220,6 +220,15 @@ namespace WoWs_Randomizer
             if ( LastCheck == null || DateTime.Compare(LastCheck.AddHours(23),Today) <= 0 )
             {
                 MySettings.LastChecked = Today;
+
+                if (MySettings == null) { MessageBox.Show("Unable to load ships...Settings not found.", "Load Personal Ships Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
+
+                if (MySettings.UserID != 0)
+                {
+                    //Console.WriteLine("Retrieving users ships in port from WG...");
+                    await loadUserShipsInPort(MySettings.UserID, true);
+                }
+
                 VersionInfoImport Import = await WGAPI.GetVersionInfo();
                 if ( Import.Status.Equals("ok"))
                 {
@@ -313,7 +322,17 @@ namespace WoWs_Randomizer
                 List<PlayerShip> Ships = BinarySerialize.ReadFromBinaryFile<List<PlayerShip>>(FileName);
                 foreach (PlayerShip PlayerShipData in Ships)
                 {
-                    this.PersonalShips.Add(PlayerShipData.ID);
+                    Ship findShip = Program.AllShips.Find(x => x.ID == PlayerShipData.ID);
+                    if ( findShip != null )
+                    {
+                        if ( !findShip.Name.StartsWith("["))
+                        {
+                            this.PersonalShips.Add(PlayerShipData.ID);
+                        }
+                    } else
+                    {
+                        this.PersonalShips.Add(PlayerShipData.ID);
+                    }
                 }
             }
         }
@@ -907,7 +926,7 @@ namespace WoWs_Randomizer
             settingsForm.Dispose();
         }
 
-        private async Task loadUserShipsInPort(long UserID)
+        private async Task loadUserShipsInPort(long UserID, bool hideMessage = false)
         {
             PlayerShipImport Importer = await WGAPI.GetPlayerShips(UserID);
             if (Importer.Status.ToLower().Equals("ok"))
@@ -931,7 +950,10 @@ namespace WoWs_Randomizer
                 {
                     this.PersonalShips.Add(PlayerShipData.ID);
                 }
-                MessageBox.Show("Your ships have been imported.", "Load Personal Data", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if ( hideMessage == false )
+                {
+                    MessageBox.Show("Your ships have been imported.", "Load Personal Data", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             else
             {

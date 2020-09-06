@@ -85,7 +85,7 @@ namespace WoWs_Randomizer.api
             string path = $"account/list/?application_id={APP_ID}&search={PlayerNickname}";
             HttpResponseMessage response = await Client.GetAsync(path);
             string responseString = await response.Content.ReadAsStringAsync();
-            Console.WriteLine(responseString);
+           // Console.WriteLine(responseString);
             PlayerSearch result = JsonConvert.DeserializeObject<PlayerSearch>(responseString);
             return result;
         }
@@ -96,7 +96,7 @@ namespace WoWs_Randomizer.api
             string path = $"ships/stats/?application_id={APP_ID}&account_id={ID}&fields=ship_id";
             HttpResponseMessage response = await Client.GetAsync(path);
             string responseString = await response.Content.ReadAsStringAsync();
-            Console.WriteLine(responseString);
+            //Console.WriteLine(responseString);
             PlayerShipImport PlayerImport = JsonConvert.DeserializeObject<PlayerShipImport>(responseString);
             return PlayerImport;
         }
@@ -107,7 +107,7 @@ namespace WoWs_Randomizer.api
             string path = $"encyclopedia/info/?application_id={APP_ID}&fields=ships_updated_at%2Cgame_version";
             HttpResponseMessage response = await Client.GetAsync(path);
             string responseString = await response.Content.ReadAsStringAsync();
-            Console.WriteLine(responseString);
+            //Console.WriteLine(responseString);
             VersionInfoImport Import = JsonConvert.DeserializeObject<VersionInfoImport>(responseString);
             return Import;
         }

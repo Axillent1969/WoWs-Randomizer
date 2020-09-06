@@ -4,7 +4,7 @@
 	"datetime": "2020-08-06",
 	"downloadlink": "https://onedrive.live.com/download?cid=919CD8D21AC2180D&resid=919CD8D21AC2180D%2116431&authkey=AHJzrmoMcZ238WI",
 	"changelog":[
-		"Build Manager: Added two new flags; Sierra Bravo and X-Ray Papa Unaone",
-		"Build Manager: Moved the counter for number of combat flags to accomodate the new flags"
+		"Build Manager: Added captions for the sections 'Upgrades', slot numbers and 'Combat Flags'",
+		"Removed unused code"
 	]
 }

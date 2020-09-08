@@ -73,6 +73,11 @@ namespace WoWs_Randomizer
             this.exclusionListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listOfShipsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listOfModulesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.myShipsInPortToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buildManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -107,11 +112,8 @@ namespace WoWs_Randomizer
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.listOfShipsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.listOfModulesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.myShipsInPortToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CBNonPremium = new System.Windows.Forms.CheckBox();
+            this.CBPremium = new System.Windows.Forms.CheckBox();
             this.LeftPanel.SuspendLayout();
             this.MenuStrip.SuspendLayout();
             this.RightPanel.SuspendLayout();
@@ -124,6 +126,8 @@ namespace WoWs_Randomizer
             // 
             // LeftPanel
             // 
+            this.LeftPanel.Controls.Add(this.CBPremium);
+            this.LeftPanel.Controls.Add(this.CBNonPremium);
             this.LeftPanel.Controls.Add(this.lblQueue);
             this.LeftPanel.Controls.Add(this.lblExcludedShips);
             this.LeftPanel.Controls.Add(this.lblShipsInPort);
@@ -171,7 +175,7 @@ namespace WoWs_Randomizer
             // lblExcludedShips
             // 
             this.lblExcludedShips.AutoSize = true;
-            this.lblExcludedShips.Location = new System.Drawing.Point(19, 616);
+            this.lblExcludedShips.Location = new System.Drawing.Point(19, 630);
             this.lblExcludedShips.Name = "lblExcludedShips";
             this.lblExcludedShips.Size = new System.Drawing.Size(10, 13);
             this.lblExcludedShips.TabIndex = 28;
@@ -180,7 +184,7 @@ namespace WoWs_Randomizer
             // lblShipsInPort
             // 
             this.lblShipsInPort.AutoSize = true;
-            this.lblShipsInPort.Location = new System.Drawing.Point(19, 599);
+            this.lblShipsInPort.Location = new System.Drawing.Point(19, 613);
             this.lblShipsInPort.Name = "lblShipsInPort";
             this.lblShipsInPort.Size = new System.Drawing.Size(10, 13);
             this.lblShipsInPort.TabIndex = 27;
@@ -189,7 +193,7 @@ namespace WoWs_Randomizer
             // cbSingleSelect
             // 
             this.cbSingleSelect.AutoSize = true;
-            this.cbSingleSelect.Location = new System.Drawing.Point(19, 550);
+            this.cbSingleSelect.Location = new System.Drawing.Point(19, 579);
             this.cbSingleSelect.Name = "cbSingleSelect";
             this.cbSingleSelect.Size = new System.Drawing.Size(133, 17);
             this.cbSingleSelect.TabIndex = 26;
@@ -512,33 +516,69 @@ namespace WoWs_Randomizer
             // loadMyShipsToolStripMenuItem
             // 
             this.loadMyShipsToolStripMenuItem.Name = "loadMyShipsToolStripMenuItem";
-            this.loadMyShipsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.loadMyShipsToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.loadMyShipsToolStripMenuItem.Text = "Load my ships...";
             this.loadMyShipsToolStripMenuItem.Click += new System.EventHandler(this.LoadMyShipsToolStripMenuItem_ClickAsync);
             // 
             // exclusionListToolStripMenuItem
             // 
             this.exclusionListToolStripMenuItem.Name = "exclusionListToolStripMenuItem";
-            this.exclusionListToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exclusionListToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.exclusionListToolStripMenuItem.Text = "Exclusion List";
             this.exclusionListToolStripMenuItem.Click += new System.EventHandler(this.ExclusionListToolStripMenuItem_Click);
             // 
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.settingsToolStripMenuItem.Text = "Settings...";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.SettingsToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(156, 6);
+            // 
+            // exportToolStripMenuItem
+            // 
+            this.exportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.listOfShipsToolStripMenuItem,
+            this.listOfModulesToolStripMenuItem,
+            this.myShipsInPortToolStripMenuItem});
+            this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.exportToolStripMenuItem.Text = "Export...";
+            // 
+            // listOfShipsToolStripMenuItem
+            // 
+            this.listOfShipsToolStripMenuItem.Name = "listOfShipsToolStripMenuItem";
+            this.listOfShipsToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.listOfShipsToolStripMenuItem.Text = "List of Ships";
+            this.listOfShipsToolStripMenuItem.Click += new System.EventHandler(this.listOfShipsToolStripMenuItem_Click);
+            // 
+            // listOfModulesToolStripMenuItem
+            // 
+            this.listOfModulesToolStripMenuItem.Name = "listOfModulesToolStripMenuItem";
+            this.listOfModulesToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.listOfModulesToolStripMenuItem.Text = "List of Modules";
+            this.listOfModulesToolStripMenuItem.Click += new System.EventHandler(this.listOfModulesToolStripMenuItem_Click);
+            // 
+            // myShipsInPortToolStripMenuItem
+            // 
+            this.myShipsInPortToolStripMenuItem.Name = "myShipsInPortToolStripMenuItem";
+            this.myShipsInPortToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.myShipsInPortToolStripMenuItem.Text = "My Ships in port";
+            this.myShipsInPortToolStripMenuItem.Click += new System.EventHandler(this.myShipsInPortToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(156, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
@@ -555,21 +595,21 @@ namespace WoWs_Randomizer
             // buildManagerToolStripMenuItem
             // 
             this.buildManagerToolStripMenuItem.Name = "buildManagerToolStripMenuItem";
-            this.buildManagerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.buildManagerToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.buildManagerToolStripMenuItem.Text = "Build Manager";
             this.buildManagerToolStripMenuItem.Click += new System.EventHandler(this.buildManagerToolStripMenuItem_Click);
             // 
             // shipComparisonToolStripMenuItem
             // 
             this.shipComparisonToolStripMenuItem.Name = "shipComparisonToolStripMenuItem";
-            this.shipComparisonToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.shipComparisonToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.shipComparisonToolStripMenuItem.Text = "Ship Comparison";
             this.shipComparisonToolStripMenuItem.Click += new System.EventHandler(this.ShipComparisonToolStripMenuItem_Click);
             // 
             // upgradesExaminerToolStripMenuItem
             // 
             this.upgradesExaminerToolStripMenuItem.Name = "upgradesExaminerToolStripMenuItem";
-            this.upgradesExaminerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.upgradesExaminerToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.upgradesExaminerToolStripMenuItem.Text = "Ship Wikipedia";
             this.upgradesExaminerToolStripMenuItem.Click += new System.EventHandler(this.upgradesExaminerToolStripMenuItem_Click);
             // 
@@ -588,21 +628,21 @@ namespace WoWs_Randomizer
             this.menuProfileEU.Checked = true;
             this.menuProfileEU.CheckState = System.Windows.Forms.CheckState.Checked;
             this.menuProfileEU.Name = "menuProfileEU";
-            this.menuProfileEU.Size = new System.Drawing.Size(180, 22);
+            this.menuProfileEU.Size = new System.Drawing.Size(91, 22);
             this.menuProfileEU.Text = "EU";
             this.menuProfileEU.Click += new System.EventHandler(this.menuProfile_Click);
             // 
             // menuProfileNA
             // 
             this.menuProfileNA.Name = "menuProfileNA";
-            this.menuProfileNA.Size = new System.Drawing.Size(180, 22);
+            this.menuProfileNA.Size = new System.Drawing.Size(91, 22);
             this.menuProfileNA.Text = "NA";
             this.menuProfileNA.Click += new System.EventHandler(this.menuProfile_Click);
             // 
             // menuProfileRU
             // 
             this.menuProfileRU.Name = "menuProfileRU";
-            this.menuProfileRU.Size = new System.Drawing.Size(180, 22);
+            this.menuProfileRU.Size = new System.Drawing.Size(91, 22);
             this.menuProfileRU.Text = "RU";
             this.menuProfileRU.Click += new System.EventHandler(this.menuProfile_Click);
             // 
@@ -835,41 +875,27 @@ namespace WoWs_Randomizer
             // 
             this.toolTip1.ToolTipTitle = "Click to open ship info in WG Wikipedia";
             // 
-            // toolStripSeparator3
+            // CBNonPremium
             // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
+            this.CBNonPremium.AutoSize = true;
+            this.CBNonPremium.Location = new System.Drawing.Point(19, 550);
+            this.CBNonPremium.Name = "CBNonPremium";
+            this.CBNonPremium.Size = new System.Drawing.Size(72, 17);
+            this.CBNonPremium.TabIndex = 30;
+            this.CBNonPremium.Tag = "Techtree";
+            this.CBNonPremium.Text = "Tech tree";
+            this.CBNonPremium.UseVisualStyleBackColor = true;
             // 
-            // exportToolStripMenuItem
+            // CBPremium
             // 
-            this.exportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.listOfShipsToolStripMenuItem,
-            this.listOfModulesToolStripMenuItem,
-            this.myShipsInPortToolStripMenuItem});
-            this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.exportToolStripMenuItem.Text = "Export...";
-            // 
-            // listOfShipsToolStripMenuItem
-            // 
-            this.listOfShipsToolStripMenuItem.Name = "listOfShipsToolStripMenuItem";
-            this.listOfShipsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.listOfShipsToolStripMenuItem.Text = "List of Ships";
-            this.listOfShipsToolStripMenuItem.Click += new System.EventHandler(this.listOfShipsToolStripMenuItem_Click);
-            // 
-            // listOfModulesToolStripMenuItem
-            // 
-            this.listOfModulesToolStripMenuItem.Name = "listOfModulesToolStripMenuItem";
-            this.listOfModulesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.listOfModulesToolStripMenuItem.Text = "List of Modules";
-            this.listOfModulesToolStripMenuItem.Click += new System.EventHandler(this.listOfModulesToolStripMenuItem_Click);
-            // 
-            // myShipsInPortToolStripMenuItem
-            // 
-            this.myShipsInPortToolStripMenuItem.Name = "myShipsInPortToolStripMenuItem";
-            this.myShipsInPortToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.myShipsInPortToolStripMenuItem.Text = "My Ships in port";
-            this.myShipsInPortToolStripMenuItem.Click += new System.EventHandler(this.myShipsInPortToolStripMenuItem_Click);
+            this.CBPremium.AutoSize = true;
+            this.CBPremium.Location = new System.Drawing.Point(112, 550);
+            this.CBPremium.Name = "CBPremium";
+            this.CBPremium.Size = new System.Drawing.Size(66, 17);
+            this.CBPremium.TabIndex = 31;
+            this.CBPremium.Tag = "Premium";
+            this.CBPremium.Text = "Premium";
+            this.CBPremium.UseVisualStyleBackColor = true;
             // 
             // FormRandomizer
             // 
@@ -983,6 +1009,8 @@ namespace WoWs_Randomizer
         private System.Windows.Forms.ToolStripMenuItem listOfModulesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem myShipsInPortToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.CheckBox CBPremium;
+        private System.Windows.Forms.CheckBox CBNonPremium;
     }
 }
 

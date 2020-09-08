@@ -449,7 +449,9 @@ namespace WoWs_Randomizer
                 List<string> SelectionCountry = Selection["country"];
                 List<string> SelectionShipclass = Selection["shipclass"];
                 List<string> SelectionTier = Selection["tier"];
-                if ( SelectionCountry.Count == 0 && SelectionShipclass.Count == 0 && SelectionTier.Count == 0 )
+                List<string> SelectionPremium = Selection["premium"];
+
+                if ( SelectionCountry.Count == 0 && SelectionShipclass.Count == 0 && SelectionTier.Count == 0 && (SelectionPremium.Count == 0 || SelectionPremium.Count == 2))
                 {
                     MyShips.AddRange(GetShipsToSelectFrom());
                 } else
@@ -469,6 +471,16 @@ namespace WoWs_Randomizer
                         if (AddShip == true && SelectionTier.Count > 0 && !SelectionTier.Contains(Ship.Tier.ToString()))
                         {
                             AddShip = false;
+                        }
+                        if ( AddShip == true && SelectionPremium.Count == 1 )
+                        {
+                            if ( SelectionPremium.Contains("Premium") && Ship.Premium == false)
+                            {
+                                AddShip = false;
+                            } else if ( SelectionPremium.Contains("Techtree") && Ship.Premium == true)
+                            {
+                                AddShip = false;
+                            }
                         }
                         if ( AddShip && cbSingleSelect.Checked )
                         {
@@ -538,6 +550,8 @@ namespace WoWs_Randomizer
             List<string> selectionCC = new List<string>();
             List<string> selectionShipclass = new List<string>();
             List<string> selectionTier = new List<string>();
+            List<string> selectionPremium = new List<string>();
+
             Dictionary<string, List<string>> selection = new Dictionary<string, List<string>>();
 
             foreach(CheckBox CB in CheckBoxes)
@@ -553,12 +567,16 @@ namespace WoWs_Randomizer
                     } else if ( CB.Name.Contains("Tier"))
                     {
                         selectionTier.Add(CB.Tag.ToString());
+                    } else if ( CB.Name.Contains("Premium"))
+                    {
+                        selectionPremium.Add(CB.Tag.ToString());
                     }
                 }
             }
             selection.Add("country", selectionCC);
             selection.Add("shipclass", selectionShipclass);
             selection.Add("tier", selectionTier);
+            selection.Add("premium", selectionPremium);
             return selection;
         }
         private void BackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)

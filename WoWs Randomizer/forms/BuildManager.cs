@@ -82,8 +82,6 @@ namespace WoWs_Randomizer.forms
                                 }
                             } else
                             {
-
-
                             }
 */
                             if (text.Equals("")) { text = flag.Name; }
@@ -152,6 +150,7 @@ namespace WoWs_Randomizer.forms
         {
             DoShipSelect();
         }
+
         private void ClearSelections()
         {
             bmHandler = null;
@@ -202,6 +201,7 @@ namespace WoWs_Randomizer.forms
             Metrics = null;
             this.Text = "Build Manager";
         }
+
         public void SelectShip(Ship RandomizedShip)
         {
             ClearSelections();
@@ -460,7 +460,6 @@ namespace WoWs_Randomizer.forms
                             }
                             box.AccessibleDescription = "X";
                             box.Refresh();
-                            BuildManagerHandler bmHandler = new BuildManagerHandler(ShipMetricsTable, Metrics);
                             bmHandler.PerformAnimation(false);
                             bmHandler.ApplyValue(box.AccessibleName);
                         }
@@ -478,7 +477,6 @@ namespace WoWs_Randomizer.forms
                         {
                             AddSkillPoints(skill);
                             box.AccessibleDescription = "X";
-                            BuildManagerHandler bmHandler = new BuildManagerHandler(ShipMetricsTable, Metrics);
                             bmHandler.PerformAnimation(false);
                             bmHandler.ApplyValue(box.AccessibleName);
                             box.Refresh();
@@ -582,7 +580,6 @@ namespace WoWs_Randomizer.forms
                         }
                     }
                 }
-
                 applyUpgradeValues(consumable.ID.ToString(), false);
             }
         }

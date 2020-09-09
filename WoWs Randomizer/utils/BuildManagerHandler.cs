@@ -14,6 +14,7 @@ namespace WoWs_Randomizer.utils
         private ShipMetrics Metrics = null;
         private bool Animate = true;
         private bool KeepTransparancy = false;
+        private Dictionary<string,double> selectedSkillsUpgrades = new Dictionary<string, double>(); // Currently only used for secondaries count
 
         public BuildManagerHandler(TableLayoutPanel ShipMetricsTable, ShipMetrics originalMetrics)
         {
@@ -42,6 +43,7 @@ namespace WoWs_Randomizer.utils
 
         public void ApplyValue(string accessibleName)
         {
+            
             // Captain Skills
             if (accessibleName.Equals("Concealment Expert") || accessibleName.Equals("4265791408"))
             {
@@ -59,6 +61,7 @@ namespace WoWs_Randomizer.utils
                         ChangeMainGunRange(0.2);
                     }
                 }
+                selectedSkillsUpgrades.Add(accessibleName,0.2);
                 ChangeSecondaryRanges(0.2);
 
             }
@@ -132,6 +135,7 @@ namespace WoWs_Randomizer.utils
             {
                 //Flag
                 ChangeReloadSecondaries(-0.05);
+                selectedSkillsUpgrades.Add(accessibleName,0.05);
                 ChangeSecondaryRanges(0.05);
             }
             else if (accessibleName.Equals("4289556400"))
@@ -184,6 +188,10 @@ namespace WoWs_Randomizer.utils
                         foreach (KeyValuePair<string, ConsumableProfile> Perk in Upgrade.Profile)
                         {
                             double value = GetAddPerkValue(Perk.Key, Perk.Value.Value);
+                            if (Perk.Key == "GSMaxDist")
+                            {
+                                selectedSkillsUpgrades.Add(accessibleName, value);
+                            }
                             ExecutePerk(Perk.Key, value);
                         }
                     }
@@ -209,6 +217,7 @@ namespace WoWs_Randomizer.utils
                         ChangeMainGunRange(-0.2);
                     }
                 }
+                selectedSkillsUpgrades.Remove(accessibleName);
                 ChangeSecondaryRanges(-0.2);
 
             }
@@ -283,6 +292,7 @@ namespace WoWs_Randomizer.utils
             {
                 //Flag
                 ChangeReloadSecondaries(0.05);
+                selectedSkillsUpgrades.Remove(accessibleName);
                 ChangeSecondaryRanges(-0.05);
             }
             else if (accessibleName.Equals("4289556400") || accessibleName.Equals("4275924912"))
@@ -323,6 +333,10 @@ namespace WoWs_Randomizer.utils
                         foreach (KeyValuePair<string, ConsumableProfile> Perk in Upgrade.Profile)
                         {
                             double value = GetRemovePerkValue(Perk.Key, Perk.Value.Value);
+                            if ( Perk.Key == "GSMaxDist")
+                            {
+                                selectedSkillsUpgrades.Remove(accessibleName);
+                            }
                             ExecutePerk(Perk.Key, value);
                         }
                     }
@@ -479,11 +493,15 @@ namespace WoWs_Randomizer.utils
             List<Label> AllSecondaries = GetAllValueLabels(MetricsTableComposer.RANGE_SECONDARY);
             foreach (Label lbl in AllSecondaries)
             {
-                double distance = ExtractValue(lbl);
-                double totalIncrease = Math.Round(Metrics.SecondaryRange * percent, 1);
-                distance += totalIncrease;
-                lbl.Text = distance.ToString() + " km";
-                AnimateLabel(lbl, GetFinalColor(MetricsTableComposer.RANGE_SECONDARY, distance));
+                double current = Metrics.SecondaryRange;
+
+                foreach(KeyValuePair<string,double> entry in selectedSkillsUpgrades)
+                {
+                    double addDistance = Math.Round(current * entry.Value, 1);
+                    current += addDistance;
+                }
+                lbl.Text = current.ToString() + " km";
+                AnimateLabel(lbl, GetFinalColor(MetricsTableComposer.RANGE_SECONDARY, current));
             }
         }
 

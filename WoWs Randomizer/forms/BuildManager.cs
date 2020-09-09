@@ -17,43 +17,19 @@ namespace WoWs_Randomizer.forms
         private ShipMetrics Metrics = null;
         List<Skill> AllSkills = new List<Skill>();
         Ship selectedShip = null;
+        private BuildManagerHandler bmHandler = null;
 
         public BuildManager()
         {
             InitializeComponent();
-            //listUpgrades();
-            //listShips();
             LoadCommanderSkills();
             LoadFlags();
         }
 
-        private void listShips()
-        {
-            foreach(Ship ship in Program.AllShips)
-            {
-                //if ( ship.Tier == 10 )
-                //{
-                    Console.WriteLine(ship.ID + " - " + ship.Name + " (" + ship.Country + ") : " + ship.ShipType);
-                //}
-            }
-        }
-
-        private void listUpgrades()
-        {
-            foreach(Consumable upgrade in Program.Upgrades)
-            {
-                Console.WriteLine(upgrade.ID + " " + upgrade.Name + " : " + upgrade.Description);
-                foreach(KeyValuePair<string,ConsumableProfile> profile in upgrade.Profile)
-                {
-                    Console.WriteLine(profile.Value.Description);
-                }
-            }
-        }
         private void LoadFlags()
         {
             foreach(Consumable flag in Program.Flags)
             {
-                //Console.WriteLine(flag.ID + " " + flag.Name + ", " + flag.Description + ", " + flag.Credits + ", " + flag.Gold);
                 foreach(Control picCtr in panelFlags.Controls)
                 {
                     if ( picCtr is PictureBox box)
@@ -178,6 +154,7 @@ namespace WoWs_Randomizer.forms
         }
         private void ClearSelections()
         {
+            bmHandler = null;
             upgradeSlot1.Controls.Clear();
             upgradeSlot2.Controls.Clear();
             upgradeSlot2.Visible = false;
@@ -266,6 +243,7 @@ namespace WoWs_Randomizer.forms
             }
 
             selectedShip = RandomizedShip;
+            bmHandler = new BuildManagerHandler(ShipMetricsTable, Metrics);
         }
 
         private void pictureBox_Click(object sender, EventArgs e)
@@ -292,7 +270,6 @@ namespace WoWs_Randomizer.forms
                         AddSkillPoints(box.AccessibleName); 
                     }
                     box.AccessibleDescription = "X";
-                    BuildManagerHandler bmHandler = new BuildManagerHandler(ShipMetricsTable, Metrics);
                     bmHandler.ApplyValue(box.AccessibleName);
                     
                 } 
@@ -317,7 +294,6 @@ namespace WoWs_Randomizer.forms
                     RemoveSkillPoints(box.AccessibleName);
                 }
                 box.AccessibleDescription = "";
-                BuildManagerHandler bmHandler = new BuildManagerHandler(ShipMetricsTable, Metrics);
                 bmHandler.RemoveValue(box.AccessibleName);
             }
             box.Refresh();
@@ -867,17 +843,15 @@ namespace WoWs_Randomizer.forms
 
         private void applyUpgradeValues(string upgradeId, bool animate = true)
         {
-            BuildManagerHandler bmHandler = new BuildManagerHandler(ShipMetricsTable, Metrics);
             bmHandler.PerformAnimation(animate);
             bmHandler.ApplyValue(upgradeId);
-
         }
 
         private void removeUpgradeValues(string upgradeId)
         {
-            BuildManagerHandler bmHandler = new BuildManagerHandler(ShipMetricsTable, Metrics);
             bmHandler.PerformAnimation(false);
             bmHandler.RemoveValue(upgradeId);
+            bmHandler.PerformAnimation(true);
         }
     }
 }

@@ -38,17 +38,20 @@ namespace WoWs_Randomizer.utils
         public static Color GetBackgroundColor(Control Label, Control Value, Control BaseValue)
         {
             List<string> biggerIsBetter = new List<string>();
-            biggerIsBetter.Add("Tier");
-            biggerIsBetter.Add("HP");
-            biggerIsBetter.Add("Engine/Speed");
-            biggerIsBetter.Add("Gun Caliber");
-            biggerIsBetter.Add("Traverse speed");
-            biggerIsBetter.Add("Secondary Range");
-            biggerIsBetter.Add("Range");
-            biggerIsBetter.Add("Firechance Main");
-            biggerIsBetter.Add("Firechance Secondary");
-            biggerIsBetter.Add("Torpedo speed");
-            biggerIsBetter.Add("Torpedo distance");
+            biggerIsBetter.Add(MetricsTableComposer.SHIP_TIER);
+            biggerIsBetter.Add(MetricsTableComposer.SHIP_HP);
+            biggerIsBetter.Add(MetricsTableComposer.SHIP_SPEED);
+            biggerIsBetter.Add(MetricsTableComposer.GUN_CALIBER);
+            biggerIsBetter.Add(MetricsTableComposer.TRAVERSE_SPEED);
+            biggerIsBetter.Add(MetricsTableComposer.RANGE_SECONDARY);
+            biggerIsBetter.Add(MetricsTableComposer.RANGE_MAIN);
+            biggerIsBetter.Add(MetricsTableComposer.FIRECHANCE_MAIN);
+            biggerIsBetter.Add(MetricsTableComposer.FIRECHANCE_SECONDARY);
+            biggerIsBetter.Add(MetricsTableComposer.TORPEDO_SPEED);
+            biggerIsBetter.Add(MetricsTableComposer.TORPEDO_RANGE);
+            biggerIsBetter.Add(MetricsTableComposer.TORPEDO_DAMAGE);
+            biggerIsBetter.Add(MetricsTableComposer.HE_DAMAGE);
+            biggerIsBetter.Add(MetricsTableComposer.AP_DAMAGE);
 
             foreach (string label in biggerIsBetter)
             {
@@ -88,12 +91,15 @@ namespace WoWs_Randomizer.utils
             }
 
             List<string> smallerIsBetter = new List<string>();
-            smallerIsBetter.Add("Reload Main");
-            smallerIsBetter.Add("Reload Secondary");
-            smallerIsBetter.Add("Traverse time 180°");
-            smallerIsBetter.Add("Torpedo reload");
-            smallerIsBetter.Add("Surface detection");
-            smallerIsBetter.Add("Air detection");
+            smallerIsBetter.Add(MetricsTableComposer.RELOAD_MAIN);
+            smallerIsBetter.Add(MetricsTableComposer.RELOAOD_SECONDARY);
+            smallerIsBetter.Add(MetricsTableComposer.TRAVERSE_SPEED_180);
+            smallerIsBetter.Add(MetricsTableComposer.TORPEDO_RELOAD);
+            smallerIsBetter.Add(MetricsTableComposer.SURFACE_DETECTION);
+            smallerIsBetter.Add(MetricsTableComposer.AIR_DETECTION);
+            smallerIsBetter.Add(MetricsTableComposer.TURNING_RADIUS);
+            smallerIsBetter.Add(MetricsTableComposer.RUDDER_SHIFT);
+            smallerIsBetter.Add(MetricsTableComposer.DISPERSION);
 
             foreach (string label in smallerIsBetter)
             {

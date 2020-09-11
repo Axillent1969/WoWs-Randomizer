@@ -30,6 +30,10 @@ namespace WoWs_Randomizer.utils
         public const string TORPEDO_SQUADRONS = "Torpedo Squadrons";
         public const string TURNING_RADIUS = "Turning radius";
         public const string RUDDER_SHIFT = "Rudder shift";
+        public const string DISPERSION = "Maximum dispersion";
+        public const string AP_DAMAGE = "Max AP-damage";
+        public const string HE_DAMAGE = "Max HE-damage";
+        public const string TORPEDO_DAMAGE = "Torpedo damage";
 
         public static void DrawTable(MetricsExctractor Extractor, MetricsDrawer Table)
         {
@@ -46,11 +50,14 @@ namespace WoWs_Randomizer.utils
             {
                 Table.AppendHeadline("Main Armament");
                 Table.AppendFullRow(Metrics.MainCaliberName);
-                string info = "";
-                info = Metrics.Dispersion.ToString() + " meters\nMax AP-damage: " + Metrics.APDamage.ToString() + "\nMax HE-damage: " + Metrics.HEDamage.ToString();
-                Table.AppendRow(GUN_CALIBER, Metrics.MainCaliber.ToString(), info, "Maxium dispersion in meters, AP-damage and HE-damage");
+                Table.AppendRow(GUN_CALIBER, Metrics.MainCaliber.ToString());
+                Table.AppendRow(AP_DAMAGE, Metrics.APDamage.ToString());
+                Table.AppendRow(HE_DAMAGE, Metrics.HEDamage.ToString());
+
                 Table.AppendRow(RELOAD_MAIN, Metrics.ReloadTimeMain().ToString() + " sec");
-                Table.AppendRow(RANGE_MAIN, Metrics.Distance.ToString(), Metrics.Distance.ToString(), "Maximum dispersion in meters");
+                Table.AppendRow(RANGE_MAIN, Metrics.Distance.ToString() + " km");
+                Table.AppendRow(DISPERSION, Metrics.Dispersion.ToString() + " m");
+
                 Table.AppendRow(FIRECHANCE_MAIN, Metrics.FireChanceMain.ToString() + " %");
                 Table.AppendRow(TRAVERSE_SPEED, Metrics.RotationSpeed().ToString() + " deg/sec");
                 Table.AppendRow(TRAVERSE_SPEED_180, Metrics.RotationTime.ToString() + " sec");
@@ -89,7 +96,8 @@ namespace WoWs_Randomizer.utils
             if (Metrics.TorpedoReload != 0)
             {
                 Table.AppendHeadline("Torpedo Armament");
-                Table.AppendRow(TORPEDO_SPEED, Metrics.TorpedoSpeed.ToString() + " knots", Metrics.TorpedoDamage.ToString(), "Torpedo Damage");
+                Table.AppendRow(TORPEDO_SPEED, Metrics.TorpedoSpeed.ToString() + " knots");
+                Table.AppendRow(TORPEDO_DAMAGE, Metrics.TorpedoDamage.ToString());
                 Table.AppendRow(TORPEDO_RELOAD, Metrics.TorpedoReload.ToString() + " sec");
                 Table.AppendRow(TORPEDO_RANGE, Metrics.TorpedoDistance.ToString() + " km");
             }

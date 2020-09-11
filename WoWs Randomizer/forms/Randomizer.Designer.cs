@@ -735,7 +735,7 @@ namespace WoWs_Randomizer
             this.RightPanel.Controls.Add(this.ShipMetricsTable);
             this.RightPanel.Location = new System.Drawing.Point(615, 27);
             this.RightPanel.Name = "RightPanel";
-            this.RightPanel.Size = new System.Drawing.Size(228, 755);
+            this.RightPanel.Size = new System.Drawing.Size(228, 825);
             this.RightPanel.TabIndex = 3;
             // 
             // label1
@@ -756,8 +756,8 @@ namespace WoWs_Randomizer
             this.ShipMetricsTable.Location = new System.Drawing.Point(6, 27);
             this.ShipMetricsTable.Name = "ShipMetricsTable";
             this.ShipMetricsTable.RowCount = 1;
-            this.ShipMetricsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 635F));
-            this.ShipMetricsTable.Size = new System.Drawing.Size(219, 725);
+            this.ShipMetricsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 725F));
+            this.ShipMetricsTable.Size = new System.Drawing.Size(219, 795);
             this.ShipMetricsTable.TabIndex = 0;
             // 
             // ResultBox
@@ -879,7 +879,7 @@ namespace WoWs_Randomizer
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.StatusLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 785);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 855);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(850, 22);
             this.statusStrip1.SizingGrip = false;
@@ -901,7 +901,7 @@ namespace WoWs_Randomizer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(850, 807);
+            this.ClientSize = new System.Drawing.Size(850, 877);
             this.Controls.Add(this.LoadingImage);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.ResultBox);

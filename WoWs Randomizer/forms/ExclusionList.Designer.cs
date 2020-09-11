@@ -49,6 +49,8 @@
             // ResultTable
             // 
             this.ResultTable.AutoScroll = true;
+            this.ResultTable.AutoSize = true;
+            this.ResultTable.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ResultTable.CausesValidation = false;
             this.ResultTable.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.ResultTable.ColumnCount = 5;
@@ -56,12 +58,12 @@
             this.ResultTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.ResultTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
             this.ResultTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.ResultTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 143F));
+            this.ResultTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 144F));
             this.ResultTable.Location = new System.Drawing.Point(166, 0);
             this.ResultTable.Name = "ResultTable";
             this.ResultTable.RowCount = 1;
             this.ResultTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.ResultTable.Size = new System.Drawing.Size(571, 440);
+            this.ResultTable.Size = new System.Drawing.Size(575, 2);
             this.ResultTable.TabIndex = 1;
             this.ResultTable.Visible = false;
             // 
@@ -100,19 +102,21 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(759, 458);
             this.Controls.Add(this.ResultTable);
             this.Controls.Add(this.BtnCancel);
             this.Controls.Add(this.BtnSaveClose);
             this.Controls.Add(this.BtnSave);
             this.Controls.Add(this.CategoryView);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ExclusionList";
             this.Text = "ExclusionList";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ExclusionList_FormClosing);
             this.Load += new System.EventHandler(this.ExclusionList_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

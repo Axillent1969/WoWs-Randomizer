@@ -187,7 +187,7 @@ namespace WoWs_Randomizer.utils
                     {
                         foreach (KeyValuePair<string, ConsumableProfile> Perk in Upgrade.Profile)
                         {
-                            double value = GetAddPerkValue(Perk.Key, Perk.Value.Value);
+                            double value = GetPerkValueToAdd(Perk.Key, Perk.Value.Value);
                             if (Perk.Key == "GSMaxDist")
                             {
                                 selectedSkillsUpgrades.Add(accessibleName, value);
@@ -332,7 +332,7 @@ namespace WoWs_Randomizer.utils
                     {
                         foreach (KeyValuePair<string, ConsumableProfile> Perk in Upgrade.Profile)
                         {
-                            double value = GetRemovePerkValue(Perk.Key, Perk.Value.Value);
+                            double value = GetPerkValueToRemove(Perk.Key, Perk.Value.Value);
                             if ( Perk.Key == "GSMaxDist")
                             {
                                 selectedSkillsUpgrades.Remove(accessibleName);
@@ -691,7 +691,7 @@ namespace WoWs_Randomizer.utils
             return current;
         }
 
-        private double GetAddPerkValue(string perkName, double value)
+        private double GetPerkValueToAdd(string perkName, double value)
         {
             if ( perkName.Equals("visibilityDistCoeff"))
             {
@@ -704,7 +704,7 @@ namespace WoWs_Randomizer.utils
             return value - 1;
         }
 
-        private double GetRemovePerkValue(string perkName, double value)
+        private double GetPerkValueToRemove(string perkName, double value)
         {
             if ( perkName.Equals("visibilityDistCoeff"))
             {

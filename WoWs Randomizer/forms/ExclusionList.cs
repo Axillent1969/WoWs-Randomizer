@@ -148,7 +148,6 @@ namespace WoWs_Randomizer.forms
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0017:Simplify object initialization", Justification = "<Pending>")]
         private void DrawTable(List<Ship> Result, string SelectedCountry) 
         {
-            
             ResultTable.Visible = false;
 
             ResultTable.SuspendLayout();

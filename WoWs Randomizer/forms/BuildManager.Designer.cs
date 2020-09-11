@@ -92,11 +92,11 @@
             this.upgradeSlot5 = new System.Windows.Forms.Panel();
             this.upgradeSlot6 = new System.Windows.Forms.Panel();
             this.panelFlags = new System.Windows.Forms.Panel();
+            this.combatFlagsCount = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.picID2 = new System.Windows.Forms.PictureBox();
-            this.combatFlagsCount = new System.Windows.Forms.Label();
             this.picJWU = new System.Windows.Forms.PictureBox();
             this.picIX = new System.Windows.Forms.PictureBox();
             this.picVL = new System.Windows.Forms.PictureBox();
@@ -970,6 +970,15 @@
             this.panelFlags.Size = new System.Drawing.Size(843, 189);
             this.panelFlags.TabIndex = 16;
             // 
+            // combatFlagsCount
+            // 
+            this.combatFlagsCount.AutoSize = true;
+            this.combatFlagsCount.Location = new System.Drawing.Point(736, 165);
+            this.combatFlagsCount.Name = "combatFlagsCount";
+            this.combatFlagsCount.Size = new System.Drawing.Size(13, 13);
+            this.combatFlagsCount.TabIndex = 25;
+            this.combatFlagsCount.Text = "0";
+            // 
             // pictureBox2
             // 
             this.pictureBox2.AccessibleName = "4265439152";
@@ -983,6 +992,7 @@
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Tag = "";
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox_Click);
+            this.pictureBox2.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
             // 
             // pictureBox1
             // 
@@ -997,6 +1007,7 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Tag = "";
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox_Click);
+            this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
             // 
             // label6
             // 
@@ -1021,15 +1032,6 @@
             this.picID2.Tag = "Associated Achievement: Dreadnought";
             this.picID2.Click += new System.EventHandler(this.pictureBox_Click);
             this.picID2.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
-            // 
-            // combatFlagsCount
-            // 
-            this.combatFlagsCount.AutoSize = true;
-            this.combatFlagsCount.Location = new System.Drawing.Point(736, 165);
-            this.combatFlagsCount.Name = "combatFlagsCount";
-            this.combatFlagsCount.Size = new System.Drawing.Size(13, 13);
-            this.combatFlagsCount.TabIndex = 25;
-            this.combatFlagsCount.Text = "0";
             // 
             // picJWU
             // 

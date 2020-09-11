@@ -103,9 +103,9 @@ namespace WoWs_Randomizer.utils
             }
 
             Table.AppendHeadline("Manouverability");
-            Table.AppendRow(SHIP_SPEED, Metrics.Speed.ToString(), Metrics.Engine);
-            Table.AppendRow(RUDDER_SHIFT, Metrics.RudderTime.ToString());
-            Table.AppendRow(TURNING_RADIUS, Metrics.TurningRadius.ToString());
+            Table.AppendRow(SHIP_SPEED, Metrics.Speed.ToString() + " knots", Metrics.Engine);
+            Table.AppendRow(RUDDER_SHIFT, Metrics.RudderTime.ToString() + " sec");
+            Table.AppendRow(TURNING_RADIUS, Metrics.TurningRadius.ToString() + " m");
 
             if (Metrics.SurfaceDetection != 0)
             {

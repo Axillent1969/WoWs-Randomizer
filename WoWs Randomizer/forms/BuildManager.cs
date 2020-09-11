@@ -582,6 +582,7 @@ namespace WoWs_Randomizer.forms
                 }
                 applyUpgradeValues(consumable.ID.ToString(), false);
             }
+            bmHandler.PerformAnimation(true);
         }
 
         private void ClearUpgradePanel(Panel UpgradePanel)

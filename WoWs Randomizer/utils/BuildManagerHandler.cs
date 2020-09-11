@@ -143,10 +143,10 @@ namespace WoWs_Randomizer.utils
             {
                 //Flag
                 Label range = GetValueLabel(MetricsTableComposer.SHIP_SPEED);
-                double distance = double.Parse(range.Text.ToString());
+                double distance = double.Parse(range.Text.ToString().Split(' ')[0]);
                 double totalIncrease = Math.Round(Metrics.Speed * 0.05, 1);
                 distance += totalIncrease;
-                range.Text = distance.ToString();
+                range.Text = distance.ToString() + " knots";
                 AnimateLabel(range, GetFinalColor(MetricsTableComposer.SHIP_SPEED, distance));
             }
             else if (accessibleName.Equals("4276973488") || accessibleName.Equals("4275924912"))
@@ -303,10 +303,10 @@ namespace WoWs_Randomizer.utils
             {
                 //Flags
                 Label range = GetValueLabel(MetricsTableComposer.SHIP_SPEED);
-                double distance = double.Parse(range.Text.ToString());
+                double distance = double.Parse(range.Text.ToString().Split(' ')[0]);
                 double totalIncrease = Math.Round(Metrics.Speed * 0.05, 1);
                 distance -= totalIncrease;
-                range.Text = distance.ToString();
+                range.Text = distance.ToString() + " knots";
                 AnimateLabel(range, GetFinalColor(MetricsTableComposer.SHIP_SPEED, distance));
             }
             else if (accessibleName.Equals("4276973488"))
@@ -687,25 +687,16 @@ namespace WoWs_Randomizer.utils
 
         private void ChangeRudderShiftTime(double percent)
         {
-            //ADDATIVE!
             Label rudderShiftTimeLbl = GetValueLabel(MetricsTableComposer.RUDDER_SHIFT);
             if ( rudderShiftTimeLbl == null ) { return; }
-            //Metrics.RudderTime;
 
             double baseSpeed = Metrics.RudderTime;
             foreach(KeyValuePair<string,double> entry in selectedRudderSkills)
             {
                 baseSpeed += Math.Round(baseSpeed * entry.Value, 1);
             }
-            rudderShiftTimeLbl.Text = baseSpeed.ToString();
+            rudderShiftTimeLbl.Text = baseSpeed.ToString() + " sec";
             AnimateLabel(rudderShiftTimeLbl, GetFinalColor(MetricsTableComposer.RUDDER_SHIFT, baseSpeed));
-
-            /*
-            double currentSpeed = double.Parse(rudderShiftTimeLbl.Text.ToString());
-            currentSpeed += Math.Round(Metrics.RudderTime * percent, 1);
-            rudderShiftTimeLbl.Text = currentSpeed.ToString();
-            AnimateLabel(rudderShiftTimeLbl, GetFinalColor(MetricsTableComposer.RUDDER_SHIFT, currentSpeed));
-            */
         }
 
         private double ExtractValue(Label lbl)

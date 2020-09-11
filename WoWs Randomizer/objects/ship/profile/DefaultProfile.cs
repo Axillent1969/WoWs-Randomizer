@@ -12,6 +12,10 @@ namespace WoWs_Randomizer.objects.ship.profile
     {
         [JsonProperty("engine")]
         public Engine Engine { get; set; }
+
+        [JsonProperty("mobility")]
+        public Mobility Mobility { get; set; }
+
         [JsonProperty("atbas")]
         public Secondaries Secondaries { get; set; }
 

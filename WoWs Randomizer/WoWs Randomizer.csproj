@@ -187,6 +187,7 @@
     <Compile Include="objects\ship\profile\Concealment.cs" />
     <Compile Include="objects\ship\profile\DefaultProfile.cs" />
     <Compile Include="objects\ship\profile\Engine.cs" />
+    <Compile Include="objects\ship\profile\Mobility.cs" />
     <Compile Include="objects\ship\profile\Secondaries.cs" />
     <Compile Include="objects\ship\profile\SecondariesData.cs" />
     <Compile Include="objects\ship\profile\Shells.cs" />

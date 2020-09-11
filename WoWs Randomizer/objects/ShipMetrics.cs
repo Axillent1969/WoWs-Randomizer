@@ -61,6 +61,11 @@ namespace WoWs_Randomizer.objects
         public double SurfaceDetection { get; set; }
         public double AirDetection { get; set; }
 
+        // Mobility
+        public double RudderTime { get; set; }
+        public double TurningRadius { get; set; }
+
+
         public double RotationSpeed()
         {
             if ( RotationTime != 0 )

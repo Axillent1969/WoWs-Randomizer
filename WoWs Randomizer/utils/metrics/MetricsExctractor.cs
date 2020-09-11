@@ -41,6 +41,7 @@ namespace WoWs_Randomizer.utils
         {
             CalculateMainData();
             CalculateEngineData();
+            CalculateMobility();
             CalculateHull();
             CalculateTorp();
             CalculateFlightControl();
@@ -120,6 +121,15 @@ namespace WoWs_Randomizer.utils
                     }
                 }
             }
+        }
+
+        private void CalculateMobility()
+        {
+            try
+            {
+                Metrics.RudderTime = RandomizedShip.Profile.Mobility.RudderTime;
+                Metrics.TurningRadius = RandomizedShip.Profile.Mobility.TurningRadius;
+            } catch (Exception) { }
         }
 
         private void CalculateTorp()

@@ -28,6 +28,8 @@ namespace WoWs_Randomizer.utils
         public const string FIGHTER_SQUADRONS = "Fighter Squadrons";
         public const string BOMBER_SQUADRONS = "Bomber Squadrons";
         public const string TORPEDO_SQUADRONS = "Torpedo Squadrons";
+        public const string TURNING_RADIUS = "Turning radius";
+        public const string RUDDER_SHIFT = "Rudder shift";
 
         public static void DrawTable(MetricsExctractor Extractor, MetricsDrawer Table)
         {
@@ -38,7 +40,6 @@ namespace WoWs_Randomizer.utils
             Table.AppendRow(SHIP_CLASS, Metrics.ShipClass);
             Table.AppendRow(SHIP_TIER, Metrics.Tier.ToString());
             Table.AppendRow(SHIP_HP, Metrics.HP.ToString());
-            Table.AppendRow(SHIP_SPEED, Metrics.Speed.ToString(), Metrics.Engine);
             Table.AppendRow(SHIP_PREMIUM, ((Metrics.isPremium) ? "Yes" : "No"));
 
             if (Metrics.MainCaliberName != null && !Metrics.MainCaliberName.Equals(""))
@@ -100,6 +101,11 @@ namespace WoWs_Randomizer.utils
                 Table.AppendRow(BOMBER_SQUADRONS, Metrics.BomberSquadrons.ToString());
                 Table.AppendRow(TORPEDO_SQUADRONS, Metrics.TorpedoSquadrons.ToString());
             }
+
+            Table.AppendHeadline("Manouverability");
+            Table.AppendRow(SHIP_SPEED, Metrics.Speed.ToString(), Metrics.Engine);
+            Table.AppendRow(RUDDER_SHIFT, Metrics.RudderTime.ToString());
+            Table.AppendRow(TURNING_RADIUS, Metrics.TurningRadius.ToString());
 
             if (Metrics.SurfaceDetection != 0)
             {

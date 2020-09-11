@@ -730,7 +730,7 @@
             this.RightPanel.Controls.Add(this.ShipMetricsTable);
             this.RightPanel.Location = new System.Drawing.Point(864, 127);
             this.RightPanel.Name = "RightPanel";
-            this.RightPanel.Size = new System.Drawing.Size(228, 665);
+            this.RightPanel.Size = new System.Drawing.Size(228, 744);
             this.RightPanel.TabIndex = 5;
             // 
             // Headline
@@ -751,8 +751,8 @@
             this.ShipMetricsTable.Location = new System.Drawing.Point(6, 27);
             this.ShipMetricsTable.Name = "ShipMetricsTable";
             this.ShipMetricsTable.RowCount = 1;
-            this.ShipMetricsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 635F));
-            this.ShipMetricsTable.Size = new System.Drawing.Size(219, 635);
+            this.ShipMetricsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 714F));
+            this.ShipMetricsTable.Size = new System.Drawing.Size(219, 714);
             this.ShipMetricsTable.TabIndex = 0;
             // 
             // button2
@@ -948,11 +948,11 @@
             // 
             // panelFlags
             // 
+            this.panelFlags.Controls.Add(this.combatFlagsCount);
             this.panelFlags.Controls.Add(this.pictureBox2);
             this.panelFlags.Controls.Add(this.pictureBox1);
             this.panelFlags.Controls.Add(this.label6);
             this.panelFlags.Controls.Add(this.picID2);
-            this.panelFlags.Controls.Add(this.combatFlagsCount);
             this.panelFlags.Controls.Add(this.picJWU);
             this.panelFlags.Controls.Add(this.picIX);
             this.panelFlags.Controls.Add(this.picVL);
@@ -1025,12 +1025,11 @@
             // combatFlagsCount
             // 
             this.combatFlagsCount.AutoSize = true;
-            this.combatFlagsCount.Location = new System.Drawing.Point(733, 165);
+            this.combatFlagsCount.Location = new System.Drawing.Point(736, 165);
             this.combatFlagsCount.Name = "combatFlagsCount";
             this.combatFlagsCount.Size = new System.Drawing.Size(13, 13);
             this.combatFlagsCount.TabIndex = 25;
             this.combatFlagsCount.Text = "0";
-            this.combatFlagsCount.Visible = false;
             // 
             // picJWU
             // 
@@ -1280,7 +1279,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1104, 792);
+            this.ClientSize = new System.Drawing.Size(1104, 883);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);

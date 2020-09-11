@@ -127,8 +127,11 @@ namespace WoWs_Randomizer.utils
         {
             try
             {
-                Metrics.RudderTime = RandomizedShip.Profile.Mobility.RudderTime;
-                Metrics.TurningRadius = RandomizedShip.Profile.Mobility.TurningRadius;
+                if ( RandomizedShip.Profile.Mobility != null)
+                {
+                    Metrics.RudderTime = RandomizedShip.Profile.Mobility.RudderTime;
+                    Metrics.TurningRadius = RandomizedShip.Profile.Mobility.TurningRadius;
+                }
             } catch (Exception) { }
         }
 

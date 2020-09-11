@@ -41,7 +41,7 @@
             this.RightPanel.Controls.Add(this.ShipMetricsTable);
             this.RightPanel.Location = new System.Drawing.Point(3, 3);
             this.RightPanel.Name = "RightPanel";
-            this.RightPanel.Size = new System.Drawing.Size(228, 665);
+            this.RightPanel.Size = new System.Drawing.Size(228, 731);
             this.RightPanel.TabIndex = 4;
             // 
             // Headline
@@ -63,14 +63,14 @@
             this.ShipMetricsTable.Name = "ShipMetricsTable";
             this.ShipMetricsTable.RowCount = 1;
             this.ShipMetricsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 635F));
-            this.ShipMetricsTable.Size = new System.Drawing.Size(219, 635);
+            this.ShipMetricsTable.Size = new System.Drawing.Size(219, 701);
             this.ShipMetricsTable.TabIndex = 0;
             // 
             // CompareShip
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(233, 670);
+            this.ClientSize = new System.Drawing.Size(233, 746);
             this.Controls.Add(this.RightPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

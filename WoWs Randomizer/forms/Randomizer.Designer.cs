@@ -37,6 +37,8 @@ namespace WoWs_Randomizer
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRandomizer));
             this.LeftPanel = new System.Windows.Forms.Panel();
+            this.CBPremium = new System.Windows.Forms.CheckBox();
+            this.CBNonPremium = new System.Windows.Forms.CheckBox();
             this.lblQueue = new System.Windows.Forms.Label();
             this.lblExcludedShips = new System.Windows.Forms.Label();
             this.lblShipsInPort = new System.Windows.Forms.Label();
@@ -112,8 +114,6 @@ namespace WoWs_Randomizer
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.CBNonPremium = new System.Windows.Forms.CheckBox();
-            this.CBPremium = new System.Windows.Forms.CheckBox();
             this.LeftPanel.SuspendLayout();
             this.MenuStrip.SuspendLayout();
             this.RightPanel.SuspendLayout();
@@ -162,6 +162,28 @@ namespace WoWs_Randomizer
             this.LeftPanel.Name = "LeftPanel";
             this.LeftPanel.Size = new System.Drawing.Size(200, 662);
             this.LeftPanel.TabIndex = 0;
+            // 
+            // CBPremium
+            // 
+            this.CBPremium.AutoSize = true;
+            this.CBPremium.Location = new System.Drawing.Point(112, 550);
+            this.CBPremium.Name = "CBPremium";
+            this.CBPremium.Size = new System.Drawing.Size(66, 17);
+            this.CBPremium.TabIndex = 31;
+            this.CBPremium.Tag = "Premium";
+            this.CBPremium.Text = "Premium";
+            this.CBPremium.UseVisualStyleBackColor = true;
+            // 
+            // CBNonPremium
+            // 
+            this.CBNonPremium.AutoSize = true;
+            this.CBNonPremium.Location = new System.Drawing.Point(19, 550);
+            this.CBNonPremium.Name = "CBNonPremium";
+            this.CBNonPremium.Size = new System.Drawing.Size(72, 17);
+            this.CBNonPremium.TabIndex = 30;
+            this.CBNonPremium.Tag = "Techtree";
+            this.CBNonPremium.Text = "Tech tree";
+            this.CBNonPremium.UseVisualStyleBackColor = true;
             // 
             // lblQueue
             // 
@@ -713,7 +735,7 @@ namespace WoWs_Randomizer
             this.RightPanel.Controls.Add(this.ShipMetricsTable);
             this.RightPanel.Location = new System.Drawing.Point(615, 27);
             this.RightPanel.Name = "RightPanel";
-            this.RightPanel.Size = new System.Drawing.Size(228, 665);
+            this.RightPanel.Size = new System.Drawing.Size(228, 755);
             this.RightPanel.TabIndex = 3;
             // 
             // label1
@@ -735,7 +757,7 @@ namespace WoWs_Randomizer
             this.ShipMetricsTable.Name = "ShipMetricsTable";
             this.ShipMetricsTable.RowCount = 1;
             this.ShipMetricsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 635F));
-            this.ShipMetricsTable.Size = new System.Drawing.Size(219, 635);
+            this.ShipMetricsTable.Size = new System.Drawing.Size(219, 725);
             this.ShipMetricsTable.TabIndex = 0;
             // 
             // ResultBox
@@ -857,7 +879,7 @@ namespace WoWs_Randomizer
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.StatusLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 695);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 785);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(850, 22);
             this.statusStrip1.SizingGrip = false;
@@ -875,33 +897,11 @@ namespace WoWs_Randomizer
             // 
             this.toolTip1.ToolTipTitle = "Click to open ship info in WG Wikipedia";
             // 
-            // CBNonPremium
-            // 
-            this.CBNonPremium.AutoSize = true;
-            this.CBNonPremium.Location = new System.Drawing.Point(19, 550);
-            this.CBNonPremium.Name = "CBNonPremium";
-            this.CBNonPremium.Size = new System.Drawing.Size(72, 17);
-            this.CBNonPremium.TabIndex = 30;
-            this.CBNonPremium.Tag = "Techtree";
-            this.CBNonPremium.Text = "Tech tree";
-            this.CBNonPremium.UseVisualStyleBackColor = true;
-            // 
-            // CBPremium
-            // 
-            this.CBPremium.AutoSize = true;
-            this.CBPremium.Location = new System.Drawing.Point(112, 550);
-            this.CBPremium.Name = "CBPremium";
-            this.CBPremium.Size = new System.Drawing.Size(66, 17);
-            this.CBPremium.TabIndex = 31;
-            this.CBPremium.Tag = "Premium";
-            this.CBPremium.Text = "Premium";
-            this.CBPremium.UseVisualStyleBackColor = true;
-            // 
             // FormRandomizer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(850, 717);
+            this.ClientSize = new System.Drawing.Size(850, 807);
             this.Controls.Add(this.LoadingImage);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.ResultBox);

@@ -15,6 +15,7 @@ namespace WoWs_Randomizer.utils
         private bool Animate = true;
         private bool KeepTransparancy = false;
         private Dictionary<string,double> selectedSkillsUpgrades = new Dictionary<string, double>(); // Currently only used for secondaries count
+        private Dictionary<string, double> selectedRudderSkills = new Dictionary<string, double>();
 
         public BuildManagerHandler(TableLayoutPanel ShipMetricsTable, ShipMetrics originalMetrics)
         {
@@ -191,6 +192,9 @@ namespace WoWs_Randomizer.utils
                             if (Perk.Key == "GSMaxDist")
                             {
                                 selectedSkillsUpgrades.Add(accessibleName, value);
+                            } else if ( Perk.Key == "SGRudderTime")
+                            {
+                                selectedRudderSkills.Add(accessibleName, value);
                             }
                             ExecutePerk(Perk.Key, value);
                         }
@@ -336,6 +340,8 @@ namespace WoWs_Randomizer.utils
                             if ( Perk.Key == "GSMaxDist")
                             {
                                 selectedSkillsUpgrades.Remove(accessibleName);
+                            } else if ( Perk.Key == "SGRudderTime") {
+                                selectedRudderSkills.Remove(accessibleName);
                             }
                             ExecutePerk(Perk.Key, value);
                         }
@@ -396,6 +402,7 @@ namespace WoWs_Randomizer.utils
                 metricsLookup.Add(MetricsTableComposer.TRAVERSE_SPEED, Metrics.RotationSpeed());
                 metricsLookup.Add(MetricsTableComposer.FIGHTER_SQUADRONS, Metrics.FighterSquadrons);
                 metricsLookup.Add(MetricsTableComposer.SHIP_SPEED, Metrics.Speed);
+                metricsLookup.Add(MetricsTableComposer.RUDDER_SHIFT, Metrics.RudderTime);
 
                 mvalue = metricsLookup[accessibleName];
             }
@@ -411,6 +418,8 @@ namespace WoWs_Randomizer.utils
             lowerBetter.Add(MetricsTableComposer.RELOAD_MAIN);
             lowerBetter.Add(MetricsTableComposer.RELOAOD_SECONDARY);
             lowerBetter.Add(MetricsTableComposer.TORPEDO_RELOAD);
+            lowerBetter.Add(MetricsTableComposer.RUDDER_SHIFT);
+            lowerBetter.Add(MetricsTableComposer.TURNING_RADIUS);
 
             higherBetter.Add(MetricsTableComposer.RANGE_MAIN);
             higherBetter.Add(MetricsTableComposer.RANGE_SECONDARY);
@@ -422,6 +431,7 @@ namespace WoWs_Randomizer.utils
             higherBetter.Add(MetricsTableComposer.TRAVERSE_SPEED);
             higherBetter.Add(MetricsTableComposer.FIGHTER_SQUADRONS);
             higherBetter.Add(MetricsTableComposer.SHIP_SPEED);
+            
 
             if (value == mvalue || Math.Round(value, 1) == Math.Round(mvalue, 1))
             {
@@ -675,6 +685,29 @@ namespace WoWs_Randomizer.utils
             AnimateLabel(travTimeLbl, GetFinalColor(MetricsTableComposer.TRAVERSE_SPEED, currentSpeed));
         }
 
+        private void ChangeRudderShiftTime(double percent)
+        {
+            //ADDATIVE!
+            Label rudderShiftTimeLbl = GetValueLabel(MetricsTableComposer.RUDDER_SHIFT);
+            if ( rudderShiftTimeLbl == null ) { return; }
+            //Metrics.RudderTime;
+
+            double baseSpeed = Metrics.RudderTime;
+            foreach(KeyValuePair<string,double> entry in selectedRudderSkills)
+            {
+                baseSpeed += Math.Round(baseSpeed * entry.Value, 1);
+            }
+            rudderShiftTimeLbl.Text = baseSpeed.ToString();
+            AnimateLabel(rudderShiftTimeLbl, GetFinalColor(MetricsTableComposer.RUDDER_SHIFT, baseSpeed));
+
+            /*
+            double currentSpeed = double.Parse(rudderShiftTimeLbl.Text.ToString());
+            currentSpeed += Math.Round(Metrics.RudderTime * percent, 1);
+            rudderShiftTimeLbl.Text = currentSpeed.ToString();
+            AnimateLabel(rudderShiftTimeLbl, GetFinalColor(MetricsTableComposer.RUDDER_SHIFT, currentSpeed));
+            */
+        }
+
         private double ExtractValue(Label lbl)
         {
             double current = 0;
@@ -743,6 +776,9 @@ namespace WoWs_Randomizer.utils
             } else if ( perkName.Equals("GSMaxDist"))
             {
                 ChangeSecondaryRanges(value);
+            } else if ( perkName.Equals("SGRudderTime"))
+            {
+                ChangeRudderShiftTime(value);
             }
         }
     }

@@ -30,7 +30,7 @@ namespace WoWs_Randomizer.utils
         public const string TORPEDO_SQUADRONS = "Torpedo Squadrons";
         public const string TURNING_RADIUS = "Turning radius";
         public const string RUDDER_SHIFT = "Rudder shift";
-        public const string DISPERSION = "Maximum dispersion";
+        public const string DISPERSION = "Max dispersion";
         public const string AP_DAMAGE = "Max AP-damage";
         public const string HE_DAMAGE = "Max HE-damage";
         public const string TORPEDO_DAMAGE = "Torpedo damage";

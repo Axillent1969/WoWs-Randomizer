@@ -47,11 +47,9 @@ namespace WoWs_Randomizer.objects.modules
             Slot5Upgrades.Add(4240625584);
             Slot5Upgrades.Add(4236431280);
             Slot5Upgrades.Add(4232236976);
-            //Slot5Upgrades.Add(4238528432); // This upgrade will be moved to slot 6 in patch 0.9.5
             Slot5Upgrades.Add(4244819888);
             Slot5Upgrades.Add(4249014192);
             Slot5Upgrades.Add(4235382704);
-            //Slot5Upgrades.Add(4239577008); // This will happen in patch 0.9.5: CHANGE REVOKED
 
             List<long> Slot6Upgrades = new List<long>();
             Slot6Upgrades.Add(4237479856);
@@ -60,11 +58,11 @@ namespace WoWs_Randomizer.objects.modules
             Slot6Upgrades.Add(4247965616);
             Slot6Upgrades.Add(4246917040);
             Slot6Upgrades.Add(4243771312);
-            Slot6Upgrades.Add(4239577008); // This upgrade will move to slot 5 in patch 0.9.5: CHANGE REVOKED
+            Slot6Upgrades.Add(4239577008);
             Slot6Upgrades.Add(4231188400);
             Slot6Upgrades.Add(4230139824);
             Slot6Upgrades.Add(4229091248);
-            Slot6Upgrades.Add(4238528432); //This will happen in patch 0.9.5
+            Slot6Upgrades.Add(4238528432); 
 
             SlotCorrections.Add(1, Slot1Upgrades);
             SlotCorrections.Add(2, Slot2Upgrades);
@@ -146,18 +144,27 @@ namespace WoWs_Randomizer.objects.modules
         {
             // Has Smoke Generator and therefore can equip Smoke Generator Mod 1
             List<long> canEquip = new List<long>();
-            canEquip.Add(3760076080);
-            canEquip.Add(3764270928);
-            canEquip.Add(3769513264);
-            canEquip.Add(4180588496);
-            canEquip.Add(4183734224);
-            canEquip.Add(3762206160);
-            canEquip.Add(4181637072);
-            canEquip.Add(3655251408);
-            canEquip.Add(4179539920);
-            canEquip.Add(4182685648);
-            canEquip.Add(3763255248);
-            canEquip.Add(3553540080);
+            canEquip.Add(4267620048); // Iwaki Alpha
+            canEquip.Add(3553540080); // Flint
+            canEquip.Add(3751720944); // Anchorage
+            canEquip.Add(3762206160); // Kutuzov
+            canEquip.Add(3655251408); // Smolensk
+            canEquip.Add(4184782800); // Emerald
+            canEquip.Add(4183734224); // Leander
+            canEquip.Add(4182685648); // Fiji
+            canEquip.Add(3763255248); // Belfast
+            canEquip.Add(4181637072); // Edinburgh
+            canEquip.Add(4180588496); // Neptune
+            canEquip.Add(4179539920); // Minotaur
+            canEquip.Add(3767416176); // Vampire
+            canEquip.Add(3764270928); // Aigle
+            canEquip.Add(3764270288); // Anshan
+            canEquip.Add(3762173136); // Loyang
+            canEquip.Add(3767416784); // Campbeltown
+            canEquip.Add(3764271056); // Gallant
+
+            canEquip.Add(3769513264); // Blyskawica
+            canEquip.Add(3760076080); // Friesland
 
             if (canEquip.Contains(selectedShip.ID))
             {
@@ -179,26 +186,29 @@ namespace WoWs_Randomizer.objects.modules
             if (selectedShip.Tier >= 9)
             {
                 List<long> canEquipSRM = new List<long>();
-                canEquipSRM.Add(3551410160);
-                canEquipSRM.Add(4180588528);
-                canEquipSRM.Add(3761190896);
-                canEquipSRM.Add(3760109552);
-                canEquipSRM.Add(3666786288);
-                canEquipSRM.Add(4180554960);
-                canEquipSRM.Add(4180587984);
-                canEquipSRM.Add(3761157584);
-                canEquipSRM.Add(4180588496);
-                canEquipSRM.Add(4075730928);
-
-                canEquipSRM.Add(4179539920);
-                canEquipSRM.Add(4273911792);
-                canEquipSRM.Add(4179539408);
-                canEquipSRM.Add(3655251952);
-                canEquipSRM.Add(3550394352);
-                canEquipSRM.Add(3655218480);
-                canEquipSRM.Add(3760109008);
-                canEquipSRM.Add(4074682352);
-                canEquipSRM.Add(4179506384);
+                canEquipSRM.Add(3761190896); // Missouri
+                canEquipSRM.Add(3760109552); // Alaska
+                canEquipSRM.Add(3666786288); // Alaska B
+                canEquipSRM.Add(4180588528); // Buffalo
+                canEquipSRM.Add(4180587984); // Donskoi
+                canEquipSRM.Add(3761157584); // Kronshtadt
+                canEquipSRM.Add(4180588496); // Neptune
+                canEquipSRM.Add(4075730384); // Riga
+                canEquipSRM.Add(4075730928); // Seattle
+                canEquipSRM.Add(3551410160); // Black
+                canEquipSRM.Add(4180554960); // Chung Mu
+                canEquipSRM.Add(4074681808); // Aleksander Nevsky
+                canEquipSRM.Add(4273911792); // Des Moines
+                canEquipSRM.Add(4179539920); // Minotaur
+                canEquipSRM.Add(4179539408); // Moskva
+                canEquipSRM.Add(3969824208); // Petropavlovsk
+                canEquipSRM.Add(3655251952); // Puerto Rico
+                canEquipSRM.Add(3550394352); // Salem
+                canEquipSRM.Add(3760109008); // Stalingrad
+                canEquipSRM.Add(3749623248); // Stalingrad #2
+                canEquipSRM.Add(4074682352); // Worcester
+                canEquipSRM.Add(4179506384); // Yueyang
+                canEquipSRM.Add(3655218480); // Småland
 
                 if (canEquipSRM.Contains(selectedShip.ID))
                 {
@@ -210,6 +220,15 @@ namespace WoWs_Randomizer.objects.modules
 
         private bool canEquipHydroMod1()
         {
+            // 3742316496 - Duke of York
+            // 3764303600 - Duca d'Aosta - Duca d'Aosta
+            // 3763255024 - Duca degli Abruzzi
+            // 3658397424 - Gorizia
+            // 3763221872 - Haida
+            // 3762173136 - Loyang
+            // 4076745936 - Siliwangi
+            // 3760076080 - Friesland
+
             // Has Hydro and therefore can equip Hydroacoustic Search Mod 1
             if (selectedShip.ID == 3742316496 || selectedShip.ID == 3764303600 || selectedShip.ID == 3763255024 || selectedShip.ID == 3658397424 || selectedShip.ID == 3763221872 || selectedShip.ID == 3762173136 || selectedShip.ID == 4076745936 || selectedShip.ID == 3760076080)
             {
@@ -221,11 +240,17 @@ namespace WoWs_Randomizer.objects.modules
             }
             else if (selectedShip.ShipType.Equals(ShipTypes.CA.ToString()) && !selectedShip.Country.Equals(Countries.ITA.ToString()))
             {
-                return true;
+                if ( selectedShip.ID != 4290688720 ) // Yubari can not equip
+                {
+                    return true;
+                }
             }
             else if (selectedShip.Country.Equals(Countries.UK.ToString()) && selectedShip.ShipType.Equals(ShipTypes.DD.ToString()))
             {
-                return true;
+                if ( selectedShip.ID != 3764271056) // Gallant can not equipt
+                {
+                    return true;
+                }
             }
             return false;
         }
@@ -243,13 +268,37 @@ namespace WoWs_Randomizer.objects.modules
                         return true;
                     }
                 }
-                else if (selectedShip.ID == 3751720144 || selectedShip.ID == 3762173136 || selectedShip.ID == 4076746192 || selectedShip.ID == 4182652368 || selectedShip.ID == 4074649040 || selectedShip.ID == 4074649424)
+                else if (selectedShip.ID == 3751720144 || selectedShip.ID == 3762173136 || selectedShip.ID == 4076746192 || selectedShip.ID == 4182652368 || selectedShip.ID == 4074649040 || selectedShip.ID == 4074649424 || selectedShip.ID == 3760142288 || selectedShip.ID == 3760109008 || selectedShip.ID == 3749623248 || selectedShip.ID == 4179539408 || selectedShip.ID == 3969824208)
                 {
+                    // 3751720144 - Wukong
+                    // 3762173136 - Loyang
+                    // 4076746192 - Ognevoi
+                    // 4182652368 - Udaloi
+                    // 4074649040 - Grozovoi
+                    // 4074649424 - Marceau
+                    // 3760142288 - Thunderer
+                    // 3760109008 - Stalingrad
+                    // 3749623248 - Stalingrad #2
+                    // 4179539408 - Moskva
+                    // 3969824208 - Petropavlovsk
                     return true;
                 }
-                else if (selectedShip.Country.Equals(Countries.USA.ToString()) && selectedShip.ShipType.Equals(ShipTypes.DD.ToString()))
+                else if (selectedShip.Country.Equals(Countries.USA.ToString()) && selectedShip.ShipType.Equals(ShipTypes.DD.ToString()) && selectedShip.Premium == false)
                 {
+                    // Tech-tree destroyers only
                     return true;
+                } else if ( selectedShip.Country.Equals(Countries.USA.ToString()) && selectedShip.ShipType.Equals(ShipTypes.DD.ToString()))
+                {
+                    // 3764271088 - Monaghan
+                    // 4264441840 - Sims
+                    // 3668850672 - Sims B
+                    // 3762173936 - Kidd
+                    // 3761125360 - Benham
+                    // 3551410160 - Black
+                    if ( selectedShip.ID == 3764271088 || selectedShip.ID == 4264441840 || selectedShip.ID == 3668850672 || selectedShip.ID == 3762173936 || selectedShip.ID == 3761125360 || selectedShip.ID == 3551410160)
+                    {
+                        return true;
+                    }
                 }
                 else if (selectedShip.ShipType.Equals(ShipTypes.CA.ToString()))
                 {
@@ -261,6 +310,10 @@ namespace WoWs_Randomizer.objects.modules
                 else if (selectedShip.Country.Equals(Countries.EUR.ToString()) && selectedShip.ShipType.Equals(ShipTypes.DD.ToString()))
                 {
                     return true;
+                } else if ( selectedShip.ID == 3760142288)
+                {
+                    // 3760142288 - Thunderer
+                    return true;
                 }
             }
             return false;
@@ -269,8 +322,20 @@ namespace WoWs_Randomizer.objects.modules
         private bool canEquipEngineBoostMod1()
         {
             // Has engine boost and therefore can equip the Engine Boost Mod 1
-            if (selectedShip.ID == 3764271056 || selectedShip.ID == 3752736720 || selectedShip.ID == 3764270928 || selectedShip.ID == 3762173776 || selectedShip.ID == 3530504176)
+            if (selectedShip.ID == 3764271056 || selectedShip.ID == 3752736720 || selectedShip.ID == 3764270928 || selectedShip.ID == 3762173776 || selectedShip.ID == 3530504176 || selectedShip.ID == 3767416784 || selectedShip.ID == 3766368080 || selectedShip.ID == 3760142160 || selectedShip.ID == 4076746192 || selectedShip.ID == 4182652368 || selectedShip.ID == 4074649040)
             {
+                // 3764271056 - Gallant
+                // 3752736720 - Cossack
+                // 3764270928 - Aigle
+                // 3762173776 - Le Terribl
+                // 3530504176 - Georgia
+                // 3767416784 - Campbeltown
+                // 3766368080 - Siroco
+                // 3760142160 - Bourgogne
+                // 4076746192 - Ognevoi
+                // 4182652368 - Udaloi
+                // 4074649040 - Grozovoi
+
                 return true;
             }
             
@@ -283,6 +348,7 @@ namespace WoWs_Randomizer.objects.modules
             {
                 if (selectedShip.ShipType.Equals(ShipTypes.DD.ToString()) && selectedShip.ID != 3760076080)
                 {
+                    // 3760076080 - Friesland
                     return true;
                 }
             }
@@ -291,6 +357,7 @@ namespace WoWs_Randomizer.objects.modules
 
         private bool canEquipSpottingAircraftMod1()
         {
+            ///TODO: VERIFY THAT THIS HOLDS UP!!
             // Has Spotting aircraft consumable - can equip Spotting Aircraft Modification 1
             if (selectedShip.Country.Equals(Countries.USA.ToString()) && selectedShip.ShipType.Equals(ShipTypes.BB.ToString()) && selectedShip.ID != 3761190896)
             {

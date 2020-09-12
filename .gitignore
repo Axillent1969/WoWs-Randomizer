@@ -329,6 +329,8 @@ ASALocalRun/
 
 # WoWs-Randomizer ignore
 .json
+WG-API.cs
+
 # NVidia Nsight GPU debugger configuration file
 *.nvuser
 

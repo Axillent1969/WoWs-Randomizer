@@ -6,8 +6,15 @@ namespace WoWs_Randomizer.utils
 {
     class MetricsCompare
     {
+        private static List<string> smallerIsBetter = new List<string>();
+        private static List<string> biggerIsBetter = new List<string>();
+
         public static void DoCompare(TableLayoutPanel Table, TableLayoutPanel Base)
         {
+            if ( smallerIsBetter.Count == 0 || biggerIsBetter.Count == 0)
+            {
+                PrepareLists();
+            }
             for (var row = 0; row < Table.RowCount; row++)
             {
                 Control label = Table.GetControlFromPosition(0, row);
@@ -35,9 +42,8 @@ namespace WoWs_Randomizer.utils
             }
         }
 
-        public static Color GetBackgroundColor(Control Label, Control Value, Control BaseValue)
+        private static void PrepareLists()
         {
-            List<string> biggerIsBetter = new List<string>();
             biggerIsBetter.Add(MetricsTableComposer.SHIP_TIER);
             biggerIsBetter.Add(MetricsTableComposer.SHIP_HP);
             biggerIsBetter.Add(MetricsTableComposer.SHIP_SPEED);
@@ -53,6 +59,19 @@ namespace WoWs_Randomizer.utils
             biggerIsBetter.Add(MetricsTableComposer.HE_DAMAGE);
             biggerIsBetter.Add(MetricsTableComposer.AP_DAMAGE);
 
+            smallerIsBetter.Add(MetricsTableComposer.RELOAD_MAIN);
+            smallerIsBetter.Add(MetricsTableComposer.RELOAOD_SECONDARY);
+            smallerIsBetter.Add(MetricsTableComposer.TRAVERSE_SPEED_180);
+            smallerIsBetter.Add(MetricsTableComposer.TORPEDO_RELOAD);
+            smallerIsBetter.Add(MetricsTableComposer.SURFACE_DETECTION);
+            smallerIsBetter.Add(MetricsTableComposer.AIR_DETECTION);
+            smallerIsBetter.Add(MetricsTableComposer.TURNING_RADIUS);
+            smallerIsBetter.Add(MetricsTableComposer.RUDDER_SHIFT);
+            smallerIsBetter.Add(MetricsTableComposer.DISPERSION);
+        }
+
+        private static Color GetBackgroundColor(Control Label, Control Value, Control BaseValue)
+        {
             foreach (string label in biggerIsBetter)
             {
                 if (Label.Text.Equals(label))
@@ -89,17 +108,6 @@ namespace WoWs_Randomizer.utils
                     return Color.Transparent;
                 }
             }
-
-            List<string> smallerIsBetter = new List<string>();
-            smallerIsBetter.Add(MetricsTableComposer.RELOAD_MAIN);
-            smallerIsBetter.Add(MetricsTableComposer.RELOAOD_SECONDARY);
-            smallerIsBetter.Add(MetricsTableComposer.TRAVERSE_SPEED_180);
-            smallerIsBetter.Add(MetricsTableComposer.TORPEDO_RELOAD);
-            smallerIsBetter.Add(MetricsTableComposer.SURFACE_DETECTION);
-            smallerIsBetter.Add(MetricsTableComposer.AIR_DETECTION);
-            smallerIsBetter.Add(MetricsTableComposer.TURNING_RADIUS);
-            smallerIsBetter.Add(MetricsTableComposer.RUDDER_SHIFT);
-            smallerIsBetter.Add(MetricsTableComposer.DISPERSION);
 
             foreach (string label in smallerIsBetter)
             {

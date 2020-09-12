@@ -357,41 +357,102 @@ namespace WoWs_Randomizer.objects.modules
 
         private bool canEquipSpottingAircraftMod1()
         {
-            ///TODO: VERIFY THAT THIS HOLDS UP!!
             // Has Spotting aircraft consumable - can equip Spotting Aircraft Modification 1
             if (selectedShip.Country.Equals(Countries.USA.ToString()) && selectedShip.ShipType.Equals(ShipTypes.BB.ToString()) && selectedShip.ID != 3761190896)
             {
+                // 3761190896 - Missouri
                 return true;
             }
             else if (selectedShip.Country.Equals(Countries.USA.ToString()) && selectedShip.ShipType.Equals(ShipTypes.CA.ToString()))
             {
-                if (selectedShip.ID == 4076779504 || selectedShip.ID == 4180588528 || selectedShip.ID == 4273911792 || selectedShip.ID == 3762206704 || selectedShip.ID == 3542005744 || selectedShip.ID == 3666786288 || selectedShip.ID == 3760109552 || selectedShip.ID == 3655251952)
+                // 4076779504 - Cleveland
+                // 4180588528 - Buffalo
+                // 4273911792 - Des Moines
+                // 4075730928 - Seattle
+                // 4074682352 - Worcester
+                // 3762206704 - Wichita
+                // 3542005744 - AL Montpelieer
+                // 3751720944 - Anchorage
+                // 3760109552 - Alaska
+                // 3666786288 - Alaska B
+                // 3655251952 - Puerto Rico
+                // 4180588368 - Saint-Louis
+                if (selectedShip.ID == 4076779504 || 
+                    selectedShip.ID == 4180588528 || 
+                    selectedShip.ID == 4273911792 || 
+                    selectedShip.ID == 4075730928 || 
+                    selectedShip.ID == 4074682352 ||
+                    selectedShip.ID == 3762206704 || 
+                    selectedShip.ID == 3542005744 || 
+                    selectedShip.ID == 3542005744 ||
+                    selectedShip.ID == 3751720944 ||
+                    selectedShip.ID == 3666786288 || 
+                    selectedShip.ID == 3760109552 || 
+                    selectedShip.ID == 4180588368 ||
+                    selectedShip.ID == 3655251952)
                 {
                     return true;
                 }
             }
             else if (selectedShip.Country.Equals(Countries.JPN.ToString()) && selectedShip.ShipType.Equals(ShipTypes.BB.ToString()))
             {
+                // 4286527184 - Ishizuchi
+                // 3763287760 - Ashitaka
                 if (selectedShip.ID != 4286527184 && selectedShip.ID != 3763287760)
                 {
                     return true;
                 }
             }
-            else if (selectedShip.Country.Equals(Countries.USSR.ToString()) && selectedShip.ShipType.Equals(ShipTypes.CA.ToString()) && (selectedShip.Tier == 6 || selectedShip.Tier == 7))
+            else if (selectedShip.Country.Equals(Countries.USSR.ToString()) && selectedShip.ShipType.Equals(ShipTypes.CA.ToString()))
             {
-                return true;
+                // 4069438928 - Kotovsky
+                // 4184782288 - Kirov
+                // 3754866128 - Mikoyan
+                // 4291737040 - Murmansk
+                // 4183733712 - Budyonny
+                // 3764303312 - Molotov
+                // 4182685136 - Shchors
+                // 3751720400 - Lazo
+                // 4075730384 - Riga
+                // 3761157584 - Kronshtadt
+                if ( selectedShip.ID == 4069438928 || selectedShip.ID == 4184782288 || selectedShip.ID == 3754866128 || selectedShip.ID == 4291737040 || selectedShip.ID == 4183733712 || selectedShip.ID == 3764303312 || selectedShip.ID == 4182685136 || selectedShip.ID == 3751720400 || selectedShip.ID == 4075730384 || selectedShip.ID == 3761157584)
+                {
+                    return true;
+                }
             }
-            else if (selectedShip.Country.Equals(Countries.GER.ToString()) && selectedShip.ID != 3764336432)
+            else if (selectedShip.Country.Equals(Countries.GER.ToString()))
             {
-                return true;
+                if ( selectedShip.ShipType.Equals(ShipTypes.BB.ToString()) && !(selectedShip.ID != 3764336432 || selectedShip.ID != 3761190704))
+                {
+                    // 3764336432 - PEE Friedrich
+                    // 3761190704 - Pommern
+                    return true;
+
+                } else if ( selectedShip.ShipType.Equals(ShipTypes.CA.ToString()) && (selectedShip.ID == 4180588336 || selectedShip.ID == 4179539760 || selectedShip.ID == 3761157936 || selectedShip.ID == 3340678960))
+                {
+                    // 4180588336 - Roon
+                    // 3340678960 - [Hindenburg]
+                    // 4179539760 - Hindnburg
+                    // 3761157936 - Siegfried
+                    return true;
+                }
             }
-            else if ((selectedShip.Country.Equals(Countries.UK.ToString()) && selectedShip.ShipType.Equals(ShipTypes.BB.ToString())) || selectedShip.ID == 4292818896)
+            else if ((selectedShip.Country.Equals(Countries.UK.ToString()) && selectedShip.ShipType.Equals(ShipTypes.BB.ToString()) && selectedShip.Premium == false) || selectedShip.ID == 4292818896)
             {
+                // 4292818896 - Warspite
+                // UK BB's Tech-tree and warspite
                 return true;
             }
             else if (selectedShip.Country.Equals(Countries.UK.ToString()) && selectedShip.ShipType.Equals(ShipTypes.CA.ToString()))
             {
-                if (selectedShip.ID == 4184782800 || selectedShip.ID == 4183734224 || selectedShip.ID == 4181637072 || selectedShip.ID == 4182685648 || selectedShip.ID == 4077828048 || selectedShip.ID == 4076779472)
+                // 4184782800 - Emerald
+                // 4183734224 - Leander
+                // 4181637072 - Edinburgh
+                // 4182685648 - Fiji
+                // 4077828048 - Surrey
+                // 4076779472 - Albermarle
+                // 4075730896 - Drake
+                if (selectedShip.ID == 4184782800 || selectedShip.ID == 4183734224 || selectedShip.ID == 4181637072 || selectedShip.ID == 4182685648 || selectedShip.ID == 4077828048 || selectedShip.ID == 4076779472 || selectedShip.ID == 4075730896)
                 {
                     return true;
                 }
@@ -403,24 +464,21 @@ namespace WoWs_Randomizer.objects.modules
             else
             {
                 List<long> specific = new List<long>();
-                specific.Add(3760109264);
-                specific.Add(3749623504);
-                specific.Add(4282300112);
-                specific.Add(4259231440);
-                specific.Add(3315513040);
-                specific.Add(4180588336);
-                specific.Add(3340678960);
-                specific.Add(4179539760);
-                specific.Add(4180588368);
-                specific.Add(3764303216);
-                specific.Add(4291737040);
-                specific.Add(3761157584);
-                specific.Add(3751720144);
-                specific.Add(3762239216);
-                specific.Add(3762239312);
-                specific.Add(4181669712);
-                specific.Add(3761190096);
-                specific.Add(3760109264);
+                specific.Add(3760109264); // Azuma
+                specific.Add(3749623504); // Yoshino
+                specific.Add(4282300112); // Ibuki
+                specific.Add(4259231440); // Zao
+                specific.Add(3315513040); // [Zao]
+                specific.Add(3764303216); // Perth
+                specific.Add(3751720144); // Wukong
+                specific.Add(3762239216); // Roma
+                specific.Add(3762239312); // Gascogne
+                specific.Add(4181669712); // Richelieu
+                specific.Add(3761190096); // Baije
+                specific.Add(3741267792); // Champagne
+                specific.Add(3552524016); // AL Littorio
+                specific.Add(3764336464); // Dunkerque
+                specific.Add(3761190608); // Musashi
                 if (specific.Contains(selectedShip.ID))
                 {
                     return true;

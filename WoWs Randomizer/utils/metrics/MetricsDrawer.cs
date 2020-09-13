@@ -83,7 +83,6 @@ namespace WoWs_Randomizer.utils
             ShipMetricsTable.Controls.Clear();
             ShipMetricsTable.RowStyles.Clear();
             ShipMetricsTable.RowCount = 0;
-            //ShipMetricsTable.ColumnStyles.Clear();
 
             ShipMetricsTable.ColumnCount = 2;
             ShipMetricsTable.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 400F));

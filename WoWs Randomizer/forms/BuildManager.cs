@@ -34,10 +34,6 @@ namespace WoWs_Randomizer.forms
                 {
                     if ( picCtr is PictureBox box)
                     {
-                        if ( flag.ID == 4287459248)
-                        {
-                            //Console.WriteLine(box.AccessibleName.ToString() + " : " + flag.ID.ToString());
-                        }
                         if ( box.AccessibleName != null && box.AccessibleName.ToString().Equals(flag.ID.ToString()))
                         {
                             ToolTip ttip = new ToolTip
@@ -68,22 +64,6 @@ namespace WoWs_Randomizer.forms
                                 text += "\n" + perk.Value.Description;
                             }
 
-/*                            if ( flag.ID == 42874592480)
-                            {
-                                string tagText = box.Tag.ToString();
-                                tagText = tagText.Replace("#", "\n");
-                                text = tagText + "\n";
-                                text += flag.Description;
-                                text += "\n" + "--------------------------------------------------";
-                                foreach (KeyValuePair<string,ConsumableProfile> p in flag.Profile)
-                                {
-                                    Console.WriteLine(p.Value.Description);
-                                    text += "\n" + p.Value.Description;
-                                }
-                            } else
-                            {
-                            }
-*/
                             if (text.Equals("")) { text = flag.Name; }
                             ttip.SetToolTip(box, text);
                             break;

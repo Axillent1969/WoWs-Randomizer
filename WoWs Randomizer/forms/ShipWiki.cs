@@ -303,6 +303,9 @@ namespace WoWs_Randomizer.forms
             lblTier.Text = "Tier: " + selectedShip.Tier.ToString();
             lblShipType.Text = "Shiptype: " + selectedShip.ShipType;
 
+            lblTurningRadius.Text = "Turning Radius: " + selectedShip.Profile.Mobility.TurningRadius.ToString() + " m";
+            lblTurningSpeed.Text = "Ruddershift: " + selectedShip.Profile.Mobility.RudderTime.ToString() + " sec";
+
             lblAirDet.Text = selectedShip.Profile.Concealment.AirDetection.ToString() + " km";
             lblSurfaceDet.Text = selectedShip.Profile.Concealment.SurfaceDetection.ToString() + " km";
         }

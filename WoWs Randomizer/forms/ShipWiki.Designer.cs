@@ -34,6 +34,10 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.InfoPanel = new System.Windows.Forms.TabControl();
             this.General = new System.Windows.Forms.TabPage();
+            this.lblAirDet = new System.Windows.Forms.Label();
+            this.lblSurfaceDet = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.lblTier = new System.Windows.Forms.Label();
             this.lblSpecial = new System.Windows.Forms.Label();
             this.lblShipType = new System.Windows.Forms.Label();
@@ -87,35 +91,33 @@
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.SecondaryArmament = new System.Windows.Forms.TabPage();
-            this.Torpedo = new System.Windows.Forms.TabPage();
-            this.secondary0 = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
-            this.pictureBox11 = new System.Windows.Forms.PictureBox();
-            this.secondary1 = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
-            this.pictureBox12 = new System.Windows.Forms.PictureBox();
-            this.secondary2 = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
-            this.pictureBox13 = new System.Windows.Forms.PictureBox();
             this.secondary3 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox14 = new System.Windows.Forms.PictureBox();
-            this.torp0 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel15 = new System.Windows.Forms.TableLayoutPanel();
-            this.pictureBox15 = new System.Windows.Forms.PictureBox();
-            this.torp1 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel16 = new System.Windows.Forms.TableLayoutPanel();
-            this.pictureBox16 = new System.Windows.Forms.PictureBox();
+            this.secondary2 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
+            this.pictureBox13 = new System.Windows.Forms.PictureBox();
+            this.secondary1 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
+            this.pictureBox12 = new System.Windows.Forms.PictureBox();
+            this.secondary0 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
+            this.pictureBox11 = new System.Windows.Forms.PictureBox();
+            this.Torpedo = new System.Windows.Forms.TabPage();
             this.torp2 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.tableLayoutPanel17 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox17 = new System.Windows.Forms.PictureBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.lblSurfaceDet = new System.Windows.Forms.Label();
-            this.lblAirDet = new System.Windows.Forms.Label();
+            this.torp1 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel16 = new System.Windows.Forms.TableLayoutPanel();
+            this.pictureBox16 = new System.Windows.Forms.PictureBox();
+            this.torp0 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel15 = new System.Windows.Forms.TableLayoutPanel();
+            this.pictureBox15 = new System.Windows.Forms.PictureBox();
+            this.lblTurningRadius = new System.Windows.Forms.Label();
+            this.lblTurningSpeed = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.InfoPanel.SuspendLayout();
@@ -148,21 +150,21 @@
             this.main0.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.SecondaryArmament.SuspendLayout();
-            this.Torpedo.SuspendLayout();
-            this.secondary0.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
-            this.secondary1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
-            this.secondary2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
             this.secondary3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
-            this.torp0.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
-            this.torp1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
+            this.secondary2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
+            this.secondary1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
+            this.secondary0.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
+            this.Torpedo.SuspendLayout();
             this.torp2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).BeginInit();
+            this.torp1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
+            this.torp0.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -212,6 +214,8 @@
             // General
             // 
             this.General.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.General.Controls.Add(this.lblTurningSpeed);
+            this.General.Controls.Add(this.lblTurningRadius);
             this.General.Controls.Add(this.lblAirDet);
             this.General.Controls.Add(this.lblSurfaceDet);
             this.General.Controls.Add(this.label5);
@@ -236,10 +240,46 @@
             this.General.TabIndex = 0;
             this.General.Text = "General";
             // 
+            // lblAirDet
+            // 
+            this.lblAirDet.AutoSize = true;
+            this.lblAirDet.Location = new System.Drawing.Point(714, 309);
+            this.lblAirDet.Name = "lblAirDet";
+            this.lblAirDet.Size = new System.Drawing.Size(13, 13);
+            this.lblAirDet.TabIndex = 17;
+            this.lblAirDet.Text = "0";
+            // 
+            // lblSurfaceDet
+            // 
+            this.lblSurfaceDet.AutoSize = true;
+            this.lblSurfaceDet.Location = new System.Drawing.Point(536, 309);
+            this.lblSurfaceDet.Name = "lblSurfaceDet";
+            this.lblSurfaceDet.Size = new System.Drawing.Size(13, 13);
+            this.lblSurfaceDet.TabIndex = 16;
+            this.lblSurfaceDet.Text = "0";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(639, 309);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(69, 13);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "Air detection:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(436, 309);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(94, 13);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "Surface detection:";
+            // 
             // lblTier
             // 
             this.lblTier.AutoSize = true;
-            this.lblTier.Location = new System.Drawing.Point(435, 30);
+            this.lblTier.Location = new System.Drawing.Point(436, 30);
             this.lblTier.Name = "lblTier";
             this.lblTier.Size = new System.Drawing.Size(28, 13);
             this.lblTier.TabIndex = 13;
@@ -248,7 +288,7 @@
             // lblSpecial
             // 
             this.lblSpecial.AutoSize = true;
-            this.lblSpecial.Location = new System.Drawing.Point(435, 286);
+            this.lblSpecial.Location = new System.Drawing.Point(436, 278);
             this.lblSpecial.Name = "lblSpecial";
             this.lblSpecial.Size = new System.Drawing.Size(45, 13);
             this.lblSpecial.TabIndex = 12;
@@ -257,7 +297,7 @@
             // lblShipType
             // 
             this.lblShipType.AutoSize = true;
-            this.lblShipType.Location = new System.Drawing.Point(435, 62);
+            this.lblShipType.Location = new System.Drawing.Point(436, 61);
             this.lblShipType.Name = "lblShipType";
             this.lblShipType.Size = new System.Drawing.Size(51, 13);
             this.lblShipType.TabIndex = 11;
@@ -266,7 +306,7 @@
             // lblSlots
             // 
             this.lblSlots.AutoSize = true;
-            this.lblSlots.Location = new System.Drawing.Point(435, 190);
+            this.lblSlots.Location = new System.Drawing.Point(436, 185);
             this.lblSlots.Name = "lblSlots";
             this.lblSlots.Size = new System.Drawing.Size(83, 13);
             this.lblSlots.TabIndex = 10;
@@ -275,7 +315,7 @@
             // lblCostGold
             // 
             this.lblCostGold.AutoSize = true;
-            this.lblCostGold.Location = new System.Drawing.Point(435, 158);
+            this.lblCostGold.Location = new System.Drawing.Point(436, 154);
             this.lblCostGold.Name = "lblCostGold";
             this.lblCostGold.Size = new System.Drawing.Size(60, 13);
             this.lblCostGold.TabIndex = 9;
@@ -284,7 +324,7 @@
             // lblCostCredits
             // 
             this.lblCostCredits.AutoSize = true;
-            this.lblCostCredits.Location = new System.Drawing.Point(435, 126);
+            this.lblCostCredits.Location = new System.Drawing.Point(436, 123);
             this.lblCostCredits.Name = "lblCostCredits";
             this.lblCostCredits.Size = new System.Drawing.Size(31, 13);
             this.lblCostCredits.TabIndex = 8;
@@ -293,7 +333,7 @@
             // lblID
             // 
             this.lblID.AutoSize = true;
-            this.lblID.Location = new System.Drawing.Point(435, 94);
+            this.lblID.Location = new System.Drawing.Point(436, 92);
             this.lblID.Name = "lblID";
             this.lblID.Size = new System.Drawing.Size(21, 13);
             this.lblID.TabIndex = 7;
@@ -302,7 +342,7 @@
             // lblDemo
             // 
             this.lblDemo.AutoSize = true;
-            this.lblDemo.Location = new System.Drawing.Point(435, 254);
+            this.lblDemo.Location = new System.Drawing.Point(639, 278);
             this.lblDemo.Name = "lblDemo";
             this.lblDemo.Size = new System.Drawing.Size(38, 13);
             this.lblDemo.TabIndex = 6;
@@ -311,7 +351,7 @@
             // lblPremium
             // 
             this.lblPremium.AutoSize = true;
-            this.lblPremium.Location = new System.Drawing.Point(435, 222);
+            this.lblPremium.Location = new System.Drawing.Point(436, 247);
             this.lblPremium.Name = "lblPremium";
             this.lblPremium.Size = new System.Drawing.Size(50, 13);
             this.lblPremium.TabIndex = 5;
@@ -486,6 +526,8 @@
             this.HullTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.HullTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.HullTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 386F));
+            this.HullTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.HullTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.HullTable.Location = new System.Drawing.Point(87, 4);
             this.HullTable.Name = "HullTable";
             this.HullTable.RowCount = 2;
@@ -814,83 +856,38 @@
             this.SecondaryArmament.TabIndex = 3;
             this.SecondaryArmament.Text = "Secondary Armaments";
             // 
-            // Torpedo
+            // secondary3
             // 
-            this.Torpedo.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.Torpedo.Controls.Add(this.torp2);
-            this.Torpedo.Controls.Add(this.torp1);
-            this.Torpedo.Controls.Add(this.torp0);
-            this.Torpedo.Location = new System.Drawing.Point(4, 22);
-            this.Torpedo.Name = "Torpedo";
-            this.Torpedo.Size = new System.Drawing.Size(792, 350);
-            this.Torpedo.TabIndex = 4;
-            this.Torpedo.Text = "Torpedo Tubes";
+            this.secondary3.Controls.Add(this.tableLayoutPanel14);
+            this.secondary3.Controls.Add(this.pictureBox14);
+            this.secondary3.Location = new System.Drawing.Point(8, 267);
+            this.secondary3.Name = "secondary3";
+            this.secondary3.Size = new System.Drawing.Size(776, 79);
+            this.secondary3.TabIndex = 6;
+            this.secondary3.Visible = false;
             // 
-            // secondary0
+            // tableLayoutPanel14
             // 
-            this.secondary0.Controls.Add(this.tableLayoutPanel11);
-            this.secondary0.Controls.Add(this.pictureBox11);
-            this.secondary0.Location = new System.Drawing.Point(8, 15);
-            this.secondary0.Name = "secondary0";
-            this.secondary0.Size = new System.Drawing.Size(776, 79);
-            this.secondary0.TabIndex = 5;
-            this.secondary0.Visible = false;
+            this.tableLayoutPanel14.ColumnCount = 4;
+            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 186F));
+            this.tableLayoutPanel14.Location = new System.Drawing.Point(87, 4);
+            this.tableLayoutPanel14.Name = "tableLayoutPanel14";
+            this.tableLayoutPanel14.RowCount = 2;
+            this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel14.Size = new System.Drawing.Size(686, 72);
+            this.tableLayoutPanel14.TabIndex = 3;
             // 
-            // tableLayoutPanel11
+            // pictureBox14
             // 
-            this.tableLayoutPanel11.ColumnCount = 4;
-            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 186F));
-            this.tableLayoutPanel11.Location = new System.Drawing.Point(87, 4);
-            this.tableLayoutPanel11.Name = "tableLayoutPanel11";
-            this.tableLayoutPanel11.RowCount = 2;
-            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel11.Size = new System.Drawing.Size(686, 72);
-            this.tableLayoutPanel11.TabIndex = 3;
-            // 
-            // pictureBox11
-            // 
-            this.pictureBox11.Location = new System.Drawing.Point(3, 4);
-            this.pictureBox11.Name = "pictureBox11";
-            this.pictureBox11.Size = new System.Drawing.Size(78, 66);
-            this.pictureBox11.TabIndex = 2;
-            this.pictureBox11.TabStop = false;
-            // 
-            // secondary1
-            // 
-            this.secondary1.Controls.Add(this.tableLayoutPanel12);
-            this.secondary1.Controls.Add(this.pictureBox12);
-            this.secondary1.Location = new System.Drawing.Point(8, 100);
-            this.secondary1.Name = "secondary1";
-            this.secondary1.Size = new System.Drawing.Size(776, 79);
-            this.secondary1.TabIndex = 6;
-            this.secondary1.Visible = false;
-            // 
-            // tableLayoutPanel12
-            // 
-            this.tableLayoutPanel12.ColumnCount = 4;
-            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 186F));
-            this.tableLayoutPanel12.Location = new System.Drawing.Point(87, 4);
-            this.tableLayoutPanel12.Name = "tableLayoutPanel12";
-            this.tableLayoutPanel12.RowCount = 2;
-            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel12.Size = new System.Drawing.Size(686, 72);
-            this.tableLayoutPanel12.TabIndex = 3;
-            // 
-            // pictureBox12
-            // 
-            this.pictureBox12.Location = new System.Drawing.Point(3, 4);
-            this.pictureBox12.Name = "pictureBox12";
-            this.pictureBox12.Size = new System.Drawing.Size(78, 66);
-            this.pictureBox12.TabIndex = 2;
-            this.pictureBox12.TabStop = false;
+            this.pictureBox14.Location = new System.Drawing.Point(3, 4);
+            this.pictureBox14.Name = "pictureBox14";
+            this.pictureBox14.Size = new System.Drawing.Size(78, 66);
+            this.pictureBox14.TabIndex = 2;
+            this.pictureBox14.TabStop = false;
             // 
             // secondary2
             // 
@@ -925,130 +922,83 @@
             this.pictureBox13.TabIndex = 2;
             this.pictureBox13.TabStop = false;
             // 
-            // secondary3
+            // secondary1
             // 
-            this.secondary3.Controls.Add(this.tableLayoutPanel14);
-            this.secondary3.Controls.Add(this.pictureBox14);
-            this.secondary3.Location = new System.Drawing.Point(8, 267);
-            this.secondary3.Name = "secondary3";
-            this.secondary3.Size = new System.Drawing.Size(776, 79);
-            this.secondary3.TabIndex = 6;
-            this.secondary3.Visible = false;
+            this.secondary1.Controls.Add(this.tableLayoutPanel12);
+            this.secondary1.Controls.Add(this.pictureBox12);
+            this.secondary1.Location = new System.Drawing.Point(8, 100);
+            this.secondary1.Name = "secondary1";
+            this.secondary1.Size = new System.Drawing.Size(776, 79);
+            this.secondary1.TabIndex = 6;
+            this.secondary1.Visible = false;
             // 
-            // tableLayoutPanel14
+            // tableLayoutPanel12
             // 
-            this.tableLayoutPanel14.ColumnCount = 4;
-            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 186F));
-            this.tableLayoutPanel14.Location = new System.Drawing.Point(87, 4);
-            this.tableLayoutPanel14.Name = "tableLayoutPanel14";
-            this.tableLayoutPanel14.RowCount = 2;
-            this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel14.Size = new System.Drawing.Size(686, 72);
-            this.tableLayoutPanel14.TabIndex = 3;
+            this.tableLayoutPanel12.ColumnCount = 4;
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 186F));
+            this.tableLayoutPanel12.Location = new System.Drawing.Point(87, 4);
+            this.tableLayoutPanel12.Name = "tableLayoutPanel12";
+            this.tableLayoutPanel12.RowCount = 2;
+            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel12.Size = new System.Drawing.Size(686, 72);
+            this.tableLayoutPanel12.TabIndex = 3;
             // 
-            // pictureBox14
+            // pictureBox12
             // 
-            this.pictureBox14.Location = new System.Drawing.Point(3, 4);
-            this.pictureBox14.Name = "pictureBox14";
-            this.pictureBox14.Size = new System.Drawing.Size(78, 66);
-            this.pictureBox14.TabIndex = 2;
-            this.pictureBox14.TabStop = false;
+            this.pictureBox12.Location = new System.Drawing.Point(3, 4);
+            this.pictureBox12.Name = "pictureBox12";
+            this.pictureBox12.Size = new System.Drawing.Size(78, 66);
+            this.pictureBox12.TabIndex = 2;
+            this.pictureBox12.TabStop = false;
             // 
-            // torp0
+            // secondary0
             // 
-            this.torp0.Controls.Add(this.label1);
-            this.torp0.Controls.Add(this.tableLayoutPanel15);
-            this.torp0.Controls.Add(this.pictureBox15);
-            this.torp0.Location = new System.Drawing.Point(8, 12);
-            this.torp0.Name = "torp0";
-            this.torp0.Size = new System.Drawing.Size(776, 108);
-            this.torp0.TabIndex = 6;
-            this.torp0.Visible = false;
+            this.secondary0.Controls.Add(this.tableLayoutPanel11);
+            this.secondary0.Controls.Add(this.pictureBox11);
+            this.secondary0.Location = new System.Drawing.Point(8, 15);
+            this.secondary0.Name = "secondary0";
+            this.secondary0.Size = new System.Drawing.Size(776, 79);
+            this.secondary0.TabIndex = 5;
+            this.secondary0.Visible = false;
             // 
-            // label1
+            // tableLayoutPanel11
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 6);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "label1";
+            this.tableLayoutPanel11.ColumnCount = 4;
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 186F));
+            this.tableLayoutPanel11.Location = new System.Drawing.Point(87, 4);
+            this.tableLayoutPanel11.Name = "tableLayoutPanel11";
+            this.tableLayoutPanel11.RowCount = 2;
+            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel11.Size = new System.Drawing.Size(686, 72);
+            this.tableLayoutPanel11.TabIndex = 3;
             // 
-            // tableLayoutPanel15
+            // pictureBox11
             // 
-            this.tableLayoutPanel15.ColumnCount = 6;
-            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 186F));
-            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel15.Location = new System.Drawing.Point(87, 22);
-            this.tableLayoutPanel15.Name = "tableLayoutPanel15";
-            this.tableLayoutPanel15.RowCount = 2;
-            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel15.Size = new System.Drawing.Size(686, 72);
-            this.tableLayoutPanel15.TabIndex = 3;
+            this.pictureBox11.Location = new System.Drawing.Point(3, 4);
+            this.pictureBox11.Name = "pictureBox11";
+            this.pictureBox11.Size = new System.Drawing.Size(78, 66);
+            this.pictureBox11.TabIndex = 2;
+            this.pictureBox11.TabStop = false;
             // 
-            // pictureBox15
+            // Torpedo
             // 
-            this.pictureBox15.Location = new System.Drawing.Point(3, 22);
-            this.pictureBox15.Name = "pictureBox15";
-            this.pictureBox15.Size = new System.Drawing.Size(78, 66);
-            this.pictureBox15.TabIndex = 2;
-            this.pictureBox15.TabStop = false;
-            // 
-            // torp1
-            // 
-            this.torp1.Controls.Add(this.label2);
-            this.torp1.Controls.Add(this.tableLayoutPanel16);
-            this.torp1.Controls.Add(this.pictureBox16);
-            this.torp1.Location = new System.Drawing.Point(8, 126);
-            this.torp1.Name = "torp1";
-            this.torp1.Size = new System.Drawing.Size(776, 108);
-            this.torp1.TabIndex = 7;
-            this.torp1.Visible = false;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 6);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "label2";
-            // 
-            // tableLayoutPanel16
-            // 
-            this.tableLayoutPanel16.ColumnCount = 6;
-            this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 186F));
-            this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel16.Location = new System.Drawing.Point(87, 22);
-            this.tableLayoutPanel16.Name = "tableLayoutPanel16";
-            this.tableLayoutPanel16.RowCount = 2;
-            this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel16.Size = new System.Drawing.Size(686, 72);
-            this.tableLayoutPanel16.TabIndex = 3;
-            // 
-            // pictureBox16
-            // 
-            this.pictureBox16.Location = new System.Drawing.Point(3, 22);
-            this.pictureBox16.Name = "pictureBox16";
-            this.pictureBox16.Size = new System.Drawing.Size(78, 66);
-            this.pictureBox16.TabIndex = 2;
-            this.pictureBox16.TabStop = false;
+            this.Torpedo.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.Torpedo.Controls.Add(this.torp2);
+            this.Torpedo.Controls.Add(this.torp1);
+            this.Torpedo.Controls.Add(this.torp0);
+            this.Torpedo.Location = new System.Drawing.Point(4, 22);
+            this.Torpedo.Name = "Torpedo";
+            this.Torpedo.Size = new System.Drawing.Size(792, 350);
+            this.Torpedo.TabIndex = 4;
+            this.Torpedo.Text = "Torpedo Tubes";
             // 
             // torp2
             // 
@@ -1096,41 +1046,115 @@
             this.pictureBox17.TabIndex = 2;
             this.pictureBox17.TabStop = false;
             // 
-            // label4
+            // torp1
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(436, 314);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(94, 13);
-            this.label4.TabIndex = 14;
-            this.label4.Text = "Surface detection:";
+            this.torp1.Controls.Add(this.label2);
+            this.torp1.Controls.Add(this.tableLayoutPanel16);
+            this.torp1.Controls.Add(this.pictureBox16);
+            this.torp1.Location = new System.Drawing.Point(8, 126);
+            this.torp1.Name = "torp1";
+            this.torp1.Size = new System.Drawing.Size(776, 108);
+            this.torp1.TabIndex = 7;
+            this.torp1.Visible = false;
             // 
-            // label5
+            // label2
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(678, 314);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(69, 13);
-            this.label5.TabIndex = 15;
-            this.label5.Text = "Air detection:";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(3, 6);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "label2";
             // 
-            // lblSurfaceDet
+            // tableLayoutPanel16
             // 
-            this.lblSurfaceDet.AutoSize = true;
-            this.lblSurfaceDet.Location = new System.Drawing.Point(536, 314);
-            this.lblSurfaceDet.Name = "lblSurfaceDet";
-            this.lblSurfaceDet.Size = new System.Drawing.Size(13, 13);
-            this.lblSurfaceDet.TabIndex = 16;
-            this.lblSurfaceDet.Text = "0";
+            this.tableLayoutPanel16.ColumnCount = 6;
+            this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 186F));
+            this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel16.Location = new System.Drawing.Point(87, 22);
+            this.tableLayoutPanel16.Name = "tableLayoutPanel16";
+            this.tableLayoutPanel16.RowCount = 2;
+            this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel16.Size = new System.Drawing.Size(686, 72);
+            this.tableLayoutPanel16.TabIndex = 3;
             // 
-            // lblAirDet
+            // pictureBox16
             // 
-            this.lblAirDet.AutoSize = true;
-            this.lblAirDet.Location = new System.Drawing.Point(753, 314);
-            this.lblAirDet.Name = "lblAirDet";
-            this.lblAirDet.Size = new System.Drawing.Size(13, 13);
-            this.lblAirDet.TabIndex = 17;
-            this.lblAirDet.Text = "0";
+            this.pictureBox16.Location = new System.Drawing.Point(3, 22);
+            this.pictureBox16.Name = "pictureBox16";
+            this.pictureBox16.Size = new System.Drawing.Size(78, 66);
+            this.pictureBox16.TabIndex = 2;
+            this.pictureBox16.TabStop = false;
+            // 
+            // torp0
+            // 
+            this.torp0.Controls.Add(this.label1);
+            this.torp0.Controls.Add(this.tableLayoutPanel15);
+            this.torp0.Controls.Add(this.pictureBox15);
+            this.torp0.Location = new System.Drawing.Point(8, 12);
+            this.torp0.Name = "torp0";
+            this.torp0.Size = new System.Drawing.Size(776, 108);
+            this.torp0.TabIndex = 6;
+            this.torp0.Visible = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 6);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "label1";
+            // 
+            // tableLayoutPanel15
+            // 
+            this.tableLayoutPanel15.ColumnCount = 6;
+            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 186F));
+            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel15.Location = new System.Drawing.Point(87, 22);
+            this.tableLayoutPanel15.Name = "tableLayoutPanel15";
+            this.tableLayoutPanel15.RowCount = 2;
+            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel15.Size = new System.Drawing.Size(686, 72);
+            this.tableLayoutPanel15.TabIndex = 3;
+            // 
+            // pictureBox15
+            // 
+            this.pictureBox15.Location = new System.Drawing.Point(3, 22);
+            this.pictureBox15.Name = "pictureBox15";
+            this.pictureBox15.Size = new System.Drawing.Size(78, 66);
+            this.pictureBox15.TabIndex = 2;
+            this.pictureBox15.TabStop = false;
+            // 
+            // lblTurningRadius
+            // 
+            this.lblTurningRadius.AutoSize = true;
+            this.lblTurningRadius.Location = new System.Drawing.Point(436, 216);
+            this.lblTurningRadius.Name = "lblTurningRadius";
+            this.lblTurningRadius.Size = new System.Drawing.Size(82, 13);
+            this.lblTurningRadius.TabIndex = 18;
+            this.lblTurningRadius.Text = "Turning Radius:";
+            // 
+            // lblTurningSpeed
+            // 
+            this.lblTurningSpeed.AutoSize = true;
+            this.lblTurningSpeed.Location = new System.Drawing.Point(639, 216);
+            this.lblTurningSpeed.Name = "lblTurningSpeed";
+            this.lblTurningSpeed.Size = new System.Drawing.Size(64, 13);
+            this.lblTurningSpeed.TabIndex = 19;
+            this.lblTurningSpeed.Text = "Ruddershift:";
             // 
             // ShipWiki
             // 
@@ -1181,24 +1205,24 @@
             this.main0.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.SecondaryArmament.ResumeLayout(false);
-            this.Torpedo.ResumeLayout(false);
-            this.secondary0.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
-            this.secondary1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
-            this.secondary2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
             this.secondary3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
-            this.torp0.ResumeLayout(false);
-            this.torp0.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
-            this.torp1.ResumeLayout(false);
-            this.torp1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).EndInit();
+            this.secondary2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
+            this.secondary1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
+            this.secondary0.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
+            this.Torpedo.ResumeLayout(false);
             this.torp2.ResumeLayout(false);
             this.torp2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).EndInit();
+            this.torp1.ResumeLayout(false);
+            this.torp1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).EndInit();
+            this.torp0.ResumeLayout(false);
+            this.torp0.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1292,5 +1316,7 @@
         private System.Windows.Forms.Label lblSurfaceDet;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblTurningSpeed;
+        private System.Windows.Forms.Label lblTurningRadius;
     }
 }

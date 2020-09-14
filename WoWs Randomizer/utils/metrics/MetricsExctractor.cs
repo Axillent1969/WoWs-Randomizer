@@ -108,8 +108,6 @@ namespace WoWs_Randomizer.utils
             }
             catch (Exception e)
             {
-                //Console.WriteLine(RandomizedShip.ID);
-                //Console.WriteLine(e.Message);
                 if (MData != null)
                 {
                     foreach (KeyValuePair<string, Dictionary<string, object>> Prof in MData.Profile)

@@ -225,7 +225,6 @@ namespace WoWs_Randomizer
 
                 if (MySettings.UserID != 0)
                 {
-                    //Console.WriteLine("Retrieving users ships in port from WG...");
                     await loadUserShipsInPort(MySettings.UserID, true);
                 }
 

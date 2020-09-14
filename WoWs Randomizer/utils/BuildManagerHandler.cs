@@ -467,6 +467,7 @@ namespace WoWs_Randomizer.utils
 
         private void ChangeConcealment(double percent)
         {
+            /*
             Label surfaceDetection = GetValueLabel(MetricsTableComposer.SURFACE_DETECTION);
             Label airDetection = GetValueLabel(MetricsTableComposer.AIR_DETECTION);
 
@@ -483,6 +484,37 @@ namespace WoWs_Randomizer.utils
             AnimateLabel(surfaceDetection, GetFinalColor(MetricsTableComposer.SURFACE_DETECTION, surfaceDetValue));
             airDetection.Text = airDetValue.ToString();
             AnimateLabel(airDetection, GetFinalColor(MetricsTableComposer.AIR_DETECTION, airDetValue));
+            */
+            ChangeConcealmentAir(percent);
+            ChangeConcealmentSurface(percent);
+        }
+
+        private void ChangeConcealmentAir(double percent)
+        {
+            Label airDetection = GetValueLabel(MetricsTableComposer.AIR_DETECTION);
+
+            double airDetValue = ExtractValue(airDetection);
+
+            double baseValueAir = Math.Round(Metrics.AirDetection * percent, 1);
+
+            airDetValue = airDetValue - baseValueAir;
+
+            airDetection.Text = airDetValue.ToString();
+            AnimateLabel(airDetection, GetFinalColor(MetricsTableComposer.AIR_DETECTION, airDetValue));
+        }
+
+        private void ChangeConcealmentSurface(double percent)
+        {
+            Label surfaceDetection = GetValueLabel(MetricsTableComposer.SURFACE_DETECTION);
+
+            double surfaceDetValue = ExtractValue(surfaceDetection);
+
+            double baseValueSurface = Math.Round(Metrics.SurfaceDetection * percent, 1);
+
+            surfaceDetValue = surfaceDetValue - baseValueSurface;
+
+            surfaceDetection.Text = surfaceDetValue.ToString();
+            AnimateLabel(surfaceDetection, GetFinalColor(MetricsTableComposer.SURFACE_DETECTION, surfaceDetValue));
         }
 
         private void ChangeMainGunRange(double percent)
@@ -770,6 +802,12 @@ namespace WoWs_Randomizer.utils
             } else if ( perkName.Equals("SGRudderTime"))
             {
                 ChangeRudderShiftTime(value);
+            } else if ( perkName.Equals("visibilityFactorByPlane")) 
+            {
+                ChangeConcealmentAir(value);
+            } else if ( perkName.Equals("visibilityFactor"))
+            {
+                ChangeConcealmentSurface(value);
             }
         }
     }

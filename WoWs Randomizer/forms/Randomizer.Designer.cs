@@ -160,13 +160,13 @@ namespace WoWs_Randomizer
             this.LeftPanel.Controls.Add(this.RandomizeButton);
             this.LeftPanel.Location = new System.Drawing.Point(4, 27);
             this.LeftPanel.Name = "LeftPanel";
-            this.LeftPanel.Size = new System.Drawing.Size(200, 662);
+            this.LeftPanel.Size = new System.Drawing.Size(200, 822);
             this.LeftPanel.TabIndex = 0;
             // 
             // CBPremium
             // 
             this.CBPremium.AutoSize = true;
-            this.CBPremium.Location = new System.Drawing.Point(112, 550);
+            this.CBPremium.Location = new System.Drawing.Point(112, 546);
             this.CBPremium.Name = "CBPremium";
             this.CBPremium.Size = new System.Drawing.Size(66, 17);
             this.CBPremium.TabIndex = 31;
@@ -177,7 +177,7 @@ namespace WoWs_Randomizer
             // CBNonPremium
             // 
             this.CBNonPremium.AutoSize = true;
-            this.CBNonPremium.Location = new System.Drawing.Point(19, 550);
+            this.CBNonPremium.Location = new System.Drawing.Point(19, 546);
             this.CBNonPremium.Name = "CBNonPremium";
             this.CBNonPremium.Size = new System.Drawing.Size(72, 17);
             this.CBNonPremium.TabIndex = 30;
@@ -188,7 +188,7 @@ namespace WoWs_Randomizer
             // lblQueue
             // 
             this.lblQueue.AutoSize = true;
-            this.lblQueue.Location = new System.Drawing.Point(19, 570);
+            this.lblQueue.Location = new System.Drawing.Point(19, 615);
             this.lblQueue.Name = "lblQueue";
             this.lblQueue.Size = new System.Drawing.Size(10, 13);
             this.lblQueue.TabIndex = 29;
@@ -197,7 +197,7 @@ namespace WoWs_Randomizer
             // lblExcludedShips
             // 
             this.lblExcludedShips.AutoSize = true;
-            this.lblExcludedShips.Location = new System.Drawing.Point(19, 630);
+            this.lblExcludedShips.Location = new System.Drawing.Point(19, 673);
             this.lblExcludedShips.Name = "lblExcludedShips";
             this.lblExcludedShips.Size = new System.Drawing.Size(10, 13);
             this.lblExcludedShips.TabIndex = 28;
@@ -206,7 +206,7 @@ namespace WoWs_Randomizer
             // lblShipsInPort
             // 
             this.lblShipsInPort.AutoSize = true;
-            this.lblShipsInPort.Location = new System.Drawing.Point(19, 613);
+            this.lblShipsInPort.Location = new System.Drawing.Point(19, 644);
             this.lblShipsInPort.Name = "lblShipsInPort";
             this.lblShipsInPort.Size = new System.Drawing.Size(10, 13);
             this.lblShipsInPort.TabIndex = 27;
@@ -215,7 +215,7 @@ namespace WoWs_Randomizer
             // cbSingleSelect
             // 
             this.cbSingleSelect.AutoSize = true;
-            this.cbSingleSelect.Location = new System.Drawing.Point(19, 579);
+            this.cbSingleSelect.Location = new System.Drawing.Point(19, 578);
             this.cbSingleSelect.Name = "cbSingleSelect";
             this.cbSingleSelect.Size = new System.Drawing.Size(133, 17);
             this.cbSingleSelect.TabIndex = 26;
@@ -756,7 +756,7 @@ namespace WoWs_Randomizer
             this.ShipMetricsTable.Location = new System.Drawing.Point(6, 27);
             this.ShipMetricsTable.Name = "ShipMetricsTable";
             this.ShipMetricsTable.RowCount = 1;
-            this.ShipMetricsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 725F));
+            this.ShipMetricsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 795F));
             this.ShipMetricsTable.Size = new System.Drawing.Size(219, 795);
             this.ShipMetricsTable.TabIndex = 0;
             // 

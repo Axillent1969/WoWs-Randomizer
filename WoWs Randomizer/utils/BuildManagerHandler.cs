@@ -522,7 +522,7 @@ namespace WoWs_Randomizer.utils
             Label range = GetValueLabel(MetricsTableComposer.RANGE_MAIN);
             if (range != null)
             {
-                double distance = double.Parse(range.Text.ToString());
+                double distance = double.Parse(range.Text.ToString().Split(' ')[0]);
                 double totalIncrease = Math.Round(Metrics.Distance * percent, 1);
                 distance += totalIncrease;
                 range.Text = distance.ToString();

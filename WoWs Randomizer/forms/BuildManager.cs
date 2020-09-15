@@ -131,7 +131,7 @@ namespace WoWs_Randomizer.forms
             DoShipSelect();
         }
 
-        private void ClearSelections()
+        private void ClearSelections(bool keepSelectedShip = false)
         {
             bmHandler = null;
             upgradeSlot1.Controls.Clear();
@@ -176,10 +176,16 @@ namespace WoWs_Randomizer.forms
             combatFlagsCount.Text = "0";
             panelFlags.Enabled = false;
 
-            picShip.Image = null;
-            selectedShip = null;
             Metrics = null;
-            this.Text = "Build Manager";
+            if ( keepSelectedShip == false)
+            {
+                picShip.Image = null;
+                selectedShip = null;
+                this.Text = "Build Manager";
+            } else
+            {
+                SelectShip(selectedShip);
+            }
         }
 
         public void SelectShip(Ship RandomizedShip)
@@ -602,7 +608,10 @@ namespace WoWs_Randomizer.forms
 
         private void toolStripButton4_Click(object sender, EventArgs e)
         {
-            ClearSelections();
+            if ( MessageBox.Show("This will remove the selected ship and all selected skills, upgrades and flags. Unsaved changes will be lost.\nDo You want to continue?","Clear selection",MessageBoxButtons.YesNo,MessageBoxIcon.Question,MessageBoxDefaultButton.Button2)==DialogResult.Yes)
+            {
+                ClearSelections();
+            }
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
@@ -830,6 +839,18 @@ namespace WoWs_Randomizer.forms
             bmHandler.PerformAnimation(false);
             bmHandler.RemoveValue(upgradeId);
             bmHandler.PerformAnimation(true);
+        }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            if ( selectedShip != null )
+            {
+                ;
+                if (MessageBox.Show("This will unselect every skill, upgrade and flag selected in the build but keep the current ship as selected ship. Unsaved changes will be lost.\nDo You want to continue?", "Clear selections", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                {
+                    ClearSelections(true);
+                }
+            }
         }
     }
 }

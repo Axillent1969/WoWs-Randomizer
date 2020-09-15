@@ -116,6 +116,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
+            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.panelCaptainSkills.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picPT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCE)).BeginInit();
@@ -780,6 +781,7 @@
             this.toolStripButton1,
             this.toolStripButton2,
             this.ShipBuildSaveToolbarButton,
+            this.toolStripButton3,
             this.ClearSelectionsToolBarButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
@@ -1277,6 +1279,17 @@
             this.label14.TabIndex = 24;
             this.label14.Text = "Combat Flags";
             // 
+            // toolStripButton3
+            // 
+            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
+            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton3.Name = "toolStripButton3";
+            this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton3.Text = "Restart build (keep selecteed ship)";
+            this.toolStripButton3.ToolTipText = "Restart build (keep selected ship)";
+            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
+            // 
             // BuildManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1460,5 +1473,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.ToolStripButton toolStripButton3;
     }
 }

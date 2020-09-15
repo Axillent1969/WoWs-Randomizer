@@ -975,9 +975,10 @@
             // combatFlagsCount
             // 
             this.combatFlagsCount.AutoSize = true;
-            this.combatFlagsCount.Location = new System.Drawing.Point(736, 165);
+            this.combatFlagsCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.combatFlagsCount.Location = new System.Drawing.Point(702, 162);
             this.combatFlagsCount.Name = "combatFlagsCount";
-            this.combatFlagsCount.Size = new System.Drawing.Size(13, 13);
+            this.combatFlagsCount.Size = new System.Drawing.Size(15, 16);
             this.combatFlagsCount.TabIndex = 25;
             this.combatFlagsCount.Text = "0";
             // 
@@ -1014,9 +1015,10 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(747, 165);
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.label6.Location = new System.Drawing.Point(714, 162);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(93, 13);
+            this.label6.Size = new System.Drawing.Size(116, 16);
             this.label6.TabIndex = 26;
             this.label6.Text = "of 8 flags selected";
             // 

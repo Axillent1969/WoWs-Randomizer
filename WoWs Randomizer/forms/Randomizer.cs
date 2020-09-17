@@ -162,21 +162,8 @@ namespace WoWs_Randomizer
                 {
                     Program.Flags.Add(Flag.Value);
                 }
-                AppendSpecialFlags();
                 BinarySerialize.WriteToBinaryFile(Commons.GetFlagsFileName(), Program.Flags);
             }
-        }
-
-        private void AppendSpecialFlags()
-        {
-            Program.Flags.Add(Flags.DragonFlag());
-            Program.Flags.Add(Flags.Wyvern());
-            Program.Flags.Add(Flags.RedDragon());
-            Program.Flags.Add(Flags.Ouroboros());
-            Program.Flags.Add(Flags.Hydra());
-            Program.Flags.Add(Flags.Basilisk());
-            Program.Flags.Add(Flags.Scylla());
-            Program.Flags.Add(Flags.Leviathan());
         }
 
         private void CheckProgramVersion()
@@ -189,7 +176,7 @@ namespace WoWs_Randomizer
             updateDate = DateTime.Parse(versionInfo.Updated);
             if ( !versionInfo.Version.Equals(Application.ProductVersion))
             {
-                string msg = "The new version is available as per " + updateDate.ToShortDateString() + "\nDo You want to download it now?";
+                string msg = "The new version " + RandomizerVersion + " is available as per " + updateDate.ToShortDateString() + "\nDo You want to download it now?";
                 var userInput = MessageBox.Show(msg, "New version of the WoWs Randomizer available!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if ( userInput == DialogResult.Yes)
                 {
@@ -234,7 +221,7 @@ namespace WoWs_Randomizer
                     VersionInfo Info = Import.VersionInfo;
                     if ( MySettings.GameVersion != null && MySettings.GameVersion.Equals(Info.GameVersion))
                     {
-                        DateTime GameDate = ConvertToDate(Info.Updated);
+                        DateTime GameDate = Commons.ConvertToDate(Info.Updated);
                         if ( DateTime.Compare(MySettings.GameUpdated,GameDate) != 0 )
                         {
                             UpdateShips();
@@ -253,7 +240,7 @@ namespace WoWs_Randomizer
                         await UpdateUpgrades();
                         await UpdateFlags();
                         MySettings.GameVersion = Info.GameVersion;
-                        DateTime GameDate = ConvertToDate(Info.Updated);
+                        DateTime GameDate = Commons.ConvertToDate(Info.Updated);
                         MySettings.GameUpdated = GameDate;
                         MessageBox.Show("Game version has changed: New version = " + Info.GameVersion);
                     }
@@ -275,7 +262,7 @@ namespace WoWs_Randomizer
             LoadingImage.Dock = DockStyle.Fill;
             LoadingImage.Visible = true;
 
-            List<Ship> AllShips = await GetAllShipsFromWG();
+            List<Ship> AllShips = await WGAPI.GetAllShipsFromWG();
             if (AllShips != null)
             {
                 BinarySerialize.WriteToBinaryFile<List<Ship>>(Commons.GetShipListFileName(), AllShips);
@@ -295,7 +282,7 @@ namespace WoWs_Randomizer
                 VersionInfo Info = Import.VersionInfo;
                 long UpdatedAt = Info.Updated;
                 string Version = Info.GameVersion;
-                DateTime GameDate = ConvertToDate(UpdatedAt);
+                DateTime GameDate = Commons.ConvertToDate(UpdatedAt);
                 Settings MySettings = Commons.GetSettings();
                 if ( MySettings != null )
                 {
@@ -306,18 +293,12 @@ namespace WoWs_Randomizer
             }
         }
 
-        private DateTime ConvertToDate(long unixdate)
-        {
-            DateTime start = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-            DateTime GameDate = start.AddSeconds(unixdate).ToLocalTime();
-            return GameDate;
-        }
-
         private void LoadPersonalShips()
         {
             string FileName = Commons.GetPersonalShipsFileName();
             if ( File.Exists(FileName))
             {
+                this.PersonalShips.Clear();
                 List<PlayerShip> Ships = BinarySerialize.ReadFromBinaryFile<List<PlayerShip>>(FileName);
                 foreach (PlayerShip PlayerShipData in Ships)
                 {
@@ -342,18 +323,6 @@ namespace WoWs_Randomizer
             if (File.Exists(Commons.GetExclusionListFileName()))
             {
                 ExcludedShips = BinarySerialize.ReadFromBinaryFile<HashSet<long>>(Commons.GetExclusionListFileName());
-            }
-        }
-
-        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (System.Windows.Forms.Application.MessageLoop)
-            {
-                System.Windows.Forms.Application.Exit();
-            }
-            else
-            {
-                System.Environment.Exit(1);
             }
         }
 
@@ -439,6 +408,7 @@ namespace WoWs_Randomizer
             if (MyShips != null) { MyShips.Clear(); } else { MyShips = new List<Ship>(); }
 
             Dictionary<string,List<string>> Selection = GetSelection();
+            bool UniqueSelection = false;
             
             if ( Selection == null || Selection.Count == 0 )
             {
@@ -449,7 +419,14 @@ namespace WoWs_Randomizer
                 List<string> SelectionShipclass = Selection["shipclass"];
                 List<string> SelectionTier = Selection["tier"];
                 List<string> SelectionPremium = Selection["premium"];
-
+                if ( Selection.ContainsKey("unique"))
+                {
+                    List<string> SelectionUnique = Selection["unique"];
+                    if ( SelectionUnique.Contains("true"))
+                    {
+                        UniqueSelection = true;
+                    }
+                }
                 if ( SelectionCountry.Count == 0 && SelectionShipclass.Count == 0 && SelectionTier.Count == 0 && (SelectionPremium.Count == 0 || SelectionPremium.Count == 2))
                 {
                     MyShips.AddRange(GetShipsToSelectFrom());
@@ -459,7 +436,11 @@ namespace WoWs_Randomizer
                     {
                         bool AddShip = true;
                         
-                        if ( SelectionCountry.Count > 0 && !SelectionCountry.Contains(Ship.Country))
+                        if ( Ship.Name.StartsWith("["))
+                        {
+                            AddShip = false;
+                        }
+                        if ( AddShip == true && SelectionCountry.Count > 0 && !SelectionCountry.Contains(Ship.Country))
                         {
                             AddShip = false;
                         }
@@ -499,9 +480,22 @@ namespace WoWs_Randomizer
             if (MyShips.Count > 0)
             {
                 int MAX = MyShips.Count;
-                Random Rand = new Random();
-                int SHIPNO = Rand.Next(0, MAX);
-                ThisShip = MyShips[SHIPNO];
+                do
+                {
+                    Random Rand = new Random();
+                    int SHIPNO = Rand.Next(0, MAX);
+                    ThisShip = MyShips[SHIPNO];
+                    if ( UniqueSelection )
+                    {
+                        if ( !AlreadyRandomizedShips.Contains(ThisShip.ID))
+                        {
+                            break;
+                        }
+                    } else
+                    {
+                        break;
+                    }
+                } while (true);
             }
             if (ThisShip != null)
             {
@@ -569,6 +563,9 @@ namespace WoWs_Randomizer
                     } else if ( CB.Name.Contains("Premium"))
                     {
                         selectionPremium.Add(CB.Tag.ToString());
+                    } else if ( CB.Name.Contains("cbSingleSelect"))
+                    {
+                        selection.Add("unique", new List<string>() { "true" });
                     }
                 }
             }
@@ -627,104 +624,7 @@ namespace WoWs_Randomizer
             LoadingImage.Visible = true;
             BackgroundWorker.RunWorkerAsync();
         }
-
-        private async Task<List<Ship>> GetAllShipsFromWG()
-        {
-            List<Ship> AllShips = new List<Ship>();
-            ShipImporter Importer = await WGAPI.GetShipData();
-            if ( Importer.Status.Equals("ok"))
-            {
-                int Pages = Importer.MetaInfo.Pages;
-                foreach (KeyValuePair<string, Ship> ShipData in Importer.ShipData)
-                {
-                    AllShips.Add(ShipData.Value);
-                }
-                if (Pages > 1)
-                {
-                    for (int Counter = 2; Counter <= Pages; Counter++)
-                    {
-                        Importer = await WGAPI.GetShipData(Counter);
-                        if ( Importer.Status.Equals("ok"))
-                        {
-                            foreach (KeyValuePair<string, Ship> ShipData in Importer.ShipData)
-                            {
-                                AllShips.Add(ShipData.Value);
-                            }
-                        }
-                    }
-                }
-            }
-            return AllShips;
-        }
         
-        private async Task<Dictionary<string,ModuleData>> GetAllModules()
-        {
-            Dictionary<string, ModuleData> Data = new Dictionary<string, ModuleData>();
-
-            ModuleImport Importer = await WGAPI.GetModules();
-            if (Importer.Status.Equals("ok"))
-            {
-                int Pages = Importer.MetaInfo.Pages;
-                foreach (KeyValuePair<string, ModuleData> ModData in Importer.Data)
-                {
-                    Data.Add(ModData.Key, ModData.Value);
-                }
-                if (Pages > 1)
-                {
-                    for (int Counter = 2; Counter <= Pages; Counter++)
-                    {
-                        Importer = await WGAPI.GetModules(Counter);
-                        if (Importer.Status.Equals("ok"))
-                        {
-                            foreach (KeyValuePair<string, ModuleData> ModData in Importer.Data)
-                            {
-                                Data.Add(ModData.Key, ModData.Value);
-                            }
-                        }
-                    }
-                }
-            }
-            return Data;
-        }
-
-        private void SettingsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OpenSettingsAndLoadShips();
-            Settings MySettings = Commons.GetSettings();
-            if ( MySettings != null )
-            {   
-                if ( !MySettings.Server.Equals("") && !MySettings.Nickname.Equals("") )
-                {
-                    loadMyShipsToolStripMenuItem.Enabled = true;
-                }
-            }
-        }
-
-        private async void LoadMyShipsToolStripMenuItem_ClickAsync(object sender, EventArgs e)
-        {
-            Settings MySettings = Commons.GetSettings();
-            if ( MySettings == null ) { MessageBox.Show("Unable to load ships...Settings not found.","Load Personal Ships Error",MessageBoxButtons.OK,MessageBoxIcon.Error);  return;  }
-
-            if (MySettings.UserID != 0)
-            {
-                await loadUserShipsInPort(MySettings.UserID);
-            } else
-            {
-                MessageBox.Show("Unable to load ships; UserID not found - Go to File/Settings... and make sure that You have entered correct Username and Server","Error loading personal data",MessageBoxButtons.OK,MessageBoxIcon.Error);
-            }
-        }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0017:Simplify object initialization", Justification = "<Pending>")]
-        private void ExclusionListToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ExclusionList ExList = new ExclusionList();
-            ExList.PersonalShips = this.PersonalShips;
-            if (ExList.ShowDialog(this) == DialogResult.OK) { }
-            LoadExcludedShips();
-            ExList.Dispose();
-            lblExcludedShips.Text = ExcludedShips.Count.ToString() + " excluded from randomization.";
-        }
-
         private void ShipImage_Click(object sender, EventArgs e)
         {
             string HREF = @"https://wiki.wargaming.net/en/Ship:";
@@ -785,7 +685,7 @@ namespace WoWs_Randomizer
             RandomizeButton.Text = "Loading data...";
             try
             {
-                Program.AllModules = await GetAllModules();
+                Program.AllModules = await WGAPI.GetAllModules();
                 foreach(KeyValuePair<string,ModuleData> Mod in Program.AllModules)
                 {
                     ModuleTranslator.Transfer(Mod.Value);
@@ -795,18 +695,6 @@ namespace WoWs_Randomizer
             catch (Exception) {  }
             RandomizeButton.Text = txt;
             RandomizeButton.Enabled = true;
-        }
-
-        private void ShipComparisonToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Form compareTool = new CompareTool();
-            compareTool.Show();
-        }
-
-        private void buildManagerToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            BuildManager BManager = new BuildManager();
-            BManager.Show();
         }
 
         private void BtnBuildMgr_Click(object sender, EventArgs e)
@@ -837,6 +725,211 @@ namespace WoWs_Randomizer
                 } else
                 {
                     MessageBox.Show("Couldn\'t find a build to open. File must be named with shipname only: '" + filename + "'.", "Unable to open personal build", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void OpenSettingsAndLoadShips()
+        {
+            FormSettings settingsForm = new FormSettings();
+            if (settingsForm.ShowDialog(this) == DialogResult.OK)
+            {
+                Settings currentSettings = Commons.GetSettings();
+                if (currentSettings.UserID != 0)
+                {
+                    _ = loadUserShipsInPort(currentSettings.UserID);
+                }
+                LoadAllData();
+                Thread.Sleep(2500);
+                MessageBox.Show("Game data has been updated.", "Information Update", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            settingsForm.Dispose();
+        }
+
+        private void cbSingleSelect_CheckedChanged(object sender, EventArgs e)
+        {
+            AlreadyRandomizedShips.Clear();
+        }
+
+        private void exportShips(string filename,int filterIndex)
+        {
+            string separator = ",";
+            if (filterIndex == 1)
+            {
+                separator = " ";
+            }
+            using (StreamWriter file = new StreamWriter(filename))
+            {
+                file.WriteLine("ID"+separator+"Name"+separator+"ShipId" + separator + "Type" +separator+"Tier");
+                foreach (Ship ship in Program.AllShips)
+                {
+                    file.WriteLine(ship.ID + separator + ship.Name.Replace("\n","") + separator + ship.ShipId + separator + ship.ShipType + separator + ship.Tier);
+                }
+            }
+        }
+
+        private void exportModules(string filename, int filterIndex)
+        {
+            string separator = ",";
+            if (filterIndex == 1)
+            {
+                separator = " ";
+            }
+
+            using (StreamWriter file = new StreamWriter(filename))
+            {
+                file.WriteLine("ID"+separator+"IdString"+separator+"Name" + separator + "Type");
+                foreach(KeyValuePair<string,ModuleData> kvPair in Program.AllModules)
+                {
+                    ModuleData data = kvPair.Value;
+                    string txt = data.ID.ToString() + separator;
+                    txt += data.IDString + separator;
+                    txt += data.Name.Replace("\n","") + separator;
+                    txt += data.Type;
+
+                    file.WriteLine(txt);
+                }
+            }
+        }
+
+        private void exportMyShips(string filename, int filterIndex)
+        {
+            string separator = ",";
+            if ( filterIndex == 1)
+            {
+                separator = " ";
+            }
+
+            using (StreamWriter file = new StreamWriter(filename))
+            {
+                file.WriteLine("ID"+separator + "IdString" + separator + "Name" + separator + "Type" + separator + "Excluded");
+                foreach(long shipId in PersonalShips)
+                {
+                    Ship ship = Program.AllShips.Find(x => x.ID == shipId);
+                    if ( ship != null )
+                    {
+                        if ( ExcludedShips.Contains(shipId))
+                        {
+                            file.WriteLine(ship.ID + separator + ship.Name.Replace("\n", "") + separator + ship.ShipId + separator + ship.ShipType + separator + ship.Tier + separator + "Y");
+                        } else
+                        {
+                            file.WriteLine(ship.ID + separator + ship.Name.Replace("\n", "") + separator + ship.ShipId + separator + ship.ShipType + separator + ship.Tier + separator + "N");
+                        }
+                    }
+                }
+            }
+        }
+
+
+        /// TOOLSTRIP EVENTS/METHODS
+        /// 
+        private void listOfShipsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog fileDialog = new SaveFileDialog();
+            fileDialog.Filter = "txt files (*.txt)|*.txt|csv files (*.csv)|*.csv|All files (*.*)|*.*";
+            fileDialog.DefaultExt = "csv";
+            fileDialog.FilterIndex = 2;
+            fileDialog.CheckFileExists = false;
+            fileDialog.CheckPathExists = true;
+            fileDialog.SupportMultiDottedExtensions = false;
+            fileDialog.Title = "Export list of ships";
+
+            if (fileDialog.ShowDialog() == DialogResult.OK)
+            {
+                exportShips(fileDialog.FileName, fileDialog.FilterIndex);
+                MessageBox.Show("File saved: " + fileDialog.FileName, "List exported", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+        private void listOfModulesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog fileDialog = new SaveFileDialog();
+            fileDialog.Filter = "txt files (*.txt)|*.txt|csv files (*.csv)|*.csv|All files (*.*)|*.*";
+            fileDialog.DefaultExt = "csv";
+            fileDialog.FilterIndex = 2;
+            fileDialog.CheckFileExists = false;
+            fileDialog.CheckPathExists = true;
+            fileDialog.SupportMultiDottedExtensions = false;
+            fileDialog.Title = "Export list of modules/upgrades";
+
+            if (fileDialog.ShowDialog() == DialogResult.OK)
+            {
+                exportModules(fileDialog.FileName, fileDialog.FilterIndex);
+                MessageBox.Show("File saved: " + fileDialog.FileName, "List exported", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+        private async Task loadUserShipsInPort(long UserID, bool hideMessage = false)
+        {
+            PlayerShipImport Importer = await WGAPI.GetPlayerShips(UserID);
+            if (Importer.Status.ToLower().Equals("ok"))
+            {
+                List<PlayerShip> PersonalShips = new List<PlayerShip>();
+                Dictionary<string, List<PlayerShip>> ImportedShips = Importer.Ships;
+
+                foreach (KeyValuePair<string, List<PlayerShip>> ShipID in ImportedShips)
+                {
+                    foreach (PlayerShip PShip in ShipID.Value)
+                    {
+                        PersonalShips.Add(PShip);
+                    }
+                }
+
+                string FileName = Commons.GetPersonalShipsFileName();
+                BinarySerialize.WriteToBinaryFile<List<PlayerShip>>(FileName, PersonalShips);
+
+                this.PersonalShips.Clear();
+                foreach (PlayerShip PlayerShipData in PersonalShips)
+                {
+                    this.PersonalShips.Add(PlayerShipData.ID);
+                }
+                if (hideMessage == false)
+                {
+                    MessageBox.Show("Your ships have been imported.", "Load Personal Data", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Some error occured during gathering of data. Try again later.", "Connection error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void menuProfile_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem item = (ToolStripMenuItem)sender;
+            if (item.Checked)
+            {
+                return;
+            }
+            try
+            {
+                profileHandler.activateItem(item.Text);
+                Program.AllShips.Clear();
+                PersonalShips.Clear();
+                ExcludedShips.Clear();
+
+                LoadAllData();
+                Thread.Sleep(500);
+                MessageBox.Show("Profile has been loaded.", "Profile loaded", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            catch (Exception)
+            {
+                profileHandler.clearCurrentProfile();
+                Settings settings = new Settings();
+                settings.Server = item.Text;
+                Commons.SaveSettings(settings);
+                settings = null;
+                Program.AllShips.Clear();
+
+                loadMyShipsToolStripMenuItem.Enabled = false;
+                OpenSettingsAndLoadShips();
+
+                Settings MySettings = Commons.GetSettings();
+                if (MySettings != null)
+                {
+                    if (!MySettings.Server.Equals("") && !MySettings.Nickname.Equals(""))
+                    {
+                        loadMyShipsToolStripMenuItem.Enabled = true;
+                    }
                 }
             }
         }
@@ -885,179 +978,27 @@ namespace WoWs_Randomizer
             wiki.Show();
         }
 
-        private void menuProfile_Click(object sender, EventArgs e)
+        private void ShipComparisonToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ToolStripMenuItem item = (ToolStripMenuItem)sender;
-            if ( item.Checked )
-            {
-                return;
-            }
-            try
-            {
-                profileHandler.activateItem(item.Text);
-                Program.AllShips.Clear();
-                PersonalShips.Clear();
-                ExcludedShips.Clear();
-
-                LoadAllData();
-                Thread.Sleep(500);
-                MessageBox.Show("Profile has been loaded.", "Profile loaded", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            } catch (Exception)
-            {
-                profileHandler.clearCurrentProfile();
-                Settings settings = new Settings();
-                settings.Server = item.Text;
-                Commons.SaveSettings(settings);
-                settings = null;
-                Program.AllShips.Clear();
-
-                loadMyShipsToolStripMenuItem.Enabled = false;
-                OpenSettingsAndLoadShips();
-
-                Settings MySettings = Commons.GetSettings();
-                if (MySettings != null)
-                {
-                    if (!MySettings.Server.Equals("") && !MySettings.Nickname.Equals(""))
-                    {
-                        loadMyShipsToolStripMenuItem.Enabled = true;
-                    }
-                }
-            }
+            Form compareTool = new CompareTool();
+            compareTool.Show();
         }
 
-        private void OpenSettingsAndLoadShips()
+        private void buildManagerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormSettings settingsForm = new FormSettings();
-            if (settingsForm.ShowDialog(this) == DialogResult.OK)
-            {
-                Settings currentSettings = Commons.GetSettings();
-                if (currentSettings.UserID != 0)
-                {
-                    _ = loadUserShipsInPort(currentSettings.UserID);
-                }
-                LoadAllData();
-                Thread.Sleep(2500);
-                MessageBox.Show("Game data has been updated.", "Information Update", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            settingsForm.Dispose();
+            BuildManager BManager = new BuildManager();
+            BManager.Show();
         }
 
-        private async Task loadUserShipsInPort(long UserID, bool hideMessage = false)
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0017:Simplify object initialization", Justification = "<Pending>")]
+        private void ExclusionListToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PlayerShipImport Importer = await WGAPI.GetPlayerShips(UserID);
-            if (Importer.Status.ToLower().Equals("ok"))
-            {
-                List<PlayerShip> PersonalShips = new List<PlayerShip>();
-                Dictionary<string, List<PlayerShip>> ImportedShips = Importer.Ships;
-
-                foreach (KeyValuePair<string, List<PlayerShip>> ShipID in ImportedShips)
-                {
-                    foreach (PlayerShip PShip in ShipID.Value)
-                    {
-                        PersonalShips.Add(PShip);
-                    }
-                }
-
-                string FileName = Commons.GetPersonalShipsFileName();
-                BinarySerialize.WriteToBinaryFile<List<PlayerShip>>(FileName, PersonalShips);
-
-                this.PersonalShips.Clear();
-                foreach (PlayerShip PlayerShipData in PersonalShips)
-                {
-                    this.PersonalShips.Add(PlayerShipData.ID);
-                }
-                if ( hideMessage == false )
-                {
-                    MessageBox.Show("Your ships have been imported.", "Load Personal Data", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Some error occured during gathering of data. Try again later.", "Connection error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-        }
-
-        private void cbSingleSelect_CheckedChanged(object sender, EventArgs e)
-        {
-            AlreadyRandomizedShips.Clear();
-        }
-
-        private void listOfShipsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SaveFileDialog fileDialog = new SaveFileDialog();
-            fileDialog.Filter = "txt files (*.txt)|*.txt|csv files (*.csv)|*.csv|All files (*.*)|*.*";
-            fileDialog.DefaultExt = "csv";
-            fileDialog.FilterIndex = 2;
-            fileDialog.CheckFileExists = false;
-            fileDialog.CheckPathExists = true;
-            fileDialog.SupportMultiDottedExtensions = false;
-            fileDialog.Title = "Export list of ships";
-
-            if ( fileDialog.ShowDialog() == DialogResult.OK)
-            {
-                exportShips(fileDialog.FileName,fileDialog.FilterIndex);
-                MessageBox.Show("File saved: " + fileDialog.FileName, "List exported", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
-        private void exportShips(string filename,int filterIndex)
-        {
-            string separator = ",";
-            if (filterIndex == 1)
-            {
-                separator = " ";
-            }
-            using (StreamWriter file = new StreamWriter(filename))
-            {
-                file.WriteLine("ID"+separator+"Name"+separator+"ShipId" + separator + "Type" +separator+"Tier");
-                foreach (Ship ship in Program.AllShips)
-                {
-                    file.WriteLine(ship.ID + separator + ship.Name.Replace("\n","") + separator + ship.ShipId + separator + ship.ShipType + separator + ship.Tier);
-                }
-            }
-        }
-
-        private void listOfModulesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SaveFileDialog fileDialog = new SaveFileDialog();
-            fileDialog.Filter = "txt files (*.txt)|*.txt|csv files (*.csv)|*.csv|All files (*.*)|*.*";
-            fileDialog.DefaultExt = "csv";
-            fileDialog.FilterIndex = 2;
-            fileDialog.CheckFileExists = false;
-            fileDialog.CheckPathExists = true;
-            fileDialog.SupportMultiDottedExtensions = false;
-            fileDialog.Title = "Export list of modules/upgrades";
-
-            if (fileDialog.ShowDialog() == DialogResult.OK)
-            {
-                exportModules(fileDialog.FileName,fileDialog.FilterIndex);
-                MessageBox.Show("File saved: " + fileDialog.FileName, "List exported", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
-        private void exportModules(string filename, int filterIndex)
-        {
-            string separator = ",";
-            if (filterIndex == 1)
-            {
-                separator = " ";
-            }
-
-            using (StreamWriter file = new StreamWriter(filename))
-            {
-                file.WriteLine("ID"+separator+"IdString"+separator+"Name" + separator + "Type");
-                foreach(KeyValuePair<string,ModuleData> kvPair in Program.AllModules)
-                {
-                    ModuleData data = kvPair.Value;
-                    string txt = data.ID.ToString() + separator;
-                    txt += data.IDString + separator;
-                    txt += data.Name.Replace("\n","") + separator;
-                    txt += data.Type;
-
-                    file.WriteLine(txt);
-                }
-            }
+            ExclusionList ExList = new ExclusionList();
+            ExList.PersonalShips = this.PersonalShips;
+            if (ExList.ShowDialog(this) == DialogResult.OK) { }
+            LoadExcludedShips();
+            ExList.Dispose();
+            lblExcludedShips.Text = ExcludedShips.Count.ToString() + " excluded from randomization.";
         }
 
         private void myShipsInPortToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1073,37 +1014,51 @@ namespace WoWs_Randomizer
 
             if (fileDialog.ShowDialog() == DialogResult.OK)
             {
-                exportMyShips(fileDialog.FileName,fileDialog.FilterIndex);
+                exportMyShips(fileDialog.FileName, fileDialog.FilterIndex);
                 MessageBox.Show("File saved: " + fileDialog.FileName, "List exported", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
-        private void exportMyShips(string filename, int filterIndex)
+        private void SettingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string separator = ",";
-            if ( filterIndex == 1)
+            OpenSettingsAndLoadShips();
+            Settings MySettings = Commons.GetSettings();
+            if (MySettings != null)
             {
-                separator = " ";
-            }
-
-            using (StreamWriter file = new StreamWriter(filename))
-            {
-                file.WriteLine("ID"+separator + "IdString" + separator + "Name" + separator + "Type" + separator + "Excluded");
-                foreach(long shipId in PersonalShips)
+                if (!MySettings.Server.Equals("") && !MySettings.Nickname.Equals(""))
                 {
-                    Ship ship = Program.AllShips.Find(x => x.ID == shipId);
-                    if ( ship != null )
-                    {
-                        if ( ExcludedShips.Contains(shipId))
-                        {
-                            file.WriteLine(ship.ID + separator + ship.Name.Replace("\n", "") + separator + ship.ShipId + separator + ship.ShipType + separator + ship.Tier + separator + "Y");
-                        } else
-                        {
-                            file.WriteLine(ship.ID + separator + ship.Name.Replace("\n", "") + separator + ship.ShipId + separator + ship.ShipType + separator + ship.Tier + separator + "N");
-                        }
-                    }
+                    loadMyShipsToolStripMenuItem.Enabled = true;
                 }
             }
         }
+
+        private async void LoadMyShipsToolStripMenuItem_ClickAsync(object sender, EventArgs e)
+        {
+            Settings MySettings = Commons.GetSettings();
+            if (MySettings == null) { MessageBox.Show("Unable to load ships...Settings not found.", "Load Personal Ships Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
+
+            if (MySettings.UserID != 0)
+            {
+                await loadUserShipsInPort(MySettings.UserID);
+            }
+            else
+            {
+                MessageBox.Show("Unable to load ships; UserID not found - Go to File/Settings... and make sure that You have entered correct Username and Server", "Error loading personal data", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (System.Windows.Forms.Application.MessageLoop)
+            {
+                System.Windows.Forms.Application.Exit();
+            }
+            else
+            {
+                System.Environment.Exit(1);
+            }
+        }
     }
+
+
 }

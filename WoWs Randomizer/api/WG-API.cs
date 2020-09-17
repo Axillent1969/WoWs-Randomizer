@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Net.Http;
@@ -68,6 +69,35 @@ namespace WoWs_Randomizer.api
             return await GetShipData(1);
         }
 
+        public static async Task<List<Ship>> GetAllShipsFromWG()
+        {
+            List<Ship> AllShips = new List<Ship>();
+            ShipImporter Importer = await WGAPI.GetShipData();
+            if (Importer.Status.Equals("ok"))
+            {
+                int Pages = Importer.MetaInfo.Pages;
+                foreach (KeyValuePair<string, Ship> ShipData in Importer.ShipData)
+                {
+                    AllShips.Add(ShipData.Value);
+                }
+                if (Pages > 1)
+                {
+                    for (int Counter = 2; Counter <= Pages; Counter++)
+                    {
+                        Importer = await WGAPI.GetShipData(Counter);
+                        if (Importer.Status.Equals("ok"))
+                        {
+                            foreach (KeyValuePair<string, Ship> ShipData in Importer.ShipData)
+                            {
+                                AllShips.Add(ShipData.Value);
+                            }
+                        }
+                    }
+                }
+            }
+            return AllShips;
+        }
+
         public static async Task<ShipImporter> GetShipData(int page)
         {
             try { Setup(); } catch (Exception) { }
@@ -126,6 +156,36 @@ namespace WoWs_Randomizer.api
             string responseString = await response.Content.ReadAsStringAsync();
             ModuleImport Import = JsonConvert.DeserializeObject<ModuleImport>(responseString);
             return Import;
+        }
+
+        public static async Task<Dictionary<string, ModuleData>> GetAllModules()
+        {
+            Dictionary<string, ModuleData> Data = new Dictionary<string, ModuleData>();
+
+            ModuleImport Importer = await WGAPI.GetModules();
+            if (Importer.Status.Equals("ok"))
+            {
+                int Pages = Importer.MetaInfo.Pages;
+                foreach (KeyValuePair<string, ModuleData> ModData in Importer.Data)
+                {
+                    Data.Add(ModData.Key, ModData.Value);
+                }
+                if (Pages > 1)
+                {
+                    for (int Counter = 2; Counter <= Pages; Counter++)
+                    {
+                        Importer = await WGAPI.GetModules(Counter);
+                        if (Importer.Status.Equals("ok"))
+                        {
+                            foreach (KeyValuePair<string, ModuleData> ModData in Importer.Data)
+                            {
+                                Data.Add(ModData.Key, ModData.Value);
+                            }
+                        }
+                    }
+                }
+            }
+            return Data;
         }
 
         private static void Setup()

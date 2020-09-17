@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using WoWs_Randomizer.objects;
 
 namespace WoWs_Randomizer.utils
@@ -85,6 +86,13 @@ namespace WoWs_Randomizer.utils
         public static bool IsNumeric(string test)
         {
             return int.TryParse(test, out _);
+        }
+
+        public static DateTime ConvertToDate(long unixdate)
+        {
+            DateTime start = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+            DateTime GameDate = start.AddSeconds(unixdate).ToLocalTime();
+            return GameDate;
         }
     }
 }

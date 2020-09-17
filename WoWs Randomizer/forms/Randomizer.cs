@@ -37,6 +37,8 @@ namespace WoWs_Randomizer
         private string RandomizerVersion = "";
         private ProfileHandler profileHandler = new ProfileHandler();
 
+        private ShipRandomizer Randomizer = null;
+
         public FormRandomizer()
         {
             InitializeComponent();
@@ -350,6 +352,7 @@ namespace WoWs_Randomizer
                 {
                     ShipImage.BackColor = SystemColors.Control;
                 }
+                AlreadyRandomizedShips.Add(ThisShip.ID);
             } else
             {
                 ShipLoaded = false;
@@ -383,7 +386,6 @@ namespace WoWs_Randomizer
 
         private void LoadFlag(string Country)
         {
-            
             Dictionary<string, string> Flags = new Dictionary<string, string>
             {
                 { "japan", "https://wiki.gcdn.co/images/5/5b/Wows_flag_Japan.png" },
@@ -405,136 +407,13 @@ namespace WoWs_Randomizer
 
         private Ship GetRandomShip()
         {
-            if (MyShips != null) { MyShips.Clear(); } else { MyShips = new List<Ship>(); }
-
-            Dictionary<string,List<string>> Selection = GetSelection();
-            bool UniqueSelection = false;
-            
-            if ( Selection == null || Selection.Count == 0 )
+            if ( Randomizer == null )
             {
-                MyShips.AddRange(GetShipsToSelectFrom());
-            } else
-            {
-                List<string> SelectionCountry = Selection["country"];
-                List<string> SelectionShipclass = Selection["shipclass"];
-                List<string> SelectionTier = Selection["tier"];
-                List<string> SelectionPremium = Selection["premium"];
-                if ( Selection.ContainsKey("unique"))
-                {
-                    List<string> SelectionUnique = Selection["unique"];
-                    if ( SelectionUnique.Contains("true"))
-                    {
-                        UniqueSelection = true;
-                    }
-                }
-                if ( SelectionCountry.Count == 0 && SelectionShipclass.Count == 0 && SelectionTier.Count == 0 && (SelectionPremium.Count == 0 || SelectionPremium.Count == 2))
-                {
-                    MyShips.AddRange(GetShipsToSelectFrom());
-                } else
-                {
-                    foreach (Ship Ship in GetShipsToSelectFrom())
-                    {
-                        bool AddShip = true;
-                        
-                        if ( Ship.Name.StartsWith("["))
-                        {
-                            AddShip = false;
-                        }
-                        if ( AddShip == true && SelectionCountry.Count > 0 && !SelectionCountry.Contains(Ship.Country))
-                        {
-                            AddShip = false;
-                        }
-                        if ( AddShip == true && SelectionShipclass.Count > 0 && !SelectionShipclass.Contains(Ship.ShipType.ToLower()))
-                        {
-                            AddShip = false;
-                        }
-                        if (AddShip == true && SelectionTier.Count > 0 && !SelectionTier.Contains(Ship.Tier.ToString()))
-                        {
-                            AddShip = false;
-                        }
-                        if ( AddShip == true && SelectionPremium.Count == 1 )
-                        {
-                            if ( SelectionPremium.Contains("Premium") && Ship.Premium == false)
-                            {
-                                AddShip = false;
-                            } else if ( SelectionPremium.Contains("Techtree") && Ship.Premium == true)
-                            {
-                                AddShip = false;
-                            }
-                        }
-                        if ( AddShip && cbSingleSelect.Checked )
-                        {
-                            if ( AlreadyRandomizedShips.Contains(Ship.ID))
-                            {
-                                AddShip = false;
-                            }
-                        }
-                        if ( AddShip )
-                        {
-                            MyShips.Add(Ship);
-                        }
-                    }
-                }
+                this.Randomizer = new ShipRandomizer(this.ExcludedShips);
+                this.Randomizer.AddPersonalShips(this.PersonalShips);
             }
-            Ship ThisShip = null;
-            if (MyShips.Count > 0)
-            {
-                int MAX = MyShips.Count;
-                do
-                {
-                    Random Rand = new Random();
-                    int SHIPNO = Rand.Next(0, MAX);
-                    ThisShip = MyShips[SHIPNO];
-                    if ( UniqueSelection )
-                    {
-                        if ( !AlreadyRandomizedShips.Contains(ThisShip.ID))
-                        {
-                            break;
-                        }
-                    } else
-                    {
-                        break;
-                    }
-                } while (true);
-            }
-            if (ThisShip != null)
-            {
-                AlreadyRandomizedShips.Add(ThisShip.ID);
-            }
-            return ThisShip;
-        }
-
-        private List<Ship> GetShipsToSelectFrom()
-        {
-            List<Ship> ListedShips = new List<Ship>();
-            if (this.PersonalShips.Count > 0)
-            {
-                foreach (long ID in this.PersonalShips)
-                {
-                    Ship findShip = Program.AllShips.Find(x => x.ID == ID);
-                    if (findShip != null)
-                    {
-                        ListedShips.Add(findShip);
-                    }
-                }
-            }
-            else
-            {
-                ListedShips.AddRange(Program.AllShips);
-            }
-
-            if ( ExcludedShips.Count > 0 )
-            {
-                foreach(long value in ExcludedShips)
-                {
-                    Ship findShip = ListedShips.Find(x => x.ID == value);
-                    if ( findShip != null )
-                    {
-                        ListedShips.Remove(findShip);
-                    }
-                }
-            }
-            return ListedShips;
+            Randomizer.AddSelection(GetSelection());
+            return Randomizer.GetRandomShip();
         }
 
         private Dictionary<string,List<string>> GetSelection()

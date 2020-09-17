@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using WoWs_Randomizer.objects;
 
@@ -93,6 +94,26 @@ namespace WoWs_Randomizer.utils
             DateTime start = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
             DateTime GameDate = start.AddSeconds(unixdate).ToLocalTime();
             return GameDate;
+        }
+
+        public static string GetFlagURL(string Country)
+        {
+            Dictionary<string, string> Flags = new Dictionary<string, string>
+            {
+                { "japan", "https://wiki.gcdn.co/images/5/5b/Wows_flag_Japan.png" },
+                { "usa", "https://wiki.gcdn.co/images/f/f2/Wows_flag_USA.png" },
+                { "ussr", "https://wiki.gcdn.co/images/0/04/Wows_flag_Russian_Empire_and_USSR.png" },
+                { "germany", "https://wiki.gcdn.co/images/6/6b/Wows_flag_Germany.png" },
+                { "uk", "https://wiki.gcdn.co/images/3/34/Wows_flag_UK.png" },
+                { "commonwealth", "https://wiki.gcdn.co/images/9/9a/Wows_flag_Commonwealth.png" },
+                { "france", "https://wiki.gcdn.co/images/7/71/Wows_flag_France.png" },
+                { "italy", "https://wiki.gcdn.co/images/d/d1/Wows_flag_Italy.png" },
+                { "pan_asia", "https://wiki.gcdn.co/images/3/33/Wows_flag_Pan_Asia.png" },
+                { "pan_america", "https://wiki.gcdn.co/images/9/9e/Wows_flag_Pan_America.png" },
+                { "europe", "https://wiki.gcdn.co/images/5/52/Wows_flag_Europe.png" }
+            };
+
+            return Flags[Country.ToLower()];
         }
     }
 }

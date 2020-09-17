@@ -328,10 +328,66 @@ namespace WoWs_Randomizer
             }
         }
 
+        /// <summary>
+        /// Randomization process; Button click starts background worker and when it complete event triggers, finalizes the UI
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RandomizeButton_Click(object sender, EventArgs e)
+        {
+            shipDescription.Text = "";
+            Settings settings = Commons.GetSettings();
+            if (settings.SaveLocation.Equals("")) { BtnRecommendedBuild.Enabled = false; } else { BtnRecommendedBuild.Enabled = true; }
+
+            RandomizedShip = null;
+            LoadingImage.Dock = DockStyle.Fill;
+            LoadingImage.Visible = true;
+            BackgroundWorker.RunWorkerAsync();
+        }
+
         private void BackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
             RandomizeShip();
             Thread.Sleep(2000);
+        }
+
+        private void BackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (ShipLoaded)
+            {
+                FlagImage.Visible = true;
+                ShipImage.Visible = true;
+                ShipName.Visible = true;
+                ShipImage.Cursor = Cursors.Hand;
+                toolTip1.SetToolTip(ShipImage, "Ship: " + ShipName.Text);
+                BtnBuildMgr.Visible = true;
+                BtnRecommendedBuild.Visible = true;
+                NoShipFoundMsg.Visible = false;
+                NoShipFoundHelpMsg.Visible = false;
+                LoadShipMetrics();
+            }
+            else
+            {
+                FlagImage.Visible = false;
+                ShipImage.Visible = false;
+                ShipName.Visible = false;
+                ShipImage.Cursor = Cursors.Default;
+                toolTip1.SetToolTip(ShipImage, null);
+                BtnRecommendedBuild.Visible = false;
+                BtnBuildMgr.Visible = false;
+                NoShipFoundMsg.Visible = true;
+                NoShipFoundHelpMsg.Visible = true;
+            }
+            LoadingImage.Visible = false;
+            LoadingImage.Dock = DockStyle.None;
+            if (cbSingleSelect.Checked)
+            {
+                lblQueue.Text = AlreadyRandomizedShips.Count.ToString() + " of " + (PersonalShips.Count - ExcludedShips.Count).ToString() + " ships used.";
+            }
+            else
+            {
+                lblQueue.Text = "";
+            }
         }
 
         private void RandomizeShip()
@@ -340,7 +396,7 @@ namespace WoWs_Randomizer
             if ( ThisShip != null )
             {
                 RandomizedShip = ThisShip;
-                LoadFlag(ThisShip.Country);
+                FlagImage.Load(Commons.GetFlagURL(ThisShip.Country));
                 ShipImage.Load(ThisShip.Images.Small);
                 SetShipName(ThisShip.Name);
                 SetDescription(ThisShip.Description);
@@ -382,27 +438,6 @@ namespace WoWs_Randomizer
             {
                 ShipName.Text = Name;
             }
-        }
-
-        private void LoadFlag(string Country)
-        {
-            Dictionary<string, string> Flags = new Dictionary<string, string>
-            {
-                { "japan", "https://wiki.gcdn.co/images/5/5b/Wows_flag_Japan.png" },
-                { "usa", "https://wiki.gcdn.co/images/f/f2/Wows_flag_USA.png" },
-                { "ussr", "https://wiki.gcdn.co/images/0/04/Wows_flag_Russian_Empire_and_USSR.png" },
-                { "germany", "https://wiki.gcdn.co/images/6/6b/Wows_flag_Germany.png" },
-                { "uk", "https://wiki.gcdn.co/images/3/34/Wows_flag_UK.png" },
-                { "commonwealth", "https://wiki.gcdn.co/images/9/9a/Wows_flag_Commonwealth.png" },
-                { "france", "https://wiki.gcdn.co/images/7/71/Wows_flag_France.png" },
-                { "italy", "https://wiki.gcdn.co/images/d/d1/Wows_flag_Italy.png" },
-                { "pan_asia", "https://wiki.gcdn.co/images/3/33/Wows_flag_Pan_Asia.png" },
-                { "pan_america", "https://wiki.gcdn.co/images/9/9e/Wows_flag_Pan_America.png" },
-                { "europe", "https://wiki.gcdn.co/images/5/52/Wows_flag_Europe.png" }
-            };
-
-            string url = Flags[Country.ToLower()];
-            FlagImage.Load(url);
         }
 
         private Ship GetRandomShip()
@@ -453,55 +488,6 @@ namespace WoWs_Randomizer
             selection.Add("tier", selectionTier);
             selection.Add("premium", selectionPremium);
             return selection;
-        }
-        private void BackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            if ( ShipLoaded )
-            {
-                FlagImage.Visible = true;
-                ShipImage.Visible = true;
-                ShipName.Visible = true;
-                ShipImage.Cursor = Cursors.Hand;
-                toolTip1.SetToolTip(ShipImage, "Ship: " + ShipName.Text);
-                BtnBuildMgr.Visible = true;
-                BtnRecommendedBuild.Visible = true;
-                NoShipFoundMsg.Visible = false;
-                NoShipFoundHelpMsg.Visible = false;
-                LoadShipMetrics();
-            }
-            else
-            {
-                FlagImage.Visible = false;
-                ShipImage.Visible = false;
-                ShipName.Visible = false;
-                ShipImage.Cursor = Cursors.Default;
-                toolTip1.SetToolTip(ShipImage, null);
-                BtnRecommendedBuild.Visible = false;
-                BtnBuildMgr.Visible = false;
-                NoShipFoundMsg.Visible = true;
-                NoShipFoundHelpMsg.Visible = true;
-            }
-            LoadingImage.Visible = false;
-            LoadingImage.Dock = DockStyle.None;
-            if ( cbSingleSelect.Checked )
-            {
-                lblQueue.Text = AlreadyRandomizedShips.Count.ToString() + " of " + (PersonalShips.Count - ExcludedShips.Count).ToString() + " ships used.";
-            } else
-            {
-                lblQueue.Text = "";
-            }
-        }
-
-        private void RandomizeButton_Click(object sender, EventArgs e)
-        {
-            shipDescription.Text = "";
-            Settings settings = Commons.GetSettings();
-            if (settings.SaveLocation.Equals("")) { BtnRecommendedBuild.Enabled = false;  } else { BtnRecommendedBuild.Enabled = true; }
-
-            RandomizedShip = null;
-            LoadingImage.Dock = DockStyle.Fill;
-            LoadingImage.Visible = true;
-            BackgroundWorker.RunWorkerAsync();
         }
         
         private void ShipImage_Click(object sender, EventArgs e)

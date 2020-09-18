@@ -123,10 +123,9 @@ namespace WoWs_Randomizer.api
         public static async Task<PlayerShipImport> GetPlayerShips(long ID)
         {
             try { Setup(); } catch (Exception) { }
-            string path = $"ships/stats/?application_id={APP_ID}&account_id={ID}&fields=ship_id";
+            string path = $"ships/stats/?application_id={APP_ID}&account_id={ID}&in_garage=1&fields=ship_id";
             HttpResponseMessage response = await Client.GetAsync(path);
             string responseString = await response.Content.ReadAsStringAsync();
-            //Console.WriteLine(responseString);
             PlayerShipImport PlayerImport = JsonConvert.DeserializeObject<PlayerShipImport>(responseString);
             return PlayerImport;
         }

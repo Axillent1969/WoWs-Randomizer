@@ -295,7 +295,7 @@ namespace WoWs_Randomizer
             }
         }
 
-        private void LoadPersonalShips()
+        private async void LoadPersonalShips()
         {
             string FileName = Commons.GetPersonalShipsFileName();
             if ( File.Exists(FileName))
@@ -316,7 +316,21 @@ namespace WoWs_Randomizer
                         this.PersonalShips.Add(PlayerShipData.ID);
                     }
                 }
+            } else
+            {
+                Settings MySettings = Commons.GetSettings();
+                if (MySettings == null) { MessageBox.Show("Unable to load ships...Settings not found.", "Load Personal Ships Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
+
+                if (MySettings.UserID != 0)
+                {
+                    await loadUserShipsInPort(MySettings.UserID,true);
+                }
+                else
+                {
+                    MessageBox.Show("Unable to load ships; UserID not found - Go to File/Settings... and make sure that You have entered correct Username and Server", "Error loading personal data", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
+            lblShipsInPort.Text = this.PersonalShips.Count + " ships in port";
         }
 
         public void LoadExcludedShips()

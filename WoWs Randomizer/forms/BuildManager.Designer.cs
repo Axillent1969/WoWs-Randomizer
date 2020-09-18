@@ -78,6 +78,7 @@
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.ShipBuildSaveToolbarButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.ClearSelectionsToolBarButton = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -116,7 +117,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.panelCaptainSkills.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picPT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCE)).BeginInit();
@@ -173,6 +173,7 @@
             // 
             // panelCaptainSkills
             // 
+            this.panelCaptainSkills.Controls.Add(this.upgradeSelect);
             this.panelCaptainSkills.Controls.Add(this.picPT);
             this.panelCaptainSkills.Controls.Add(this.label4);
             this.panelCaptainSkills.Controls.Add(this.totalSkillPoints);
@@ -718,7 +719,7 @@
             // 
             this.upgradeSelect.BackColor = System.Drawing.SystemColors.Info;
             this.upgradeSelect.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.upgradeSelect.Location = new System.Drawing.Point(49, 53);
+            this.upgradeSelect.Location = new System.Drawing.Point(46, 20);
             this.upgradeSelect.Name = "upgradeSelect";
             this.upgradeSelect.Padding = new System.Windows.Forms.Padding(12);
             this.upgradeSelect.Size = new System.Drawing.Size(713, 308);
@@ -818,6 +819,17 @@
             this.ShipBuildSaveToolbarButton.Size = new System.Drawing.Size(23, 22);
             this.ShipBuildSaveToolbarButton.Text = "Save build";
             this.ShipBuildSaveToolbarButton.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            // 
+            // toolStripButton3
+            // 
+            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
+            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton3.Name = "toolStripButton3";
+            this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton3.Text = "Restart build (keep selecteed ship)";
+            this.toolStripButton3.ToolTipText = "Restart build (keep selected ship)";
+            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
             // ClearSelectionsToolBarButton
             // 
@@ -1281,17 +1293,6 @@
             this.label14.TabIndex = 24;
             this.label14.Text = "Combat Flags";
             // 
-            // toolStripButton3
-            // 
-            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
-            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton3.Text = "Restart build (keep selecteed ship)";
-            this.toolStripButton3.ToolTipText = "Restart build (keep selected ship)";
-            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
-            // 
             // BuildManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1310,7 +1311,6 @@
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.picShip);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.upgradeSelect);
             this.Controls.Add(this.RightPanel);
             this.Controls.Add(this.panelCaptainSkills);
             this.Controls.Add(this.upgradeSlot6);

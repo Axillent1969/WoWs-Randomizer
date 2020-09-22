@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BuildManager));
             this.panelCaptainSkills = new System.Windows.Forms.Panel();
+            this.upgradeSelect = new System.Windows.Forms.Panel();
             this.picPT = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.totalSkillPoints = new System.Windows.Forms.Label();
@@ -68,7 +69,6 @@
             this.picASup = new System.Windows.Forms.PictureBox();
             this.picEL = new System.Windows.Forms.PictureBox();
             this.picPM = new System.Windows.Forms.PictureBox();
-            this.upgradeSelect = new System.Windows.Forms.Panel();
             this.RightPanel = new System.Windows.Forms.Panel();
             this.Headline = new System.Windows.Forms.Label();
             this.ShipMetricsTable = new System.Windows.Forms.TableLayoutPanel();
@@ -173,7 +173,6 @@
             // 
             // panelCaptainSkills
             // 
-            this.panelCaptainSkills.Controls.Add(this.upgradeSelect);
             this.panelCaptainSkills.Controls.Add(this.picPT);
             this.panelCaptainSkills.Controls.Add(this.label4);
             this.panelCaptainSkills.Controls.Add(this.totalSkillPoints);
@@ -217,6 +216,17 @@
             this.panelCaptainSkills.Name = "panelCaptainSkills";
             this.panelCaptainSkills.Size = new System.Drawing.Size(844, 359);
             this.panelCaptainSkills.TabIndex = 0;
+            // 
+            // upgradeSelect
+            // 
+            this.upgradeSelect.BackColor = System.Drawing.SystemColors.Info;
+            this.upgradeSelect.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.upgradeSelect.Location = new System.Drawing.Point(46, 20);
+            this.upgradeSelect.Name = "upgradeSelect";
+            this.upgradeSelect.Padding = new System.Windows.Forms.Padding(12);
+            this.upgradeSelect.Size = new System.Drawing.Size(713, 308);
+            this.upgradeSelect.TabIndex = 15;
+            this.upgradeSelect.Visible = false;
             // 
             // picPT
             // 
@@ -714,17 +724,6 @@
     "ing incapacitated.#This skill does not apply to secondary or AA batteries.";
             this.picPM.Click += new System.EventHandler(this.pictureBox_Click);
             this.picPM.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
-            // 
-            // upgradeSelect
-            // 
-            this.upgradeSelect.BackColor = System.Drawing.SystemColors.Info;
-            this.upgradeSelect.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.upgradeSelect.Location = new System.Drawing.Point(46, 20);
-            this.upgradeSelect.Name = "upgradeSelect";
-            this.upgradeSelect.Padding = new System.Windows.Forms.Padding(12);
-            this.upgradeSelect.Size = new System.Drawing.Size(713, 308);
-            this.upgradeSelect.TabIndex = 15;
-            this.upgradeSelect.Visible = false;
             // 
             // RightPanel
             // 
@@ -1311,6 +1310,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.picShip);
             this.Controls.Add(this.button2);
+            this.Controls.Add(this.upgradeSelect);
             this.Controls.Add(this.RightPanel);
             this.Controls.Add(this.panelCaptainSkills);
             this.Controls.Add(this.upgradeSlot6);

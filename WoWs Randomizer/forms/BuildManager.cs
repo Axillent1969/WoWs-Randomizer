@@ -482,6 +482,8 @@ namespace WoWs_Randomizer.forms
                 box.Load(consumable.ImageUrl);
                 box.SizeMode = PictureBoxSizeMode.AutoSize;
                 box.Location = new System.Drawing.Point(20, 15);
+                box.Click += upgradeSlot1_Click;
+
                 ToolTip ttip = new ToolTip();
                 ttip.SetToolTip(box, consumable.Name);
                 
@@ -638,7 +640,15 @@ namespace WoWs_Randomizer.forms
         {
             if ( selectedShip == null ) { return;  }
 
-            Panel panel = (Panel)sender;
+            Panel panel = null;
+            if ( sender is PictureBox)
+            {
+                PictureBox pb = (PictureBox)sender;
+                panel = (Panel)pb.Parent;
+            } else
+            {
+                panel = (Panel)sender;
+            }
             int slot = int.Parse(panel.Tag.ToString());
             long creditValue = 125000;
             if ( slot == 2 )
@@ -803,6 +813,7 @@ namespace WoWs_Randomizer.forms
             box2.Tag = selectedBox.Tag;
             box2.SizeMode = PictureBoxSizeMode.AutoSize;
             box2.Location = new System.Drawing.Point(20, 15);
+            box2.Click += upgradeSlot1_Click;
 
             ToolTip ttip = new ToolTip();
             ttip.SetToolTip(box2, selectedBox.AccessibleName);

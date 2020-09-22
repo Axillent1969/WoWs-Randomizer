@@ -46,7 +46,7 @@ namespace WoWs_Randomizer.forms
             
             if ( UpdateUserData )
             {
-                bool PlayerLookup = await UpdateUserPlayerIDAsync(settings);
+                bool PlayerLookup = UpdateUserPlayerIDAsync(settings);
                 if ( PlayerLookup == false )
                 {
                     this.DialogResult = DialogResult.Cancel;
@@ -65,11 +65,11 @@ namespace WoWs_Randomizer.forms
             }
         }
 
-        private async Task<bool> UpdateUserPlayerIDAsync(Settings MySettings)
+        private bool UpdateUserPlayerIDAsync(Settings MySettings)
         {
             if (MySettings.UserID == 0 && !MySettings.Nickname.Equals("") && !MySettings.Server.Equals(""))
             {
-                PlayerSearch PlayerImporter = await WGAPI.SearchPlayer(MySettings.Nickname);
+                PlayerSearch PlayerImporter = WGAPI.SearchPlayer(MySettings.Nickname);
                 if (PlayerImporter.Status.ToLower() == "ok")
                 {
                     MySettings.UserID = PlayerImporter.Player[0].ID;

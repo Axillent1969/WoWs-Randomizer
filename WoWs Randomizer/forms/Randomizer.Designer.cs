@@ -114,6 +114,7 @@ namespace WoWs_Randomizer
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.BGUpdater = new System.ComponentModel.BackgroundWorker();
             this.LeftPanel.SuspendLayout();
             this.MenuStrip.SuspendLayout();
             this.RightPanel.SuspendLayout();
@@ -897,6 +898,11 @@ namespace WoWs_Randomizer
             // 
             this.toolTip1.ToolTipTitle = "Click to open ship info in WG Wikipedia";
             // 
+            // BGUpdater
+            // 
+            this.BGUpdater.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BGUpdater_DoWork);
+            this.BGUpdater.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BGUpdater_RunWorkerCompleted);
+            // 
             // FormRandomizer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -913,6 +919,7 @@ namespace WoWs_Randomizer
             this.MainMenuStrip = this.MenuStrip;
             this.Name = "FormRandomizer";
             this.Text = "WoWs Randomizer";
+            this.Load += new System.EventHandler(this.FormRandomizer_Load);
             this.LeftPanel.ResumeLayout(false);
             this.LeftPanel.PerformLayout();
             this.MenuStrip.ResumeLayout(false);
@@ -1011,6 +1018,7 @@ namespace WoWs_Randomizer
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.CheckBox CBPremium;
         private System.Windows.Forms.CheckBox CBNonPremium;
+        private System.ComponentModel.BackgroundWorker BGUpdater;
     }
 }
 

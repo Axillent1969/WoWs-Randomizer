@@ -24,7 +24,6 @@ namespace WoWs_Randomizer.utils
         private string RandomizerVersion = "";
         private string GameVersion = "";
         private DateTime GameDate = new DateTime();
-        private Settings MySettings = null;
         private bool UpdateNeeded = false;
 
         public Updater()
@@ -42,7 +41,7 @@ namespace WoWs_Randomizer.utils
 
         private void VersionChecker()
         {
-            MySettings = Commons.GetSettings();
+            Settings MySettings = Commons.GetSettings();
             if (MySettings == null) { return; }
             if ( MySettings.GameVersion == null )
             {
@@ -92,8 +91,18 @@ namespace WoWs_Randomizer.utils
             }
         }
 
-        private void LoadGameVersionAsync()
+        private void LoadGameVersionAsync(Settings settings = null)
         {
+            Settings MySettings = null;
+            bool noSave = false;
+            if ( settings == null )
+            {
+                MySettings = Commons.GetSettings();
+            } else
+            {
+                MySettings = settings;
+                noSave = true;
+            }
             VersionInfoImport Import = WGAPI.GetVersionInfo();
             if (Import.Status.Equals("ok"))
             {
@@ -105,7 +114,9 @@ namespace WoWs_Randomizer.utils
                 {
                     MySettings.GameUpdated = GameDate;
                     MySettings.GameVersion = Version;
-                    Commons.SaveSettings(MySettings);
+                    if ( noSave == false) { 
+                        Commons.SaveSettings(MySettings);
+                    }
                 }
             }
         }
@@ -165,7 +176,7 @@ namespace WoWs_Randomizer.utils
             }
         }
 
-        public void UpdateModules()
+        private void UpdateModules()
         {
             try
             {
@@ -179,7 +190,7 @@ namespace WoWs_Randomizer.utils
             catch (Exception) { }
         }
 
-        public void UpdateShips()
+        private void UpdateShips()
         {
             List<Ship> AllShips = WGAPI.GetAllShipsFromWG();
             if (AllShips != null)
@@ -189,7 +200,7 @@ namespace WoWs_Randomizer.utils
             }
         }
 
-        public void UpdateUpgrades()
+        private void UpdateUpgrades()
         {
             ConsumablesImporter Importer = WGAPI.GetUpgrades();
             if (Importer.Status.ToLower().Equals("ok"))
@@ -203,7 +214,7 @@ namespace WoWs_Randomizer.utils
             }
         }
 
-        public void UpdateCommanderSkills()
+        private void UpdateCommanderSkills()
         {
             SkillImporter Importer = WGAPI.GetCommanderSkills();
             if (Importer.Status.ToLower().Equals("ok"))
@@ -217,7 +228,7 @@ namespace WoWs_Randomizer.utils
             }
         }
 
-        public void UpdateFlags()
+        private void UpdateFlags()
         {
             ConsumablesImporter Importer = WGAPI.GetFlags();
             if (Importer.Status.ToLower().Equals("ok"))
@@ -235,11 +246,13 @@ namespace WoWs_Randomizer.utils
         {
             Settings MySettings = Commons.GetSettings();
 
+            this.LoadGameVersionAsync(MySettings);
             this.UpdateModules();
             this.UpdateShips();
             this.UpdateUpgrades();
             this.UpdateCommanderSkills();
             this.UpdateFlags();
+
             this.loadUserShipsInPort(MySettings.UserID, true);
 
             if (MySettings.GameVersion != null && MySettings.GameVersion.Equals(this.GetGameVersion()))

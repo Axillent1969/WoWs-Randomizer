@@ -116,12 +116,12 @@ namespace WoWs_Randomizer
             {
                 StartLoadingAnimation();
                 BGUpdater.RunWorkerAsync();
-                LoadingImage.Dock = DockStyle.None;
-                LoadingImage.Visible = false;
+            } else
+            {
+                readPersonalShipsFile();
+                LoadExcludedShips();
+                UpdateCounterLabels();
             }
-            readPersonalShipsFile();
-            LoadExcludedShips();
-            UpdateCounterLabels();
         }
 
         private void UpdateCounterLabels()
@@ -876,7 +876,6 @@ namespace WoWs_Randomizer
 
         private void BGUpdater_DoWork(object sender, DoWorkEventArgs e)
         {
-            //Updater randomizerUpdater = new Updater();
             randomizerUpdater.UpdateAll();
         }
 

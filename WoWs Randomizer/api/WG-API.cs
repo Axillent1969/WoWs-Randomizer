@@ -18,10 +18,10 @@ namespace WoWs_Randomizer.api
 {
     static class WGAPI
     {
-        static readonly string APP_ID = "1f859aa19885c6a2f61598578621f5e1";
+        static readonly string APP_ID = "1xxxxxxxx1";
         static HttpClient Client = new HttpClient();
 
-        public static ProgramVersion GetProgramVersion()
+             public static ProgramVersion GetProgramVersion()
         {
             using (WebClient wc = new WebClient())
             {
@@ -33,46 +33,73 @@ namespace WoWs_Randomizer.api
             }
         }
 
-        public static async Task<ConsumablesImporter> GetUpgrades()
+        public static ConsumablesImporter GetUpgrades()
         {
             try { Setup(); } catch (Exception) { }
             string path = $"encyclopedia/consumables/?application_id={APP_ID}&type=Modernization";
-            HttpResponseMessage response = await Client.GetAsync(path);
+            var response = Client.GetAsync(path).Result;
+            string responseString = "";
+            if ( response.IsSuccessStatusCode)
+            {
+                var responseContent = response.Content;
+                responseString = responseContent.ReadAsStringAsync().Result;
+            }
+            /*
+            HttpResponseMessage response = Client.GetAsync(path);
             string responseString = await response.Content.ReadAsStringAsync();
+            */
             ConsumablesImporter Import = JsonConvert.DeserializeObject<ConsumablesImporter>(responseString);
             return Import;
         }
 
-        public static async Task<ConsumablesImporter> GetFlags()
+        public static ConsumablesImporter GetFlags()
         {
             try { Setup(); } catch (Exception) { }
             string path = $"encyclopedia/consumables/?application_id={APP_ID}&type=Flags";
+            string responseString = "";
+            var response = Client.GetAsync(path).Result;
+            if ( response.IsSuccessStatusCode)
+            {
+                var responseContent = response.Content;
+                responseString = responseContent.ReadAsStringAsync().Result;
+            }
+            /*
             HttpResponseMessage response = await Client.GetAsync(path);
             string responseString = await response.Content.ReadAsStringAsync();
+            */
             ConsumablesImporter Import = JsonConvert.DeserializeObject<ConsumablesImporter>(responseString);
             return Import;
         }
 
-        public static async Task<SkillImporter> GetCommanderSkills()
+        public static SkillImporter GetCommanderSkills()
         {
             try { Setup(); } catch (Exception) { }
             string path = $"encyclopedia/crewskills/?application_id={APP_ID}";
+            string responseString = "";
+            var response = Client.GetAsync(path).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                var responseContent = response.Content;
+                responseString = responseContent.ReadAsStringAsync().Result;
+            }
+            /*
             HttpResponseMessage response = await Client.GetAsync(path);
             string responseString = await response.Content.ReadAsStringAsync();
+            */
             SkillImporter Importer = JsonConvert.DeserializeObject<SkillImporter>(responseString);
             return Importer;
         }
 
-        public static async Task<ShipImporter> GetShipData()
+        public static ShipImporter GetShipData()
         {
             try { Setup(); } catch (Exception) { }
-            return await GetShipData(1);
+            return GetShipData(1);
         }
 
-        public static async Task<List<Ship>> GetAllShipsFromWG()
+        public static List<Ship> GetAllShipsFromWG()
         {
             List<Ship> AllShips = new List<Ship>();
-            ShipImporter Importer = await WGAPI.GetShipData();
+            ShipImporter Importer = WGAPI.GetShipData();
             if (Importer.Status.Equals("ok"))
             {
                 int Pages = Importer.MetaInfo.Pages;
@@ -84,7 +111,7 @@ namespace WoWs_Randomizer.api
                 {
                     for (int Counter = 2; Counter <= Pages; Counter++)
                     {
-                        Importer = await WGAPI.GetShipData(Counter);
+                        Importer = WGAPI.GetShipData(Counter);
                         if (Importer.Status.Equals("ok"))
                         {
                             foreach (KeyValuePair<string, Ship> ShipData in Importer.ShipData)
@@ -98,70 +125,115 @@ namespace WoWs_Randomizer.api
             return AllShips;
         }
 
-        public static async Task<ShipImporter> GetShipData(int page)
+        public static ShipImporter GetShipData(int page)
         {
             try { Setup(); } catch (Exception) { }
             string path = $"encyclopedia/ships/?application_id={APP_ID}&page_no={page}";
+            string responseString = "";
+            var response = Client.GetAsync(path).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                var responseContent = response.Content;
+                responseString = responseContent.ReadAsStringAsync().Result;
+            }
+            /*
             HttpResponseMessage response = await Client.GetAsync(path);
             string responseString = await response.Content.ReadAsStringAsync();
+            */
             ShipImporter ImportedShips = JsonConvert.DeserializeObject<ShipImporter>(responseString);
             return ImportedShips;
         }
 
-        public static async Task<PlayerSearch> SearchPlayer(string PlayerNickname)
+        public static PlayerSearch SearchPlayer(string PlayerNickname)
         {
             //https://api.worldofwarships.com/wows/account/list/?application_id=1f859aa19885c6a2f61598578621f5e1&search=Axillent
             try { Setup(); } catch (Exception) { }
             string path = $"account/list/?application_id={APP_ID}&search={PlayerNickname}";
+            string responseString = "";
+            var response = Client.GetAsync(path).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                var responseContent = response.Content;
+                responseString = responseContent.ReadAsStringAsync().Result;
+            }
+            /*
             HttpResponseMessage response = await Client.GetAsync(path);
             string responseString = await response.Content.ReadAsStringAsync();
            // Console.WriteLine(responseString);
+            */
             PlayerSearch result = JsonConvert.DeserializeObject<PlayerSearch>(responseString);
             return result;
         }
 
-        public static async Task<PlayerShipImport> GetPlayerShips(long ID)
+        public static PlayerShipImport GetPlayerShips(long ID)
         {
             try { Setup(); } catch (Exception) { }
             string path = $"ships/stats/?application_id={APP_ID}&account_id={ID}&in_garage=1&fields=ship_id";
+            string responseString = "";
+            var response = Client.GetAsync(path).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                var responseContent = response.Content;
+                responseString = responseContent.ReadAsStringAsync().Result;
+            }
+            /*
             HttpResponseMessage response = await Client.GetAsync(path);
             string responseString = await response.Content.ReadAsStringAsync();
+            */
             PlayerShipImport PlayerImport = JsonConvert.DeserializeObject<PlayerShipImport>(responseString);
             return PlayerImport;
         }
 
-        public static async Task<VersionInfoImport> GetVersionInfo()
+        public static VersionInfoImport GetVersionInfo()
         {
             try { Setup(); } catch (Exception) { }
             string path = $"encyclopedia/info/?application_id={APP_ID}&fields=ships_updated_at%2Cgame_version";
+            string responseString = "";
+            var response = Client.GetAsync(path).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                var responseContent = response.Content;
+                responseString = responseContent.ReadAsStringAsync().Result;
+            }
+            /*
             HttpResponseMessage response = await Client.GetAsync(path);
             string responseString = await response.Content.ReadAsStringAsync();
             //Console.WriteLine(responseString);
+            */
             VersionInfoImport Import = JsonConvert.DeserializeObject<VersionInfoImport>(responseString);
             return Import;
         }
 
-        public static async Task<ModuleImport> GetModules()
+        public static ModuleImport GetModules()
         {
             try { Setup(); } catch (Exception) { }
-            return await GetModules(1);
+            return GetModules(1);
         }
 
-        public static async Task<ModuleImport> GetModules(int page)
+        public static ModuleImport GetModules(int page)
         {
             try { Setup(); } catch (Exception) { }
             string path = $"encyclopedia/modules/?application_id={APP_ID}&page_no={page}";
+            string responseString = "";
+            var response = Client.GetAsync(path).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                var responseContent = response.Content;
+                responseString = responseContent.ReadAsStringAsync().Result;
+            }
+            /*
             HttpResponseMessage response = await Client.GetAsync(path);
             string responseString = await response.Content.ReadAsStringAsync();
+            */
             ModuleImport Import = JsonConvert.DeserializeObject<ModuleImport>(responseString);
             return Import;
         }
 
-        public static async Task<Dictionary<string, ModuleData>> GetAllModules()
+        public static Dictionary<string, ModuleData> GetAllModules()
         {
             Dictionary<string, ModuleData> Data = new Dictionary<string, ModuleData>();
 
-            ModuleImport Importer = await WGAPI.GetModules();
+            ModuleImport Importer = WGAPI.GetModules();
             if (Importer.Status.Equals("ok"))
             {
                 int Pages = Importer.MetaInfo.Pages;
@@ -173,7 +245,7 @@ namespace WoWs_Randomizer.api
                 {
                     for (int Counter = 2; Counter <= Pages; Counter++)
                     {
-                        Importer = await WGAPI.GetModules(Counter);
+                        Importer = WGAPI.GetModules(Counter);
                         if (Importer.Status.Equals("ok"))
                         {
                             foreach (KeyValuePair<string, ModuleData> ModData in Importer.Data)
@@ -198,7 +270,7 @@ namespace WoWs_Randomizer.api
             else
             {
                 string URL = $"https://api.worldofwarships.{MySettings.Server}/wows/";
-                if (MySettings.Server.Equals("NA"))
+                if (MySettings != null && MySettings.Server != null && MySettings.Server.Equals("NA"))
                 {
                     URL = URL.Replace(".NA", ".com");
                 }

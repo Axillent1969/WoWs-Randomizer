@@ -308,6 +308,38 @@ namespace WoWs_Randomizer.forms
 
             lblAirDet.Text = selectedShip.Profile.Concealment.AirDetection.ToString() + " km";
             lblSurfaceDet.Text = selectedShip.Profile.Concealment.SurfaceDetection.ToString() + " km";
+
+            UpgradeCorrections corrections = new UpgradeCorrections(selectedShip);
+            string useConsumables = "";
+            if ( corrections.canEquipDefAAMod1())
+            {
+                useConsumables += "DEF AA, ";
+            }
+            if ( corrections.canEquipEngineBoostMod1())
+            {
+                useConsumables += "ENGINE BOOST, ";
+            } 
+            if ( corrections.canEquipHydroMod1())
+            {
+                useConsumables += "HYDRO, ";
+            }
+            if ( corrections.canEquipSmokeGeneratorMod1())
+            {
+                useConsumables += "SMOKE, ";
+            } 
+            if ( corrections.canEquipSpottingAircraftMod1())
+            {
+                useConsumables += "SPOTTING, ";
+            }
+            if ( corrections.canEquipSRM1() )
+            {
+                useConsumables += "RADAR";
+            }
+            if ( useConsumables.EndsWith(", "))
+            {
+                useConsumables = useConsumables.Substring(0, useConsumables.Length - 2);
+            }
+            lblConsumables.Text = useConsumables;
         }
 
         private void LoadFlag(string Country)

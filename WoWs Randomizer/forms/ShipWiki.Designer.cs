@@ -34,6 +34,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.InfoPanel = new System.Windows.Forms.TabControl();
             this.General = new System.Windows.Forms.TabPage();
+            this.lblTurningSpeed = new System.Windows.Forms.Label();
+            this.lblTurningRadius = new System.Windows.Forms.Label();
             this.lblAirDet = new System.Windows.Forms.Label();
             this.lblSurfaceDet = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -116,8 +118,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel15 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox15 = new System.Windows.Forms.PictureBox();
-            this.lblTurningRadius = new System.Windows.Forms.Label();
-            this.lblTurningSpeed = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lblConsumables = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.InfoPanel.SuspendLayout();
@@ -214,6 +216,8 @@
             // General
             // 
             this.General.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.General.Controls.Add(this.lblConsumables);
+            this.General.Controls.Add(this.label6);
             this.General.Controls.Add(this.lblTurningSpeed);
             this.General.Controls.Add(this.lblTurningRadius);
             this.General.Controls.Add(this.lblAirDet);
@@ -239,6 +243,24 @@
             this.General.Size = new System.Drawing.Size(792, 350);
             this.General.TabIndex = 0;
             this.General.Text = "General";
+            // 
+            // lblTurningSpeed
+            // 
+            this.lblTurningSpeed.AutoSize = true;
+            this.lblTurningSpeed.Location = new System.Drawing.Point(639, 216);
+            this.lblTurningSpeed.Name = "lblTurningSpeed";
+            this.lblTurningSpeed.Size = new System.Drawing.Size(64, 13);
+            this.lblTurningSpeed.TabIndex = 19;
+            this.lblTurningSpeed.Text = "Ruddershift:";
+            // 
+            // lblTurningRadius
+            // 
+            this.lblTurningRadius.AutoSize = true;
+            this.lblTurningRadius.Location = new System.Drawing.Point(436, 216);
+            this.lblTurningRadius.Name = "lblTurningRadius";
+            this.lblTurningRadius.Size = new System.Drawing.Size(82, 13);
+            this.lblTurningRadius.TabIndex = 18;
+            this.lblTurningRadius.Text = "Turning Radius:";
             // 
             // lblAirDet
             // 
@@ -1138,23 +1160,23 @@
             this.pictureBox15.TabIndex = 2;
             this.pictureBox15.TabStop = false;
             // 
-            // lblTurningRadius
+            // label6
             // 
-            this.lblTurningRadius.AutoSize = true;
-            this.lblTurningRadius.Location = new System.Drawing.Point(436, 216);
-            this.lblTurningRadius.Name = "lblTurningRadius";
-            this.lblTurningRadius.Size = new System.Drawing.Size(82, 13);
-            this.lblTurningRadius.TabIndex = 18;
-            this.lblTurningRadius.Text = "Turning Radius:";
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(8, 309);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(76, 13);
+            this.label6.TabIndex = 20;
+            this.label6.Text = "Consumables: ";
             // 
-            // lblTurningSpeed
+            // lblConsumables
             // 
-            this.lblTurningSpeed.AutoSize = true;
-            this.lblTurningSpeed.Location = new System.Drawing.Point(639, 216);
-            this.lblTurningSpeed.Name = "lblTurningSpeed";
-            this.lblTurningSpeed.Size = new System.Drawing.Size(64, 13);
-            this.lblTurningSpeed.TabIndex = 19;
-            this.lblTurningSpeed.Text = "Ruddershift:";
+            this.lblConsumables.AutoSize = true;
+            this.lblConsumables.Location = new System.Drawing.Point(91, 309);
+            this.lblConsumables.Name = "lblConsumables";
+            this.lblConsumables.Size = new System.Drawing.Size(16, 13);
+            this.lblConsumables.TabIndex = 21;
+            this.lblConsumables.Text = "...";
             // 
             // ShipWiki
             // 
@@ -1318,5 +1340,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblTurningSpeed;
         private System.Windows.Forms.Label lblTurningRadius;
+        private System.Windows.Forms.Label lblConsumables;
+        private System.Windows.Forms.Label label6;
     }
 }

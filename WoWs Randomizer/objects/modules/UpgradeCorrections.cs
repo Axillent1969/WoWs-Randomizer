@@ -547,6 +547,323 @@ namespace WoWs_Randomizer.objects.modules
             return false;
         }
 
+        public bool canEquipRepairParty()
+        {
+
+            if ( selectedShip.Tier >= 2 )
+            {
+                if ( selectedShip.ShipType.ToLower().Equals(ShipTypes.BB.ToString()))
+                {
+                    // US BB Premiums Tier 3 - 9
+                    if ( selectedShip.Country.ToLower().Equals(Countries.USA.ToString()) && selectedShip.Premium == true && (selectedShip.Tier >= 3 && selectedShip.Tier <= 9)) 
+                    {
+                        return true;
+                    }
+                    // US BB Massachuetts/B, Gorgia, Ohio, Thunderer
+                    if ( selectedShip.ID == 3751753712 || selectedShip.ID == 3667867632 || selectedShip.ID == 3530504176 || selectedShip.ID == 3760142320 || selectedShip.ID == 3760142288)
+                    {
+                        return true;
+                    }
+                    // US BB Techtree, tier 3-10
+                    if ( selectedShip.Country.ToLower().Equals(Countries.USA.ToString()) && selectedShip.Tier >= 3 && selectedShip.Premium == false )
+                    {
+                        return true;
+                    }
+                    // IJN, GER, FRA, ITA, USSR - BB - Tier 2-10
+                    if ( selectedShip.Country.ToLower().Equals(Countries.JPN.ToString()) ||
+                        selectedShip.Country.ToLower().Equals(Countries.GER.ToString()) ||
+                        selectedShip.Country.ToLower().Equals(Countries.FRA.ToString()) ||
+                        selectedShip.Country.ToLower().Equals(Countries.ITA.ToString()) ||
+                        selectedShip.Country.ToLower().Equals(Countries.USSR.ToString())
+                        )
+                    {
+                        return true;
+                    }
+                    // RN BB tier 2-8 (upper tier using specialized heal)
+                    if ( selectedShip.Country.ToLower().Equals(Countries.UK.ToString()) && selectedShip.Tier <= 8)
+                    {
+                        return true;
+                    }
+                } else if ( selectedShip.ShipType.ToLower().Equals(ShipTypes.CA.ToString()))
+                {
+                    // RN Cruisers, tier 3 - 7, Higher tires using specialized heal
+                    if ( selectedShip.Tier >= 3 && selectedShip.Tier <= 7 && selectedShip.Country.ToLower().Equals(Countries.UK.ToString()))
+                    {
+                        return true;
+                    }
+                    if ( selectedShip.Country.ToLower().Equals(Countries.USA.ToString()) ||
+                        selectedShip.Country.ToLower().Equals(Countries.JPN.ToString()) ||
+                        selectedShip.Country.ToLower().Equals(Countries.USSR.ToString()) ||
+                        selectedShip.Country.ToLower().Equals(Countries.FRA.ToString()) ||
+                        selectedShip.Country.ToLower().Equals(Countries.ITA.ToString()) ||
+                        selectedShip.Country.ToLower().Equals(Countries.GER.ToString())
+                        )
+                    {
+                        if ( selectedShip.Tier >= 9 )
+                        {
+                            return true;
+                        }
+                    }
+                    // Prinz Eugen, Duca degli Abruzzi
+                    if ( selectedShip.ID == 3762206512 || selectedShip.ID == 3763255024)
+                    {
+                        return true;
+                    }
+                } else if ( selectedShip.ShipType.ToLower().Equals(ShipTypes.DD.ToString()))
+                {
+                    if ( selectedShip.Country.ToLower().Equals(Countries.USSR.ToString()) && selectedShip.Tier >= 8)
+                    {
+                        return true;
+                    }
+                    if ( selectedShip.Country.ToLower().Equals(Countries.UK.ToString()) && selectedShip.Tier >= 9 )
+                    {
+                        return true;
+                    }
+                    if ( selectedShip.Country.ToLower().Equals(Countries.EUR.ToString()) && selectedShip.Tier >= 5)
+                    {
+                        return true;
+                    }
+                    // Kidd
+                    if ( selectedShip.ID == 3762173936)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        public bool canEquipSpecializedHeal()
+        {
+            // UK Cruisers tier 8-10
+            if ( selectedShip.Country.ToLower().Equals(Countries.UK.ToString()) && selectedShip.Tier >= 8 && selectedShip.ShipType.ToLower().Equals(ShipTypes.CA.ToString()))
+            {
+                return true;
+            }
+            // UK BB Tier 9-10
+            if ( selectedShip.Country.ToLower().Equals(Countries.UK.ToString()) && selectedShip.ShipType.ToLower().Equals(ShipTypes.BB.ToString()) && selectedShip.Tier >=9 )
+            {
+                return true;
+            }
+            List<long> specific = new List<long>();
+            specific.Add(3752802256); // Nelson
+            specific.Add(3668883440); // Boise
+            specific.Add(3550394352); // Salem
+            specific.Add(3762206672); // Cheeshire
+            specific.Add(4076779472); // Albemarle
+            specific.Add(4075730896); // Drake
+            specific.Add(4074682320); // Goliath
+            specific.Add(3763254608); // Nueve de Julio
+            specific.Add(3551409616); // Neustrashimy
+            return specific.Contains(selectedShip.ID);
+        }
+
+        public bool canEquipCatapultFighter()
+        {
+            // US, IJN, RN, GER, FRA, USSR - BB - Tier 7-8, except Lyon, Hood, Nelson, Duke of York, Vanguard, Ashitaka
+            // US, IJN, RN, GER, FRA, USSR, PAA - BB - Tier 9, except Missouri, Pommern and Jean Bart
+            // US, IJN, GER - BB - Tier 10
+            // US, IJN, RN, Commonwealth, GER, FRA, ITA - Cruisers - Tier 5-6, except hawkins, Devonshire, La Galissionnaire, London and Duca d'Aosta
+            // US, IJN, RN, GER, FRA, ITA - Cruisers - Tier 7-8, Except Surrey, Albemarle, Gorizia, Duca degli Abruzzi, Atlanta/B, Boise, Flint, Belfast, Bayard, Wichita, Cheshire, AL Montpelier
+            // US, IJN, GER, FRA, ITA, USSR - Cruisers - Tier 9, Except Dmitri Donskoi, Kronshtadt, Ägir, Azuma
+            // US, IJN, GER, ITA - Cruisers - Tier 10, Except Salem
+
+            List<long> exceptions = new List<long>();
+            List<long> canAdd = new List<long>();
+            exceptions.Add(4182718288); // Lyon
+            exceptions.Add(3763288016); // Hood
+            exceptions.Add(3752802256); // Nelson
+            exceptions.Add(3742316496); // Duke of York
+            exceptions.Add(3762239440); // Vanguard
+            exceptions.Add(3763287760); // Ashitaka
+            exceptions.Add(3761190896); // Missouri
+            exceptions.Add(3761190704); // Pommern
+            exceptions.Add(3751753552); // Jean Bart
+            exceptions.Add(4079925200); // hawkins
+            exceptions.Add(4078876624); // Devonshire
+            exceptions.Add(4183734096); // La Galissionnaire
+            exceptions.Add(3753818064); // London
+            exceptions.Add(3764303600); // Duca d'Aosta
+            exceptions.Add(4077828048); // Surrey
+            exceptions.Add(4076779472); // Albemarle
+            exceptions.Add(3658397424); // Gorizia
+            exceptions.Add(3763255024); // Duca degli Abruzzi
+            exceptions.Add(4288591856); // Atlanta
+            exceptions.Add(3668883440); // Boise
+            exceptions.Add(3553540080); // Flint
+            exceptions.Add(3763255248); // Belfast
+            exceptions.Add(3762206544); // Bayard
+            exceptions.Add(3762206704); // Wichita
+            exceptions.Add(3762206672); // Cheshire
+            exceptions.Add(3542005744); // AL Montpelier
+            exceptions.Add(4180587984); // Dmitri Donskoi
+            exceptions.Add(3761157584); // Kronshtadt
+            exceptions.Add(3750672176); // Ägir
+            exceptions.Add(3760109264); // Azuma
+            exceptions.Add(3550394352); // Salem
+
+            canAdd.Add(3764336464); // Dunkerque
+            canAdd.Add(3761190608); // Musashi
+            canAdd.Add(3767449296); // Katori
+            canAdd.Add(4281251536); // Kuma
+            canAdd.Add(4185831248); // Duguay-Trouin
+            canAdd.Add(4184782288); // Kirov
+            canAdd.Add(3751720944); // Anchorage
+
+            if ( exceptions.Contains(selectedShip.ID)) { return false;  }
+            if ( canAdd.Contains(selectedShip.ID)) { return true;  }
+
+            if ( selectedShip.ShipType.ToLower().Equals(ShipTypes.BB.ToString()))
+            {
+                if ( selectedShip.Country.ToLower().Equals(Countries.USA.ToString()) ||
+                    selectedShip.Country.ToLower().Equals(Countries.JPN.ToString()) ||
+                    selectedShip.Country.ToLower().Equals(Countries.UK.ToString()) ||
+                    selectedShip.Country.ToLower().Equals(Countries.GER.ToString()) ||
+                    selectedShip.Country.ToLower().Equals(Countries.FRA.ToString()) ||
+                    selectedShip.Country.ToLower().Equals(Countries.USSR.ToString())
+                    )
+                {
+                    if ( selectedShip.Tier == 7 || selectedShip.Tier == 8 || selectedShip.Tier == 9)
+                    {
+                        return true;
+                    }
+                }
+                if ( selectedShip.Country.ToLower().Equals(Countries.PAA.ToString()) && selectedShip.Tier == 9)
+                {
+                    return true;
+                }
+                if (selectedShip.Country.ToLower().Equals(Countries.USA.ToString()) ||
+                    selectedShip.Country.ToLower().Equals(Countries.JPN.ToString()) ||
+                    selectedShip.Country.ToLower().Equals(Countries.GER.ToString())
+                    )
+                {
+                    if ( selectedShip.Tier == 10)
+                    {
+                        return true;
+                    }
+                }
+            } else if ( selectedShip.ShipType.ToLower().Equals(ShipTypes.CA.ToString()))
+            {
+                if (selectedShip.Country.ToLower().Equals(Countries.USA.ToString()) ||
+                    selectedShip.Country.ToLower().Equals(Countries.JPN.ToString()) ||
+                    selectedShip.Country.ToLower().Equals(Countries.CW.ToString()) ||
+                    selectedShip.Country.ToLower().Equals(Countries.GER.ToString()) ||
+                    selectedShip.Country.ToLower().Equals(Countries.FRA.ToString()) ||
+                    selectedShip.Country.ToLower().Equals(Countries.ITA.ToString()) ||
+                    selectedShip.Country.ToLower().Equals(Countries.UK.ToString())
+                    )
+                {
+                    if (selectedShip.Tier == 5 || selectedShip.Tier == 6)
+                    {
+                        return true;
+                    }
+                }
+                if (selectedShip.Country.ToLower().Equals(Countries.USA.ToString()) ||
+                    selectedShip.Country.ToLower().Equals(Countries.JPN.ToString()) ||
+                    selectedShip.Country.ToLower().Equals(Countries.GER.ToString()) ||
+                    selectedShip.Country.ToLower().Equals(Countries.FRA.ToString()) ||
+                    selectedShip.Country.ToLower().Equals(Countries.ITA.ToString()) ||
+                    selectedShip.Country.ToLower().Equals(Countries.UK.ToString())
+                    )
+                {
+                    if (selectedShip.Tier == 7 || selectedShip.Tier == 8)
+                    {
+                        return true;
+                    }
+                }
+                if (selectedShip.Country.ToLower().Equals(Countries.USA.ToString()) ||
+                    selectedShip.Country.ToLower().Equals(Countries.JPN.ToString()) ||
+                    selectedShip.Country.ToLower().Equals(Countries.GER.ToString()) ||
+                    selectedShip.Country.ToLower().Equals(Countries.FRA.ToString()) ||
+                    selectedShip.Country.ToLower().Equals(Countries.ITA.ToString()) ||
+                    selectedShip.Country.ToLower().Equals(Countries.USSR.ToString()) ||
+                    selectedShip.Country.ToLower().Equals(Countries.UK.ToString())
+                    )
+                {
+                    if (selectedShip.Tier == 9)
+                    {
+                        return true;
+                    }
+                }
+                if (selectedShip.Country.ToLower().Equals(Countries.USA.ToString()) ||
+                    selectedShip.Country.ToLower().Equals(Countries.JPN.ToString()) ||
+                    selectedShip.Country.ToLower().Equals(Countries.GER.ToString()) ||
+                    selectedShip.Country.ToLower().Equals(Countries.ITA.ToString())
+                    )
+                {
+                    if (selectedShip.Tier == 10)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        public bool canEquipCrawlingSmoke()
+        {
+            List<long> canEquip = new List<long>();
+            canEquip.Add(3764303056); // Huanghe
+            canEquip.Add(3764303216); // Perth
+            canEquip.Add(3763221872); // Haida
+            return canEquip.Contains(selectedShip.ID);
+        }
+
+        public bool canEquipExhaustSmoke()
+        {
+            //Italian cruisers from tier 5 and up.
+            if ( selectedShip.Tier >= 5 && selectedShip.Country.ToLower().Equals(Countries.ITA.ToString()))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool canEquipMainBatteryReloadBooster()
+        {
+            if ( selectedShip.Country.ToLower().Equals(Countries.FRA.ToString()))
+            {
+                // All FRA DD's excpt Aigle and Mareau
+                if ( selectedShip.ShipType.ToLower().Equals(ShipTypes.DD.ToString()) && !(selectedShip.ID == 3764270928 || selectedShip.ID == 4074649424))
+                {
+                    return true;
+                }
+                // All FRA CA's excpt De Grasse
+                if ( selectedShip.ShipType.ToLower().Equals(ShipTypes.CA.ToString()) && selectedShip.ID != 3764303696)
+                {
+                    return true;
+                }
+                List<long> canEquip = new List<long>();
+                canEquip.Add(3751753552); // Jean Bart
+                canEquip.Add(3760142160); // Bourgogne
+                canEquip.Add(3760142160); // Siroco
+                return canEquip.Contains(selectedShip.ID);
+            }
+
+            return false;
+        }
+
+        public bool canEquipTorpReloadBooster()
+        {
+            List<long> canEquip = new List<long>();
+            canEquip.Add(3764271088); // Monaghan
+            canEquip.Add(4077795024); // Shiratsuyu
+            canEquip.Add(4181604048); // Akizuki
+            canEquip.Add(4065212112); // Kitakaze
+            canEquip.Add(4074649296); // Harugumo
+            canEquip.Add(4076746448); // Kagero
+            canEquip.Add(4075697872); // Yugumo
+            canEquip.Add(3552458448); // HSF Harekaze
+            canEquip.Add(3760076496); // Hayate
+            canEquip.Add(3764303056); // Huanghe
+            canEquip.Add(3762205904); // Irian
+            canEquip.Add(3751720144); // Wukong
+            return canEquip.Contains(selectedShip.ID);
+        }
+
+        //TODO: Add consumables for CVs and Subs
+
         private void CVCorrections()
         {
             if (selectedShip.ShipType.ToLower().Equals(ShipTypes.CV.ToString()))

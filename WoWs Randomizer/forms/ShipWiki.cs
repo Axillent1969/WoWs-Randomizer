@@ -19,6 +19,7 @@ namespace WoWs_Randomizer.forms
     public partial class ShipWiki : Form
     {
         private Ship selectedShip = null;
+        private ToolTip ttip = new ToolTip();
 
         public ShipWiki()
         {
@@ -87,7 +88,7 @@ namespace WoWs_Randomizer.forms
                         {
                             picture.Load(module.ImageUrl);
                         }
-
+                        panel.Controls.Clear();
                         panel.Controls.Add(createHeadlineLabel("ID"), 0, 0);
                         panel.Controls.Add(createLabel(module.ID.ToString()), 0, 1);
 
@@ -130,6 +131,7 @@ namespace WoWs_Randomizer.forms
                         TableLayoutPanel panel = getTable(ctr);
                         if ( panel != null )
                         {
+                            panel.Controls.Clear();
                             panel.Controls.Add(createHeadlineLabel("Name"), 0, 0);
                             panel.Controls.Add(createLabel(secData.Name), 0, 1);
 
@@ -308,38 +310,140 @@ namespace WoWs_Randomizer.forms
 
             lblAirDet.Text = selectedShip.Profile.Concealment.AirDetection.ToString() + " km";
             lblSurfaceDet.Text = selectedShip.Profile.Concealment.SurfaceDetection.ToString() + " km";
+            
+            addConsumablesImages(selectedShip);
+        }
 
+        private void addConsumablesImages(Ship selectedShip)
+        {
+            for(int i = 1; i <= 10; i++)
+            {
+                PictureBox pb = (PictureBox)General.Controls["consumable" + i];
+                pb.Visible = false;
+            }
+
+            int upgradeCount = 0;
             UpgradeCorrections corrections = new UpgradeCorrections(selectedShip);
-            string useConsumables = "";
-            if ( corrections.canEquipDefAAMod1())
+            if ( corrections.canEquipRepairParty())
             {
-                useConsumables += "DEF AA, ";
+                upgradeCount++;
+                PictureBox pb = (PictureBox)General.Controls["consumable" + upgradeCount];
+                pb.Image = Properties.Resources.Consumable_PCY010_RegenCrew;
+                ttip.SetToolTip(pb,"Repair party");
+                pb.Refresh();
+                pb.Visible = true;
             }
-            if ( corrections.canEquipEngineBoostMod1())
+            if ( corrections.canEquipSpecializedHeal())
             {
-                useConsumables += "ENGINE BOOST, ";
-            } 
-            if ( corrections.canEquipHydroMod1())
-            {
-                useConsumables += "HYDRO, ";
+                upgradeCount++;
+                PictureBox pb = (PictureBox)General.Controls["consumable" + upgradeCount];
+                pb.Image = Properties.Resources.Consumable_PCY010_SpecializedHeal_Premium;
+                ttip.SetToolTip(pb, "Specialized Repair party");
+                pb.Refresh();
+                pb.Visible = true;
             }
-            if ( corrections.canEquipSmokeGeneratorMod1())
+            if (corrections.canEquipDefAAMod1())
             {
-                useConsumables += "SMOKE, ";
-            } 
-            if ( corrections.canEquipSpottingAircraftMod1())
-            {
-                useConsumables += "SPOTTING, ";
+                upgradeCount++;
+                PictureBox pb = (PictureBox)General.Controls["consumable" + upgradeCount];
+                pb.Image = Properties.Resources.Consumable_PCY011_AirDefenseDispPremium;
+                ttip.SetToolTip(pb, "Defensive AA");
+                pb.Refresh();
+                pb.Visible = true;
             }
-            if ( corrections.canEquipSRM1() )
+            if (corrections.canEquipEngineBoostMod1())
             {
-                useConsumables += "RADAR";
+                upgradeCount++;
+                PictureBox pb = (PictureBox)General.Controls["consumable" + upgradeCount];
+                pb.Image = Properties.Resources.Consumable_PCY015_SpeedBoosterPremium;
+                ttip.SetToolTip(pb, "Engine Boost");
+                pb.Refresh();
+                pb.Visible = true;
             }
-            if ( useConsumables.EndsWith(", "))
+            if (corrections.canEquipHydroMod1())
             {
-                useConsumables = useConsumables.Substring(0, useConsumables.Length - 2);
+                upgradeCount++;
+                PictureBox pb = (PictureBox)General.Controls["consumable" + upgradeCount];
+                pb.Image = Properties.Resources.Consumable_PCY016_SonarSearchPremium;
+                ttip.SetToolTip(pb, "Hydroacoustic Search");
+                pb.Refresh();
+                pb.Visible = true;
             }
-            lblConsumables.Text = useConsumables;
+
+            if (corrections.canEquipSmokeGeneratorMod1())
+            {
+                upgradeCount++;
+                PictureBox pb = (PictureBox)General.Controls["consumable" + upgradeCount];
+                pb.Image = Properties.Resources.Consumable_PCY006_SmokeGenerator;
+                ttip.SetToolTip(pb, "Smoke Generator");
+                pb.Refresh();
+                pb.Visible = true;
+            }
+            if (corrections.canEquipCrawlingSmoke())
+            {
+                upgradeCount++;
+                PictureBox pb = (PictureBox)General.Controls["consumable" + upgradeCount];
+                pb.Image = Properties.Resources.Consumable_PCY006_SmokeGeneratorCrawler;
+                ttip.SetToolTip(pb, "Crawling Smoke Generator");
+                pb.Refresh();
+                pb.Visible = true;
+            }
+            if (corrections.canEquipExhaustSmoke())
+            {
+                upgradeCount++;
+                PictureBox pb = (PictureBox)General.Controls["consumable" + upgradeCount];
+                pb.Image = Properties.Resources.Consumable_PCY006_SmokeGeneratorOil;
+                ttip.SetToolTip(pb, "Exhaust Smoke Generator");
+                pb.Refresh();
+                pb.Visible = true;
+            }
+
+            if (corrections.canEquipCatapultFighter())
+            {
+                upgradeCount++;
+                PictureBox pb = (PictureBox)General.Controls["consumable" + upgradeCount];
+                pb.Image = Properties.Resources.Consumable_PCY012_FighterPremium;
+                ttip.SetToolTip(pb, "Catapult fighter");
+                pb.Refresh();
+                pb.Visible = true;
+            }
+            if (corrections.canEquipSpottingAircraftMod1())
+            {
+                upgradeCount++;
+                PictureBox pb = (PictureBox)General.Controls["consumable" + upgradeCount];
+                pb.Image = Properties.Resources.Consumable_PCY005_Spotter;
+                ttip.SetToolTip(pb, "Spotting aircraft");
+                pb.Refresh();
+                pb.Visible = true;
+            }
+            if (corrections.canEquipSRM1())
+            {
+                upgradeCount++;
+                PictureBox pb = (PictureBox)General.Controls["consumable" + upgradeCount];
+                pb.Image = Properties.Resources.Consumable_PCY020_RadarPremium;
+                ttip.SetToolTip(pb, "Surveillance Radar");
+                pb.Refresh();
+                pb.Visible = true;
+            }
+
+            if ( corrections.canEquipMainBatteryReloadBooster())
+            {
+                upgradeCount++;
+                PictureBox pb = (PictureBox)General.Controls["consumable" + upgradeCount];
+                pb.Image = Properties.Resources.Consumable_PCY022_ArtilleryBoosterPremium;
+                ttip.SetToolTip(pb, "Main Battery Reload Booster");
+                pb.Refresh();
+                pb.Visible = true;
+            }
+            if ( corrections.canEquipTorpReloadBooster())
+            {
+                upgradeCount++;
+                PictureBox pb = (PictureBox)General.Controls["consumable" + upgradeCount];
+                pb.Image = Properties.Resources.Consumable_PCY018_TorpedoReloaderPremium;
+                ttip.SetToolTip(pb, "Torpedo Reload Booster");
+                pb.Refresh();
+                pb.Visible = true;
+            }
         }
 
         private void LoadFlag(string Country)

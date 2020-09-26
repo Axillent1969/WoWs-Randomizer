@@ -284,6 +284,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
@@ -302,6 +303,22 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Anchor.ico" />
+    <None Include="Resources\Consumable_PCY010_RegenCrew.png" />
+    <None Include="Resources\Consumable_PCY010_SpecializedHeal_Premium.png" />
+    <None Include="Resources\Consumable_PCY022_ArtilleryBoosterPremium.png" />
+    <None Include="Resources\Consumable_PCY020_RlsSearchPremium.png" />
+    <None Include="Resources\Consumable_PCY020_RlsSearchPremium %281%29.png" />
+    <None Include="Resources\Consumable_PCY018_TorpedoReloaderPremium.png" />
+    <None Include="Resources\Consumable_PCY016_SonarSearchPremium.png" />
+    <None Include="Resources\Consumable_PCY015_SpeedBoosterPremium.png" />
+    <None Include="Resources\Consumable_PCY012_FighterPremium.png" />
+    <None Include="Resources\Consumable_PCY011_AirDefenseDispPremium.png" />
+    <None Include="Resources\Consumable_PCY009_CrashCrew.png" />
+    <None Include="Resources\Consumable_PCY006_SmokeGeneratorOil.png" />
+    <None Include="Resources\Consumable_PCY006_SmokeGeneratorCrawler.png" />
+    <None Include="Resources\Consumable_PCY006_SmokeGenerator.png" />
+    <None Include="Resources\Consumable_PCY005_Spotter.png" />
+    <None Include="Resources\Consumables.bmp" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">

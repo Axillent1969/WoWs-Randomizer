@@ -18,7 +18,7 @@ namespace WoWs_Randomizer.api
 {
     static class WGAPI
     {
-        static readonly string APP_ID = "3";
+        static readonly string APP_ID = "dddd";
         static HttpClient Client = new HttpClient();
 
         public static ProgramVersion GetProgramVersion()

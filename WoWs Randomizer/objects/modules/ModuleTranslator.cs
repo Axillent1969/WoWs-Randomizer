@@ -27,9 +27,9 @@ namespace WoWs_Randomizer.objects.modules
                             string value = data.Profile["hull"]["anti_aircraft_barrels"].ToString();
                             data.AABarrels = Double.Parse(value);
                         }
-                        if (data.Profile["hull"].ContainsKey("torpedo_barrels"))
+                        if (data.Profile["hull"].ContainsKey("torpedoes_barrels"))
                         {
-                            string value = data.Profile["hull"]["torpedo_barrels"].ToString();
+                            string value = data.Profile["hull"]["torpedoes_barrels"].ToString();
                             data.TorpedoBarrels = Double.Parse(value);
                         }
                         if (data.Profile["hull"].ContainsKey("planes_amount"))

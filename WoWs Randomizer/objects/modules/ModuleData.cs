@@ -31,6 +31,12 @@ namespace WoWs_Randomizer.objects.module
         public long PriceCredits { get; set; }
 
         public double HullHealth { get; set; }
+        public double AABarrels { get; set; }
+        public double TorpedoBarrels { get; set; }
+        public double PlanesAmount { get; set; }
+        public double ArtillerBarrels { get; set; }
+        public double SecondaryBarrels { get; set; }
+
         public double EngineSpeed { get; set; }
         public ModuleArtillery Artillery { get; set; }
 

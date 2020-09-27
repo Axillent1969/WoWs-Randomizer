@@ -71,7 +71,6 @@ namespace WoWs_Randomizer.utils
                     GameDate = Commons.ConvertToDate(Info.Updated);
                     if (MySettings.GameVersion != null && MySettings.GameVersion.Equals(Info.GameVersion))
                     {
-                        DateTime GameDate = Commons.ConvertToDate(Info.Updated);
                         if (DateTime.Compare(MySettings.GameUpdated, GameDate) != 0)
                         {
                             UpdateNeeded = true;
@@ -109,7 +108,8 @@ namespace WoWs_Randomizer.utils
                 VersionInfo Info = Import.VersionInfo;
                 long UpdatedAt = Info.Updated;
                 string Version = Info.GameVersion;
-                DateTime GameDate = Commons.ConvertToDate(UpdatedAt);
+                this.GameDate = Commons.ConvertToDate(UpdatedAt);
+                this.GameVersion = Version;
                 if (MySettings != null)
                 {
                     MySettings.GameUpdated = GameDate;

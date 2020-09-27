@@ -20,6 +20,35 @@ namespace WoWs_Randomizer.objects.modules
                 if ( data.Profile.ContainsKey("hull"))
                 {
                     data.HullHealth = Double.Parse(data.Profile["hull"]["health"].ToString());
+                    try
+                    {
+                        if (data.Profile["hull"].ContainsKey("anti_aircraft_barrels"))
+                        {
+                            string value = data.Profile["hull"]["anti_aircraft_barrels"].ToString();
+                            data.AABarrels = Double.Parse(value);
+                        }
+                        if (data.Profile["hull"].ContainsKey("torpedo_barrels"))
+                        {
+                            string value = data.Profile["hull"]["torpedo_barrels"].ToString();
+                            data.TorpedoBarrels = Double.Parse(value);
+                        }
+                        if (data.Profile["hull"].ContainsKey("planes_amount"))
+                        {
+                            string value = data.Profile["hull"]["planes_amount"].ToString();
+                            data.PlanesAmount = Double.Parse(value);
+                        }
+                        if (data.Profile["hull"].ContainsKey("artillery_barrels"))
+                        {
+                            string value = data.Profile["hull"]["artillery_barrels"].ToString();
+                            data.ArtillerBarrels = Double.Parse(value);
+                        }
+                        if (data.Profile["hull"].ContainsKey("atba_barrels"))
+                        {
+                            string value = data.Profile["hull"]["atba_barrels"].ToString();
+                            data.SecondaryBarrels = Double.Parse(value);
+                        }
+                    } catch(Exception e) { Console.WriteLine(e.Message + " / " + e.Source.ToString()); }
+
                 }
                 if ( data.Profile.ContainsKey("torpedoes"))
                 {

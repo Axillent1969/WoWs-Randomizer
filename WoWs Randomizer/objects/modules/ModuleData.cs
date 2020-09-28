@@ -51,5 +51,10 @@ namespace WoWs_Randomizer.objects.module
         public long BomberSquadrons { get; set; }
         public long TorpedoSquadrons { get; set; }
 
+        public ModuleDiveBomber DiveBomber { get; set; }
+        public ModuleTorpedoBomber TorpedoBomber { get; set; }
+
+        public ModuleFighter Fighter { get; set; }
+
     }
 }

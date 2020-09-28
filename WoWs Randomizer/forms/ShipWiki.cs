@@ -64,7 +64,215 @@ namespace WoWs_Randomizer.forms
             FillEngineTab();
             FillMainArmamentsTab();
             FillSecondaryArmamentsTab();
+            FillGFCSTab();
             FillTorpedoTab();
+            FillFlightControlTab();
+            FillPlanesTab();
+        }
+
+        private void FillGFCSTab()
+        {
+            ClearTab(GFCS.Controls, "gfcs");
+            int c = 0;
+            foreach (long id in selectedShip.Modules.FireControl)
+            {
+                ModuleData module = Program.AllModules[id.ToString()];
+                foreach(Control ctr in GFCS.Controls)
+                {
+                    if ( ctr.Name.Equals("gfcs"+c.ToString()))
+                    {
+                        TableLayoutPanel panel = getTable(ctr);
+                        PictureBox picture = getPicture(ctr);
+                        Label lblName = getLabel(ctr);
+
+                        if ( module.ImageUrl != null )
+                        {
+                            picture.Load(module.ImageUrl);
+                        }
+                        lblName.Text = module.Name;
+
+                        panel.Controls.Clear();
+                        panel.Controls.Add(createHeadlineLabel("ID"), 0, 0);
+                        panel.Controls.Add(createLabel(module.ID.ToString()), 0, 1);
+
+                        panel.Controls.Add(createHeadlineLabel("Cost"), 1, 0);
+                        panel.Controls.Add(createLabel(module.PriceCredits.ToString()), 1, 1);
+
+                        panel.Controls.Add(createHeadlineLabel("Distance (km)"), 2, 0);
+                        panel.Controls.Add(createLabel(module.FireDistance.ToString()), 2, 1);
+
+                        ctr.Visible = true;
+                    }
+                }
+                c++;
+            }
+        }
+
+        private void FillPlanesTab()
+        {
+            const string CTRLNAME = "plane";
+            ClearTab(Planes.Controls, "plane");
+            int c = 0;
+            foreach (long dbId in selectedShip.Modules.DiveBomber)
+            {
+                ModuleData module = Program.AllModules[dbId.ToString()];
+
+                foreach (Control ctr in Planes.Controls)
+                {
+                    if (ctr.Name.Equals(CTRLNAME + c.ToString()))
+                    {
+                        TableLayoutPanel panel = getTable(ctr);
+                        PictureBox picture = getPicture(ctr);
+                        if (module.ImageUrl != null)
+                        {
+                            picture.Load(module.ImageUrl);
+                        }
+                        panel.Controls.Clear();
+                        panel.Controls.Add(createHeadlineLabel("Name"), 0, 0);
+                        panel.Controls.Add(createLabel(module.Name), 0, 1);
+
+                        panel.Controls.Add(createHeadlineLabel("ID"), 1, 0);
+                        panel.Controls.Add(createLabel(module.ID.ToString()), 1, 1);
+
+                        panel.Controls.Add(createHeadlineLabel("Cost"), 2, 0);
+                        panel.Controls.Add(createLabel(module.PriceCredits.ToString()), 2, 1);
+
+                        string value = "";
+                        if (module.DiveBomber != null)
+                        {
+                            value = module.DiveBomber.MaxDamage.ToString() + " / ";
+                            value += module.DiveBomber.MaxHealth.ToString() + " HP / ";
+                            value += module.DiveBomber.CruiseSpeed.ToString() + " knots";
+
+                            panel.Controls.Add(createHeadlineLabel("Dive Bomber:"), 3, 0);
+                            panel.Controls.Add(createLabel(value), 3, 1);
+                        }
+                        ctr.Visible = true;
+                    }
+                }
+                c++;
+            }
+
+            foreach (long dbId in selectedShip.Modules.TorpedoBomber)
+            {
+                ModuleData module = Program.AllModules[dbId.ToString()];
+
+                foreach (Control ctr in Planes.Controls)
+                {
+                    if (ctr.Name.Equals(CTRLNAME + c.ToString()))
+                    {
+                        TableLayoutPanel panel = getTable(ctr);
+                        PictureBox picture = getPicture(ctr);
+                        if (module.ImageUrl != null)
+                        {
+                            picture.Load(module.ImageUrl);
+                        }
+                        panel.Controls.Clear();
+                        panel.Controls.Add(createHeadlineLabel("Name"), 0, 0);
+                        panel.Controls.Add(createLabel(module.Name), 0, 1);
+
+                        panel.Controls.Add(createHeadlineLabel("ID"), 1, 0);
+                        panel.Controls.Add(createLabel(module.ID.ToString()), 1, 1);
+
+                        panel.Controls.Add(createHeadlineLabel("Cost"), 2, 0);
+                        panel.Controls.Add(createLabel(module.PriceCredits.ToString()), 2, 1);
+
+                        string value = "";
+                        if (module.TorpedoBomber != null)
+                        {
+                            value = module.TorpedoBomber.MaxDamage.ToString() + " (";
+                            value += module.TorpedoBomber.TorpedoSpeed + " knots) / ";
+                            value += module.TorpedoBomber.Health.ToString() + " HP / ";
+                            value += module.TorpedoBomber.CruiseSpeed.ToString() + " knots";
+
+                            panel.Controls.Add(createHeadlineLabel("Torpedo Bomber:"), 3, 0);
+                            panel.Controls.Add(createLabel(value), 3, 1);
+                        }
+
+                        ctr.Visible = true;
+                    }
+                }
+                c++;
+            }
+
+            foreach (long dbId in selectedShip.Modules.Fighter)
+            {
+                ModuleData module = Program.AllModules[dbId.ToString()];
+
+                foreach (Control ctr in Planes.Controls)
+                {
+                    if (ctr.Name.Equals(CTRLNAME + c.ToString()))
+                    {
+                        TableLayoutPanel panel = getTable(ctr);
+                        PictureBox picture = getPicture(ctr);
+                        if (module.ImageUrl != null)
+                        {
+                            picture.Load(module.ImageUrl);
+                        }
+                        panel.Controls.Clear();
+                        panel.Controls.Add(createHeadlineLabel("Name"), 0, 0);
+                        panel.Controls.Add(createLabel(module.Name), 0, 1);
+
+                        panel.Controls.Add(createHeadlineLabel("ID"), 1, 0);
+                        panel.Controls.Add(createLabel(module.ID.ToString()), 1, 1);
+
+                        panel.Controls.Add(createHeadlineLabel("Cost"), 2, 0);
+                        panel.Controls.Add(createLabel(module.PriceCredits.ToString()), 2, 1);
+
+                        string value = "";
+                        if (module.Fighter != null)
+                        {
+                            value = module.Fighter.Health.ToString() + " HP / ";
+                            value += module.Fighter.CruiseSpeed.ToString() + " knots";
+
+                            panel.Controls.Add(createHeadlineLabel("Fighter:"), 3, 0);
+                            panel.Controls.Add(createLabel(value), 3, 1);
+                        }
+
+                        ctr.Visible = true;
+                    }
+                }
+                c++;
+            }
+        }
+
+        private void FillFlightControlTab()
+        {
+            ClearTab(CV.Controls, "cv");
+            int c = 1;
+            foreach(long fcId in selectedShip.Modules.FlightControl)
+            {
+                ModuleData module = Program.AllModules[fcId.ToString()];
+                
+                foreach(Control ctr in CV.Controls)
+                {
+                    if ( ctr.Name.Equals("cvPanel" + c.ToString()))
+                    {
+                        TableLayoutPanel panel = getTable(ctr);
+                        PictureBox picture = getPicture(ctr);
+                        if ( module.ImageUrl != null)
+                        {
+                            picture.Load(module.ImageUrl);
+                        }
+                        panel.Controls.Clear();
+                        panel.Controls.Add(createHeadlineLabel("Name"), 0, 0);
+                        panel.Controls.Add(createLabel(module.Name), 0, 1);
+
+                        panel.Controls.Add(createHeadlineLabel("ID"), 1, 0);
+                        panel.Controls.Add(createLabel(module.ID.ToString()), 1, 1);
+
+                        panel.Controls.Add(createHeadlineLabel("Cost"), 2, 0);
+                        panel.Controls.Add(createLabel(module.PriceCredits.ToString()), 2, 1);
+
+                        string value = module.FighterSquadrons + " Fighters / " + module.BomberSquadrons + " Bombers / " + module.TorpedoSquadrons + " Torpedoes";
+                        panel.Controls.Add(createHeadlineLabel("Squadrons"),3,0);
+                        panel.Controls.Add(createLabel(value), 3, 1);
+
+                        ctr.Visible = true;
+                    }
+                }
+                c++; 
+            }
         }
 
         private void FillTorpedoTab()
@@ -467,7 +675,7 @@ namespace WoWs_Randomizer.forms
                 upgradeCount++;
                 PictureBox pb = (PictureBox)General.Controls["consumable" + upgradeCount];
                 pb.Image = Properties.Resources.Consumable_PCY012_FighterPremium;
-                ttip.SetToolTip(pb, "Engine Cooling");
+                ttip.SetToolTip(pb, "Patrol Fighters");
                 pb.Refresh();
                 pb.Visible = true;
             }
@@ -567,7 +775,7 @@ namespace WoWs_Randomizer.forms
                 }
                 else
                 {
-                    data = (string)module.Profile["engine"]["max_speed"];
+                    data = module.Profile["engine"]["max_speed"].ToString();
                 }
             }
 
@@ -619,6 +827,7 @@ namespace WoWs_Randomizer.forms
             Label headline = new Label();
             headline.Text = text;
             headline.Font = new Font(headline.Font, FontStyle.Bold);
+            headline.AutoSize = true;
             return headline;
         }
 
@@ -626,6 +835,7 @@ namespace WoWs_Randomizer.forms
         {
             Label lblText = new Label();
             lblText.Text = text;
+            lblText.AutoSize = true;
             return lblText;
         }
 

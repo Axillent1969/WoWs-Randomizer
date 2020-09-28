@@ -85,6 +85,38 @@ namespace WoWs_Randomizer.objects.modules
                     data.FireDistanceIncrease = double.Parse(data.Profile["fire_control"]["distance_increase"].ToString());
                 }
 
+                if ( data.Profile.ContainsKey("dive_bomber"))
+                {
+                    ModuleDiveBomber diveBomberModule = new ModuleDiveBomber();
+                    diveBomberModule.FireChance = int.Parse(data.Profile["dive_bomber"]["bomb_burn_probability"].ToString());
+                    diveBomberModule.MaxDamage = int.Parse(data.Profile["dive_bomber"]["max_damage"].ToString());
+                    diveBomberModule.MaxHealth = int.Parse(data.Profile["dive_bomber"]["max_health"].ToString());
+                    diveBomberModule.CruiseSpeed = int.Parse(data.Profile["dive_bomber"]["cruise_speed"].ToString());
+
+                    data.DiveBomber = diveBomberModule;
+                }
+
+                if ( data.Profile.ContainsKey("torpedo_bomber"))
+                {
+                    ModuleTorpedoBomber torp = new ModuleTorpedoBomber();
+                    torp.CruiseSpeed = int.Parse(data.Profile["torpedo_bomber"]["cruise_speed"].ToString());
+                    torp.Name = data.Profile["torpedo_bomber"]["torpedo_name"].ToString();
+                    torp.MaxDamage = int.Parse(data.Profile["torpedo_bomber"]["torpedo_damage"].ToString());
+                    torp.Health = int.Parse(data.Profile["torpedo_bomber"]["max_health"].ToString());
+                    torp.TorpedoSpeed = int.Parse(data.Profile["torpedo_bomber"]["torpedo_max_speed"].ToString());
+                    torp.Distance = double.Parse(data.Profile["torpedo_bomber"]["distance"].ToString());
+
+                    data.TorpedoBomber = torp;
+                }
+
+                if ( data.Profile.ContainsKey("fighter") )
+                {
+                    ModuleFighter fighter = new ModuleFighter();
+                    fighter.Health = int.Parse(data.Profile["fighter"]["max_health"].ToString());
+                    fighter.CruiseSpeed = int.Parse(data.Profile["fighter"]["cruise_speed"].ToString());
+
+                    data.Fighter = fighter;
+                }
             }
         }
     }

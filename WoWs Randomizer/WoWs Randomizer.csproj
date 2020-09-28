@@ -180,6 +180,9 @@
       <DependentUpon>ShipWiki.cs</DependentUpon>
     </Compile>
     <Compile Include="objects\modules\ModuleArtillery.cs" />
+    <Compile Include="objects\modules\ModuleDiveBomber.cs" />
+    <Compile Include="objects\modules\ModuleFighter.cs" />
+    <Compile Include="objects\modules\ModuleTorpedoBomber.cs" />
     <Compile Include="objects\modules\ModuleTranslator.cs" />
     <Compile Include="objects\modules\UpgradeCorrections.cs" />
     <Compile Include="objects\ShipBuild.cs" />

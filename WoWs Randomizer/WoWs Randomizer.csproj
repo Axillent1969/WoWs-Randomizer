@@ -303,6 +303,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Anchor.ico" />
+    <None Include="Resources\Consumable_PCY036_AircraftRepair.png" />
+    <None Include="Resources\Consumable_PCY043_Max_Depth.png" />
     <None Include="Resources\Consumable_PCY010_RegenCrew.png" />
     <None Include="Resources\Consumable_PCY010_SpecializedHeal_Premium.png" />
     <None Include="Resources\Consumable_PCY022_ArtilleryBoosterPremium.png" />

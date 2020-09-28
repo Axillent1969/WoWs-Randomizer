@@ -160,4 +160,10 @@
   <data name="Consumable_PCY022_ArtilleryBoosterPremium" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Consumable_PCY022_ArtilleryBoosterPremium.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Consumable_PCY036_AircraftRepair" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Consumable_PCY036_AircraftRepair.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Consumable_PCY043_Max_Depth" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Consumable_PCY043_Max_Depth.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

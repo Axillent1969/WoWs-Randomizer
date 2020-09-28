@@ -199,5 +199,25 @@ namespace WoWs_Randomizer.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Consumable_PCY036_AircraftRepair {
+            get {
+                object obj = ResourceManager.GetObject("Consumable_PCY036_AircraftRepair", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Consumable_PCY043_Max_Depth {
+            get {
+                object obj = ResourceManager.GetObject("Consumable_PCY043_Max_Depth", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

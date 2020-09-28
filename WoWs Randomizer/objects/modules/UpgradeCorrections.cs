@@ -273,6 +273,9 @@ namespace WoWs_Randomizer.objects.modules
                 {
                     return true;
                 }
+            } else if ( selectedShip.ShipType.ToLower().Equals(ShipTypes.SM.ToString()) && selectedShip.Country.ToLower().Equals(Countries.GER.ToString()))
+            {
+                return true;
             }
             return false;
         }
@@ -549,7 +552,6 @@ namespace WoWs_Randomizer.objects.modules
 
         public bool canEquipRepairParty()
         {
-
             if ( selectedShip.Tier >= 2 )
             {
                 if ( selectedShip.ShipType.ToLower().Equals(ShipTypes.BB.ToString()))
@@ -628,6 +630,8 @@ namespace WoWs_Randomizer.objects.modules
                     {
                         return true;
                     }
+                } else if ( selectedShip.ShipType.ToLower().Equals(ShipTypes.SM.ToString()) && selectedShip.Country.ToLower().Equals(Countries.USSR.ToString()) && selectedShip.Tier == 6){
+                    return true;
                 }
             }
             return false;
@@ -862,7 +866,53 @@ namespace WoWs_Randomizer.objects.modules
             return canEquip.Contains(selectedShip.ID);
         }
 
-        //TODO: Add consumables for CVs and Subs
+        // CV consumables
+        public bool canEquipCAPFighters()
+        {
+            if ( selectedShip.ShipType.ToLower().Equals(ShipTypes.CV.ToString()) && selectedShip.Tier >= 4)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool canEquipEngineCooling()
+        {
+            if ( selectedShip.ShipType.ToLower().Equals(ShipTypes.CV.ToString()) && selectedShip.Tier >= 4)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool canEquipPatrolFighters()
+        {
+            if (selectedShip.ShipType.ToLower().Equals(ShipTypes.CV.ToString()) && selectedShip.Tier >= 6)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool canEquipAircraftRepair()
+        {
+            if (selectedShip.ShipType.ToLower().Equals(ShipTypes.CV.ToString()) && selectedShip.Tier >= 8)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        // Submarine consumables
+
+        public bool canEquipMaxDepth()
+        {
+            if ( selectedShip.ShipType.ToLower().Equals(ShipTypes.SM.ToString()))
+            {
+                return true;
+            }
+            return false;
+        }
 
         private void CVCorrections()
         {

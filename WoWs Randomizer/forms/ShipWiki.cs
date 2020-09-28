@@ -444,6 +444,51 @@ namespace WoWs_Randomizer.forms
                 pb.Refresh();
                 pb.Visible = true;
             }
+            if (corrections.canEquipCAPFighters())
+            {
+                upgradeCount++;
+                PictureBox pb = (PictureBox)General.Controls["consumable" + upgradeCount];
+                pb.Image = Properties.Resources.Consumable_PCY012_FighterPremium;
+                ttip.SetToolTip(pb, "CAP Fighters");
+                pb.Refresh();
+                pb.Visible = true;
+            }
+            if (corrections.canEquipEngineCooling())
+            {
+                upgradeCount++;
+                PictureBox pb = (PictureBox)General.Controls["consumable" + upgradeCount];
+                pb.Image = Properties.Resources.Consumable_PCY015_SpeedBoosterPremium;
+                ttip.SetToolTip(pb, "Engine Cooling");
+                pb.Refresh();
+                pb.Visible = true;
+            }
+            if (corrections.canEquipPatrolFighters())
+            {
+                upgradeCount++;
+                PictureBox pb = (PictureBox)General.Controls["consumable" + upgradeCount];
+                pb.Image = Properties.Resources.Consumable_PCY012_FighterPremium;
+                ttip.SetToolTip(pb, "Engine Cooling");
+                pb.Refresh();
+                pb.Visible = true;
+            }
+            if (corrections.canEquipAircraftRepair())
+            {
+                upgradeCount++;
+                PictureBox pb = (PictureBox)General.Controls["consumable" + upgradeCount];
+                pb.Image = Properties.Resources.Consumable_PCY036_AircraftRepair;
+                ttip.SetToolTip(pb, "Aircraft Repair");
+                pb.Refresh();
+                pb.Visible = true;
+            }
+            if (corrections.canEquipMaxDepth())
+            {
+                upgradeCount++;
+                PictureBox pb = (PictureBox)General.Controls["consumable" + upgradeCount];
+                pb.Image = Properties.Resources.Consumable_PCY043_Max_Depth;
+                ttip.SetToolTip(pb, "Maximum Depth");
+                pb.Refresh();
+                pb.Visible = true;
+            }
         }
 
         private void LoadFlag(string Country)

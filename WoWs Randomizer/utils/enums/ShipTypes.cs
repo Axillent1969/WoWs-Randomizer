@@ -6,6 +6,7 @@
         public static readonly ShipTypes CA = new ShipTypes("Cruiser", "Cruiser");
         public static readonly ShipTypes BB = new ShipTypes("Battleship", "Battleship");
         public static readonly ShipTypes CV = new ShipTypes("AirCarrier", "Aircraft Carrier");
+        public static readonly ShipTypes SM = new ShipTypes("Submarine", "Submarine");
 
         public ShipTypes(string abbreviation, string name) : base(abbreviation, name)
         {

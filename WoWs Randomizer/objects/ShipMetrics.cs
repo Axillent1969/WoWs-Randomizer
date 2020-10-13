@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WoWs_Randomizer.objects.ship.profile;
+using WoWs_Randomizer.utils.ship.profile;
 
-namespace WoWs_Randomizer.objects
+namespace WoWs_Randomizer.utils
 {
     public class ShipMetrics
     {

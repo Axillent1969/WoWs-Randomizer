@@ -11,8 +11,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WoWs_Randomizer.api;
 using WoWs_Randomizer.objects;
-using WoWs_Randomizer.objects.version;
 using WoWs_Randomizer.utils;
+using WoWs_Randomizer.utils.version;
 
 namespace WoWs_Randomizer.forms
 {

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace WoWs_Randomizer.objects.skills
+namespace WoWs_Randomizer.utils.skills
 {
     [Serializable]
     class Perk

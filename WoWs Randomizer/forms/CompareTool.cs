@@ -3,8 +3,8 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using WoWs_Randomizer.objects;
-using WoWs_Randomizer.objects.ship;
 using WoWs_Randomizer.utils;
+using WoWs_Randomizer.utils.ship;
 
 namespace WoWs_Randomizer.forms
 {
@@ -58,15 +58,6 @@ namespace WoWs_Randomizer.forms
                 bmHandler.ApplyAll(build.Flags);
                 bmHandler.ApplyAll(build.Skills);
                 bmHandler.ApplyAll(build.Upgrades);
-                
-                if ( build.GameVersion == null || build.GameVersion.Equals("") || build.GameVersion.Equals("0.9.4") )
-                {
-                    Settings settings = Commons.GetSettings();
-                    if (settings.GameVersion.StartsWith("0.9.5") || settings.GameVersion.StartsWith("0.9.6"))
-                    {
-                        MessageBox.Show("This build was created before patch 0.9.5 and thus might not reflect correct values due to changes in Legendary Modules. Please resave this build in the Build Manager to make values correct.", "Build obsolete", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                }
             }
 
             childForm.Text = selection;

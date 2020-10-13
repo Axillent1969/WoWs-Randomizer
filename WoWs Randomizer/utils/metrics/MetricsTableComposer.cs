@@ -1,6 +1,6 @@
 ﻿using System;
-using WoWs_Randomizer.objects;
-using WoWs_Randomizer.objects.ship.profile;
+using WoWs_Randomizer.utils;
+using WoWs_Randomizer.utils.ship.profile;
 
 namespace WoWs_Randomizer.utils
 {

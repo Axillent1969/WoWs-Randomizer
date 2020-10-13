@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using WoWs_Randomizer.objects.ship;
+using WoWs_Randomizer.utils.ship;
 using WoWs_Randomizer.utils;
 
-namespace WoWs_Randomizer.objects.modules
+namespace WoWs_Randomizer.utils.modules
 {
     public class UpgradeCorrections
     {

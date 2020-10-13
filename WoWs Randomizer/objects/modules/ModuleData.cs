@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using WoWs_Randomizer.objects.modules;
+using WoWs_Randomizer.utils.modules;
 
-namespace WoWs_Randomizer.objects.module
+namespace WoWs_Randomizer.utils.module
 {
     [Serializable]
     class ModuleData

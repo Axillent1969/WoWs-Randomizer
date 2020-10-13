@@ -8,9 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WoWs_Randomizer.objects;
 using WoWs_Randomizer.utils;
-using WoWs_Randomizer.objects.ship;
+using WoWs_Randomizer.utils.ship;
 
 
 namespace WoWs_Randomizer.forms

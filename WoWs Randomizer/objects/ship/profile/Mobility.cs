@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WoWs_Randomizer.objects.ship.profile
+namespace WoWs_Randomizer.utils.ship.profile
 {
     [Serializable]
     public class Mobility

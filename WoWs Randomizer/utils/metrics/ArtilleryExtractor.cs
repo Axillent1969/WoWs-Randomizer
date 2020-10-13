@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WoWs_Randomizer.objects.module;
-using WoWs_Randomizer.objects.ship;
+using WoWs_Randomizer.utils.module;
+using WoWs_Randomizer.utils.ship;
 
 namespace WoWs_Randomizer.utils.metrics
 {

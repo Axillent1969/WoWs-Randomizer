@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using WoWs_Randomizer.objects.ship;
+using WoWs_Randomizer.utils.ship;
 
 namespace WoWs_Randomizer
 {

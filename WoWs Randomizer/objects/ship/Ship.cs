@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using WoWs_Randomizer.objects.ship.profile;
+using WoWs_Randomizer.objects.consumables;
+using WoWs_Randomizer.utils.ship.profile;
 
-namespace WoWs_Randomizer.objects.ship
+namespace WoWs_Randomizer.utils.ship
 {
     [Serializable]
-    public class Ship : IEquatable<Ship>
+    public class Ship : IEquatable<Ship>, IComparable<Ship>
     {
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -53,6 +54,8 @@ namespace WoWs_Randomizer.objects.ship
         [JsonProperty("name")]
         public string Name { get; set; }
 
+        public List<ConsumableInfo> Consumables { get; set; }
+
         public bool Equals(Ship other)
         {
             if (other == null) return false;
@@ -64,13 +67,22 @@ namespace WoWs_Randomizer.objects.ship
             return Convert.ToInt32(ID);
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0019:Use pattern matching", Justification = "<Pending>")]
         public override bool Equals(object obj)
         {
-            if (obj == null) return false;
-            Ship otherShip = obj as Ship;
-            if (otherShip == null) return false;
-            return Equals(otherShip);
+            if ( obj is Ship)
+            {
+                Ship otherShip = obj as Ship;
+                return Equals(otherShip);
+            } else
+            {
+                return false;
+            }
+        }
+
+        public int CompareTo(Ship obj)
+        {
+            if ( obj == null ) { return 0; }
+            return this.Name.CompareTo(obj.Name);
         }
     }
 }

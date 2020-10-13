@@ -4,20 +4,18 @@ using System.ComponentModel;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Net;
 using System.Threading;
 using System.Windows.Forms;
 using WoWs_Randomizer.api;
 using WoWs_Randomizer.forms;
-using WoWs_Randomizer.objects;
-using WoWs_Randomizer.objects.module;
-using WoWs_Randomizer.objects.modules;
-using WoWs_Randomizer.objects.player;
-using WoWs_Randomizer.objects.ship;
-using WoWs_Randomizer.objects.skills;
-using WoWs_Randomizer.objects.upgrades;
-using WoWs_Randomizer.objects.version;
 using WoWs_Randomizer.utils;
+using WoWs_Randomizer.utils.module;
+using WoWs_Randomizer.utils.player;
+using WoWs_Randomizer.utils.ship;
+using WoWs_Randomizer.utils.skills;
+using WoWs_Randomizer.objects.consumables;
+using WoWs_Randomizer.objects;
+using static WoWs_Randomizer.utils.ConsumableTypes;
 
 namespace WoWs_Randomizer
 {
@@ -59,23 +57,6 @@ namespace WoWs_Randomizer
             {
                 profileHandler.checkItem(MySettings.Server.ToString());
             }
-            /*
-            if ( MySettings != null )
-            {
-                if ( MySettings.GameVersion == null )
-                {
-                    LoadGameVersion();
-                } else
-                {
-                    CheckVersion();
-                }
-                profileHandler.checkItem(MySettings.Server.ToString());
-            } else
-            {
-                loadMyShipsToolStripMenuItem.Enabled = false;
-                LoadGameVersion();
-            }
-            */
             if (randomizerUpdater.IsUpdateRequired() == false && MySettings != null && MySettings.UserID != 0)
             {
                 LoadAllData();
@@ -84,15 +65,9 @@ namespace WoWs_Randomizer
                 OpenSettingsForceUpdate();
                 this.Refresh();
                 callUpdateAll = true;
-                /*
-                Thread.Sleep(1500);
-                MySettings = Commons.GetSettings();
-                UpdateAll(MySettings.UserID);
-                */
 
             } else
             {
-                //UpdateAll(MySettings.UserID);
                 callUpdateAll = true;
             }
         }
@@ -118,9 +93,36 @@ namespace WoWs_Randomizer
                 BGUpdater.RunWorkerAsync();
             } else
             {
-                readPersonalShipsFile();
-                LoadExcludedShips();
-                UpdateCounterLabels();
+                FinalizeLoad();
+            }
+        }
+
+        private void FinalizeLoad()
+        {
+            readPersonalShipsFile();
+            LoadExcludedShips();
+            UpdateCounterLabels();
+            AddConsumablesInfo();
+        }
+
+        private void AddConsumablesInfo()
+        {
+            ConsumablesInfoImporter import = WGAPI.GetConsumablesInfo();
+
+            foreach(KeyValuePair<string,List<ConsumablesInfoTypeImporter>> list in import.Consumables)
+            {
+                foreach(ConsumablesInfoTypeImporter con in list.Value)
+                {
+                    Console.WriteLine(con.Name);
+                    Ship ship = Program.AllShips.Find(e => e.ID == con.ID);
+                    if ( ship != null )
+                    {
+                        ConsumableType CType;
+                        Enum.TryParse(list.Key, out CType);
+                        if ( ship.Consumables == null ) { ship.Consumables = new List<ConsumableInfo>(); }
+                        ship.Consumables.Add(new ConsumableInfo() { Duration = con.Duration, Range = con.Range, Type = CType, Cooldown = con.Cooldown });
+                    }
+                }
             }
         }
 
@@ -151,91 +153,6 @@ namespace WoWs_Randomizer
                 }
             }
         }
-
-        /*
-
-        private async void CheckVersion()
-        {
-            CheckProgramVersion();
-
-            Settings MySettings = Commons.GetSettings();
-            if ( MySettings == null )
-            {
-                MySettings = new Settings();
-            }
-            DateTime Today = DateTime.Now;
-            
-            DateTime LastCheck = MySettings.LastChecked;
-
-            if ( LastCheck == null || DateTime.Compare(LastCheck.AddHours(23),Today) <= 0 )
-            {
-                MySettings.LastChecked = Today;
-
-                if (MySettings == null) { MessageBox.Show("Unable to load ships...Settings not found.", "Load Personal Ships Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
-
-                if (MySettings.UserID != 0)
-                {
-                    //await loadUserShipsInPort(MySettings.UserID, true);
-                }
-
-                VersionInfoImport Import = await WGAPI.GetVersionInfo();
-                if ( Import.Status.Equals("ok"))
-                {
-                    VersionInfo Info = Import.VersionInfo;
-                    if ( MySettings.GameVersion != null && MySettings.GameVersion.Equals(Info.GameVersion))
-                    {
-                        DateTime GameDate = Commons.ConvertToDate(Info.Updated);
-                        if ( DateTime.Compare(MySettings.GameUpdated,GameDate) != 0 )
-                        {
-                            //UpdateShips();
-                            //LoadModulesAsync();
-                            //await UpdateCommanderSkills();
-                            //await UpdateUpgrades();
-                            //await UpdateFlags();
-                            MySettings.GameUpdated = GameDate;
-                            MessageBox.Show("Game data has been updated (still same game version): " + GameDate.ToString());
-                        }
-                    } else
-                    {
-                        //UpdateShips();
-                        //LoadModulesAsync();
-                        //await UpdateCommanderSkills();
-                        //await UpdateUpgrades();
-                        //await UpdateFlags();
-                        MySettings.GameVersion = Info.GameVersion;
-                        DateTime GameDate = Commons.ConvertToDate(Info.Updated);
-                        MySettings.GameUpdated = GameDate;
-                        MessageBox.Show("Game version has changed: New version = " + Info.GameVersion);
-                    }
-                    Commons.SaveSettings(MySettings);
-                }
-            } else
-            {
-                MySettings.LastChecked = Today;
-                Commons.SaveSettings(MySettings);
-            }
-            if ( Program.AllShips == null || Program.AllShips.Count == 0 )
-            {
-                //UpdateShips();
-            }
-        }
-        private async void UpdateShips()
-        {
-            LoadingImage.Dock = DockStyle.Fill;
-            LoadingImage.Visible = true;
-
-            List<Ship> AllShips = await WGAPI.GetAllShipsFromWG();
-            if (AllShips != null)
-            {
-                BinarySerialize.WriteToBinaryFile<List<Ship>>(Commons.GetShipListFileName(), AllShips);
-                Program.AllShips = AllShips;
-            }
-
-            Thread.Sleep(1500);
-            LoadingImage.Dock = DockStyle.None;
-            LoadingImage.Visible = false;
-        }
-        */
 
         public void LoadExcludedShips()
         {
@@ -460,27 +377,6 @@ namespace WoWs_Randomizer
             }
             catch (Exception) { }
         }
-
-        /*
-        private async void LoadModulesAsync()
-        {
-            RandomizeButton.Enabled = false;
-            string txt = RandomizeButton.Text;
-            RandomizeButton.Text = "Loading data...";
-            try
-            {
-                Program.AllModules = await WGAPI.GetAllModules();
-                foreach(KeyValuePair<string,ModuleData> Mod in Program.AllModules)
-                {
-                    ModuleTranslator.Transfer(Mod.Value);
-                }
-                BinarySerialize.WriteToBinaryFile(Commons.GetModulesFileName(), Program.AllModules);
-            }
-            catch (Exception) {  }
-            RandomizeButton.Text = txt;
-            RandomizeButton.Enabled = true;
-        }
-        */
 
         private void BtnBuildMgr_Click(object sender, EventArgs e)
         {
@@ -759,6 +655,7 @@ namespace WoWs_Randomizer
         private void upgradesExaminerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ShipWiki wiki = new ShipWiki();
+            wiki.IsBuilderActive = false;
             wiki.Show();
         }
 
@@ -881,10 +778,8 @@ namespace WoWs_Randomizer
 
         private void BGUpdater_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            readPersonalShipsFile();
-            LoadExcludedShips();
+            FinalizeLoad();
 
-            UpdateCounterLabels();
             LoadingImage.Dock = DockStyle.None;
             LoadingImage.Visible = false;
         }

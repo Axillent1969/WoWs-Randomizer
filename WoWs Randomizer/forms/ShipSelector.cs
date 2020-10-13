@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WoWs_Randomizer.objects.ship;
+using WoWs_Randomizer.utils.ship;
 
 namespace WoWs_Randomizer.forms
 {
@@ -23,7 +23,10 @@ namespace WoWs_Randomizer.forms
         {
             List<string> selectionSource = new List<string>();
             foreach (Ship ship in Program.AllShips) {
-                selectionSource.Add(ship.Name);
+                if ( !ship.Name.StartsWith("["))
+                {
+                    selectionSource.Add(ship.Name);
+                }
             }
             selectionSource.Add(" --SELECT SHIP-- ");
             selectionSource.Sort();

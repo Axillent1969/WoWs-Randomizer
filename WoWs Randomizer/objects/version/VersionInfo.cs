@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace WoWs_Randomizer.objects.version
+namespace WoWs_Randomizer.utils.version
 
 {
     class VersionInfo

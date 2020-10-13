@@ -8,13 +8,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WoWs_Randomizer.api;
 using WoWs_Randomizer.objects;
-using WoWs_Randomizer.objects.module;
-using WoWs_Randomizer.objects.modules;
-using WoWs_Randomizer.objects.player;
-using WoWs_Randomizer.objects.ship;
-using WoWs_Randomizer.objects.skills;
-using WoWs_Randomizer.objects.upgrades;
-using WoWs_Randomizer.objects.version;
+using WoWs_Randomizer.objects.consumables;
+using WoWs_Randomizer.utils;
+using WoWs_Randomizer.utils.module;
+using WoWs_Randomizer.utils.modules;
+using WoWs_Randomizer.utils.player;
+using WoWs_Randomizer.utils.ship;
+using WoWs_Randomizer.utils.skills;
+using WoWs_Randomizer.utils.version;
 
 namespace WoWs_Randomizer.utils
 {

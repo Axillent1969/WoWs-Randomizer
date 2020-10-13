@@ -1,18 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Runtime.Remoting.Messaging;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using WoWs_Randomizer.objects.module;
-using WoWs_Randomizer.objects.modules;
-using WoWs_Randomizer.objects.ship;
-using WoWs_Randomizer.objects.ship.profile;
+using WoWs_Randomizer.utils.module;
+using WoWs_Randomizer.utils.modules;
+using WoWs_Randomizer.utils.ship;
+using WoWs_Randomizer.utils.ship.profile;
 using WoWs_Randomizer.utils.metrics;
+using WoWs_Randomizer.objects.consumables;
+using static WoWs_Randomizer.utils.ConsumableTypes;
+using WoWs_Randomizer.utils;
 
 namespace WoWs_Randomizer.forms
 {
@@ -20,6 +17,7 @@ namespace WoWs_Randomizer.forms
     {
         private Ship selectedShip = null;
         private ToolTip ttip = new ToolTip();
+        public bool IsBuilderActive = false;
 
         public ShipWiki()
         {
@@ -524,178 +522,240 @@ namespace WoWs_Randomizer.forms
 
         private void addConsumablesImages(Ship selectedShip)
         {
-            for(int i = 1; i <= 10; i++)
-            {
-                PictureBox pb = (PictureBox)General.Controls["consumable" + i];
-                pb.Visible = false;
-            }
+            lblDuration1.Text = "";
+            lblRange1.Text = "";
+            lblCooldown1.Text = "";
 
-            int upgradeCount = 0;
+            ConsumableControlsHandler handler = new ConsumableControlsHandler(General.Controls, selectedShip);
+            handler.HideAll();
+            
+            //for(int i = 1; i <= 10; i++)
+            //{
+            //    PictureBox pb = (PictureBox)General.Controls["consumable" + i];
+            //    pb.Visible = false;
+            //}
+
+            //int upgradeCount = 0;
             UpgradeCorrections corrections = new UpgradeCorrections(selectedShip);
             if ( corrections.canEquipRepairParty())
             {
-                upgradeCount++;
+                handler.AddConsumable(ConsumableType.Repair,"Repair party");
+/*                upgradeCount++;
                 PictureBox pb = (PictureBox)General.Controls["consumable" + upgradeCount];
                 pb.Image = Properties.Resources.Consumable_PCY010_RegenCrew;
                 ttip.SetToolTip(pb,"Repair party");
+
+                pb.Click += Consumable_Click;
                 pb.Refresh();
                 pb.Visible = true;
-            }
+*/            }
             if ( corrections.canEquipSpecializedHeal())
             {
-                upgradeCount++;
+                handler.AddConsumable(ConsumableType.SpecializedHeal, "Specialized Repair party");
+/*                upgradeCount++;
                 PictureBox pb = (PictureBox)General.Controls["consumable" + upgradeCount];
                 pb.Image = Properties.Resources.Consumable_PCY010_SpecializedHeal_Premium;
                 ttip.SetToolTip(pb, "Specialized Repair party");
+
+                pb.Click += Consumable_Click;
                 pb.Refresh();
-                pb.Visible = true;
+                pb.Visible = true;*/
             }
             if (corrections.canEquipDefAAMod1())
             {
-                upgradeCount++;
+                handler.AddConsumable(ConsumableType.DefAA, "Defensive AA");
+/*                upgradeCount++;
                 PictureBox pb = (PictureBox)General.Controls["consumable" + upgradeCount];
                 pb.Image = Properties.Resources.Consumable_PCY011_AirDefenseDispPremium;
                 ttip.SetToolTip(pb, "Defensive AA");
+
+                pb.Click += Consumable_Click;
                 pb.Refresh();
-                pb.Visible = true;
+                pb.Visible = true;*/
             }
             if (corrections.canEquipEngineBoostMod1())
             {
-                upgradeCount++;
+                handler.AddConsumable(ConsumableType.SpeedBoost, "Engine Boost");
+/*                upgradeCount++;
                 PictureBox pb = (PictureBox)General.Controls["consumable" + upgradeCount];
                 pb.Image = Properties.Resources.Consumable_PCY015_SpeedBoosterPremium;
                 ttip.SetToolTip(pb, "Engine Boost");
+
+                pb.Click += Consumable_Click;
                 pb.Refresh();
-                pb.Visible = true;
+                pb.Visible = true;*/
             }
             if (corrections.canEquipHydroMod1())
             {
-                upgradeCount++;
+                handler.AddConsumable(ConsumableType.Hydro, "Hydroacoustic Search");
+ /*               upgradeCount++;
                 PictureBox pb = (PictureBox)General.Controls["consumable" + upgradeCount];
                 pb.Image = Properties.Resources.Consumable_PCY016_SonarSearchPremium;
                 ttip.SetToolTip(pb, "Hydroacoustic Search");
+
+                pb.Click += Consumable_Click;
                 pb.Refresh();
-                pb.Visible = true;
+                pb.Visible = true;*/
             }
 
             if (corrections.canEquipSmokeGeneratorMod1())
             {
-                upgradeCount++;
+                handler.AddConsumable(ConsumableType.Smoke, "Smoke Generator");
+ /*               upgradeCount++;
                 PictureBox pb = (PictureBox)General.Controls["consumable" + upgradeCount];
                 pb.Image = Properties.Resources.Consumable_PCY006_SmokeGenerator;
                 ttip.SetToolTip(pb, "Smoke Generator");
+
+                pb.Click += Consumable_Click;
                 pb.Refresh();
-                pb.Visible = true;
+                pb.Visible = true;*/
             }
             if (corrections.canEquipCrawlingSmoke())
             {
-                upgradeCount++;
+                handler.AddConsumable(ConsumableType.CrawlingSmoke, "Crawling Smoke Generator");
+/*                upgradeCount++;
                 PictureBox pb = (PictureBox)General.Controls["consumable" + upgradeCount];
                 pb.Image = Properties.Resources.Consumable_PCY006_SmokeGeneratorCrawler;
                 ttip.SetToolTip(pb, "Crawling Smoke Generator");
+
+                pb.Click += Consumable_Click;
                 pb.Refresh();
-                pb.Visible = true;
+                pb.Visible = true;*/
             }
             if (corrections.canEquipExhaustSmoke())
             {
-                upgradeCount++;
+                handler.AddConsumable(ConsumableType.ExhaustSmoke, "Exhaust Smoke Generator");
+/*                upgradeCount++;
                 PictureBox pb = (PictureBox)General.Controls["consumable" + upgradeCount];
                 pb.Image = Properties.Resources.Consumable_PCY006_SmokeGeneratorOil;
                 ttip.SetToolTip(pb, "Exhaust Smoke Generator");
+
+                pb.Click += Consumable_Click;
                 pb.Refresh();
-                pb.Visible = true;
+                pb.Visible = true;*/
             }
 
             if (corrections.canEquipCatapultFighter())
             {
-                upgradeCount++;
+                handler.AddConsumable(ConsumableType.CatapultFighter, "Catapult Fighter");
+ /*               upgradeCount++;
                 PictureBox pb = (PictureBox)General.Controls["consumable" + upgradeCount];
                 pb.Image = Properties.Resources.Consumable_PCY012_FighterPremium;
                 ttip.SetToolTip(pb, "Catapult fighter");
+
+                pb.Click += Consumable_Click;
                 pb.Refresh();
-                pb.Visible = true;
+                pb.Visible = true;*/
             }
             if (corrections.canEquipSpottingAircraftMod1())
             {
-                upgradeCount++;
+                handler.AddConsumable(ConsumableType.SpotterPlane, "Spotting Aircraft");
+/*                upgradeCount++;
                 PictureBox pb = (PictureBox)General.Controls["consumable" + upgradeCount];
                 pb.Image = Properties.Resources.Consumable_PCY005_Spotter;
                 ttip.SetToolTip(pb, "Spotting aircraft");
+
+                pb.Click += Consumable_Click;
                 pb.Refresh();
-                pb.Visible = true;
+                pb.Visible = true;*/
             }
             if (corrections.canEquipSRM1())
             {
-                upgradeCount++;
+                handler.AddConsumable(ConsumableType.Radar, "Surveillance Radar");
+ /*               upgradeCount++;
                 PictureBox pb = (PictureBox)General.Controls["consumable" + upgradeCount];
                 pb.Image = Properties.Resources.Consumable_PCY020_RadarPremium;
+                pb.AccessibleName = ConsumableType.Radar.ToString();
                 ttip.SetToolTip(pb, "Surveillance Radar");
+
+                pb.Click += Consumable_Click;
                 pb.Refresh();
-                pb.Visible = true;
+                pb.Visible = true;*/
             }
 
             if ( corrections.canEquipMainBatteryReloadBooster())
             {
-                upgradeCount++;
+                handler.AddConsumable(ConsumableType.MainBatteryReloadBoost, "Main battery Reload Booster");
+ /*               upgradeCount++;
                 PictureBox pb = (PictureBox)General.Controls["consumable" + upgradeCount];
                 pb.Image = Properties.Resources.Consumable_PCY022_ArtilleryBoosterPremium;
                 ttip.SetToolTip(pb, "Main Battery Reload Booster");
+
+                pb.Click += Consumable_Click;
                 pb.Refresh();
-                pb.Visible = true;
+                pb.Visible = true;*/
             }
             if ( corrections.canEquipTorpReloadBooster())
             {
-                upgradeCount++;
+                handler.AddConsumable(ConsumableType.TorpedoReloadBoost, "Torpedo Reload Booster");
+/*                upgradeCount++;
                 PictureBox pb = (PictureBox)General.Controls["consumable" + upgradeCount];
                 pb.Image = Properties.Resources.Consumable_PCY018_TorpedoReloaderPremium;
                 ttip.SetToolTip(pb, "Torpedo Reload Booster");
+
+                pb.Click += Consumable_Click;
                 pb.Refresh();
-                pb.Visible = true;
+                pb.Visible = true;*/
             }
             if (corrections.canEquipCAPFighters())
             {
-                upgradeCount++;
+                handler.AddConsumable(ConsumableType.CAPFighter, "CAP Fighters");
+/*                upgradeCount++;
                 PictureBox pb = (PictureBox)General.Controls["consumable" + upgradeCount];
                 pb.Image = Properties.Resources.Consumable_PCY012_FighterPremium;
                 ttip.SetToolTip(pb, "CAP Fighters");
+
+                pb.Click += Consumable_Click;
                 pb.Refresh();
-                pb.Visible = true;
+                pb.Visible = true;*/
             }
             if (corrections.canEquipEngineCooling())
             {
-                upgradeCount++;
+                handler.AddConsumable(ConsumableType.EngineCooling, "Engine Cooling");
+/*                upgradeCount++;
                 PictureBox pb = (PictureBox)General.Controls["consumable" + upgradeCount];
                 pb.Image = Properties.Resources.Consumable_PCY015_SpeedBoosterPremium;
                 ttip.SetToolTip(pb, "Engine Cooling");
+
+                pb.Click += Consumable_Click;
                 pb.Refresh();
-                pb.Visible = true;
+                pb.Visible = true;*/
             }
             if (corrections.canEquipPatrolFighters())
             {
-                upgradeCount++;
+                handler.AddConsumable(ConsumableType.PatrolFighter, "Patrol Fighters");
+/*                upgradeCount++;
                 PictureBox pb = (PictureBox)General.Controls["consumable" + upgradeCount];
                 pb.Image = Properties.Resources.Consumable_PCY012_FighterPremium;
                 ttip.SetToolTip(pb, "Patrol Fighters");
+
+                pb.Click += Consumable_Click;
                 pb.Refresh();
-                pb.Visible = true;
+                pb.Visible = true;*/
             }
             if (corrections.canEquipAircraftRepair())
             {
-                upgradeCount++;
+                handler.AddConsumable(ConsumableType.AircraftRepair, "Aircraft Repair");
+/*                upgradeCount++;
                 PictureBox pb = (PictureBox)General.Controls["consumable" + upgradeCount];
                 pb.Image = Properties.Resources.Consumable_PCY036_AircraftRepair;
                 ttip.SetToolTip(pb, "Aircraft Repair");
+
+                pb.Click += Consumable_Click;
                 pb.Refresh();
-                pb.Visible = true;
+                pb.Visible = true;*/
             }
             if (corrections.canEquipMaxDepth())
             {
-                upgradeCount++;
+                handler.AddConsumable(ConsumableType.MaxDepth, "Maximum Depth");
+/*                upgradeCount++;
                 PictureBox pb = (PictureBox)General.Controls["consumable" + upgradeCount];
                 pb.Image = Properties.Resources.Consumable_PCY043_Max_Depth;
                 ttip.SetToolTip(pb, "Maximum Depth");
+
+                pb.Click += Consumable_Click;
                 pb.Refresh();
-                pb.Visible = true;
+                pb.Visible = true;*/
             }
         }
 
@@ -828,6 +888,11 @@ namespace WoWs_Randomizer.forms
             headline.Text = text;
             headline.Font = new Font(headline.Font, FontStyle.Bold);
             headline.AutoSize = true;
+            if ( IsBuilderActive )
+            {
+                headline.Click += selectPanel_Click;
+                headline.Cursor = Cursors.Hand;
+            }
             return headline;
         }
 
@@ -836,6 +901,11 @@ namespace WoWs_Randomizer.forms
             Label lblText = new Label();
             lblText.Text = text;
             lblText.AutoSize = true;
+            if ( IsBuilderActive )
+            {
+                lblText.Click += selectPanel_Click;
+                lblText.Cursor = Cursors.Hand;
+            }
             return lblText;
         }
 
@@ -852,6 +922,82 @@ namespace WoWs_Randomizer.forms
             {
                 SelectedShip = SelectedShip.Replace(' ', '_');
                 System.Diagnostics.Process.Start(HREF + SelectedShip);
+            }
+        }
+
+        private void Consumable_Click(object sender, EventArgs e)
+        {
+            lblCooldown1.Text = "";
+            lblRange1.Text = "";
+            lblDuration1.Text = "";
+            PictureBox pb = (PictureBox)sender;
+            if ( pb.AccessibleName == null || pb.AccessibleName.Equals("")) { return; }
+
+            Enum.TryParse(pb.AccessibleName, out ConsumableType CType);
+
+            if (selectedShip.Consumables != null)
+            {
+                ConsumableInfo info = selectedShip.Consumables.Find(c => c.Type == CType);
+                if (info != null)
+                {
+                    lblRange1.Text = "Range: " + info.Range.ToString() + " km";
+                    lblDuration1.Text = "Duration: " + info.Duration.ToString() + " sec";
+                    lblCooldown1.Text = "Cooldown: " + info.Cooldown.ToString() + " sec";
+
+                    
+                    lblRange1.Left = pb.Left;
+                    lblDuration1.Left = pb.Left;
+                    lblCooldown1.Left = pb.Left;
+                }
+            }
+        }
+
+        private void selectPanel_Click(object sender, EventArgs e)
+        {
+            if ( IsBuilderActive == false ) { return; }
+
+            Panel panel = null;
+            if (sender is Panel)
+            {
+                panel = (Panel)sender;
+            } else if (sender is PictureBox)
+            {
+                PictureBox pb = (PictureBox)sender;
+                panel = (Panel)pb.Parent;
+
+            } else if (sender is TableLayoutPanel)
+            {
+                TableLayoutPanel tl = (TableLayoutPanel)sender;
+                panel = (Panel)tl.Parent;
+            } else if ( sender is Label)
+            {
+                Label lbl = (Label)sender;
+                TableLayoutPanel tl = (TableLayoutPanel)lbl.Parent;
+                panel = (Panel)tl.Parent;
+            } else
+            {
+                return;
+            }
+            Console.WriteLine("Clicked: " + panel.Name);
+            if ( panel.AccessibleDescription == null || panel.AccessibleDescription.Equals(""))
+            {
+                panel.AccessibleDescription = "Selected";
+            } else
+            {
+                panel.AccessibleDescription = "";
+            }
+            panel.Refresh();
+        }
+
+        private void selectPanel_Paint(object sender, PaintEventArgs e)
+        {
+            Panel box = (Panel)sender;
+            if ( box.AccessibleDescription == null || box.AccessibleDescription.Equals(""))
+            {
+                box.BorderStyle = BorderStyle.None;
+            } else
+            {
+                ControlPaint.DrawBorder(e.Graphics, box.ClientRectangle, Color.Blue, ButtonBorderStyle.Solid);
             }
         }
     }

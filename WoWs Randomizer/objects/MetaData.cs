@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace WoWs_Randomizer.objects
+namespace WoWs_Randomizer.utils
 {
     [Serializable]
     public class MetaData

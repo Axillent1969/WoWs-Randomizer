@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
+using WoWs_Randomizer.utils;
 
-namespace WoWs_Randomizer.objects.upgrades
+namespace WoWs_Randomizer.objects.consumables
 {
     [Serializable]
     public class ConsumablesImporter

@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using WoWs_Randomizer.objects.upgrades;
+using WoWs_Randomizer.objects.consumables;
 
 namespace WoWs_Randomizer.utils.specialFlags
 {

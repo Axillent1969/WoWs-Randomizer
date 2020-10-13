@@ -5,20 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace WoWs_Randomizer.utils.version
+namespace WoWs_Randomizer.objects.consumables
 {
-    class ProgramVersion
+    class ConsumablesInfoImporter
     {
         [JsonProperty("status")]
         public string Status { get; set; }
         [JsonProperty("version")]
         public string Version { get; set; }
-        [JsonProperty("datetime")]
-        public string Updated { get; set; }
-        [JsonProperty("downloadlink")]
-        public string URL { get; set; }
-
-        [JsonProperty("changelog")]
-        public List<string> ChangeLog { get; set; }
+        [JsonProperty("consumables")]
+        public Dictionary<string,List<ConsumablesInfoTypeImporter>> Consumables { get; set; }
     }
 }

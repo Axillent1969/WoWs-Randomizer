@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace WoWs_Randomizer.objects.upgrades
+namespace WoWs_Randomizer.objects.consumables
 {
     [Serializable]
     public class Consumable
     {
         [JsonProperty("profile")]
-        public Dictionary<string,ConsumableProfile> Profile { get; set; }
+        public Dictionary<string, ConsumableProfile> Profile { get; set; }
         [JsonProperty("name")]
         public string Name { get; set; }
         [JsonProperty("price_gold")]

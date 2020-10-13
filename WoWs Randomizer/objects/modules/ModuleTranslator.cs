@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WoWs_Randomizer.objects.module;
+using WoWs_Randomizer.utils.module;
 
-namespace WoWs_Randomizer.objects.modules
+namespace WoWs_Randomizer.utils.modules
 {
     class ModuleTranslator
     {

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace WoWs_Randomizer.objects.player
+namespace WoWs_Randomizer.utils.player
 
 {
     [Serializable]

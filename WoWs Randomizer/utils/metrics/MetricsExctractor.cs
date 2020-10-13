@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using WoWs_Randomizer.objects;
-using WoWs_Randomizer.objects.module;
-using WoWs_Randomizer.objects.ship;
-using WoWs_Randomizer.objects.ship.profile;
+using WoWs_Randomizer.utils;
+using WoWs_Randomizer.utils.module;
+using WoWs_Randomizer.utils.ship;
+using WoWs_Randomizer.utils.ship.profile;
 using WoWs_Randomizer.utils.metrics;
 
 namespace WoWs_Randomizer.utils

@@ -1,17 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WoWs_Randomizer.api;
 using WoWs_Randomizer.objects;
 using WoWs_Randomizer.utils;
-using WoWs_Randomizer.objects.player;
+using WoWs_Randomizer.utils.player;
 
 namespace WoWs_Randomizer.forms
 {
@@ -24,7 +16,7 @@ namespace WoWs_Randomizer.forms
         }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0017:Simplify object initialization", Justification = "<Pending>")]
-        private async void BtnOK_ClickAsync(object sender, EventArgs e)
+        private void BtnOK_ClickAsync(object sender, EventArgs e)
         {
             Settings settings = new Settings();
             if ( this.Server.SelectedItem != null )

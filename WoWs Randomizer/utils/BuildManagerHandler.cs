@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
-using WoWs_Randomizer.objects;
-using WoWs_Randomizer.objects.upgrades;
+using WoWs_Randomizer.objects.consumables;
+using WoWs_Randomizer.utils;
 
 namespace WoWs_Randomizer.utils
 {
@@ -186,6 +186,7 @@ namespace WoWs_Randomizer.utils
                     Consumable Upgrade = Program.Upgrades.Find(x => x.ID == upgradeId);
                     if (Upgrade != null)
                     {
+                        Console.WriteLine(Upgrade.ID);
                         foreach (KeyValuePair<string, ConsumableProfile> Perk in Upgrade.Profile)
                         {
                             double value = GetPerkValueToAdd(Perk.Key, Perk.Value.Value);
@@ -808,6 +809,8 @@ namespace WoWs_Randomizer.utils
             } else if ( perkName.Equals("visibilityFactor"))
             {
                 ChangeConcealmentSurface(value);
+            } else
+            {
             }
         }
     }

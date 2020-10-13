@@ -5,20 +5,20 @@ using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using WoWs_Randomizer.objects;
-using WoWs_Randomizer.objects.module;
-using WoWs_Randomizer.objects.player;
-using WoWs_Randomizer.objects.ship;
-using WoWs_Randomizer.objects.skills;
-using WoWs_Randomizer.objects.upgrades;
-using WoWs_Randomizer.objects.version;
 using WoWs_Randomizer.utils;
+using WoWs_Randomizer.utils.module;
+using WoWs_Randomizer.utils.player;
+using WoWs_Randomizer.utils.ship;
+using WoWs_Randomizer.utils.skills;
+using WoWs_Randomizer.utils.version;
+using WoWs_Randomizer.objects.consumables;
+using WoWs_Randomizer.objects;
 
 namespace WoWs_Randomizer.api
 {
     static class WGAPI
     {
-        static readonly string APP_ID = "s";
+        static readonly string APP_ID = "sss";
         static HttpClient Client = new HttpClient();
 
         public static ProgramVersion GetProgramVersion()
@@ -29,6 +29,18 @@ namespace WoWs_Randomizer.api
                 wc.DownloadFile("https://onedrive.live.com/download?cid=919CD8D21AC2180D&resid=919CD8D21AC2180D%2116427&authkey=AOg1igxPEZw9EWw", jsonFile);
                 string jsonText = File.ReadAllText(jsonFile);
                 ProgramVersion Import = JsonConvert.DeserializeObject<ProgramVersion>(jsonText);
+                return Import;
+            }
+        }
+
+        public static ConsumablesInfoImporter GetConsumablesInfo()
+        {
+            using (WebClient wc = new WebClient())
+            {
+                string jsonFile = Commons.GetCurrentDirectory() + "/coninfotype.json";
+                wc.DownloadFile("https://onedrive.live.com/download?cid=919CD8D21AC2180D&resid=919CD8D21AC2180D%2116820&authkey=AEsjf3lBZE8zABY", jsonFile);
+                string jsonText = File.ReadAllText(jsonFile);
+                ConsumablesInfoImporter Import = JsonConvert.DeserializeObject<ConsumablesInfoImporter>(jsonText);
                 return Import;
             }
         }

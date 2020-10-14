@@ -16,6 +16,7 @@ using WoWs_Randomizer.utils.player;
 using WoWs_Randomizer.utils.ship;
 using WoWs_Randomizer.utils.skills;
 using WoWs_Randomizer.utils.version;
+using static WoWs_Randomizer.utils.ConsumableTypes;
 
 namespace WoWs_Randomizer.utils
 {
@@ -196,8 +197,8 @@ namespace WoWs_Randomizer.utils
             List<Ship> AllShips = WGAPI.GetAllShipsFromWG();
             if (AllShips != null)
             {
-                BinarySerialize.WriteToBinaryFile<List<Ship>>(Commons.GetShipListFileName(), AllShips);
                 Program.AllShips = AllShips;
+                //BinarySerialize.WriteToBinaryFile<List<Ship>>(Commons.GetShipListFileName(), AllShips);
             }
         }
 
@@ -243,6 +244,38 @@ namespace WoWs_Randomizer.utils
             }
         }
 
+        public static void AddConsumablesInfo(Settings mySettings, bool ForceUpdate = false)
+        {
+            if ( mySettings == null ) { return; }
+            ConsumablesInfoImporter import = WGAPI.GetConsumablesInfo();
+            if ( !import.Status.Equals("ok")) { return; }
+            
+            if ( ForceUpdate || !mySettings.ConsumablesInfoVersion.Equals(import.Version))
+            {
+                foreach(Ship ship in Program.AllShips)
+                {
+                    ship.Consumables = new List<ConsumableInfo>();
+                }
+                mySettings.ConsumablesInfoVersion = import.Version;
+
+                foreach (KeyValuePair<string, List<ConsumablesInfoTypeImporter>> list in import.Consumables)
+                {
+                    ConsumableType CType;
+                    Enum.TryParse(list.Key, out CType);
+
+                    foreach (ConsumablesInfoTypeImporter con in list.Value)
+                    {
+                        List<Ship> ShipList = ShipFinder.FindShips(con.ID, con.Group, con.Exceptions);
+                        foreach (Ship ship in ShipList)
+                        {
+                            ship.Consumables.Add(new ConsumableInfo() { Duration = con.Duration, Range = con.Range, Type = CType, Cooldown = con.Cooldown, Charges = con.Charges, ExtraInfo = con.ExtraInfo });
+                        }
+                    }
+                }
+                BinarySerialize.WriteToBinaryFile<List<Ship>>(Commons.GetShipListFileName(), Program.AllShips);
+            }
+        }
+
         public void UpdateAll()
         {
             Settings MySettings = Commons.GetSettings();
@@ -250,6 +283,7 @@ namespace WoWs_Randomizer.utils
             this.LoadGameVersionAsync(MySettings);
             this.UpdateModules();
             this.UpdateShips();
+            Updater.AddConsumablesInfo(MySettings, true);
             this.UpdateUpgrades();
             this.UpdateCommanderSkills();
             this.UpdateFlags();
@@ -259,13 +293,13 @@ namespace WoWs_Randomizer.utils
             if (MySettings.GameVersion != null && MySettings.GameVersion.Equals(this.GetGameVersion()))
             {
                 MySettings.GameUpdated = this.GetGameDate();
-                MessageBox.Show("Game data has been updated (still same game version): " + this.GetGameDate().ToString());
+                MessageBox.Show("Game data has been updated (still same game version): " + this.GetGameDate().ToString(),"Game Data Updated",MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
             else
             {
                 MySettings.GameUpdated = this.GetGameDate();
                 MySettings.GameVersion = this.GetGameVersion();
-                MessageBox.Show("Game version has changed: New version = " + this.GetGameVersion());
+                MessageBox.Show("Game version has changed: New version = " + this.GetGameVersion(), "Game Data Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             Commons.SaveSettings(MySettings);
         }

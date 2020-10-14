@@ -133,6 +133,12 @@
   <data name="Consumable_PCY009_CrashCrew" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Consumable_PCY009_CrashCrew.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Consumable_PCY009_CrashCrewPremium" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Consumable_PCY009_CrashCrewPremium.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Consumable_PCY009_CrashCrew_Limited_Premium" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Consumable_PCY009_CrashCrew_Limited_Premium.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Consumable_PCY010_RegenCrew" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Consumable_PCY010_RegenCrew.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -145,11 +151,20 @@
   <data name="Consumable_PCY012_FighterPremium" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Consumable_PCY012_FighterPremium.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Consumable_PCY014_SmokeGenerator_Cycle_Premium" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Consumable_PCY014_SmokeGenerator_Cycle_Premium.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Consumable_PCY015_SpeedBoosterPremium" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Consumable_PCY015_SpeedBoosterPremium.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Consumable_PCY015_SpeedBooster_Imp_Premium" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Consumable_PCY015_SpeedBooster_Imp_Premium.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Consumable_PCY016_SonarSearchPremium" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Consumable_PCY016_SonarSearchPremium.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Consumable_PCY016_SonarSearch_Short_Premium" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Consumable_PCY016_SonarSearch_Short_Premium.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Consumable_PCY018_TorpedoReloaderPremium" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Consumable_PCY018_TorpedoReloaderPremium.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

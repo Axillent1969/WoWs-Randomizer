@@ -113,6 +113,26 @@ namespace WoWs_Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Consumable_PCY009_CrashCrew_Limited_Premium {
+            get {
+                object obj = ResourceManager.GetObject("Consumable_PCY009_CrashCrew_Limited_Premium", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Consumable_PCY009_CrashCrewPremium {
+            get {
+                object obj = ResourceManager.GetObject("Consumable_PCY009_CrashCrewPremium", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Consumable_PCY010_RegenCrew {
             get {
                 object obj = ResourceManager.GetObject("Consumable_PCY010_RegenCrew", resourceCulture);
@@ -153,9 +173,39 @@ namespace WoWs_Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Consumable_PCY014_SmokeGenerator_Cycle_Premium {
+            get {
+                object obj = ResourceManager.GetObject("Consumable_PCY014_SmokeGenerator_Cycle_Premium", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Consumable_PCY015_SpeedBooster_Imp_Premium {
+            get {
+                object obj = ResourceManager.GetObject("Consumable_PCY015_SpeedBooster_Imp_Premium", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Consumable_PCY015_SpeedBoosterPremium {
             get {
                 object obj = ResourceManager.GetObject("Consumable_PCY015_SpeedBoosterPremium", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Consumable_PCY016_SonarSearch_Short_Premium {
+            get {
+                object obj = ResourceManager.GetObject("Consumable_PCY016_SonarSearch_Short_Premium", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

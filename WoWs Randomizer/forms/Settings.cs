@@ -9,6 +9,7 @@ namespace WoWs_Randomizer.forms
 {
     public partial class FormSettings : Form
     {
+
         public FormSettings()
         {
             InitializeComponent();
@@ -88,7 +89,7 @@ namespace WoWs_Randomizer.forms
                 this.Nickname.Text = MySettings.Nickname;
                 this.Server.SelectedItem = MySettings.Server;
                 this.UserID.Text = MySettings.UserID.ToString();
-
+                
                 if ( MySettings.GameUpdated != null )
                 {
                     this.lblUpdatedTime.Text = MySettings.GameUpdated.ToString();

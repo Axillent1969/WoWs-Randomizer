@@ -12,6 +12,7 @@ namespace WoWs_Randomizer.utils
     class ConsumableControlsHandler
     {
         private int LastControl = 1;
+        private static int MAX_CONTROLS = 8;
         private ControlCollection PlacementCollection = null;
         private Dictionary<ConsumableType, Bitmap> map = new Dictionary<ConsumableType, Bitmap>();
         private Ship selectedShip = null;
@@ -24,7 +25,7 @@ namespace WoWs_Randomizer.utils
             HideAll();
         }
 
-        public void AddConsumable(ConsumableType CType, string TTipText = "")
+        public void AddConsumable(ConsumableType CType)
         {
             PictureBox pb = (PictureBox)PlacementCollection["consumable" + LastControl];
             pb.AccessibleName = CType.ToString();
@@ -69,11 +70,32 @@ namespace WoWs_Randomizer.utils
                 lbl3.Text = "Duration: " + info.Duration.ToString() + " sec.";
                 lbl3.Visible = true;
             }
+
+            if ( info.Charges > 0 )
+            {
+                Label lbl4 = (Label)PlacementCollection["lblCharges" + LastControl];
+                if ( info.Charges == 99)
+                {
+                    lbl4.Text = "Charges: Unlimited";
+                }
+                else
+                {
+                    lbl4.Text = "Charges: " + info.Charges.ToString();
+                }
+                lbl4.Visible = true;
+            }
+
+            if (!info.ExtraInfo.Equals(""))
+            {
+                Label lbl5 = (Label)PlacementCollection["lblExtra" + LastControl];
+                lbl5.Text = info.ExtraInfo;
+                lbl5.Visible = true;
+            }
         }
 
         public void HideAll()
         {
-            for (int i = 1; i <= 10; i++)
+            for (int i = 1; i <= MAX_CONTROLS; i++)
             {
                 PictureBox pb = (PictureBox)PlacementCollection["consumable" + i];
                 pb.Visible = false;
@@ -89,6 +111,14 @@ namespace WoWs_Randomizer.utils
                 Label lbl3 = (Label)PlacementCollection["lblDuration" + i];
                 lbl3.Text = "";
                 lbl3.Visible = false;
+
+                Label lbl4 = (Label)PlacementCollection["lblExtra" + i];
+                lbl4.Text = "";
+                lbl4.Visible = false;
+
+                Label lbl5 = (Label)PlacementCollection["lblCharges" + i];
+                lbl5.Text = "";
+                lbl5.Visible = false;
 
             }
             LastControl = 1;
@@ -114,6 +144,11 @@ namespace WoWs_Randomizer.utils
             map.Add(ConsumableType.CAPFighter, Properties.Resources.Consumable_PCY012_FighterPremium);
             map.Add(ConsumableType.EngineCooling, Properties.Resources.Consumable_PCY015_SpeedBoosterPremium);
             map.Add(ConsumableType.PatrolFighter, Properties.Resources.Consumable_PCY012_FighterPremium);
+            map.Add(ConsumableType.DamageControlParty, Properties.Resources.Consumable_PCY009_CrashCrewPremium);
+            map.Add(ConsumableType.FastDamageControlParty, Properties.Resources.Consumable_PCY009_CrashCrew_Limited_Premium);
+            map.Add(ConsumableType.ShortBurstSmoke, Properties.Resources.Consumable_PCY014_SmokeGenerator_Cycle_Premium);
+            map.Add(ConsumableType.EmergencyEnginePower, Properties.Resources.Consumable_PCY015_SpeedBooster_Imp_Premium);
+            map.Add(ConsumableType.ShortRangeHydro, Properties.Resources.Consumable_PCY016_SonarSearch_Short_Premium);
         }
 
         private ConsumableInfo GetConsumableInfo(ConsumableType CType)
@@ -124,9 +159,11 @@ namespace WoWs_Randomizer.utils
                 info = selectedShip.Consumables.Find(c => c.Type == CType);
                 if (info != null)
                 {
+                    //Console.WriteLine("INFO: " + info.Type.ToString());
                     return info;
                 }
             }
+            //Console.WriteLine("Returning null...");
             return info;
         }
     }

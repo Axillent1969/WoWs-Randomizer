@@ -12,6 +12,7 @@ namespace WoWs_Randomizer.objects
         public string GameVersion { get; set; }
         public DateTime GameUpdated { get; set; }
         public DateTime LastChecked { get; set; }
+        public string ConsumablesInfoVersion { get; set; }
 
     }
 }

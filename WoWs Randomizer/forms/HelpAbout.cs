@@ -42,7 +42,8 @@ namespace WoWs_Randomizer.forms
             Settings settings = Commons.GetSettings();
             gameVersion.Text = settings.GameVersion;
             gameDate.Text = settings.GameUpdated.ToString();
-
+            string cinfo = (settings.ConsumablesInfoVersion == null || settings.ConsumablesInfoVersion.Equals("")) ? "": settings.ConsumablesInfoVersion;
+            lblConsumablesInfoVer.Text = cinfo;
         }
 
         private void CloseButton_Click(object sender, EventArgs e)

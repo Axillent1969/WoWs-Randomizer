@@ -16,6 +16,7 @@ using WoWs_Randomizer.utils.skills;
 using WoWs_Randomizer.objects.consumables;
 using WoWs_Randomizer.objects;
 using static WoWs_Randomizer.utils.ConsumableTypes;
+using WoWs_Randomizer.utils.modules;
 
 namespace WoWs_Randomizer
 {
@@ -107,23 +108,12 @@ namespace WoWs_Randomizer
 
         private void AddConsumablesInfo()
         {
-            ConsumablesInfoImporter import = WGAPI.GetConsumablesInfo();
+            bool ForceSave = (Program.AllShips[0].Consumables == null || Program.AllShips[0].Consumables.Count == 0);
 
-            foreach(KeyValuePair<string,List<ConsumablesInfoTypeImporter>> list in import.Consumables)
-            {
-                foreach(ConsumablesInfoTypeImporter con in list.Value)
-                {
-                    Console.WriteLine(con.Name);
-                    Ship ship = Program.AllShips.Find(e => e.ID == con.ID);
-                    if ( ship != null )
-                    {
-                        ConsumableType CType;
-                        Enum.TryParse(list.Key, out CType);
-                        if ( ship.Consumables == null ) { ship.Consumables = new List<ConsumableInfo>(); }
-                        ship.Consumables.Add(new ConsumableInfo() { Duration = con.Duration, Range = con.Range, Type = CType, Cooldown = con.Cooldown });
-                    }
-                }
-            }
+            Settings mySettings = Commons.GetSettings();
+            Updater.AddConsumablesInfo(mySettings,ForceSave);
+            Commons.SaveSettings(mySettings);
+
         }
 
         private void UpdateCounterLabels()
@@ -413,6 +403,7 @@ namespace WoWs_Randomizer
         private void OpenSettingsForceUpdate()
         {
             FormSettings settingsForm = new FormSettings();
+
             if (settingsForm.ShowDialog(this) == DialogResult.OK)
             {
                 callUpdateAll = true;

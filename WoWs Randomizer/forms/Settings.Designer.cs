@@ -140,7 +140,7 @@
             // lblUpdatedTime
             // 
             this.lblUpdatedTime.AutoSize = true;
-            this.lblUpdatedTime.Location = new System.Drawing.Point(101, 224);
+            this.lblUpdatedTime.Location = new System.Drawing.Point(101, 227);
             this.lblUpdatedTime.Name = "lblUpdatedTime";
             this.lblUpdatedTime.Size = new System.Drawing.Size(10, 13);
             this.lblUpdatedTime.TabIndex = 10;
@@ -149,7 +149,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(19, 207);
+            this.label4.Location = new System.Drawing.Point(23, 207);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(76, 13);
             this.label4.TabIndex = 11;
@@ -158,7 +158,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(19, 224);
+            this.label5.Location = new System.Drawing.Point(23, 227);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(66, 13);
             this.label5.TabIndex = 12;
@@ -168,7 +168,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(379, 265);
+            this.ClientSize = new System.Drawing.Size(379, 276);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.lblUpdatedTime);

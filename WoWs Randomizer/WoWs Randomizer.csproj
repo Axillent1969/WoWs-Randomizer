@@ -239,6 +239,7 @@
     <Compile Include="utils\metrics\MetricsExctractor.cs" />
     <Compile Include="utils\metrics\MetricsTableComposer.cs" />
     <Compile Include="utils\enums\ShipTypes.cs" />
+    <Compile Include="utils\ShipFinder.cs" />
     <Compile Include="utils\ShipRandomizer.cs" />
     <Compile Include="utils\specialFlags\Flags.cs" />
     <Compile Include="utils\Updater.cs" />
@@ -311,6 +312,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Anchor.ico" />
+    <None Include="Resources\Consumable_PCY016_SonarSearch_Short_Premium.png" />
+    <None Include="Resources\Consumable_PCY015_SpeedBooster_Imp_Premium.png" />
+    <None Include="Resources\Consumable_PCY014_SmokeGenerator_Cycle_Premium.png" />
+    <None Include="Resources\Consumable_PCY009_CrashCrew_Limited_Premium.png" />
+    <None Include="Resources\Consumable_PCY009_CrashCrewPremium.png" />
     <None Include="Resources\Consumable_PCY036_AircraftRepair.png" />
     <None Include="Resources\Consumable_PCY043_Max_Depth.png" />
     <None Include="Resources\Consumable_PCY010_RegenCrew.png" />

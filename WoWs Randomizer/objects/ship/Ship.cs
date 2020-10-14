@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using WoWs_Randomizer.objects.consumables;
 using WoWs_Randomizer.utils.ship.profile;
+using static WoWs_Randomizer.utils.ConsumableTypes;
 
 namespace WoWs_Randomizer.utils.ship
 {
@@ -55,6 +56,17 @@ namespace WoWs_Randomizer.utils.ship
         public string Name { get; set; }
 
         public List<ConsumableInfo> Consumables { get; set; }
+
+        public ConsumableInfo GetConsumableInfo(ConsumableType CType)
+        {
+            ConsumableInfo info = null;
+            if (this.Consumables != null)
+            {
+                info = this.Consumables.Find(c => c.Type == CType);
+                return info;
+            }
+            return info;
+        }
 
         public bool Equals(Ship other)
         {

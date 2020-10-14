@@ -186,7 +186,7 @@ namespace WoWs_Randomizer.utils
                     Consumable Upgrade = Program.Upgrades.Find(x => x.ID == upgradeId);
                     if (Upgrade != null)
                     {
-                        Console.WriteLine(Upgrade.ID);
+                        //Console.WriteLine(Upgrade.ID);
                         foreach (KeyValuePair<string, ConsumableProfile> Perk in Upgrade.Profile)
                         {
                             double value = GetPerkValueToAdd(Perk.Key, Perk.Value.Value);

@@ -181,6 +181,7 @@
     </Compile>
     <Compile Include="objects\consumables\ConsumablesInfoImporter.cs" />
     <Compile Include="objects\consumables\ConsumablesInfoTypeImporter.cs" />
+    <Compile Include="objects\consumables\ConsumableTypeGroups.cs" />
     <Compile Include="utils\ConsumableControlsHandler.cs" />
     <Compile Include="utils\enums\ConsumableTypes.cs" />
     <Compile Include="objects\modules\ModuleArtillery.cs" />

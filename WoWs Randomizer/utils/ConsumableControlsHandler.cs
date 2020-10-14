@@ -4,7 +4,6 @@ using System.Windows.Forms;
 using System.Drawing;
 using static System.Windows.Forms.Control;
 using static WoWs_Randomizer.utils.ConsumableTypes;
-using WoWs_Randomizer.utils.ship;
 using WoWs_Randomizer.objects.consumables;
 
 namespace WoWs_Randomizer.utils
@@ -14,38 +13,41 @@ namespace WoWs_Randomizer.utils
         private int LastControl = 1;
         private static int MAX_CONTROLS = 8;
         private ControlCollection PlacementCollection = null;
-        private Dictionary<ConsumableType, Bitmap> map = new Dictionary<ConsumableType, Bitmap>();
-        private Ship selectedShip = null;
+        private Dictionary<ConsumableType, Bitmap> imageMap = new Dictionary<ConsumableType, Bitmap>();
 
-        public ConsumableControlsHandler(ControlCollection Controls, Ship SelectedShip)
+        public ConsumableControlsHandler(ControlCollection Controls)
         {
             this.PlacementCollection = Controls;
-            this.selectedShip = SelectedShip;
             LoadBitmaps();
             HideAll();
         }
 
-        public void AddConsumable(ConsumableType CType)
+        public void AddConsumable(ConsumableInfo info)
+        {
+            if (PlacementCollection == null) { return; }
+            if ( info != null && LastControl <= MAX_CONTROLS)
+            {
+                AddPicture(info.Type);
+                AddInfoText(info);
+                LastControl++;
+            }
+        }
+
+        private void AddPicture(ConsumableType CType)
         {
             PictureBox pb = (PictureBox)PlacementCollection["consumable" + LastControl];
             pb.AccessibleName = CType.ToString();
 
-            if ( map.ContainsKey(CType))
+            if (imageMap.ContainsKey(CType))
             {
-                pb.Image = map[CType];
-            } else
+                pb.Image = imageMap[CType];
+            }
+            else
             {
                 pb.Image = null;
             }
-
-            ConsumableInfo info = GetConsumableInfo(CType);
-            if ( info != null )
-            {
-                AddInfoText(info);
-            }
             pb.Refresh();
             pb.Visible = true;
-            LastControl++;
         }
 
         private void AddInfoText(ConsumableInfo info)
@@ -95,6 +97,7 @@ namespace WoWs_Randomizer.utils
 
         public void HideAll()
         {
+            if (PlacementCollection == null) { return; }
             for (int i = 1; i <= MAX_CONTROLS; i++)
             {
                 PictureBox pb = (PictureBox)PlacementCollection["consumable" + i];
@@ -126,45 +129,29 @@ namespace WoWs_Randomizer.utils
 
         private void LoadBitmaps()
         {
-            map.Add(ConsumableType.Radar, Properties.Resources.Consumable_PCY020_RadarPremium);
-            map.Add(ConsumableType.AircraftRepair, Properties.Resources.Consumable_PCY036_AircraftRepair);
-            map.Add(ConsumableType.MaxDepth, Properties.Resources.Consumable_PCY043_Max_Depth);
-            map.Add(ConsumableType.Repair, Properties.Resources.Consumable_PCY010_RegenCrew);
-            map.Add(ConsumableType.SpecializedHeal, Properties.Resources.Consumable_PCY010_SpecializedHeal_Premium);
-            map.Add(ConsumableType.DefAA, Properties.Resources.Consumable_PCY011_AirDefenseDispPremium);
-            map.Add(ConsumableType.SpeedBoost, Properties.Resources.Consumable_PCY015_SpeedBoosterPremium);
-            map.Add(ConsumableType.Hydro, Properties.Resources.Consumable_PCY016_SonarSearchPremium);
-            map.Add(ConsumableType.Smoke, Properties.Resources.Consumable_PCY006_SmokeGenerator);
-            map.Add(ConsumableType.CrawlingSmoke, Properties.Resources.Consumable_PCY006_SmokeGeneratorCrawler);
-            map.Add(ConsumableType.ExhaustSmoke, Properties.Resources.Consumable_PCY006_SmokeGeneratorOil);
-            map.Add(ConsumableType.CatapultFighter, Properties.Resources.Consumable_PCY012_FighterPremium);
-            map.Add(ConsumableType.SpotterPlane, Properties.Resources.Consumable_PCY005_Spotter);
-            map.Add(ConsumableType.MainBatteryReloadBoost, Properties.Resources.Consumable_PCY022_ArtilleryBoosterPremium);
-            map.Add(ConsumableType.TorpedoReloadBoost, Properties.Resources.Consumable_PCY018_TorpedoReloaderPremium);
-            map.Add(ConsumableType.CAPFighter, Properties.Resources.Consumable_PCY012_FighterPremium);
-            map.Add(ConsumableType.EngineCooling, Properties.Resources.Consumable_PCY015_SpeedBoosterPremium);
-            map.Add(ConsumableType.PatrolFighter, Properties.Resources.Consumable_PCY012_FighterPremium);
-            map.Add(ConsumableType.DamageControlParty, Properties.Resources.Consumable_PCY009_CrashCrewPremium);
-            map.Add(ConsumableType.FastDamageControlParty, Properties.Resources.Consumable_PCY009_CrashCrew_Limited_Premium);
-            map.Add(ConsumableType.ShortBurstSmoke, Properties.Resources.Consumable_PCY014_SmokeGenerator_Cycle_Premium);
-            map.Add(ConsumableType.EmergencyEnginePower, Properties.Resources.Consumable_PCY015_SpeedBooster_Imp_Premium);
-            map.Add(ConsumableType.ShortRangeHydro, Properties.Resources.Consumable_PCY016_SonarSearch_Short_Premium);
-        }
-
-        private ConsumableInfo GetConsumableInfo(ConsumableType CType)
-        {
-            ConsumableInfo info = null;
-            if (selectedShip.Consumables != null)
-            {
-                info = selectedShip.Consumables.Find(c => c.Type == CType);
-                if (info != null)
-                {
-                    //Console.WriteLine("INFO: " + info.Type.ToString());
-                    return info;
-                }
-            }
-            //Console.WriteLine("Returning null...");
-            return info;
+            imageMap.Add(ConsumableType.Radar, Properties.Resources.Consumable_PCY020_RadarPremium);
+            imageMap.Add(ConsumableType.AircraftRepair, Properties.Resources.Consumable_PCY036_AircraftRepair);
+            imageMap.Add(ConsumableType.MaxDepth, Properties.Resources.Consumable_PCY043_Max_Depth);
+            imageMap.Add(ConsumableType.Repair, Properties.Resources.Consumable_PCY010_RegenCrew);
+            imageMap.Add(ConsumableType.SpecializedHeal, Properties.Resources.Consumable_PCY010_SpecializedHeal_Premium);
+            imageMap.Add(ConsumableType.DefAA, Properties.Resources.Consumable_PCY011_AirDefenseDispPremium);
+            imageMap.Add(ConsumableType.SpeedBoost, Properties.Resources.Consumable_PCY015_SpeedBoosterPremium);
+            imageMap.Add(ConsumableType.Hydro, Properties.Resources.Consumable_PCY016_SonarSearchPremium);
+            imageMap.Add(ConsumableType.Smoke, Properties.Resources.Consumable_PCY006_SmokeGenerator);
+            imageMap.Add(ConsumableType.CrawlingSmoke, Properties.Resources.Consumable_PCY006_SmokeGeneratorCrawler);
+            imageMap.Add(ConsumableType.ExhaustSmoke, Properties.Resources.Consumable_PCY006_SmokeGeneratorOil);
+            imageMap.Add(ConsumableType.CatapultFighter, Properties.Resources.Consumable_PCY012_FighterPremium);
+            imageMap.Add(ConsumableType.SpotterPlane, Properties.Resources.Consumable_PCY005_Spotter);
+            imageMap.Add(ConsumableType.MainBatteryReloadBoost, Properties.Resources.Consumable_PCY022_ArtilleryBoosterPremium);
+            imageMap.Add(ConsumableType.TorpedoReloadBoost, Properties.Resources.Consumable_PCY018_TorpedoReloaderPremium);
+            imageMap.Add(ConsumableType.CAPFighter, Properties.Resources.Consumable_PCY012_FighterPremium);
+            imageMap.Add(ConsumableType.EngineCooling, Properties.Resources.Consumable_PCY015_SpeedBoosterPremium);
+            imageMap.Add(ConsumableType.PatrolFighter, Properties.Resources.Consumable_PCY012_FighterPremium);
+            imageMap.Add(ConsumableType.DamageControlParty, Properties.Resources.Consumable_PCY009_CrashCrewPremium);
+            imageMap.Add(ConsumableType.FastDamageControlParty, Properties.Resources.Consumable_PCY009_CrashCrew_Limited_Premium);
+            imageMap.Add(ConsumableType.ShortBurstSmoke, Properties.Resources.Consumable_PCY014_SmokeGenerator_Cycle_Premium);
+            imageMap.Add(ConsumableType.EmergencyEnginePower, Properties.Resources.Consumable_PCY015_SpeedBooster_Imp_Premium);
+            imageMap.Add(ConsumableType.ShortRangeHydro, Properties.Resources.Consumable_PCY016_SonarSearch_Short_Premium);
         }
     }
 }

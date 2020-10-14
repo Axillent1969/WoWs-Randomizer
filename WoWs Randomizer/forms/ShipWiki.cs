@@ -526,114 +526,32 @@ namespace WoWs_Randomizer.forms
             lblRange1.Text = "";
             lblCooldown1.Text = "";
 
-            ConsumableControlsHandler handler = new ConsumableControlsHandler(General.Controls, selectedShip);
+            ConsumableControlsHandler handler = new ConsumableControlsHandler(General.Controls);
             handler.HideAll();
             
-            UpgradeCorrections corrections = new UpgradeCorrections(selectedShip);
-            if ( corrections.canEquipDamageControlParty())
-            {
-                handler.AddConsumable(ConsumableType.DamageControlParty);
-            }
-            if ( corrections.canEquipFastDamageControlTeam() )
-            {
-                handler.AddConsumable(ConsumableType.FastDamageControlParty);
-            }
-
-            if ( corrections.canEquipRepairParty())
-            {
-                handler.AddConsumable(ConsumableType.Repair);
-            }
-            if ( corrections.canEquipSpecializedHeal())
-            {
-                handler.AddConsumable(ConsumableType.SpecializedHeal);
-            }
-            if (corrections.canEquipDefAAMod1())
-            {
-                handler.AddConsumable(ConsumableType.DefAA);
-/*                upgradeCount++;
-                PictureBox pb = (PictureBox)General.Controls["consumable" + upgradeCount];
-                pb.Image = Properties.Resources.Consumable_PCY011_AirDefenseDispPremium;
-                ttip.SetToolTip(pb, "Defensive AA");
-
-                pb.Click += Consumable_Click;
-                pb.Refresh();
-                pb.Visible = true;*/
-            }
-            if ( corrections.canEquipEmergencyEnginePower())
-            {
-                handler.AddConsumable(ConsumableType.EmergencyEnginePower);
-            }
-            if (corrections.canEquipEngineBoostMod1())
-            {
-                handler.AddConsumable(ConsumableType.SpeedBoost);
-            }
-            if (corrections.canEquipHydroMod1())
-            {
-                handler.AddConsumable(ConsumableType.Hydro);
-            }
-            if ( corrections.canEquipShortRangeHydro())
-            {
-                handler.AddConsumable(ConsumableType.ShortRangeHydro);
-            }
-
-            if (corrections.canEquipSmokeGeneratorMod1())
-            {
-                handler.AddConsumable(ConsumableType.Smoke);
-            }
-            if (corrections.canEquipCrawlingSmoke())
-            {
-                handler.AddConsumable(ConsumableType.CrawlingSmoke);
-            }
-            if (corrections.canEquipExhaustSmoke())
-            {
-                handler.AddConsumable(ConsumableType.ExhaustSmoke);
-            }
-            if ( corrections.canEquipShortBurstSmoke())
-            {
-                handler.AddConsumable(ConsumableType.ShortBurstSmoke);
-            }
-
-            if (corrections.canEquipCatapultFighter())
-            {
-                handler.AddConsumable(ConsumableType.CatapultFighter);
-            }
-            if (corrections.canEquipSpottingAircraftMod1())
-            {
-                handler.AddConsumable(ConsumableType.SpotterPlane);
-            }
-            if (corrections.canEquipSRM1())
-            {
-                handler.AddConsumable(ConsumableType.Radar);
-            }
-
-            if ( corrections.canEquipMainBatteryReloadBooster())
-            {
-                handler.AddConsumable(ConsumableType.MainBatteryReloadBoost);
-            }
-            if ( corrections.canEquipTorpReloadBooster())
-            {
-                handler.AddConsumable(ConsumableType.TorpedoReloadBoost);
-            }
-            if (corrections.canEquipCAPFighters())
-            {
-                handler.AddConsumable(ConsumableType.CAPFighter);
-            }
-            if (corrections.canEquipEngineCooling())
-            {
-                handler.AddConsumable(ConsumableType.EngineCooling);
-            }
-            if (corrections.canEquipPatrolFighters())
-            {
-                handler.AddConsumable(ConsumableType.PatrolFighter);
-            }
-            if (corrections.canEquipAircraftRepair())
-            {
-                handler.AddConsumable(ConsumableType.AircraftRepair);
-            }
-            if (corrections.canEquipMaxDepth())
-            {
-                handler.AddConsumable(ConsumableType.MaxDepth);
-            }
+            handler.AddConsumable(selectedShip.GetConsumableInfo(ConsumableType.DamageControlParty));
+            handler.AddConsumable(selectedShip.GetConsumableInfo(ConsumableType.FastDamageControlParty));
+            handler.AddConsumable(selectedShip.GetConsumableInfo(ConsumableType.Repair));
+            handler.AddConsumable(selectedShip.GetConsumableInfo(ConsumableType.SpecializedHeal));
+            handler.AddConsumable(selectedShip.GetConsumableInfo(ConsumableType.DefAA));
+            handler.AddConsumable(selectedShip.GetConsumableInfo(ConsumableType.EmergencyEnginePower));
+            handler.AddConsumable(selectedShip.GetConsumableInfo(ConsumableType.SpeedBoost));
+            handler.AddConsumable(selectedShip.GetConsumableInfo(ConsumableType.Hydro));
+            handler.AddConsumable(selectedShip.GetConsumableInfo(ConsumableType.ShortRangeHydro));
+            handler.AddConsumable(selectedShip.GetConsumableInfo(ConsumableType.Smoke));
+            handler.AddConsumable(selectedShip.GetConsumableInfo(ConsumableType.CrawlingSmoke));
+            handler.AddConsumable(selectedShip.GetConsumableInfo(ConsumableType.ExhaustSmoke));
+            handler.AddConsumable(selectedShip.GetConsumableInfo(ConsumableType.ShortBurstSmoke));
+            handler.AddConsumable(selectedShip.GetConsumableInfo(ConsumableType.CatapultFighter));
+            handler.AddConsumable(selectedShip.GetConsumableInfo(ConsumableType.Radar));
+            handler.AddConsumable(selectedShip.GetConsumableInfo(ConsumableType.SpotterPlane));
+            handler.AddConsumable(selectedShip.GetConsumableInfo(ConsumableType.MainBatteryReloadBoost));
+            handler.AddConsumable(selectedShip.GetConsumableInfo(ConsumableType.TorpedoReloadBoost));
+            handler.AddConsumable(selectedShip.GetConsumableInfo(ConsumableType.CAPFighter));
+            handler.AddConsumable(selectedShip.GetConsumableInfo(ConsumableType.EngineCooling));
+            handler.AddConsumable(selectedShip.GetConsumableInfo(ConsumableType.PatrolFighter));
+            handler.AddConsumable(selectedShip.GetConsumableInfo(ConsumableType.AircraftRepair));
+            handler.AddConsumable(selectedShip.GetConsumableInfo(ConsumableType.MaxDepth));
         }
 
         private void LoadFlag(string Country)

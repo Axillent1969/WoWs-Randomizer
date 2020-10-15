@@ -24,6 +24,7 @@ namespace WoWs_Randomizer.utils
                 }
             } else if ( GroupId != 0)
             {
+
                 string groupSelection = ConsumableTypeGroups.GetConsumableInfoByGroupId(GroupId);
                 if ( !groupSelection.Equals(""))
                 {

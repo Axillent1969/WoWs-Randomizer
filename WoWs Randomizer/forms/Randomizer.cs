@@ -109,7 +109,6 @@ namespace WoWs_Randomizer
         private void AddConsumablesInfo()
         {
             bool ForceSave = (Program.AllShips[0].Consumables == null || Program.AllShips[0].Consumables.Count == 0);
-
             Settings mySettings = Commons.GetSettings();
             Updater.AddConsumablesInfo(mySettings,ForceSave);
             Commons.SaveSettings(mySettings);

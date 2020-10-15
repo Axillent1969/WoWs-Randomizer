@@ -39,7 +39,7 @@ namespace WoWs_Randomizer.objects.consumables
             // REPAIR PARTY
             map.Add(16, "Battleship/3,4,5,6,7,8,9,10/usa/a");
             map.Add(17, "Battleship/2,3,4,5,6,7,8/japan,germany,france,italy/a");
-            map.Add(18, "Battleship/9,10/japan,germany,italy/a");
+            map.Add(18, "Battleship/9,10/japan,germany,france/a");
             map.Add(19, "Battleship/3,4,5,6,7,8,9,10/ussr/a");
             map.Add(20, "Battleship/2,3/uk/a");
             map.Add(21, "Battleship/4,5,6/uk/a");
@@ -89,7 +89,7 @@ namespace WoWs_Randomizer.objects.consumables
             map.Add(59, "Cruiser/5,6/italy/a");
             map.Add(60, "Cruiser/7,8,9,10/italy/a");
             // SPEED BOOST
-            map.Add(61, "Battleshp/8,9,10/france/a");
+            map.Add(61, "Battleship/8,9,10/france/a");
             map.Add(62, "Cruiser/6,7/france/a");
             map.Add(63, "Cruiser/8,9,10/france/a");
             map.Add(64, "Destroyer/2,3,4,5,6,7,8,9,10/japan,usa,ussr,germany,pan_asia,commonwealth,europe/a");

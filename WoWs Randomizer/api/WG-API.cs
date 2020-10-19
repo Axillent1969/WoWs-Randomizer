@@ -237,6 +237,19 @@ namespace WoWs_Randomizer.api
             return Data;
         }
 
+        public static void OpenShipWikipedia(string shipName)
+        {
+            if (shipName.Equals(""))
+            {
+                return;
+            }
+            else
+            {
+                string HREF = @"https://wiki.wargaming.net/en/Ship:";   
+                System.Diagnostics.Process.Start(HREF + shipName.Replace(' ', '_'));
+            }
+        }
+
         private static void Setup()
         {
             Client = new HttpClient();

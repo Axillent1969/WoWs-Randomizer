@@ -15,8 +15,6 @@ using WoWs_Randomizer.utils.ship;
 using WoWs_Randomizer.utils.skills;
 using WoWs_Randomizer.objects.consumables;
 using WoWs_Randomizer.objects;
-using static WoWs_Randomizer.utils.ConsumableTypes;
-using WoWs_Randomizer.utils.modules;
 
 namespace WoWs_Randomizer
 {
@@ -316,18 +314,7 @@ namespace WoWs_Randomizer
         
         private void ShipImage_Click(object sender, EventArgs e)
         {
-            string HREF = @"https://wiki.wargaming.net/en/Ship:";
-            string SelectedShip = ShipName.Text.ToString();
-
-            if (SelectedShip.Equals("") || SelectedShip.Equals(" "))
-            {
-                return;
-            }
-            else
-            {
-                SelectedShip = SelectedShip.Replace(' ', '_');
-                System.Diagnostics.Process.Start(HREF + SelectedShip);
-            }
+            WGAPI.OpenShipWikipedia(ShipName.Text.ToString());
         }
 
         private void LoadShipMetrics()

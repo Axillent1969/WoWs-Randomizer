@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using WoWs_Randomizer.objects;
-using WoWs_Randomizer.utils;
 
 namespace WoWs_Randomizer.utils
 {
@@ -115,6 +114,11 @@ namespace WoWs_Randomizer.utils
             };
 
             return Flags[Country.ToLower()];
+        }
+
+        public static string TranslateTrueFalse(bool state)
+        {
+            return ((state) ? "Yes" : "No");
         }
     }
 }

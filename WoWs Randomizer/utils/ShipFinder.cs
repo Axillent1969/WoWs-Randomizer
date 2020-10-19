@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WoWs_Randomizer.objects.consumables;
-using WoWs_Randomizer.utils.modules;
 using WoWs_Randomizer.utils.ship;
 
 namespace WoWs_Randomizer.utils

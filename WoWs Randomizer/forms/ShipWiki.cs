@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using WoWs_Randomizer.utils.module;
-using WoWs_Randomizer.utils.modules;
 using WoWs_Randomizer.utils.ship;
 using WoWs_Randomizer.utils.ship.profile;
 using WoWs_Randomizer.utils.metrics;
 using WoWs_Randomizer.objects.consumables;
 using static WoWs_Randomizer.utils.ConsumableTypes;
 using WoWs_Randomizer.utils;
+using WoWs_Randomizer.api;
 
 namespace WoWs_Randomizer.forms
 {
@@ -497,17 +497,17 @@ namespace WoWs_Randomizer.forms
         private void FillGeneralTab()
         {
             ShipName.Text = selectedShip.Name;
-            LoadFlag(selectedShip.Country);
+            FlagImage.Load(Commons.GetFlagURL(selectedShip.Country));
             FlagImage.Tag = selectedShip.Country;
             ShipImage.Load(selectedShip.Images.Small);
             DescriptionBox.Text = selectedShip.Description;
-            lblPremium.Text = "Premium: " + TranslateTrueFalse(selectedShip.Premium); ;
-            lblDemo.Text = "Demo: " + TranslateTrueFalse(selectedShip.DemoProfile);
+            lblPremium.Text = "Premium: " + Commons.TranslateTrueFalse(selectedShip.Premium); ;
+            lblDemo.Text = "Demo: " + Commons.TranslateTrueFalse(selectedShip.DemoProfile);
             lblID.Text = "ID: " + selectedShip.ID.ToString() + " (" + selectedShip.ShipId + ")";
             lblCostCredits.Text = "Cost: " + selectedShip.PriceCredits.ToString();
             lblCostGold.Text = "Cost (gold): " + selectedShip.PriceGold.ToString();
             lblSlots.Text = "Number of slots: " + selectedShip.NumberOfSlots.ToString();
-            lblSpecial.Text = "Special: " + TranslateTrueFalse(selectedShip.Special);
+            lblSpecial.Text = "Special: " + Commons.TranslateTrueFalse(selectedShip.Special);
             lblTier.Text = "Tier: " + selectedShip.Tier.ToString();
             lblShipType.Text = "Shiptype: " + selectedShip.ShipType;
 
@@ -552,37 +552,6 @@ namespace WoWs_Randomizer.forms
             handler.AddConsumable(selectedShip.GetConsumableInfo(ConsumableType.PatrolFighter));
             handler.AddConsumable(selectedShip.GetConsumableInfo(ConsumableType.AircraftRepair));
             handler.AddConsumable(selectedShip.GetConsumableInfo(ConsumableType.MaxDepth));
-        }
-
-        private void LoadFlag(string Country)
-        {
-
-            Dictionary<string, string> Flags = new Dictionary<string, string>
-            {
-                { "japan", "https://wiki.gcdn.co/images/5/5b/Wows_flag_Japan.png" },
-                { "usa", "https://wiki.gcdn.co/images/f/f2/Wows_flag_USA.png" },
-                { "ussr", "https://wiki.gcdn.co/images/0/04/Wows_flag_Russian_Empire_and_USSR.png" },
-                { "germany", "https://wiki.gcdn.co/images/6/6b/Wows_flag_Germany.png" },
-                { "uk", "https://wiki.gcdn.co/images/3/34/Wows_flag_UK.png" },
-                { "commonwealth", "https://wiki.gcdn.co/images/9/9a/Wows_flag_Commonwealth.png" },
-                { "france", "https://wiki.gcdn.co/images/7/71/Wows_flag_France.png" },
-                { "italy", "https://wiki.gcdn.co/images/d/d1/Wows_flag_Italy.png" },
-                { "pan_asia", "https://wiki.gcdn.co/images/3/33/Wows_flag_Pan_Asia.png" },
-                { "pan_america", "https://wiki.gcdn.co/images/9/9e/Wows_flag_Pan_America.png" },
-                { "europe", "https://wiki.gcdn.co/images/5/52/Wows_flag_Europe.png" }
-            };
-
-            string url = Flags[Country.ToLower()];
-            FlagImage.Load(url);
-        }
-
-        private string TranslateTrueFalse(bool state)
-        {
-            if ( state )
-            {
-                return "Yes";
-            }
-            return "No";
         }
 
         private void LoadControl(ModuleData module, Control control)
@@ -706,18 +675,7 @@ namespace WoWs_Randomizer.forms
 
         private void ShipImage_Click(object sender, EventArgs e)
         {
-            string HREF = @"https://wiki.wargaming.net/en/Ship:";
-            string SelectedShip = ShipName.Text.ToString();
-
-            if (SelectedShip.Equals(""))
-            {
-                return;
-            }
-            else
-            {
-                SelectedShip = SelectedShip.Replace(' ', '_');
-                System.Diagnostics.Process.Start(HREF + SelectedShip);
-            }
+            WGAPI.OpenShipWikipedia(ShipName.Text.ToString());
         }
 
         private void Consumable_Click(object sender, EventArgs e)

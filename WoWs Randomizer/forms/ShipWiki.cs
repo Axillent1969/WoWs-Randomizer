@@ -10,6 +10,8 @@ using WoWs_Randomizer.objects.consumables;
 using static WoWs_Randomizer.utils.ConsumableTypes;
 using WoWs_Randomizer.utils;
 using WoWs_Randomizer.api;
+using System.Linq;
+using WoWs_Randomizer.utils.modules;
 
 namespace WoWs_Randomizer.forms
 {
@@ -18,6 +20,8 @@ namespace WoWs_Randomizer.forms
         private Ship selectedShip = null;
         private ToolTip ttip = new ToolTip();
         public bool IsBuilderActive = false;
+
+        private List<Consumable> UpgradeSlotSelected = new List<Consumable>();
 
         public ShipWiki()
         {
@@ -59,6 +63,7 @@ namespace WoWs_Randomizer.forms
         {
             FillGeneralTab();
             FillHullTab();
+            FillUpgradesTab();
             FillEngineTab();
             FillMainArmamentsTab();
             FillSecondaryArmamentsTab();
@@ -66,6 +71,108 @@ namespace WoWs_Randomizer.forms
             FillTorpedoTab();
             FillFlightControlTab();
             FillPlanesTab();
+        }
+
+        private void FillUpgradesTab()
+        {
+            UpgradeSlotSelected.Clear();
+            selectedShip.Upgrades.Append(4221751216);
+
+            foreach (long id in selectedShip.Upgrades)
+            {
+                Consumable Upgrade = Program.Upgrades.Find(x => x.ID == id);
+                UpgradeSlotSelected.Add(Upgrade);
+            }
+
+            List<long> corrections = new List<long>();
+            UpgradeCorrections CorrectionsList = new UpgradeCorrections(selectedShip);
+            corrections = CorrectionsList.GetList();
+
+            foreach (long id in corrections)
+            {
+                Consumable Upgrade = Program.Upgrades.Find(x => x.ID == id);
+
+                UpgradeSlotSelected.Add(Upgrade);
+            }
+
+            UpgradeSlotSelected.Sort();
+            UpdateUpgradePanels();
+        }
+
+        private void UpdateUpgradePanels()
+        {
+            ClearUpgradePanels();
+
+            int selectedSlot = 0;
+            if (rbSlot1.Checked) { selectedSlot = 1; }
+            else if (rbSlot2.Checked) { selectedSlot = 2; }
+            else if (rbSlot3.Checked) { selectedSlot = 3; }
+            else if (rbSlot4.Checked) { selectedSlot = 4; }
+            else if (rbSlot5.Checked) { selectedSlot = 5; }
+            else if (rbSlot6.Checked) { selectedSlot = 6; }
+
+            int upgradeNumber = 0;
+            foreach (Consumable Upgrade in UpgradeSlotSelected)
+            {
+                if (Upgrade.GetSlotNumber() == selectedSlot)
+                {
+                    AddUpgradePanel(Upgrade, upgradeNumber);
+                    upgradeNumber++;
+                }
+            }
+        }
+
+        private void ClearUpgradePanels()
+        {
+            for(int i = 0; i <= 5;i++)
+            {
+                Panel pnl = (Panel)Upgrades.Controls["upgrade" + i];
+                Label lblHead = (Label)pnl.Controls["lblHeadline" + i];
+                Label lblDesc = (Label)pnl.Controls["lblDescription" + i];
+                Label lblPerks = (Label)pnl.Controls["lblPerks" + i];
+                Label lblCost = (Label)pnl.Controls["lblCostSlot" + i];
+
+                lblCost.Text = "-";
+                lblPerks.Text = "-";
+                lblDesc.Text = "-";
+                lblHead.Text = "-";
+                pnl.Visible = false;
+                pnl.Refresh();
+            }
+        }
+
+        private void AddUpgradePanel(Consumable upgrade,int upgradeNo)
+        {
+            if (upgradeNo < 0 || upgradeNo > 5) { return; }
+
+            Panel pnl = (Panel)Upgrades.Controls["upgrade" + upgradeNo];
+            if (pnl != null)
+            {
+                Label lblHead = (Label)pnl.Controls["lblHeadline" + upgradeNo];
+                Label lblDesc = (Label)pnl.Controls["lblDescription" + upgradeNo];
+                Label lblPerks = (Label)pnl.Controls["lblPerks" + upgradeNo];
+                Label lblCost = (Label)pnl.Controls["lblCostSlot" + upgradeNo];
+
+                lblHead.Text = upgrade.Name;
+                lblDesc.Text = upgrade.Description;
+
+                string perks = "";
+                foreach (KeyValuePair<string, ConsumableProfile> prof in upgrade.Profile)
+                {
+                    ConsumableProfile profile = prof.Value;
+                    perks += profile.Description + "\n";
+                }
+                lblPerks.Text = perks;
+
+                PictureBox pb = (PictureBox)pnl.Controls["picture" + upgradeNo];
+                pb.Load(upgrade.ImageUrl);
+
+                string txt = "Credits: " + upgrade.Credits;
+                lblCost.Text = txt;
+
+                pnl.Visible = true;
+                pnl.Refresh();
+            }
         }
 
         private void FillGFCSTab()
@@ -752,6 +859,16 @@ namespace WoWs_Randomizer.forms
             {
                 ControlPaint.DrawBorder(e.Graphics, box.ClientRectangle, Color.Blue, ButtonBorderStyle.Solid);
             }
+        }
+
+        private void Upgrades_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rbSlot1_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateUpgradePanels();
         }
     }
 }

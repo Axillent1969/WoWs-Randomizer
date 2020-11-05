@@ -34,6 +34,7 @@
             this.BtnSave = new System.Windows.Forms.Button();
             this.BtnSaveClose = new System.Windows.Forms.Button();
             this.BtnCancel = new System.Windows.Forms.Button();
+            this.cbSelectAll = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // CategoryView
@@ -58,12 +59,12 @@
             this.ResultTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.ResultTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
             this.ResultTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.ResultTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 144F));
-            this.ResultTable.Location = new System.Drawing.Point(166, 0);
+            this.ResultTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 145F));
+            this.ResultTable.Location = new System.Drawing.Point(171, 35);
             this.ResultTable.Name = "ResultTable";
             this.ResultTable.RowCount = 1;
             this.ResultTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.ResultTable.Size = new System.Drawing.Size(575, 2);
+            this.ResultTable.Size = new System.Drawing.Size(576, 2);
             this.ResultTable.TabIndex = 1;
             this.ResultTable.Visible = false;
             // 
@@ -98,6 +99,17 @@
             this.BtnCancel.UseVisualStyleBackColor = true;
             this.BtnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
             // 
+            // cbSelectAll
+            // 
+            this.cbSelectAll.AutoSize = true;
+            this.cbSelectAll.Location = new System.Drawing.Point(648, 12);
+            this.cbSelectAll.Name = "cbSelectAll";
+            this.cbSelectAll.Size = new System.Drawing.Size(99, 17);
+            this.cbSelectAll.TabIndex = 5;
+            this.cbSelectAll.Text = "Select All Ships";
+            this.cbSelectAll.UseVisualStyleBackColor = true;
+            this.cbSelectAll.CheckedChanged += new System.EventHandler(this.cbSelectAll_CheckedChanged);
+            // 
             // ExclusionList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -105,6 +117,7 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(759, 458);
+            this.Controls.Add(this.cbSelectAll);
             this.Controls.Add(this.ResultTable);
             this.Controls.Add(this.BtnCancel);
             this.Controls.Add(this.BtnSaveClose);
@@ -127,5 +140,6 @@
         private System.Windows.Forms.Button BtnSave;
         private System.Windows.Forms.Button BtnSaveClose;
         private System.Windows.Forms.Button BtnCancel;
+        private System.Windows.Forms.CheckBox cbSelectAll;
     }
 }

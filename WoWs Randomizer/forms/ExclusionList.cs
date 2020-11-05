@@ -133,6 +133,7 @@ namespace WoWs_Randomizer.forms
         {
             if ( e.Action == TreeViewAction.ByMouse)
             {
+                cbSelectAll.Checked = false;
                 UpdateWithoutSaveExclusionList();
                 if (e.Node.Text.Equals("All My Ships")) { return; }
                 List<Ship> Result = MatchingShips(e.Node.Tag.ToString());
@@ -145,7 +146,7 @@ namespace WoWs_Randomizer.forms
         }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0017:Simplify object initialization", Justification = "<Pending>")]
-        private void DrawTable(List<Ship> Result, string SelectedCountry) 
+        private void DrawTable(List<Ship> Result, string SelectedCountry, bool selectAll = false) 
         {
             ResultTable.Visible = false;
 
@@ -202,7 +203,7 @@ namespace WoWs_Randomizer.forms
                 cb.Text = "";
                 cb.Tag = ship.ID;
                 cb.Click += new EventHandler(MarkDirty);
-                if ( ExcludedShips.Contains(ship.ID))
+                if ( ExcludedShips.Contains(ship.ID) || selectAll == true)
                 {
                     cb.Checked = true;
                 }
@@ -240,7 +241,7 @@ namespace WoWs_Randomizer.forms
                 {
                     e.Cancel = false;
                     isDirty = false;
-                    this.DialogResult = DialogResult.Cancel;
+                    this.DialogResult = DialogResult.OK;
                 }
                 else
                 {
@@ -251,13 +252,8 @@ namespace WoWs_Randomizer.forms
 
         private void BtnCancel_Click(object sender, EventArgs e)
         {
-            if ( isDirty == false || (isDirty == true && MessageBox.Show("You have unsaved data. Are You sure You want to cancel the changes made?","Unsaved data",MessageBoxButtons.YesNo,MessageBoxIcon.Warning,MessageBoxDefaultButton.Button2) == DialogResult.Yes)) {
-                this.DialogResult = DialogResult.Cancel;
-                this.Close();
-            } else
-            {
-                return;
-            }
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
         }
 
         private void BtnSave_Click(object sender, EventArgs e)
@@ -332,6 +328,18 @@ namespace WoWs_Randomizer.forms
         private void CategoryView_BeforeSelect(object sender, TreeViewCancelEventArgs e)
         {
             UpdateWithoutSaveExclusionList();
+        }
+
+        private void cbSelectAll_CheckedChanged(object sender, EventArgs e)
+        {
+            string country = CategoryView.SelectedNode.Tag.ToString();
+            List<Ship> Result = MatchingShips(country);
+            Result.Sort((x, y) => {
+                int result = x.Tier.CompareTo(y.Tier);
+                return result != 0 ? result : x.Name.CompareTo(y.Name);
+            });
+            isDirty = true;
+            DrawTable(Result, country, cbSelectAll.Checked);
         }
     }
 }

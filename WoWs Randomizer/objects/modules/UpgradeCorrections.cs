@@ -45,6 +45,7 @@ namespace WoWs_Randomizer.utils.modules
             Slot2Upgrades.Add(4251111344);
             Slot2Upgrades.Add(4250062768);
 
+
             List<long> Slot3Upgrades = new List<long>();
             Slot3Upgrades.Add(4255305648);
 
@@ -62,6 +63,7 @@ namespace WoWs_Randomizer.utils.modules
             Slot5Upgrades.Add(4215459760);
             Slot5Upgrades.Add(4213362608);
 
+
             List<long> Slot6Upgrades = new List<long>();
             Slot6Upgrades.Add(4216508336);
             Slot6Upgrades.Add(4237479856);
@@ -78,6 +80,7 @@ namespace WoWs_Randomizer.utils.modules
             Slot6Upgrades.Add(4214411184);
             Slot6Upgrades.Add(4212314032);
             Slot6Upgrades.Add(4211265456);
+
 
             SlotCorrections.Add(1, Slot1Upgrades);
             SlotCorrections.Add(2, Slot2Upgrades);
@@ -123,6 +126,18 @@ namespace WoWs_Randomizer.utils.modules
             CVCorrections();
             if ( selectedShip.Tier >= 6)
             {
+                if (selectedShip.ID == 4181669872 || selectedShip.ID == 4180621296)
+                {
+                    corrections.Add(4221751216);
+                }
+                if (selectedShip.ID == 4181669872 || selectedShip.ID == 4180621296 || selectedShip.ID == 4179572720)
+                {
+                    corrections.Add(4218605488);
+                }
+                if (selectedShip.ID == 4180621296 || selectedShip.ID == 4179572720)
+                {
+                    corrections.Add(4216508336);
+                }
                 corrections.Add(4253208496);
                 addSpecialUpgrades();
             }

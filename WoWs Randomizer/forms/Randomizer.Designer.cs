@@ -115,6 +115,7 @@ namespace WoWs_Randomizer
             this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.BGUpdater = new System.ComponentModel.BackgroundWorker();
+            this.UpgradeFixer = new System.ComponentModel.BackgroundWorker();
             this.LeftPanel.SuspendLayout();
             this.MenuStrip.SuspendLayout();
             this.RightPanel.SuspendLayout();
@@ -903,6 +904,11 @@ namespace WoWs_Randomizer
             this.BGUpdater.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BGUpdater_DoWork);
             this.BGUpdater.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BGUpdater_RunWorkerCompleted);
             // 
+            // UpgradeFixer
+            // 
+            this.UpgradeFixer.DoWork += new System.ComponentModel.DoWorkEventHandler(this.UpgradeFixer_DoWork);
+            this.UpgradeFixer.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.UpgradeFixer_RunWorkerCompleted);
+            // 
             // FormRandomizer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1019,6 +1025,7 @@ namespace WoWs_Randomizer
         private System.Windows.Forms.CheckBox CBPremium;
         private System.Windows.Forms.CheckBox CBNonPremium;
         private System.ComponentModel.BackgroundWorker BGUpdater;
+        private System.ComponentModel.BackgroundWorker UpgradeFixer;
     }
 }
 

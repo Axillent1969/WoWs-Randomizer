@@ -69,6 +69,24 @@ namespace WoWs_Randomizer
             {
                 callUpdateAll = true;
             }
+
+            bool upgradeFix = Properties.Settings.Default.UpgradeFix;
+            if ( upgradeFix == false )
+            {
+                StartLoadingAnimation();
+                UpgradeFixer.RunWorkerAsync();
+            }
+        }
+
+        private void DoUpgradeFix()
+        {
+            foreach(Ship ship in Program.AllShips)
+            {
+                ship.ApplyUpgradeCorrections();
+            }
+            BinarySerialize.WriteToBinaryFile<List<Ship>>(Commons.GetShipListFileName(), Program.AllShips);
+            Properties.Settings.Default.UpgradeFix = true;
+            Properties.Settings.Default.Save();
         }
 
         private void StartLoadingAnimation()
@@ -757,6 +775,17 @@ namespace WoWs_Randomizer
         {
             FinalizeLoad();
 
+            LoadingImage.Dock = DockStyle.None;
+            LoadingImage.Visible = false;
+        }
+
+        private void UpgradeFixer_DoWork(object sender, DoWorkEventArgs e)
+        {
+            DoUpgradeFix();
+        }
+
+        private void UpgradeFixer_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
             LoadingImage.Dock = DockStyle.None;
             LoadingImage.Visible = false;
         }

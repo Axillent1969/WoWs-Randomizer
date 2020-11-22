@@ -33,6 +33,8 @@ namespace WoWs_Randomizer.utils.modules
 
         public Dictionary<int,List<long>> GetSlotCorrections()
         {
+            // Slot corrections: Upgrades that have a price that does not correspond with the default price for the upgrades in the same slot.
+            // For instance: 
             Dictionary<int, List<long>> SlotCorrections = new Dictionary<int, List<long>>();
             List<long> Slot1Upgrades = new List<long>();
             Slot1Upgrades.Add(4253208496);
@@ -44,7 +46,6 @@ namespace WoWs_Randomizer.utils.modules
             Slot2Upgrades.Add(4252159920);
             Slot2Upgrades.Add(4251111344);
             Slot2Upgrades.Add(4250062768);
-
 
             List<long> Slot3Upgrades = new List<long>();
             Slot3Upgrades.Add(4255305648);
@@ -63,7 +64,6 @@ namespace WoWs_Randomizer.utils.modules
             Slot5Upgrades.Add(4215459760);
             Slot5Upgrades.Add(4213362608);
 
-
             List<long> Slot6Upgrades = new List<long>();
             Slot6Upgrades.Add(4216508336);
             Slot6Upgrades.Add(4237479856);
@@ -80,7 +80,6 @@ namespace WoWs_Randomizer.utils.modules
             Slot6Upgrades.Add(4214411184);
             Slot6Upgrades.Add(4212314032);
             Slot6Upgrades.Add(4211265456);
-
 
             SlotCorrections.Add(1, Slot1Upgrades);
             SlotCorrections.Add(2, Slot2Upgrades);
@@ -123,24 +122,7 @@ namespace WoWs_Randomizer.utils.modules
 
         private void populateCorrections()
         {
-            CVCorrections();
-            if ( selectedShip.Tier >= 6)
-            {
-                if (selectedShip.ID == 4181669872 || selectedShip.ID == 4180621296)
-                {
-                    corrections.Add(4221751216);
-                }
-                if (selectedShip.ID == 4181669872 || selectedShip.ID == 4180621296 || selectedShip.ID == 4179572720)
-                {
-                    corrections.Add(4218605488);
-                }
-                if (selectedShip.ID == 4180621296 || selectedShip.ID == 4179572720)
-                {
-                    corrections.Add(4216508336);
-                }
-                corrections.Add(4253208496);
-                addSpecialUpgrades();
-            }
+            addSpecialUpgrades();
             if (Legendary.ContainsKey(selectedShip.ID))
             {
                 corrections.Add(Legendary[selectedShip.ID]);
@@ -149,6 +131,7 @@ namespace WoWs_Randomizer.utils.modules
 
         private void addSpecialUpgrades()
         {
+            corrections.Add(4253208496); // Damage Control Party Mod 1. All ships have it but not present in API data.
             if ( canEquipSpottingAircraftMod1())
             {
                 corrections.Add(4254257072);

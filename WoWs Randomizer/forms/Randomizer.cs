@@ -80,13 +80,8 @@ namespace WoWs_Randomizer
 
         private void DoUpgradeFix()
         {
-            foreach(Ship ship in Program.AllShips)
-            {
-                ship.ApplyUpgradeCorrections();
-            }
+            Updater.UpdateUpgradesInfo();
             BinarySerialize.WriteToBinaryFile<List<Ship>>(Commons.GetShipListFileName(), Program.AllShips);
-            Properties.Settings.Default.UpgradeFix = true;
-            Properties.Settings.Default.Save();
         }
 
         private void StartLoadingAnimation()

@@ -668,8 +668,6 @@ namespace WoWs_Randomizer.forms
             {
                 creditValue = 3000000;
             }
-            upgradeSelect.Tag = panel.Tag;
-            upgradeSelect.Controls.Clear();
 
             UpgradeSelector selectorDlg = new UpgradeSelector();
             selectorDlg.CreditValue = creditValue;

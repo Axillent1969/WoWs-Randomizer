@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BuildManager));
             this.panelCaptainSkills = new System.Windows.Forms.Panel();
-            this.upgradeSelect = new System.Windows.Forms.Panel();
             this.picPT = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.totalSkillPoints = new System.Windows.Forms.Label();
@@ -216,17 +215,6 @@
             this.panelCaptainSkills.Name = "panelCaptainSkills";
             this.panelCaptainSkills.Size = new System.Drawing.Size(844, 359);
             this.panelCaptainSkills.TabIndex = 0;
-            // 
-            // upgradeSelect
-            // 
-            this.upgradeSelect.BackColor = System.Drawing.SystemColors.Info;
-            this.upgradeSelect.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.upgradeSelect.Location = new System.Drawing.Point(46, 20);
-            this.upgradeSelect.Name = "upgradeSelect";
-            this.upgradeSelect.Padding = new System.Windows.Forms.Padding(12);
-            this.upgradeSelect.Size = new System.Drawing.Size(713, 308);
-            this.upgradeSelect.TabIndex = 15;
-            this.upgradeSelect.Visible = false;
             // 
             // picPT
             // 
@@ -1310,7 +1298,6 @@
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.picShip);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.upgradeSelect);
             this.Controls.Add(this.RightPanel);
             this.Controls.Add(this.panelCaptainSkills);
             this.Controls.Add(this.upgradeSlot6);
@@ -1443,7 +1430,6 @@
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.Panel upgradeSelect;
         private System.Windows.Forms.Panel upgradeSlot1;
         private System.Windows.Forms.Panel upgradeSlot2;
         private System.Windows.Forms.Panel upgradeSlot3;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using WoWs_Randomizer.forms;
 using WoWs_Randomizer.objects;
 using WoWs_Randomizer.objects.consumables;
 using WoWs_Randomizer.utils;
@@ -639,7 +640,7 @@ namespace WoWs_Randomizer.forms
         private void upgradeSlot1_Click(object sender, EventArgs e)
         {
             if ( selectedShip == null ) { return;  }
-
+            
             Panel panel = null;
             if ( sender is PictureBox)
             {
@@ -670,140 +671,20 @@ namespace WoWs_Randomizer.forms
             upgradeSelect.Tag = panel.Tag;
             upgradeSelect.Controls.Clear();
 
-            List<Consumable> UpgradeSlotSelected = new List<Consumable>();
-            selectedShip.Upgrades.Append<long>(4221751216);
+            UpgradeSelector selectorDlg = new UpgradeSelector();
+            selectorDlg.CreditValue = creditValue;
+            selectorDlg.PanelNumber = slot;
+            selectorDlg.SelectedShip = selectedShip;
 
-            foreach (long id in selectedShip.Upgrades)
+            selectorDlg.ShowDialog();
+            if (selectorDlg.DialogResult == DialogResult.OK)
             {
-                Consumable Upgrade = Program.Upgrades.Find(x => x.ID == id);
-                if (Upgrade.Credits.Equals(creditValue))
-                {
-                    UpgradeSlotSelected.Add(Upgrade);
-                }
+                Box_Click(selectorDlg.SelectedUpgrade, null, slot);
             }
-
-            List<long> corrections = new List<long>();
-            UpgradeCorrections CorrectionsList = new UpgradeCorrections(selectedShip);
-            corrections = CorrectionsList.GetList();
-
-            Dictionary<int, List<long>> SlotCorrections = new Dictionary<int, List<long>>();
-            SlotCorrections = CorrectionsList.GetSlotCorrections();
-
-            foreach(long id in corrections)
-            {
-                Consumable Upgrade = Program.Upgrades.Find(x => x.ID == id);
-
-                if (Upgrade.Credits.Equals(creditValue))
-                {
-                    UpgradeSlotSelected.Add(Upgrade);
-
-                } else if (SlotCorrections.ContainsKey(slot) )
-                {
-                    List<long> upgr = SlotCorrections[slot];
-                    if ( upgr.Contains(Upgrade.ID) )
-                    {
-                        UpgradeSlotSelected.Add(Upgrade);
-                    }
-                }
-            }
-            TableLayoutPanel uPanel = new TableLayoutPanel();
-            uPanel.AutoSize = true;
-            uPanel.Controls.Clear();
-            uPanel.RowStyles.Clear();
-            uPanel.RowCount = 0;
-
-            uPanel.ColumnCount = 1;
-            uPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 500F));
-
-            int count = 0;
-            foreach (Consumable upgrade in UpgradeSlotSelected)
-            {
-                string perks = "";
-                foreach(KeyValuePair<string,ConsumableProfile> prof in upgrade.Profile)
-                {
-                    ConsumableProfile profile = prof.Value;
-                    perks += profile.Description + "\n";
-                }
-
-                int posY = (count * 65) + 10;
-                PictureBox box = new PictureBox();
-                
-                box.Load(upgrade.ImageUrl);
-                box.Tag = upgrade.ID;
-                box.AccessibleName = upgrade.Name.Replace("\n"," ");
-                box.SizeMode = PictureBoxSizeMode.AutoSize;
-                box.Location = new System.Drawing.Point(10, posY);
-                box.Click += Box_Click;
-                box.Margin = new Padding(5);
-                box.Cursor = Cursors.Hand;
-
-                ToolTip ttip = new ToolTip();
-                ttip.SetToolTip(box, "Select this upgrade for the slot");
-
-                uPanel.RowCount += 1;
-                uPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 65F));
-
-                uPanel.Controls.Add(box, 0, uPanel.RowCount - 1);
-
-                Label text = new Label();
-                Label head = new Label();
-                head.Text = upgrade.Name.Replace("\n"," ");
-                head.Font = new Font(this.Font, FontStyle.Bold);
-                head.AutoSize = true;
-
-                if ( perks.Equals(""))
-                {
-                    text.Text = upgrade.Description;
-                } else
-                {
-                    text.Text = upgrade.Description + "\n" + perks;
-                }
-                if ( upgrade.ID == 4286762928)
-                {
-                    text.Text = "Decreases reload time of torpedo tubes.\nTorpedo tubes reload time: -15%\nRisk of torpedo tubes becoming incapacitated: +50%";
-                }
-                text.AutoSize = true;
-                text.TextAlign = ContentAlignment.MiddleLeft;
-
-                text.Margin = new Padding(2);
-
-                text.Height = box.Height + 10;
-                uPanel.RowCount += 1;
-                uPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 18F));
-                uPanel.Controls.Add(head, 0, uPanel.RowCount - 1);
-                uPanel.RowCount += 1;
-                uPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 70F));
-                uPanel.Controls.Add(text, 0, uPanel.RowCount - 1);
-
-                count++;
-            }
-            uPanel.Refresh();
-            upgradeSelect.Controls.Add(uPanel);
-            upgradeSelect.AutoSize = true;
-            upgradeSelect.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            upgradeSelect.Padding = new Padding(8);
-            upgradeSelect.Refresh();
-
-            System.Drawing.Point p = Cursor.Position;
-            p.X = 25;
-            p.Y = p.Y + 12;
-            int test = p.Y + 12 + upgradeSelect.Height + 26;
-
-            if ( test >= this.Height )
-            {
-                p.Y -= (upgradeSelect.Height + 120);
-            }
-            if ( p.Y < 20 )
-            {
-                p.Y = 20;
-            }
-            upgradeSelect.Location = p;
-            upgradeSelect.BringToFront();
-            upgradeSelect.Refresh();
-            upgradeSelect.Visible = true;
+            selectorDlg.Dispose();
         }
 
-        private void Box_Click(object sender, EventArgs e)
+        private void Box_Click(object sender, EventArgs e, int selectedSlot = 1)
         {
             PictureBox selectedBox = (PictureBox)sender;
             PictureBox box2 = new PictureBox();
@@ -818,8 +699,6 @@ namespace WoWs_Randomizer.forms
             ToolTip ttip = new ToolTip();
             ttip.SetToolTip(box2, selectedBox.AccessibleName);
 
-            string selectedSlot = selectedBox.Parent.Parent.Tag.ToString();
-
             Panel slot = this.Controls.Find("upgradeSlot" + selectedSlot, true).FirstOrDefault() as Panel;
             if ( slot != null )
             {
@@ -833,8 +712,6 @@ namespace WoWs_Randomizer.forms
             slot.Controls.Add(box2);
 
             ttip.SetToolTip(slot, selectedBox.AccessibleName);
-
-            upgradeSelect.Visible = false;
 
             applyUpgradeValues(box2.Tag.ToString());
         }

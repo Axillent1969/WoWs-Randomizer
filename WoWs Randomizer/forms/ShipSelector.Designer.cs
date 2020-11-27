@@ -61,6 +61,7 @@
             this.Controls.Add(this.shipSelectionBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "ShipSelector";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Select Ship to Compare";
             this.Load += new System.EventHandler(this.ShipSelector_Load);
             this.ResumeLayout(false);

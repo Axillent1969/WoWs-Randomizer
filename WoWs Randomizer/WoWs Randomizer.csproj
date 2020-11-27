@@ -13,6 +13,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
     <PublishUrl>d:\repos\publish\WowsRandomizer\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -179,6 +180,12 @@
     <Compile Include="forms\ShipWiki.Designer.cs">
       <DependentUpon>ShipWiki.cs</DependentUpon>
     </Compile>
+    <Compile Include="forms\UpgradeSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\UpgradeSelector.Designer.cs">
+      <DependentUpon>UpgradeSelector.cs</DependentUpon>
+    </Compile>
     <Compile Include="objects\consumables\ConsumablesInfoImporter.cs" />
     <Compile Include="objects\consumables\ConsumablesInfoTypeImporter.cs" />
     <Compile Include="objects\consumables\ConsumableTypeGroups.cs" />
@@ -285,6 +292,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forms\ShipWiki.resx">
       <DependentUpon>ShipWiki.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\UpgradeSelector.resx">
+      <DependentUpon>UpgradeSelector.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -4,7 +4,6 @@ using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
 using WoWs_Randomizer.objects.consumables;
-using WoWs_Randomizer.utils;
 
 namespace WoWs_Randomizer.utils
 {

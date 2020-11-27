@@ -1,5 +1,4 @@
 ﻿using System;
-using WoWs_Randomizer.utils;
 using WoWs_Randomizer.utils.ship.profile;
 
 namespace WoWs_Randomizer.utils

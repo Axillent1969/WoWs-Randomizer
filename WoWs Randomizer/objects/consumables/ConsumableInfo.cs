@@ -1,5 +1,4 @@
 ﻿using System;
-using WoWs_Randomizer.utils;
 using static WoWs_Randomizer.utils.ConsumableTypes;
 
 namespace WoWs_Randomizer.objects.consumables

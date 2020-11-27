@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using WoWs_Randomizer.utils;
 using WoWs_Randomizer.utils.module;
 using WoWs_Randomizer.utils.ship;
 using WoWs_Randomizer.utils.ship.profile;

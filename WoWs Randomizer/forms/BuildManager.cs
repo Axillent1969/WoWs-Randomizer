@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using WoWs_Randomizer.forms;
 using WoWs_Randomizer.objects;
 using WoWs_Randomizer.objects.consumables;
 using WoWs_Randomizer.utils;

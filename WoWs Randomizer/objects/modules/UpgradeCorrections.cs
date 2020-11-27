@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using WoWs_Randomizer.utils.ship;
-using WoWs_Randomizer.utils;
-using WoWs_Randomizer.objects.consumables;
 using static WoWs_Randomizer.utils.ConsumableTypes;
 
 namespace WoWs_Randomizer.utils.modules

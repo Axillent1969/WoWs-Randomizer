@@ -114,7 +114,7 @@ namespace WoWs_Randomizer.utils.ship
 
             if ( this.Tier >= 5)
             {
-                upgrades.Add(4293054384); // Main Battery Mod 1
+                //upgrades.Add(4293054384); // Main Battery Mod 1
                 if ( this.Country.ToString().ToLower().Equals(Countries.USA.ToString().ToLower()))
                 {
                     upgrades.Add(4264742832); // Artillery Plotting Room Mod 1

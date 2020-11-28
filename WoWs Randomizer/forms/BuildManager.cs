@@ -670,7 +670,7 @@ namespace WoWs_Randomizer.forms
 
             UpgradeSelector selectorDlg = new UpgradeSelector();
             selectorDlg.CreditValue = creditValue;
-            selectorDlg.PanelNumber = slot;
+            selectorDlg.SelectedSlot = slot;
             selectorDlg.SelectedShip = selectedShip;
 
             selectorDlg.ShowDialog();

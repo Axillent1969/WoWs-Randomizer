@@ -118,7 +118,7 @@ namespace WoWs_Randomizer.forms
             int upgradeNumber = 0;
             foreach (Consumable Upgrade in UpgradeSlotSelected)
             {
-                if (Upgrade.GetSlotNumber() == selectedSlot)
+                if (Upgrade != null && Upgrade.GetSlotNumber() == selectedSlot)
                 {
                     AddUpgradePanel(Upgrade, upgradeNumber);
                     upgradeNumber++;

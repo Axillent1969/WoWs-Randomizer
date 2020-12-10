@@ -98,7 +98,7 @@ namespace WoWs_Randomizer.forms
             foreach (long id in selectedShip.Upgrades)
             {
                 // Do not include obsolete upgrades; Main Battery Mod 1, Propulsion Mod 1 etc...
-                if (id != 4293054384 && id != 4289908656 && id != 4272082864 && id != 4271034288)
+                if (id != 4293054384 && id != 4289908656 && id != 4272082864 && id != 4271034288 && id != 4286762928)
                 {
                     Consumable Upgrade = Program.Upgrades.Find(x => x.ID == id);
                     UpgradeSlotSelected.Add(Upgrade);
@@ -114,7 +114,7 @@ namespace WoWs_Randomizer.forms
                 UpgradeSlotSelected.Add(Upgrade);
             }
 
-            //UpgradeSlotSelected.Sort();
+            UpgradeSlotSelected.Sort();
             UpdateUpgradePanels(selectedSlot);
         }
 
@@ -163,7 +163,7 @@ namespace WoWs_Randomizer.forms
                 Label lblPerks = (Label)pnl.Controls["lblPerks" + upgradeNo];
                 Label lblCost = (Label)pnl.Controls["lblCostSlot" + upgradeNo];
 
-                lblHead.Text = upgrade.Name;
+                lblHead.Text = upgrade.Name.Replace("\n","");
                 lblDesc.Text = upgrade.Description;
 
                 string perks = "";

@@ -73,9 +73,26 @@ namespace WoWs_Randomizer.forms
             FillPlanesTab();
         }
 
+        private int GetCheckedSlotNumber()
+        {
+            int selectedSlot = 0;
+            if (rbSlot1.Checked) { selectedSlot = 1; }
+            else if (rbSlot2.Checked) { selectedSlot = 2; }
+            else if (rbSlot3.Checked) { selectedSlot = 3; }
+            else if (rbSlot4.Checked) { selectedSlot = 4; }
+            else if (rbSlot5.Checked) { selectedSlot = 5; }
+            else if (rbSlot6.Checked) { selectedSlot = 6; }
+            return selectedSlot;
+        }
+
         private void FillUpgradesTab()
         {
             UpgradeSlotSelected.Clear();
+            int selectedSlot = GetCheckedSlotNumber();
+
+            UpgradeCorrections CorrectionsList = new UpgradeCorrections(selectedShip);
+            Dictionary<int, List<long>> slotCorrections = CorrectionsList.GetSlotCorrections();
+
             selectedShip.Upgrades.Append(4221751216);
 
             foreach (long id in selectedShip.Upgrades)
@@ -89,9 +106,7 @@ namespace WoWs_Randomizer.forms
             }
 
             List<long> corrections = new List<long>();
-            UpgradeCorrections CorrectionsList = new UpgradeCorrections(selectedShip);
             corrections = CorrectionsList.GetList();
-
             foreach (long id in corrections)
             {
                 Consumable Upgrade = Program.Upgrades.Find(x => x.ID == id);
@@ -99,22 +114,13 @@ namespace WoWs_Randomizer.forms
                 UpgradeSlotSelected.Add(Upgrade);
             }
 
-            UpgradeSlotSelected.Sort();
-            UpdateUpgradePanels();
+            //UpgradeSlotSelected.Sort();
+            UpdateUpgradePanels(selectedSlot);
         }
 
-        private void UpdateUpgradePanels()
+        private void UpdateUpgradePanels(int selectedSlot)
         {
             ClearUpgradePanels();
-
-            int selectedSlot = 0;
-            if (rbSlot1.Checked) { selectedSlot = 1; }
-            else if (rbSlot2.Checked) { selectedSlot = 2; }
-            else if (rbSlot3.Checked) { selectedSlot = 3; }
-            else if (rbSlot4.Checked) { selectedSlot = 4; }
-            else if (rbSlot5.Checked) { selectedSlot = 5; }
-            else if (rbSlot6.Checked) { selectedSlot = 6; }
-
             int upgradeNumber = 0;
             foreach (Consumable Upgrade in UpgradeSlotSelected)
             {
@@ -872,7 +878,7 @@ namespace WoWs_Randomizer.forms
 
         private void rbSlot1_CheckedChanged(object sender, EventArgs e)
         {
-            UpdateUpgradePanels();
+            UpdateUpgradePanels(GetCheckedSlotNumber());
         }
     }
 }

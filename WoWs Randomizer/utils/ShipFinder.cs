@@ -21,7 +21,7 @@ namespace WoWs_Randomizer.utils
             } else if ( GroupId != 0)
             {
 
-                string groupSelection = ConsumableTypeGroups.GetConsumableInfoByGroupId(GroupId);
+                string groupSelection = Consumable.GetConsumableInfoByGroupId(GroupId);
                 if ( !groupSelection.Equals(""))
                 {
                     string[] groupSplit = groupSelection.Split('/');

@@ -90,7 +90,7 @@ namespace WoWs_Randomizer.forms
             UpgradeSlotSelected.Clear();
             int selectedSlot = GetCheckedSlotNumber();
 
-            UpgradeCorrections CorrectionsList = new UpgradeCorrections(selectedShip);
+            //UpgradeCorrections CorrectionsList = new UpgradeCorrections(selectedShip);
 
             selectedShip.Upgrades.Append(4221751216);
 
@@ -104,14 +104,14 @@ namespace WoWs_Randomizer.forms
                 }
             }
 
-            List<long> corrections = new List<long>();
-            corrections = CorrectionsList.GetList();
-            foreach (long id in corrections)
-            {
-                Consumable Upgrade = Program.Upgrades.Find(x => x.ID == id);
+            //List<long> corrections = new List<long>();
+            //corrections = CorrectionsList.GetList();
+            //foreach (long id in corrections)
+            //{
+            //    Consumable Upgrade = Program.Upgrades.Find(x => x.ID == id);
 
-                UpgradeSlotSelected.Add(Upgrade);
-            }
+            //    UpgradeSlotSelected.Add(Upgrade);
+            //}
 
             UpgradeSlotSelected.Sort();
             UpdateUpgradePanels(selectedSlot);

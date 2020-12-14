@@ -188,7 +188,6 @@
     </Compile>
     <Compile Include="objects\consumables\ConsumablesInfoImporter.cs" />
     <Compile Include="objects\consumables\ConsumablesInfoTypeImporter.cs" />
-    <Compile Include="objects\consumables\ConsumableTypeGroups.cs" />
     <Compile Include="utils\ConsumableControlsHandler.cs" />
     <Compile Include="utils\enums\ConsumableTypes.cs" />
     <Compile Include="objects\modules\ModuleArtillery.cs" />
@@ -196,7 +195,6 @@
     <Compile Include="objects\modules\ModuleFighter.cs" />
     <Compile Include="objects\modules\ModuleTorpedoBomber.cs" />
     <Compile Include="objects\modules\ModuleTranslator.cs" />
-    <Compile Include="objects\modules\UpgradeCorrections.cs" />
     <Compile Include="objects\ShipBuild.cs" />
     <Compile Include="objects\consumables\ConsumableInfo.cs" />
     <Compile Include="objects\ship\profile\Artillery.cs" />

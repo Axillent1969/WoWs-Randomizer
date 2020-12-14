@@ -265,18 +265,18 @@ namespace WoWs_Randomizer.forms
                 }
             }
 
-            List<long> corrections = new List<long>();
-            UpgradeCorrections CorrectionsList = new UpgradeCorrections(SelectedShip);
-            corrections = CorrectionsList.GetList();
+            //List<long> corrections = new List<long>();
+            //UpgradeCorrections CorrectionsList = new UpgradeCorrections(SelectedShip);
+            //corrections = CorrectionsList.GetList();
 
-            foreach (long id in corrections)
-            {
-                Consumable Upgrade = Program.Upgrades.Find(x => x.ID == id);
-                if (Upgrade.GetSlotNumber() == SelectedSlot)
-                {
-                    UpgradeSlotSelected.Add(Upgrade);
-                }
-            }
+            //foreach (long id in corrections)
+            //{
+            //    Consumable Upgrade = Program.Upgrades.Find(x => x.ID == id);
+            //    if (Upgrade.GetSlotNumber() == SelectedSlot)
+            //    {
+            //        UpgradeSlotSelected.Add(Upgrade);
+            //    }
+            //}
 
             return UpgradeSlotSelected;
         }

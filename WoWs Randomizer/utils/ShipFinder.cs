@@ -71,10 +71,7 @@ namespace WoWs_Randomizer.utils
             if (value.Contains(","))
             {
                 string[] subSplit = value.Split(',');
-                foreach (string itm in subSplit)
-                {
-                    values.Add(itm);
-                }
+                values.AddRange(subSplit);
             }
             else
             {

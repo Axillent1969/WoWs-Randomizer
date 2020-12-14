@@ -14,7 +14,7 @@ namespace WoWs_Randomizer.forms
         public long SelectedID = 0;
         public PictureBox SelectedUpgrade = null;
         public int SelectedSlot = 0;
-        public long CreditValue = 0;
+        //public long CreditValue = 0;
         public Ship SelectedShip = null;
 
         public UpgradeSelector()
@@ -252,18 +252,16 @@ namespace WoWs_Randomizer.forms
         private List<Consumable> PrepareUpgrades()
         {
             List<Consumable> UpgradeSlotSelected = new List<Consumable>();
+
             SelectedShip.Upgrades.Append<long>(4221751216);
 
             foreach (long id in SelectedShip.Upgrades)
             {
                 // Do not include obsolete upgrades; Main Battery Mod 1, Propulsion Mod 1 etc...
-                if ( id != 4293054384 && id != 4289908656 && id != 4272082864 && id != 4271034288)
+                Consumable Upgrade = Program.Upgrades.Find(x => x.ID == id);
+                if (Upgrade.isObsolete() == false && Upgrade.GetSlotNumber() == SelectedSlot)
                 {
-                    Consumable Upgrade = Program.Upgrades.Find(x => x.ID == id);
-                    if (Upgrade.Credits.Equals(CreditValue))
-                    {
-                        UpgradeSlotSelected.Add(Upgrade);
-                    }
+                    UpgradeSlotSelected.Add(Upgrade);
                 }
             }
 
@@ -271,25 +269,12 @@ namespace WoWs_Randomizer.forms
             UpgradeCorrections CorrectionsList = new UpgradeCorrections(SelectedShip);
             corrections = CorrectionsList.GetList();
 
-            Dictionary<int, List<long>> SlotCorrections = new Dictionary<int, List<long>>();
-            SlotCorrections = CorrectionsList.GetSlotCorrections();
-
             foreach (long id in corrections)
             {
                 Consumable Upgrade = Program.Upgrades.Find(x => x.ID == id);
-
-                if (Upgrade.Credits.Equals(CreditValue))
+                if (Upgrade.GetSlotNumber() == SelectedSlot)
                 {
                     UpgradeSlotSelected.Add(Upgrade);
-
-                }
-                else if (SlotCorrections.ContainsKey(SelectedSlot))
-                {
-                    List<long> upgr = SlotCorrections[SelectedSlot];
-                    if (upgr.Contains(Upgrade.ID))
-                    {
-                        UpgradeSlotSelected.Add(Upgrade);
-                    }
                 }
             }
 
@@ -298,7 +283,7 @@ namespace WoWs_Randomizer.forms
 
         private void UpgradeSelector_Shown(object sender, EventArgs e)
         {
-            if ( this.SelectedSlot > 0 && this.CreditValue > 0 && this.SelectedShip != null )
+            if ( this.SelectedSlot > 0 && this.SelectedShip != null )
             {
                 PaintTable();
             }

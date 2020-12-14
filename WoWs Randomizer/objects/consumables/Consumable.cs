@@ -44,6 +44,18 @@ namespace WoWs_Randomizer.objects.consumables
             return (this.ID.Equals(other.ID));
         }
 
+        public bool isObsolete()
+        {
+            List<long> upgrade = new List<long>();
+            upgrade.Add(4293054384);
+            upgrade.Add(4289908656);
+            upgrade.Add(4272082864);
+            upgrade.Add(4271034288);
+            upgrade.Add(4286762928);
+
+            return upgrade.Contains(this.ID);
+        }
+
         public int GetSlotNumber()
         {
             if ( this.Type.Equals("Modernization"))
@@ -160,5 +172,6 @@ namespace WoWs_Randomizer.objects.consumables
             }
             return 0;
         }
+
     }
 }

@@ -487,103 +487,39 @@ namespace WoWs_Randomizer.forms
                 ToolTip ttip = new ToolTip();
                 ttip.SetToolTip(box, consumable.Name);
                 
-                if (consumable.Credits == 125000)
+                if (consumable.GetSlotNumber() == 1)
                 {
                     upgradeSlot1.Controls.Add(box);
                     ttip.SetToolTip(upgradeSlot1, consumable.Name);
                 }
-                else if (consumable.Credits == 250000)
+                else if (consumable.GetSlotNumber() == 2)
                 {
                     upgradeSlot2.Controls.Add(box);
                     ttip.SetToolTip(upgradeSlot2, consumable.Name);
                 }
-                else if (consumable.Credits == 500000)
+                else if (consumable.GetSlotNumber() == 3)
                 {
                     upgradeSlot3.Controls.Add(box);
                     ttip.SetToolTip(upgradeSlot3, consumable.Name);
                 }
-                else if (consumable.Credits == 1000000)
+                else if (consumable.GetSlotNumber() == 4)
                 {
                     upgradeSlot4.Controls.Add(box);
                     ttip.SetToolTip(upgradeSlot4, consumable.Name);
                 }
-                else if (consumable.Credits == 2000000)
+                else if (consumable.GetSlotNumber() == 5)
                 {
                     upgradeSlot5.Controls.Add(box);
                     ttip.SetToolTip(upgradeSlot5, consumable.Name);
                 }
-                else if (consumable.Credits == 3000000)
+                else if (consumable.GetSlotNumber() == 6)
                 {
                     upgradeSlot6.Controls.Add(box);
                     ttip.SetToolTip(upgradeSlot6, consumable.Name);
-                } else
-                {
-                    List<long> corrections = new List<long>();
-                    UpgradeCorrections CorrectionsList = new UpgradeCorrections(selectedShip);
-                    corrections = CorrectionsList.GetList();
-
-                    Dictionary<int, List<long>> SlotCorrections = new Dictionary<int, List<long>>();
-                    SlotCorrections = CorrectionsList.GetSlotCorrections();
-                    foreach (long id in corrections)
-                    {
-                        for(int slot = 1; slot <= 6; slot++)
-                        {
-                            if ( SlotCorrections.ContainsKey(slot))
-                            {
-                                List<long> upgr = SlotCorrections[slot];
-                                if (upgr.Contains(upgradeId))
-                                {
-                                    if ( slot == 1 ) 
-                                    {
-                                        ClearUpgradePanel(upgradeSlot1);
-                                        upgradeSlot1.Controls.Add(box); 
-                                    }
-                                    if ( slot == 2 ) 
-                                    {
-                                        ClearUpgradePanel(upgradeSlot2);
-                                        upgradeSlot2.Controls.Add(box); 
-                                    }
-                                    if ( slot == 3 ) 
-                                    {
-                                        ClearUpgradePanel(upgradeSlot3);
-                                        upgradeSlot3.Controls.Add(box); 
-                                    }
-                                    if ( slot == 4 ) 
-                                    {
-                                        ClearUpgradePanel(upgradeSlot4);
-                                        upgradeSlot4.Controls.Add(box); 
-                                    }
-                                    if ( slot == 5 ) 
-                                    {
-                                        ClearUpgradePanel(upgradeSlot5);
-                                        upgradeSlot5.Controls.Add(box); 
-                                    }
-                                    if ( slot == 6 ) 
-                                    { 
-                                        ClearUpgradePanel(upgradeSlot6);
-                                        upgradeSlot6.Controls.Add(box); 
-                                    }
-                                }
-                            }
-                        }
-                    }
                 }
                 applyUpgradeValues(consumable.ID.ToString(), false);
             }
             bmHandler.PerformAnimation(true);
-        }
-
-        private void ClearUpgradePanel(Panel UpgradePanel)
-        {
-            if ( UpgradePanel.Controls.Count > 0 )
-            {
-                ToolTip ttip = new ToolTip();
-                ttip.SetToolTip(UpgradePanel, ""); 
-
-                PictureBox existing = (PictureBox)UpgradePanel.Controls[0];
-                string existingId = existing.AccessibleName;
-                removeUpgradeValues(existingId);
-            }
         }
 
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
@@ -650,26 +586,8 @@ namespace WoWs_Randomizer.forms
                 panel = (Panel)sender;
             }
             int slot = int.Parse(panel.Tag.ToString());
-            long creditValue = 125000;
-            if ( slot == 2 )
-            {
-                creditValue = 250000;
-            } else if ( slot == 3)
-            {
-                creditValue = 500000;
-            } else if ( slot == 4)
-            {
-                creditValue = 1000000;
-            } else if ( slot == 5)
-            {
-                creditValue = 2000000;
-            } else if ( slot == 6)
-            {
-                creditValue = 3000000;
-            }
 
             UpgradeSelector selectorDlg = new UpgradeSelector();
-            selectorDlg.CreditValue = creditValue;
             selectorDlg.SelectedSlot = slot;
             selectorDlg.SelectedShip = selectedShip;
 

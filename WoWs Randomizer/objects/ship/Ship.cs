@@ -94,6 +94,42 @@ namespace WoWs_Randomizer.utils.ship
             return this.Name.CompareTo(obj.Name);
         }
 
+        public bool canEquipSmokeGeneratorMod1()
+        {
+            return (this.GetConsumableInfo(ConsumableType.Smoke) != null);
+        }
+
+        public bool canEquipSRM1()
+        {
+            return (this.GetConsumableInfo(ConsumableType.Radar) != null);
+        }
+
+        public bool canEquipHydroMod1()
+        {
+            return (this.GetConsumableInfo(ConsumableType.Hydro) != null);
+        }
+
+        public bool canEquipDefAAMod1()
+        {
+            return (this.GetConsumableInfo(ConsumableType.DefAA) != null);
+        }
+
+        public bool canEquipEngineBoostMod1()
+        {
+            return (this.GetConsumableInfo(ConsumableType.SpeedBoost) != null);
+
+        }
+
+        public bool canEquipEmergencyEnginePower()
+        {
+            return (this.GetConsumableInfo(ConsumableType.EmergencyEnginePower) != null);
+        }
+
+        public bool canEquipSpottingAircraftMod1()
+        {
+            return (this.GetConsumableInfo(ConsumableType.SpotterPlane) != null);
+        }
+
         public void ApplyUpgradeCorrections()
         {
             HashSet<long> upgrades = new HashSet<long>(this.Upgrades);

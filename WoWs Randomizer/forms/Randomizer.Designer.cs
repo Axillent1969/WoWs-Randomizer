@@ -620,21 +620,21 @@ namespace WoWs_Randomizer
             // 
             this.buildManagerToolStripMenuItem.Enabled = false;
             this.buildManagerToolStripMenuItem.Name = "buildManagerToolStripMenuItem";
-            this.buildManagerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.buildManagerToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.buildManagerToolStripMenuItem.Text = "&Build Manager";
             this.buildManagerToolStripMenuItem.Click += new System.EventHandler(this.buildManagerToolStripMenuItem_Click);
             // 
             // shipComparisonToolStripMenuItem
             // 
             this.shipComparisonToolStripMenuItem.Name = "shipComparisonToolStripMenuItem";
-            this.shipComparisonToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.shipComparisonToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.shipComparisonToolStripMenuItem.Text = "Ship &Comparison";
             this.shipComparisonToolStripMenuItem.Click += new System.EventHandler(this.ShipComparisonToolStripMenuItem_Click);
             // 
             // upgradesExaminerToolStripMenuItem
             // 
             this.upgradesExaminerToolStripMenuItem.Name = "upgradesExaminerToolStripMenuItem";
-            this.upgradesExaminerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.upgradesExaminerToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.upgradesExaminerToolStripMenuItem.Text = "Ship &Wikipedia";
             this.upgradesExaminerToolStripMenuItem.Click += new System.EventHandler(this.upgradesExaminerToolStripMenuItem_Click);
             // 
@@ -895,6 +895,8 @@ namespace WoWs_Randomizer
             this.StatusLabel.Name = "StatusLabel";
             this.StatusLabel.Size = new System.Drawing.Size(270, 17);
             this.StatusLabel.Text = "© 2020 Kenneth Axi : https//www.twitch.tv/axillent";
+            this.StatusLabel.Click += new System.EventHandler(this.StatusLabel_Click);
+            this.StatusLabel.MouseHover += new System.EventHandler(this.StatusLabel_MouseHover);
             // 
             // toolTip1
             // 

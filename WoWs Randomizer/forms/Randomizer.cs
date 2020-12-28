@@ -784,5 +784,16 @@ namespace WoWs_Randomizer
             LoadingImage.Dock = DockStyle.None;
             LoadingImage.Visible = false;
         }
+
+        private void StatusLabel_Click(object sender, EventArgs e)
+        {
+            string HREF = @"https://www.twitch.tv/Axillent/";
+            System.Diagnostics.Process.Start(HREF);
+        }
+
+        private void StatusLabel_MouseHover(object sender, EventArgs e)
+        {
+            statusStrip1.Cursor = Cursors.Hand;
+        }
     }
 }

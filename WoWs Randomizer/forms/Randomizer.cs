@@ -15,6 +15,7 @@ using WoWs_Randomizer.utils.ship;
 using WoWs_Randomizer.utils.skills;
 using WoWs_Randomizer.objects.consumables;
 using WoWs_Randomizer.objects;
+using WoWs_Randomizer.objects.version;
 
 namespace WoWs_Randomizer
 {
@@ -29,7 +30,7 @@ namespace WoWs_Randomizer
         private List<long> AlreadyRandomizedShips = new List<long>();
         private HashSet<long> ExcludedShips = new HashSet<long>();
         private Ship RandomizedShip = null;
-        private List<string> ChangeLog = new List<string>();
+        private List<ProgramVersionLog> ChangeLog = new List<ProgramVersionLog>();
         private string RandomizerVersion = "";
         private ProfileHandler profileHandler = new ProfileHandler();
 
@@ -607,7 +608,7 @@ namespace WoWs_Randomizer
         private void changeLogToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ChangeLog logform = new ChangeLog();
-            logform.log = this.ChangeLog;
+            logform.LogEntries = this.ChangeLog;
             logform.Text = "Change Log WoWs Randomizer ver. " + RandomizerVersion;
             logform.ShowDialog();
         }

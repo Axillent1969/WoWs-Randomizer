@@ -12,6 +12,7 @@ using WoWs_Randomizer.utils.skills;
 using WoWs_Randomizer.utils.version;
 using WoWs_Randomizer.objects.consumables;
 using WoWs_Randomizer.objects;
+using WoWs_Randomizer.objects.version;
 
 namespace WoWs_Randomizer.api
 {
@@ -27,9 +28,45 @@ namespace WoWs_Randomizer.api
                 String jsonFile = Commons.GetCurrentDirectory() + "/randomizer.json";
                 wc.DownloadFile("https://onedrive.live.com/download?cid=919CD8D21AC2180D&resid=919CD8D21AC2180D%2116427&authkey=AOg1igxPEZw9EWw", jsonFile);
                 string jsonText = File.ReadAllText(jsonFile);
-                ProgramVersion Import = JsonConvert.DeserializeObject<ProgramVersion>(jsonText);
+                string testForOldVersion = jsonText.Substring(0, 42);
+                bool isOldVersion = IsOldVersion(jsonText);
+
+                ProgramVersion Import = null;
+                if ( isOldVersion )
+                {
+                    Import = ConvertFromOldVersion(jsonText);
+                } else
+                {
+                    Import = JsonConvert.DeserializeObject<ProgramVersion>(jsonText);
+                }
                 return Import;
             }
+        }
+
+        private static bool IsOldVersion(string jsonText)
+        {
+            int idx = jsonText.LastIndexOf("changelog");
+            string test = jsonText.Substring(idx+16, 1);
+            return test.Equals("\"");
+        }
+
+        private static ProgramVersion ConvertFromOldVersion(string jsonText)
+        {
+            ProgramVersion imp = new ProgramVersion();
+            ProgramVersionOLD old = JsonConvert.DeserializeObject<ProgramVersionOLD>(jsonText);
+            imp.Status = old.Status;
+            imp.Version = old.Version;
+            imp.Updated = old.Updated;
+            imp.URL = old.URL;
+            ProgramVersionLog log = new ProgramVersionLog();
+            log.Date = old.Updated;
+            log.Version = old.Version;
+            log.Log = new List<string>();
+            log.Log.AddRange(old.ChangeLog);
+
+            imp.ChangeLog = new List<ProgramVersionLog>();
+            imp.ChangeLog.Add(log);
+            return imp;
         }
 
         public static ConsumablesInfoImporter GetConsumablesInfo()

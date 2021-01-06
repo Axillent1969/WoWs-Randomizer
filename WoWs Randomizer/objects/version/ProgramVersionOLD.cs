@@ -1,10 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
-using WoWs_Randomizer.objects.version;
 
-namespace WoWs_Randomizer.utils.version
+namespace WoWs_Randomizer.objects.version
 {
-    class ProgramVersion
+    class ProgramVersionOLD
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -16,7 +19,6 @@ namespace WoWs_Randomizer.utils.version
         public string URL { get; set; }
 
         [JsonProperty("changelog")]
-        //public List<string> ChangeLog { get; set; }
-        public List<ProgramVersionLog> ChangeLog { get; set; }
+        public List<string> ChangeLog { get; set; }
     }
 }

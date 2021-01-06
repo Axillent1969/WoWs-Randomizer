@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using WoWs_Randomizer.api;
 using WoWs_Randomizer.objects;
 using WoWs_Randomizer.objects.consumables;
+using WoWs_Randomizer.objects.version;
 using WoWs_Randomizer.utils.module;
 using WoWs_Randomizer.utils.modules;
 using WoWs_Randomizer.utils.player;
@@ -18,7 +19,7 @@ namespace WoWs_Randomizer.utils
 {
     class Updater
     {
-        private List<string> ChangeLog = new List<string>();
+        private List<ProgramVersionLog> ChangeLog = new List<ProgramVersionLog>();
         private string RandomizerVersion = "";
         private string GameVersion = "";
         private DateTime GameDate = new DateTime();
@@ -30,7 +31,7 @@ namespace WoWs_Randomizer.utils
             VersionChecker();
         }
 
-        public List<string> GetChangeLog() { return ChangeLog; }
+        public List<ProgramVersionLog> GetChangeLog() { return ChangeLog; }
         public string GetRandomizerVersion() { return RandomizerVersion; }
         public string GetGameVersion() { return GameVersion; }
         public DateTime GetGameDate() { return GameDate; }

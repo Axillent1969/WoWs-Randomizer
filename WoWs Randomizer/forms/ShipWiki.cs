@@ -11,7 +11,6 @@ using static WoWs_Randomizer.utils.ConsumableTypes;
 using WoWs_Randomizer.utils;
 using WoWs_Randomizer.api;
 using System.Linq;
-using WoWs_Randomizer.utils.modules;
 
 namespace WoWs_Randomizer.forms
 {
@@ -90,8 +89,6 @@ namespace WoWs_Randomizer.forms
             UpgradeSlotSelected.Clear();
             int selectedSlot = GetCheckedSlotNumber();
 
-            //UpgradeCorrections CorrectionsList = new UpgradeCorrections(selectedShip);
-
             selectedShip.Upgrades.Append(4221751216);
 
             foreach (long id in selectedShip.Upgrades)
@@ -103,16 +100,6 @@ namespace WoWs_Randomizer.forms
                     UpgradeSlotSelected.Add(Upgrade);
                 }
             }
-
-            //List<long> corrections = new List<long>();
-            //corrections = CorrectionsList.GetList();
-            //foreach (long id in corrections)
-            //{
-            //    Consumable Upgrade = Program.Upgrades.Find(x => x.ID == id);
-
-            //    UpgradeSlotSelected.Add(Upgrade);
-            //}
-
             UpgradeSlotSelected.Sort();
             UpdateUpgradePanels(selectedSlot);
         }

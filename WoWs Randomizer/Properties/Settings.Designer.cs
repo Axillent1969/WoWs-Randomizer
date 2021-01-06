@@ -22,17 +22,5 @@ namespace WoWs_Randomizer.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool UpgradeFix {
-            get {
-                return ((bool)(this["UpgradeFix"]));
-            }
-            set {
-                this["UpgradeFix"] = value;
-            }
-        }
     }
 }

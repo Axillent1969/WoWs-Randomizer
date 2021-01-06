@@ -195,8 +195,6 @@ namespace WoWs_Randomizer.utils
             if (AllShips != null)
             {
                 Program.AllShips = AllShips;
-                
-                //BinarySerialize.WriteToBinaryFile<List<Ship>>(Commons.GetShipListFileName(), AllShips);
             }
         }
 
@@ -206,8 +204,8 @@ namespace WoWs_Randomizer.utils
             {
                 ship.ApplyUpgradeCorrections();
             }
-            Properties.Settings.Default.UpgradeFix = true;
-            Properties.Settings.Default.Save();
+            //Properties.Settings.Default.UpgradeFix = true;
+            //Properties.Settings.Default.Save();
         }
 
         private void UpdateUpgrades()

@@ -14,7 +14,6 @@ namespace WoWs_Randomizer.forms
         public long SelectedID = 0;
         public PictureBox SelectedUpgrade = null;
         public int SelectedSlot = 0;
-        //public long CreditValue = 0;
         public Ship SelectedShip = null;
 
         public UpgradeSelector()
@@ -264,19 +263,6 @@ namespace WoWs_Randomizer.forms
                     UpgradeSlotSelected.Add(Upgrade);
                 }
             }
-
-            //List<long> corrections = new List<long>();
-            //UpgradeCorrections CorrectionsList = new UpgradeCorrections(SelectedShip);
-            //corrections = CorrectionsList.GetList();
-
-            //foreach (long id in corrections)
-            //{
-            //    Consumable Upgrade = Program.Upgrades.Find(x => x.ID == id);
-            //    if (Upgrade.GetSlotNumber() == SelectedSlot)
-            //    {
-            //        UpgradeSlotSelected.Add(Upgrade);
-            //    }
-            //}
 
             return UpgradeSlotSelected;
         }

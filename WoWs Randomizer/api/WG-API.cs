@@ -28,11 +28,9 @@ namespace WoWs_Randomizer.api
                 String jsonFile = Commons.GetCurrentDirectory() + "/randomizer.json";
                 wc.DownloadFile("https://onedrive.live.com/download?cid=919CD8D21AC2180D&resid=919CD8D21AC2180D%2116427&authkey=AOg1igxPEZw9EWw", jsonFile);
                 string jsonText = File.ReadAllText(jsonFile);
-                string testForOldVersion = jsonText.Substring(0, 42);
-                bool isOldVersion = IsOldVersion(jsonText);
 
                 ProgramVersion Import = null;
-                if ( isOldVersion )
+                if (IsOldVersion(jsonText))
                 {
                     Import = ConvertFromOldVersion(jsonText);
                 } else

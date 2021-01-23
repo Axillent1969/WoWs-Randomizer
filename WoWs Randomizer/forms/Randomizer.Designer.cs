@@ -116,6 +116,7 @@ namespace WoWs_Randomizer
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.BGUpdater = new System.ComponentModel.BackgroundWorker();
             this.UpgradeFixer = new System.ComponentModel.BackgroundWorker();
+            this.listToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.LeftPanel.SuspendLayout();
             this.MenuStrip.SuspendLayout();
             this.RightPanel.SuspendLayout();
@@ -611,7 +612,8 @@ namespace WoWs_Randomizer
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.buildManagerToolStripMenuItem,
             this.shipComparisonToolStripMenuItem,
-            this.upgradesExaminerToolStripMenuItem});
+            this.upgradesExaminerToolStripMenuItem,
+            this.listToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
             this.toolsToolStripMenuItem.Text = "&Tools";
@@ -620,21 +622,21 @@ namespace WoWs_Randomizer
             // 
             this.buildManagerToolStripMenuItem.Enabled = false;
             this.buildManagerToolStripMenuItem.Name = "buildManagerToolStripMenuItem";
-            this.buildManagerToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.buildManagerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.buildManagerToolStripMenuItem.Text = "&Build Manager";
             this.buildManagerToolStripMenuItem.Click += new System.EventHandler(this.buildManagerToolStripMenuItem_Click);
             // 
             // shipComparisonToolStripMenuItem
             // 
             this.shipComparisonToolStripMenuItem.Name = "shipComparisonToolStripMenuItem";
-            this.shipComparisonToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.shipComparisonToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.shipComparisonToolStripMenuItem.Text = "Ship &Comparison";
             this.shipComparisonToolStripMenuItem.Click += new System.EventHandler(this.ShipComparisonToolStripMenuItem_Click);
             // 
             // upgradesExaminerToolStripMenuItem
             // 
             this.upgradesExaminerToolStripMenuItem.Name = "upgradesExaminerToolStripMenuItem";
-            this.upgradesExaminerToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.upgradesExaminerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.upgradesExaminerToolStripMenuItem.Text = "Ship &Wikipedia";
             this.upgradesExaminerToolStripMenuItem.Click += new System.EventHandler(this.upgradesExaminerToolStripMenuItem_Click);
             // 
@@ -912,6 +914,13 @@ namespace WoWs_Randomizer
             this.UpgradeFixer.DoWork += new System.ComponentModel.DoWorkEventHandler(this.UpgradeFixer_DoWork);
             this.UpgradeFixer.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.UpgradeFixer_RunWorkerCompleted);
             // 
+            // listToolStripMenuItem
+            // 
+            this.listToolStripMenuItem.Name = "listToolStripMenuItem";
+            this.listToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.listToolStripMenuItem.Text = "List";
+            this.listToolStripMenuItem.Click += new System.EventHandler(this.listToolStripMenuItem_Click);
+            // 
             // FormRandomizer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1029,6 +1038,7 @@ namespace WoWs_Randomizer
         private System.Windows.Forms.CheckBox CBNonPremium;
         private System.ComponentModel.BackgroundWorker BGUpdater;
         private System.ComponentModel.BackgroundWorker UpgradeFixer;
+        private System.Windows.Forms.ToolStripMenuItem listToolStripMenuItem;
     }
 }
 

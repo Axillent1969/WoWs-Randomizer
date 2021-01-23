@@ -156,6 +156,12 @@
     <Compile Include="forms\HelpRandomizer.Designer.cs">
       <DependentUpon>HelpRandomizer.cs</DependentUpon>
     </Compile>
+    <Compile Include="forms\List.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\List.Designer.cs">
+      <DependentUpon>List.cs</DependentUpon>
+    </Compile>
     <Compile Include="forms\Randomizer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -234,6 +240,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="System\Windows\UI.cs" />
     <Compile Include="utils\BinarySerialize.cs" />
+    <Compile Include="utils\ExposedAttribute.cs" />
     <Compile Include="utils\metrics\ArtilleryExtractor.cs" />
     <Compile Include="utils\metrics\TorpedoExtractor.cs" />
     <Compile Include="utils\ProfileHandler.cs" />
@@ -280,6 +287,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forms\HelpRandomizer.resx">
       <DependentUpon>HelpRandomizer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\List.resx">
+      <DependentUpon>List.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\Randomizer.resx">
       <DependentUpon>Randomizer.cs</DependentUpon>

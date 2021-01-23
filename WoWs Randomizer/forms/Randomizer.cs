@@ -796,5 +796,19 @@ namespace WoWs_Randomizer
         {
             statusStrip1.Cursor = Cursors.Hand;
         }
+
+        private void listToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            List ShowList = new List();
+            if ( ShowList.ShowDialog(this) == DialogResult.OK)
+            {
+
+            }
+            //ExList.PersonalShips = this.PersonalShips;
+            //if (ExList.ShowDialog(this) == DialogResult.OK) { }
+            //LoadExcludedShips();
+            //ExList.Dispose();
+            //lblExcludedShips.Text = ExcludedShips.Count.ToString() + " excluded from randomization.";
+        }
     }
 }

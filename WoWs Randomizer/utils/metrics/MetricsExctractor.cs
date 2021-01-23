@@ -172,9 +172,12 @@ namespace WoWs_Randomizer.utils
                     }
                     else
                     {
-                        Fsquadrons = long.Parse(MData.Profile["flight_control"]["fighter_squadrons"].ToString());
-                        Bsquadrons = long.Parse(MData.Profile["flight_control"]["bomber_squadrons"].ToString());
-                        Tsquadrons = long.Parse(MData.Profile["flight_control"]["torpedo_squadrons"].ToString());
+                        if (MData.Profile != null && MData.Profile["flight_control"] != null && MData.Profile["flight_control"]["fighter_squadrons"] != null )
+                        {
+                            Fsquadrons = long.Parse(MData.Profile["flight_control"]["fighter_squadrons"].ToString());
+                            Bsquadrons = long.Parse(MData.Profile["flight_control"]["bomber_squadrons"].ToString());
+                            Tsquadrons = long.Parse(MData.Profile["flight_control"]["torpedo_squadrons"].ToString());
+                        } 
                     }
 
                     Metrics.FighterSquadrons = Fsquadrons;
@@ -260,8 +263,11 @@ namespace WoWs_Randomizer.utils
 
         private void CalculateConcealment()
         {
-            Metrics.AirDetection = RandomizedShip.Profile.Concealment.AirDetection;
-            Metrics.SurfaceDetection = RandomizedShip.Profile.Concealment.SurfaceDetection;
+            if ( RandomizedShip.Profile.Concealment != null )
+            {
+                Metrics.AirDetection = RandomizedShip.Profile.Concealment.AirDetection;
+                Metrics.SurfaceDetection = RandomizedShip.Profile.Concealment.SurfaceDetection;
+            }
         }
 
         private void CalculateFireControl()

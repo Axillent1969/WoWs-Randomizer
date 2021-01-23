@@ -31,11 +31,11 @@ namespace WoWs_Randomizer.forms
         {
             this.resultGrid = new System.Windows.Forms.DataGridView();
             this.btnShow = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.allFieldNames = new System.Windows.Forms.ListBox();
             this.userSelectedFields = new System.Windows.Forms.ListBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.resultGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -46,9 +46,9 @@ namespace WoWs_Randomizer.forms
             this.resultGrid.AllowUserToOrderColumns = true;
             this.resultGrid.BackgroundColor = System.Drawing.Color.LightSteelBlue;
             this.resultGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.resultGrid.Location = new System.Drawing.Point(12, 160);
+            this.resultGrid.Location = new System.Drawing.Point(13, 42);
             this.resultGrid.Name = "resultGrid";
-            this.resultGrid.Size = new System.Drawing.Size(570, 330);
+            this.resultGrid.Size = new System.Drawing.Size(691, 448);
             this.resultGrid.TabIndex = 0;
             // 
             // btnShow
@@ -61,32 +61,23 @@ namespace WoWs_Randomizer.forms
             this.btnShow.UseVisualStyleBackColor = true;
             this.btnShow.Click += new System.EventHandler(this.btnShow_Click);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(324, 82);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // allFieldNames
             // 
             this.allFieldNames.FormattingEnabled = true;
-            this.allFieldNames.Location = new System.Drawing.Point(901, 5);
+            this.allFieldNames.Location = new System.Drawing.Point(998, 5);
             this.allFieldNames.Name = "allFieldNames";
             this.allFieldNames.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.allFieldNames.Size = new System.Drawing.Size(198, 485);
             this.allFieldNames.Sorted = true;
             this.allFieldNames.TabIndex = 8;
             this.allFieldNames.DragOver += new System.Windows.Forms.DragEventHandler(this.allFieldNames_DragOver);
+            this.allFieldNames.DoubleClick += new System.EventHandler(this.allFieldNames_DoubleClick);
             // 
             // userSelectedFields
             // 
             this.userSelectedFields.AllowDrop = true;
             this.userSelectedFields.FormattingEnabled = true;
-            this.userSelectedFields.Location = new System.Drawing.Point(605, 5);
+            this.userSelectedFields.Location = new System.Drawing.Point(710, 5);
             this.userSelectedFields.Name = "userSelectedFields";
             this.userSelectedFields.Size = new System.Drawing.Size(207, 485);
             this.userSelectedFields.TabIndex = 9;
@@ -96,7 +87,7 @@ namespace WoWs_Randomizer.forms
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(832, 160);
+            this.button2.Location = new System.Drawing.Point(934, 185);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(46, 23);
             this.button2.TabIndex = 10;
@@ -106,7 +97,7 @@ namespace WoWs_Randomizer.forms
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(832, 203);
+            this.button3.Location = new System.Drawing.Point(934, 228);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(46, 23);
             this.button3.TabIndex = 11;
@@ -114,16 +105,26 @@ namespace WoWs_Randomizer.forms
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(934, 274);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(46, 23);
+            this.button1.TabIndex = 12;
+            this.button1.Text = "Clear";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // List
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1208, 502);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.userSelectedFields);
             this.Controls.Add(this.allFieldNames);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnShow);
             this.Controls.Add(this.resultGrid);
             this.Name = "List";
@@ -137,10 +138,10 @@ namespace WoWs_Randomizer.forms
 
         private System.Windows.Forms.DataGridView resultGrid;
         private System.Windows.Forms.Button btnShow;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ListBox allFieldNames;
         private System.Windows.Forms.ListBox userSelectedFields;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button1;
     }
 }

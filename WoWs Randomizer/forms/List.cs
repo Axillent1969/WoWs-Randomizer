@@ -17,28 +17,26 @@ namespace WoWs_Randomizer.forms
     {
         private DataTable table = new DataTable();
         List<string> exposedFields = new List<string>();
+        private Dictionary<string, Option> mapping = new Dictionary<string, Option>();
 
         public List()
         {
             InitializeComponent();
             resultGrid.DataSource = table;
-            //fieldSelector.AllowDrop = true;
+            GatherExposedFieldNames();
         }
 
-        private void test()
+        private void GatherExposedFieldNames()
         {
             Type myType = typeof(ShipMetrics);
             FieldInfo[] fields = myType.GetFields(BindingFlags.Instance | BindingFlags.NonPublic);
 
-            //Console.WriteLine("Display fields ... ");
-            for(int i = 0; i < fields.Length; i++ )
+            for (int i = 0; i < fields.Length; i++)
             {
                 string n = fields[i].Name;
-                n = n.Replace("k__BackingField", "").Replace("<", "").Replace(">", "");
+                string disp = n.Replace("k__BackingField", "").Replace("<", "").Replace(">", "");
 
-                //Console.WriteLine("FIELD: " + fields[i].Name + " -> " + n);
-
-                var ex = myType.GetProperty(n);
+                var ex = myType.GetProperty(disp);
                 bool isDefined = false;
 
                 if (ex != null)
@@ -48,7 +46,9 @@ namespace WoWs_Randomizer.forms
 
                 if (isDefined)
                 {
-                    exposedFields.Add(n);
+                    Option opt = new Option(disp, n,"metrics");
+                    this.mapping.Add(disp, opt);
+                    exposedFields.Add(disp);
                 }
             }
 
@@ -57,28 +57,25 @@ namespace WoWs_Randomizer.forms
             for (int i = 0; i < fields2.Length; i++)
             {
                 string n = fields2[i].Name;
-                n = n.Replace("k__BackingField", "").Replace("<", "").Replace(">","");
-                
-                //Console.WriteLine("FIELD: " + fields2[i].Name + " -> " + n);
+                string disp = n.Replace("k__BackingField", "").Replace("<", "").Replace(">", "");
 
-                var ex = myType2.GetProperty(n);
+                var ex = myType2.GetProperty(disp);
                 bool isDefined = false;
 
-                if ( ex != null )
+                if (ex != null)
                 {
                     isDefined = Attribute.IsDefined(ex, typeof(Exposed));
                 }
 
-                if ( isDefined  )
+                if (isDefined)
                 {
-                    exposedFields.Add(n);
+                    Option opt = new Option(disp, n,"ship");
+                    this.mapping.Add(disp, opt);
+                    exposedFields.Add(disp);
                 }
-                //Console.WriteLine("Has EXPOSED: " + isDefined);
-
             }
             exposedFields.Sort();
             fillSelector();
-
         }
 
         private void btnShow_Click(object sender, EventArgs e)
@@ -96,11 +93,6 @@ namespace WoWs_Randomizer.forms
 
         private void fillSelector()
         {
-            //fieldSelector.Items.Clear();
-            //foreach(string itm in exposedFields)
-            //{
-            //    fieldSelector.Items.Add(itm);
-            //}
             allFieldNames.Items.Clear();
             foreach (string itm in exposedFields)
             {
@@ -112,7 +104,7 @@ namespace WoWs_Randomizer.forms
         {
             table.Columns.Clear();
 
-            foreach(var obj in userSelectedFields.Items)
+            foreach (var obj in userSelectedFields.Items)
             {
                 string itm = (string)obj;
                 table.Columns.Add(itm);
@@ -123,13 +115,12 @@ namespace WoWs_Randomizer.forms
         {
             table.Rows.Clear();
 
-            foreach(Ship ship in Program.AllShips) {
+            foreach (Ship ship in Program.AllShips) {
 
                 try
                 {
                     MetricsExctractor Extractor = new MetricsExctractor(ship);
                     ShipMetrics metrics = Extractor.GetMetrics();
-
 
                     DataRow row = table.NewRow();
 
@@ -137,13 +128,25 @@ namespace WoWs_Randomizer.forms
                     foreach (var obj in userSelectedFields.Items)
                     {
                         string itm = (string)obj;
-                        itm = "<" + itm + ">k__BackingField";
-                        FieldInfo fld = typeof(Ship).GetField(itm, BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
-                        row[rowIdx] = fld.GetValue(ship);
+                        FieldInfo fld = null;
+
+                        Option opt = this.mapping[itm];
+                        if ( opt != null )
+                        {
+                            if ( opt.ClassName.Equals("ship"))
+                            {
+                                fld = typeof(Ship).GetField(opt.Value, BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
+                                row[rowIdx] = fld.GetValue(ship);
+                            } else if ( opt.ClassName.Equals("metrics"))
+                            {
+                                fld = typeof(ShipMetrics).GetField(opt.Value, BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
+                                row[rowIdx] = fld.GetValue(metrics);
+                            }
+                        }
                         rowIdx++;
                     }
                     table.Rows.Add(row);
-                } catch(Exception ex) {
+                } catch (Exception ex) {
                     Console.WriteLine(ex);
                     Console.WriteLine(table);
                     Console.WriteLine(table.Columns.Count);
@@ -152,21 +155,6 @@ namespace WoWs_Randomizer.forms
             }
 
             resultGrid.Sort(resultGrid.Columns[0], ListSortDirection.Ascending);
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            test();
-        }
-
-        private void fieldSelector_DragDrop(object sender, DragEventArgs e)
-        {
-            //Point point = fieldSelector.PointToClient(new Point(e.X, e.Y));
-            //int index = this.fieldSelector.IndexFromPoint(point);
-            //if (index < 0) index = this.fieldSelector.Items.Count - 1;
-            //object data = e.Data.GetData(typeof(string));
-            //this.fieldSelector.Items.Remove(data);
-            //this.fieldSelector.Items.Insert(index, data);
         }
 
         private void userSelectedFields_MouseDown(object sender, MouseEventArgs e)
@@ -197,16 +185,16 @@ namespace WoWs_Randomizer.forms
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if ( allFieldNames.SelectedItems.Count == 0 )
+            if (allFieldNames.SelectedItems.Count == 0)
             {
                 return;
             }
-            foreach( string name in allFieldNames.SelectedItems )
+            foreach (string name in allFieldNames.SelectedItems)
             {
                 userSelectedFields.Items.Add(name);
             }
 
-            for(int i = allFieldNames.SelectedItems.Count - 1; i >= 0; i--)
+            for (int i = allFieldNames.SelectedItems.Count - 1; i >= 0; i--)
             {
                 allFieldNames.Items.Remove(allFieldNames.SelectedItems[i]);
             }
@@ -228,5 +216,53 @@ namespace WoWs_Randomizer.forms
             }
 
         }
+
+        private void allFieldNames_DoubleClick(object sender, EventArgs e)
+        {
+            if ( allFieldNames.SelectedItems.Count > 0 )
+            {
+                copySelectedItemToOtherList(allFieldNames, userSelectedFields);
+            }
+        }
+
+        private void copySelectedItemToOtherList(ListBox From, ListBox To)
+        {
+            foreach (string name in From.SelectedItems)
+            {
+                To.Items.Add(name);
+            }
+
+            for (int i = From.SelectedItems.Count - 1; i >= 0; i--)
+            {
+                From.Items.Remove(From.SelectedItems[i]);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            userSelectedFields.SelectionMode = SelectionMode.MultiSimple;
+            for(int i = 0; i < userSelectedFields.Items.Count;i++)
+            {
+                userSelectedFields.SetSelected(i, true);
+            }
+            copySelectedItemToOtherList(userSelectedFields, allFieldNames);
+            userSelectedFields.SelectionMode = SelectionMode.One;
+        }
+    }
+    class Option
+    {
+        private string name = "";
+        private string value = "";
+        private string classname = "";
+
+        public Option(string DisplayName, string Value, string classname)
+        {
+            this.name = DisplayName;
+            this.value = Value;
+            this.classname = classname;
+        }
+        public string DisplayName { get { return this.name; } }
+        public string Value { get { return this.value; } }
+        public string ClassName { get { return this.classname; } }
     }
 }

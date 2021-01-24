@@ -40,7 +40,7 @@ namespace WoWs_Randomizer.forms
             this.cbExclusionList = new System.Windows.Forms.CheckBox();
             this.cbPersonalShips = new System.Windows.Forms.RadioButton();
             this.cbAllShips = new System.Windows.Forms.RadioButton();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupShipClass = new System.Windows.Forms.GroupBox();
             this.cbSub = new System.Windows.Forms.CheckBox();
             this.cbCV = new System.Windows.Forms.CheckBox();
             this.cbDD = new System.Windows.Forms.CheckBox();
@@ -56,13 +56,31 @@ namespace WoWs_Randomizer.forms
             this.CBTier3 = new System.Windows.Forms.CheckBox();
             this.CBTier2 = new System.Windows.Forms.CheckBox();
             this.CBTier1 = new System.Windows.Forms.CheckBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupTier = new System.Windows.Forms.GroupBox();
             this.cbPremium = new System.Windows.Forms.CheckBox();
             this.cbTechTree = new System.Windows.Forms.CheckBox();
+            this.groupNations = new System.Windows.Forms.GroupBox();
+            this.CBCountry11 = new System.Windows.Forms.CheckBox();
+            this.CBCountry10 = new System.Windows.Forms.CheckBox();
+            this.CBCountry9 = new System.Windows.Forms.CheckBox();
+            this.CBCountry8 = new System.Windows.Forms.CheckBox();
+            this.CBCountry7 = new System.Windows.Forms.CheckBox();
+            this.CBCountry6 = new System.Windows.Forms.CheckBox();
+            this.CBCountry5 = new System.Windows.Forms.CheckBox();
+            this.CBCountry4 = new System.Windows.Forms.CheckBox();
+            this.CBCountry3 = new System.Windows.Forms.CheckBox();
+            this.CBCountry2 = new System.Windows.Forms.CheckBox();
+            this.CBCountry1 = new System.Windows.Forms.CheckBox();
+            this.groupQuery = new System.Windows.Forms.GroupBox();
+            this.listQuery = new System.Windows.Forms.ListBox();
+            this.btnAddQuery = new System.Windows.Forms.Button();
+            this.btnRemoveQuery = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.resultGrid)).BeginInit();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.groupShipClass.SuspendLayout();
+            this.groupTier.SuspendLayout();
+            this.groupNations.SuspendLayout();
+            this.groupQuery.SuspendLayout();
             this.SuspendLayout();
             // 
             // resultGrid
@@ -188,19 +206,19 @@ namespace WoWs_Randomizer.forms
             this.cbAllShips.Text = "All ships";
             this.cbAllShips.UseVisualStyleBackColor = true;
             // 
-            // groupBox2
+            // groupShipClass
             // 
-            this.groupBox2.Controls.Add(this.cbSub);
-            this.groupBox2.Controls.Add(this.cbCV);
-            this.groupBox2.Controls.Add(this.cbDD);
-            this.groupBox2.Controls.Add(this.cbCA);
-            this.groupBox2.Controls.Add(this.cbBB);
-            this.groupBox2.Location = new System.Drawing.Point(25, 128);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(200, 100);
-            this.groupBox2.TabIndex = 14;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Ship class";
+            this.groupShipClass.Controls.Add(this.cbSub);
+            this.groupShipClass.Controls.Add(this.cbCV);
+            this.groupShipClass.Controls.Add(this.cbDD);
+            this.groupShipClass.Controls.Add(this.cbCA);
+            this.groupShipClass.Controls.Add(this.cbBB);
+            this.groupShipClass.Location = new System.Drawing.Point(25, 128);
+            this.groupShipClass.Name = "groupShipClass";
+            this.groupShipClass.Size = new System.Drawing.Size(200, 100);
+            this.groupShipClass.TabIndex = 14;
+            this.groupShipClass.TabStop = false;
+            this.groupShipClass.Text = "Ship class";
             // 
             // cbSub
             // 
@@ -367,29 +385,29 @@ namespace WoWs_Randomizer.forms
             this.CBTier1.Text = "Tier 1";
             this.CBTier1.UseVisualStyleBackColor = true;
             // 
-            // groupBox3
+            // groupTier
             // 
-            this.groupBox3.Controls.Add(this.CBTier8);
-            this.groupBox3.Controls.Add(this.CBTier10);
-            this.groupBox3.Controls.Add(this.CBTier1);
-            this.groupBox3.Controls.Add(this.CBTier9);
-            this.groupBox3.Controls.Add(this.CBTier2);
-            this.groupBox3.Controls.Add(this.CBTier3);
-            this.groupBox3.Controls.Add(this.CBTier7);
-            this.groupBox3.Controls.Add(this.CBTier4);
-            this.groupBox3.Controls.Add(this.CBTier6);
-            this.groupBox3.Controls.Add(this.CBTier5);
-            this.groupBox3.Location = new System.Drawing.Point(231, 29);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(200, 146);
-            this.groupBox3.TabIndex = 36;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Tier";
+            this.groupTier.Controls.Add(this.CBTier8);
+            this.groupTier.Controls.Add(this.CBTier10);
+            this.groupTier.Controls.Add(this.CBTier1);
+            this.groupTier.Controls.Add(this.CBTier9);
+            this.groupTier.Controls.Add(this.CBTier2);
+            this.groupTier.Controls.Add(this.CBTier3);
+            this.groupTier.Controls.Add(this.CBTier7);
+            this.groupTier.Controls.Add(this.CBTier4);
+            this.groupTier.Controls.Add(this.CBTier6);
+            this.groupTier.Controls.Add(this.CBTier5);
+            this.groupTier.Location = new System.Drawing.Point(231, 29);
+            this.groupTier.Name = "groupTier";
+            this.groupTier.Size = new System.Drawing.Size(200, 146);
+            this.groupTier.TabIndex = 36;
+            this.groupTier.TabStop = false;
+            this.groupTier.Text = "Tier";
             // 
             // cbPremium
             // 
             this.cbPremium.AutoSize = true;
-            this.cbPremium.Location = new System.Drawing.Point(343, 194);
+            this.cbPremium.Location = new System.Drawing.Point(139, 234);
             this.cbPremium.Name = "cbPremium";
             this.cbPremium.Size = new System.Drawing.Size(66, 17);
             this.cbPremium.TabIndex = 37;
@@ -400,7 +418,7 @@ namespace WoWs_Randomizer.forms
             // cbTechTree
             // 
             this.cbTechTree.AutoSize = true;
-            this.cbTechTree.Location = new System.Drawing.Point(237, 194);
+            this.cbTechTree.Location = new System.Drawing.Point(33, 234);
             this.cbTechTree.Name = "cbTechTree";
             this.cbTechTree.Size = new System.Drawing.Size(72, 17);
             this.cbTechTree.TabIndex = 38;
@@ -408,15 +426,200 @@ namespace WoWs_Randomizer.forms
             this.cbTechTree.Text = "Tech tree";
             this.cbTechTree.UseVisualStyleBackColor = true;
             // 
+            // groupNations
+            // 
+            this.groupNations.Controls.Add(this.CBCountry11);
+            this.groupNations.Controls.Add(this.CBCountry10);
+            this.groupNations.Controls.Add(this.CBCountry9);
+            this.groupNations.Controls.Add(this.CBCountry8);
+            this.groupNations.Controls.Add(this.CBCountry7);
+            this.groupNations.Controls.Add(this.CBCountry6);
+            this.groupNations.Controls.Add(this.CBCountry5);
+            this.groupNations.Controls.Add(this.CBCountry4);
+            this.groupNations.Controls.Add(this.CBCountry3);
+            this.groupNations.Controls.Add(this.CBCountry2);
+            this.groupNations.Controls.Add(this.CBCountry1);
+            this.groupNations.Location = new System.Drawing.Point(437, 29);
+            this.groupNations.Name = "groupNations";
+            this.groupNations.Size = new System.Drawing.Size(214, 292);
+            this.groupNations.TabIndex = 39;
+            this.groupNations.TabStop = false;
+            this.groupNations.Text = "Nation";
+            // 
+            // CBCountry11
+            // 
+            this.CBCountry11.AutoSize = true;
+            this.CBCountry11.Location = new System.Drawing.Point(27, 259);
+            this.CBCountry11.Name = "CBCountry11";
+            this.CBCountry11.Size = new System.Drawing.Size(97, 17);
+            this.CBCountry11.TabIndex = 22;
+            this.CBCountry11.Tag = "ussr";
+            this.CBCountry11.Text = "USSR - Russia";
+            this.CBCountry11.UseVisualStyleBackColor = true;
+            // 
+            // CBCountry10
+            // 
+            this.CBCountry10.AutoSize = true;
+            this.CBCountry10.Location = new System.Drawing.Point(27, 235);
+            this.CBCountry10.Name = "CBCountry10";
+            this.CBCountry10.Size = new System.Drawing.Size(79, 17);
+            this.CBCountry10.TabIndex = 21;
+            this.CBCountry10.Tag = "usa";
+            this.CBCountry10.Text = "USA - USA";
+            this.CBCountry10.UseVisualStyleBackColor = true;
+            // 
+            // CBCountry9
+            // 
+            this.CBCountry9.AutoSize = true;
+            this.CBCountry9.Location = new System.Drawing.Point(27, 211);
+            this.CBCountry9.Name = "CBCountry9";
+            this.CBCountry9.Size = new System.Drawing.Size(125, 17);
+            this.CBCountry9.TabIndex = 20;
+            this.CBCountry9.Tag = "uk";
+            this.CBCountry9.Text = "UK - United Kingdom";
+            this.CBCountry9.UseVisualStyleBackColor = true;
+            // 
+            // CBCountry8
+            // 
+            this.CBCountry8.AutoSize = true;
+            this.CBCountry8.Location = new System.Drawing.Point(27, 187);
+            this.CBCountry8.Name = "CBCountry8";
+            this.CBCountry8.Size = new System.Drawing.Size(117, 17);
+            this.CBCountry8.TabIndex = 19;
+            this.CBCountry8.Tag = "pan_america";
+            this.CBCountry8.Text = "PAN - Pan-America";
+            this.CBCountry8.UseVisualStyleBackColor = true;
+            // 
+            // CBCountry7
+            // 
+            this.CBCountry7.AutoSize = true;
+            this.CBCountry7.Location = new System.Drawing.Point(27, 163);
+            this.CBCountry7.Name = "CBCountry7";
+            this.CBCountry7.Size = new System.Drawing.Size(98, 17);
+            this.CBCountry7.TabIndex = 18;
+            this.CBCountry7.Tag = "pan_asia";
+            this.CBCountry7.Text = "PAA - Pan-Asia";
+            this.CBCountry7.UseVisualStyleBackColor = true;
+            // 
+            // CBCountry6
+            // 
+            this.CBCountry6.AutoSize = true;
+            this.CBCountry6.Location = new System.Drawing.Point(27, 139);
+            this.CBCountry6.Name = "CBCountry6";
+            this.CBCountry6.Size = new System.Drawing.Size(71, 17);
+            this.CBCountry6.TabIndex = 17;
+            this.CBCountry6.Tag = "italy";
+            this.CBCountry6.Text = "ITA - Italy";
+            this.CBCountry6.UseVisualStyleBackColor = true;
+            // 
+            // CBCountry5
+            // 
+            this.CBCountry5.AutoSize = true;
+            this.CBCountry5.Location = new System.Drawing.Point(27, 115);
+            this.CBCountry5.Name = "CBCountry5";
+            this.CBCountry5.Size = new System.Drawing.Size(80, 17);
+            this.CBCountry5.TabIndex = 16;
+            this.CBCountry5.Tag = "japan";
+            this.CBCountry5.Text = "IJN - Japan";
+            this.CBCountry5.UseVisualStyleBackColor = true;
+            // 
+            // CBCountry4
+            // 
+            this.CBCountry4.AutoSize = true;
+            this.CBCountry4.Location = new System.Drawing.Point(27, 91);
+            this.CBCountry4.Name = "CBCountry4";
+            this.CBCountry4.Size = new System.Drawing.Size(100, 17);
+            this.CBCountry4.TabIndex = 15;
+            this.CBCountry4.Tag = "germany";
+            this.CBCountry4.Text = "GER - Germany";
+            this.CBCountry4.UseVisualStyleBackColor = true;
+            // 
+            // CBCountry3
+            // 
+            this.CBCountry3.AutoSize = true;
+            this.CBCountry3.Location = new System.Drawing.Point(27, 67);
+            this.CBCountry3.Name = "CBCountry3";
+            this.CBCountry3.Size = new System.Drawing.Size(89, 17);
+            this.CBCountry3.TabIndex = 14;
+            this.CBCountry3.Tag = "france";
+            this.CBCountry3.Text = "FRA - France";
+            this.CBCountry3.UseVisualStyleBackColor = true;
+            // 
+            // CBCountry2
+            // 
+            this.CBCountry2.AutoSize = true;
+            this.CBCountry2.Location = new System.Drawing.Point(27, 43);
+            this.CBCountry2.Name = "CBCountry2";
+            this.CBCountry2.Size = new System.Drawing.Size(92, 17);
+            this.CBCountry2.TabIndex = 13;
+            this.CBCountry2.Tag = "europe";
+            this.CBCountry2.Text = "EUR - Europe";
+            this.CBCountry2.UseVisualStyleBackColor = true;
+            // 
+            // CBCountry1
+            // 
+            this.CBCountry1.AutoSize = true;
+            this.CBCountry1.Location = new System.Drawing.Point(27, 19);
+            this.CBCountry1.Name = "CBCountry1";
+            this.CBCountry1.Size = new System.Drawing.Size(125, 17);
+            this.CBCountry1.TabIndex = 12;
+            this.CBCountry1.Tag = "commonwealth";
+            this.CBCountry1.Text = "CW - Commonwealth";
+            this.CBCountry1.UseVisualStyleBackColor = true;
+            // 
+            // groupQuery
+            // 
+            this.groupQuery.Controls.Add(this.listQuery);
+            this.groupQuery.Location = new System.Drawing.Point(231, 181);
+            this.groupQuery.Name = "groupQuery";
+            this.groupQuery.Size = new System.Drawing.Size(200, 140);
+            this.groupQuery.TabIndex = 40;
+            this.groupQuery.TabStop = false;
+            this.groupQuery.Text = "Selection query";
+            // 
+            // listQuery
+            // 
+            this.listQuery.BackColor = System.Drawing.SystemColors.Control;
+            this.listQuery.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listQuery.FormattingEnabled = true;
+            this.listQuery.Location = new System.Drawing.Point(7, 20);
+            this.listQuery.Name = "listQuery";
+            this.listQuery.Size = new System.Drawing.Size(187, 117);
+            this.listQuery.TabIndex = 0;
+            // 
+            // btnAddQuery
+            // 
+            this.btnAddQuery.Location = new System.Drawing.Point(13, 264);
+            this.btnAddQuery.Name = "btnAddQuery";
+            this.btnAddQuery.Size = new System.Drawing.Size(93, 23);
+            this.btnAddQuery.TabIndex = 41;
+            this.btnAddQuery.Text = "Add Query";
+            this.btnAddQuery.UseVisualStyleBackColor = true;
+            this.btnAddQuery.Click += new System.EventHandler(this.btnAddQuery_Click);
+            // 
+            // btnRemoveQuery
+            // 
+            this.btnRemoveQuery.Location = new System.Drawing.Point(129, 264);
+            this.btnRemoveQuery.Name = "btnRemoveQuery";
+            this.btnRemoveQuery.Size = new System.Drawing.Size(93, 22);
+            this.btnRemoveQuery.TabIndex = 42;
+            this.btnRemoveQuery.Text = "Remove Query";
+            this.btnRemoveQuery.UseVisualStyleBackColor = true;
+            this.btnRemoveQuery.Click += new System.EventHandler(this.btnRemoveQuery_Click);
+            // 
             // List
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1208, 702);
+            this.Controls.Add(this.btnRemoveQuery);
+            this.Controls.Add(this.btnAddQuery);
+            this.Controls.Add(this.groupQuery);
+            this.Controls.Add(this.groupNations);
             this.Controls.Add(this.cbTechTree);
             this.Controls.Add(this.cbPremium);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupTier);
+            this.Controls.Add(this.groupShipClass);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button3);
@@ -430,10 +633,13 @@ namespace WoWs_Randomizer.forms
             ((System.ComponentModel.ISupportInitialize)(this.resultGrid)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.groupShipClass.ResumeLayout(false);
+            this.groupShipClass.PerformLayout();
+            this.groupTier.ResumeLayout(false);
+            this.groupTier.PerformLayout();
+            this.groupNations.ResumeLayout(false);
+            this.groupNations.PerformLayout();
+            this.groupQuery.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -452,7 +658,7 @@ namespace WoWs_Randomizer.forms
         private System.Windows.Forms.RadioButton cbPersonalShips;
         private System.Windows.Forms.RadioButton cbAllShips;
         private System.Windows.Forms.CheckBox cbExclusionList;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupShipClass;
         private System.Windows.Forms.CheckBox cbSub;
         private System.Windows.Forms.CheckBox cbCV;
         private System.Windows.Forms.CheckBox cbDD;
@@ -468,8 +674,24 @@ namespace WoWs_Randomizer.forms
         private System.Windows.Forms.CheckBox CBTier3;
         private System.Windows.Forms.CheckBox CBTier2;
         private System.Windows.Forms.CheckBox CBTier1;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupTier;
         private System.Windows.Forms.CheckBox cbPremium;
         private System.Windows.Forms.CheckBox cbTechTree;
+        private System.Windows.Forms.GroupBox groupNations;
+        private System.Windows.Forms.CheckBox CBCountry11;
+        private System.Windows.Forms.CheckBox CBCountry10;
+        private System.Windows.Forms.CheckBox CBCountry9;
+        private System.Windows.Forms.CheckBox CBCountry8;
+        private System.Windows.Forms.CheckBox CBCountry7;
+        private System.Windows.Forms.CheckBox CBCountry6;
+        private System.Windows.Forms.CheckBox CBCountry5;
+        private System.Windows.Forms.CheckBox CBCountry4;
+        private System.Windows.Forms.CheckBox CBCountry3;
+        private System.Windows.Forms.CheckBox CBCountry2;
+        private System.Windows.Forms.CheckBox CBCountry1;
+        private System.Windows.Forms.GroupBox groupQuery;
+        private System.Windows.Forms.ListBox listQuery;
+        private System.Windows.Forms.Button btnAddQuery;
+        private System.Windows.Forms.Button btnRemoveQuery;
     }
 }

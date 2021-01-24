@@ -48,7 +48,7 @@ namespace WoWs_Randomizer.forms
 
                 if (isDefined)
                 {
-                    Option opt = new Option(disp, n,"metrics");
+                    Option opt = new Option(disp, n,"metrics",fields[i].FieldType.ToString());
                     this.mapping.Add(disp, opt);
                     exposedFields.Add(disp);
                 }
@@ -134,8 +134,11 @@ namespace WoWs_Randomizer.forms
 
         private void addRows()
         {
+            List<Ship> ShipQuery;
+            List<string> conditions = new List<string>();
+
             table.Rows.Clear();
-            List<Ship> ShipQuery = new List<Ship>();
+
             if ( cbAllShips.Checked )
             {
                 ShipQuery = new List<Ship>(Program.AllShips);
@@ -144,33 +147,32 @@ namespace WoWs_Randomizer.forms
                 ShipQuery = new List<Ship>(AssembleShipList());
             }
 
-            List<string> conditions = new List<string>();
-            if ( cbBB.Checked || cbCA.Checked || cbCA.Checked || cbDD.Checked || cbCV.Checked || cbSub.Checked )
+            bool isShipClassSelected = false;
+            var cbShipClass = groupShipClass.Controls.OfType<CheckBox>();
+            foreach(CheckBox cb in cbShipClass)
             {
-                if ( cbBB.Checked ) { conditions.Add(cbBB.AccessibleName); }
-                if ( cbCA.Checked ) { conditions.Add(cbCA.AccessibleName); }
-                if ( cbDD.Checked ) { conditions.Add(cbDD.AccessibleName); }
-                if ( cbCV.Checked ) { conditions.Add(cbCV.AccessibleName); }
-                if ( cbSub.Checked ) { conditions.Add(cbSub.AccessibleName); }
+                if ( cb.Checked )
+                {
+                    isShipClassSelected = true;
+                    conditions.Add(cb.AccessibleName);
+                }
             }
-            else
+            if ( isShipClassSelected == false )
             {
                 conditions.Add("AllShipType");
             }
 
-            if ( CBTier1.Checked || CBTier2.Checked || CBTier3.Checked || CBTier4.Checked || CBTier5.Checked || CBTier6.Checked || CBTier7.Checked || CBTier8.Checked || CBTier9.Checked || CBTier10.Checked)
+            bool isTierSelected = false;
+            var cbTiers = groupTier.Controls.OfType<CheckBox>();
+            foreach(CheckBox cb in cbTiers)
             {
-                if (CBTier1.Checked) { conditions.Add(CBTier1.Tag.ToString()); }
-                if (CBTier2.Checked) { conditions.Add(CBTier2.Tag.ToString()); }
-                if (CBTier3.Checked) { conditions.Add(CBTier3.Tag.ToString()); }
-                if (CBTier4.Checked) { conditions.Add(CBTier4.Tag.ToString()); }
-                if (CBTier5.Checked) { conditions.Add(CBTier5.Tag.ToString()); }
-                if (CBTier6.Checked) { conditions.Add(CBTier6.Tag.ToString()); }
-                if (CBTier7.Checked) { conditions.Add(CBTier7.Tag.ToString()); }
-                if (CBTier8.Checked) { conditions.Add(CBTier8.Tag.ToString()); }
-                if (CBTier9.Checked) { conditions.Add(CBTier9.Tag.ToString()); }
-                if (CBTier10.Checked) { conditions.Add(CBTier10.Tag.ToString()); }
-            } else
+                if ( cb.Checked )
+                {
+                    conditions.Add(cb.Tag.ToString());
+                    isTierSelected = true;
+                }
+            }
+            if ( isTierSelected == false )
             {
                 conditions.Add("AllTiers");
             }
@@ -184,6 +186,22 @@ namespace WoWs_Randomizer.forms
                 conditions.Add("PS:" + cbTechTree.Tag.ToString());
                 conditions.Add("PS:" + cbPremium.Tag.ToString());
             }
+
+            bool isNationSelected = false;
+            var cbNations = groupNations.Controls.OfType<CheckBox>();
+            foreach(CheckBox cb in cbNations)
+            {
+                if ( cb.Checked )
+                {
+                    conditions.Add(cb.Tag.ToString());
+                    isNationSelected = true;
+                }
+            }
+            if ( isNationSelected == false )
+            {
+                conditions.Add("AllNations");
+            }
+
 
             List<Ship> shipsToRemove = new List<Ship>();
             foreach (Ship ship in ShipQuery)
@@ -205,6 +223,10 @@ namespace WoWs_Randomizer.forms
                 {
                     shipsToRemove.Add(ship);
                     isRemoved = true;
+                }
+                if ( isRemoved == false && isConditionMetForShip(ship) == false)
+                {
+                    shipsToRemove.Add(ship);
                 }
 
             }
@@ -258,6 +280,116 @@ namespace WoWs_Randomizer.forms
             resultGrid.Sort(resultGrid.Columns[0], ListSortDirection.Ascending);
         }
 
+        private double SafeConvertToDouble(string value)
+        {
+            try
+            {
+                return double.Parse(value);
+            }
+            catch (Exception)
+            {
+            }
+            return 0.0;
+        }
+
+        private bool isConditionMetForShip(Ship ship)
+        {
+            MetricsExctractor Extractor = new MetricsExctractor(ship);
+            ShipMetrics metrics = Extractor.GetMetrics();
+
+            foreach (string query in listQuery.Items)
+            {
+                string[] tmp = query.Split(' ');
+                string fldName = tmp[0];
+                string queryCondition = tmp[1];
+                string queryValue = tmp[2];
+                double queryValueDbl = 0.0;
+                string fieldValue = "";
+                double fieldValueDbl = 0.0;
+                bool compareDouble = false;
+
+                FieldInfo fld = null;
+                Type fldType = null;
+                Option opt = this.mapping[fldName];
+                if (opt.ClassName.Equals("ship"))
+                {
+                    fld = typeof(Ship).GetField(opt.Value, BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
+                    fieldValue = fld.GetValue(ship).ToString();
+                    fldType = fld.FieldType;
+                    if (fldType.ToString().Equals("System.Double"))
+                    {
+                        compareDouble = true;
+                        fieldValueDbl = (double)fld.GetValue(ship);
+                    }
+                }
+                else if (opt.ClassName.Equals("metrics"))
+                {
+                    fld = typeof(ShipMetrics).GetField(opt.Value, BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
+                    fieldValue = fld.GetValue(metrics).ToString();
+                    fldType = fld.FieldType;
+                    if (fldType.ToString().Equals("System.Double"))
+                    {
+                        compareDouble = true;
+                        fieldValueDbl = (double)fld.GetValue(metrics);
+                    }
+                }
+
+                if ( compareDouble )
+                {
+                    queryValueDbl = SafeConvertToDouble(queryValue);
+                }
+
+                if ( queryCondition.Equals("!="))
+                {
+                    if ((compareDouble && queryValueDbl == fieldValueDbl) || (compareDouble == false && fieldValue.Equals(queryValue)))
+                    {
+                        return false;
+                    }
+                } else if ( queryCondition.Equals("="))
+                {
+                    if ((compareDouble && queryValueDbl != fieldValueDbl) || (compareDouble == false && !fieldValue.Equals(queryValue)))
+                    {
+                        return false;
+                    }
+                } else if ( queryCondition.StartsWith("<"))
+                {
+                    // This can only be done on values - not strings. If field is string, we need to convert to double;
+                    if ( compareDouble == false )
+                    {
+                        queryValueDbl = SafeConvertToDouble(queryValue);
+                        fieldValueDbl = SafeConvertToDouble(fieldValue);
+                    }
+                    bool isEqualOk = queryCondition.Contains("=");
+                    if ( queryValueDbl < fieldValueDbl)
+                    {
+                        return false;
+                    } else if ( isEqualOk == false && queryValueDbl == fieldValueDbl)
+                    {
+                        return false;
+                    }
+
+
+                } else if ( queryCondition.StartsWith(">"))
+                {
+                    // This can only be done on values - not strings. If field is string, we need to convert to double;
+                    if (compareDouble == false)
+                    {
+                        queryValueDbl = SafeConvertToDouble(queryValue);
+                        fieldValueDbl = SafeConvertToDouble(fieldValue);
+                    }
+                    bool isEqualOk = queryCondition.Contains("=");
+                    if (fieldValueDbl < queryValueDbl )
+                    {
+                        return false;
+                    }
+                    else if (isEqualOk == false && queryValueDbl == fieldValueDbl)
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
         private void userSelectedFields_MouseDown(object sender, MouseEventArgs e)
         {
             if (this.userSelectedFields.SelectedItem == null) { return; }
@@ -360,21 +492,40 @@ namespace WoWs_Randomizer.forms
                 cbExclusionList.Enabled = false;
             }
         }
+
+        private void btnRemoveQuery_Click(object sender, EventArgs e)
+        {
+            if ( listQuery.SelectedItems.Count == 0 ) { return; }
+            listQuery.Items.Remove(listQuery.SelectedItem);
+        }
+
+        private void btnAddQuery_Click(object sender, EventArgs e)
+        {
+            string tmp = "TorpedoSpeed >= 61";
+            listQuery.Items.Add(tmp);
+            tmp = "TorpedoSpeed <= 70";
+            listQuery.Items.Add(tmp);
+
+        }
     }
     class Option
     {
         private string name = "";
         private string value = "";
         private string classname = "";
+        private string fieldType = "System.Double";
 
-        public Option(string DisplayName, string Value, string classname)
+        public Option(string DisplayName, string Value, string classname, string fieldType = "System.Double")
         {
             this.name = DisplayName;
             this.value = Value;
             this.classname = classname;
+            this.fieldType = fieldType;
+            
         }
         public string DisplayName { get { return this.name; } }
         public string Value { get { return this.value; } }
         public string ClassName { get { return this.classname; } }
+        public string FieldType { get { return this.fieldType; } }
     }
 }

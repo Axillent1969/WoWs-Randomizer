@@ -63,7 +63,10 @@ namespace WoWs_Randomizer.utils.metrics
             if (name.Contains(" mm/") || name.Contains(" mm "))
             {
                 string caliber = name.Substring(0, name.IndexOf(" "));
-                gunCaliber = long.Parse(caliber);
+                try
+                {
+                    gunCaliber = long.Parse(caliber);
+                } catch(FormatException) { }
             }
             if (selectedShip.Profile.Artillery != null && selectedShip.Profile.Artillery.Dispersion != 0)
             {

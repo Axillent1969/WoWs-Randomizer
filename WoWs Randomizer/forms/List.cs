@@ -18,6 +18,8 @@ namespace WoWs_Randomizer.forms
         private DataTable table = new DataTable();
         List<string> exposedFields = new List<string>();
         private Dictionary<string, Option> mapping = new Dictionary<string, Option>();
+        public List<long> personalShips = new List<long>();
+        public HashSet<long> ExcludedShips = new HashSet<long>();
 
         public List()
         {
@@ -100,6 +102,25 @@ namespace WoWs_Randomizer.forms
             }
         }
 
+        private List<Ship> AssembleShipList()
+        {
+            List<Ship> ships = new List<Ship>();
+
+            foreach(long shipId in this.personalShips)
+            {
+                if ( cbExclusionList.Checked == false || (cbExclusionList.Checked == true && !this.ExcludedShips.Contains(shipId)))
+                {
+                    Ship findShip = Program.AllShips.Find(x => x.ID == shipId);
+                    if (findShip != null)
+                    {
+                        ships.Add(findShip);
+                    }
+                }
+            }
+
+            return ships;
+        }
+
         private void addHeaders()
         {
             table.Columns.Clear();
@@ -114,8 +135,88 @@ namespace WoWs_Randomizer.forms
         private void addRows()
         {
             table.Rows.Clear();
+            List<Ship> ShipQuery = new List<Ship>();
+            if ( cbAllShips.Checked )
+            {
+                ShipQuery = new List<Ship>(Program.AllShips);
+            } else
+            {
+                ShipQuery = new List<Ship>(AssembleShipList());
+            }
 
-            foreach (Ship ship in Program.AllShips) {
+            List<string> conditions = new List<string>();
+            if ( cbBB.Checked || cbCA.Checked || cbCA.Checked || cbDD.Checked || cbCV.Checked || cbSub.Checked )
+            {
+                if ( cbBB.Checked ) { conditions.Add(cbBB.AccessibleName); }
+                if ( cbCA.Checked ) { conditions.Add(cbCA.AccessibleName); }
+                if ( cbDD.Checked ) { conditions.Add(cbDD.AccessibleName); }
+                if ( cbCV.Checked ) { conditions.Add(cbCV.AccessibleName); }
+                if ( cbSub.Checked ) { conditions.Add(cbSub.AccessibleName); }
+            }
+            else
+            {
+                conditions.Add("AllShipType");
+            }
+
+            if ( CBTier1.Checked || CBTier2.Checked || CBTier3.Checked || CBTier4.Checked || CBTier5.Checked || CBTier6.Checked || CBTier7.Checked || CBTier8.Checked || CBTier9.Checked || CBTier10.Checked)
+            {
+                if (CBTier1.Checked) { conditions.Add(CBTier1.Tag.ToString()); }
+                if (CBTier2.Checked) { conditions.Add(CBTier2.Tag.ToString()); }
+                if (CBTier3.Checked) { conditions.Add(CBTier3.Tag.ToString()); }
+                if (CBTier4.Checked) { conditions.Add(CBTier4.Tag.ToString()); }
+                if (CBTier5.Checked) { conditions.Add(CBTier5.Tag.ToString()); }
+                if (CBTier6.Checked) { conditions.Add(CBTier6.Tag.ToString()); }
+                if (CBTier7.Checked) { conditions.Add(CBTier7.Tag.ToString()); }
+                if (CBTier8.Checked) { conditions.Add(CBTier8.Tag.ToString()); }
+                if (CBTier9.Checked) { conditions.Add(CBTier9.Tag.ToString()); }
+                if (CBTier10.Checked) { conditions.Add(CBTier10.Tag.ToString()); }
+            } else
+            {
+                conditions.Add("AllTiers");
+            }
+
+            if ( cbTechTree.Checked || cbPremium.Checked )
+            {
+                if ( cbTechTree.Checked ) { conditions.Add("PS:" + cbTechTree.Tag.ToString()); }
+                if ( cbPremium.Checked ) { conditions.Add("PS:" + cbPremium.Tag.ToString()); }
+            } else
+            {
+                conditions.Add("PS:" + cbTechTree.Tag.ToString());
+                conditions.Add("PS:" + cbPremium.Tag.ToString());
+            }
+
+            List<Ship> shipsToRemove = new List<Ship>();
+            foreach (Ship ship in ShipQuery)
+            {
+                bool isRemoved = false;
+                if (!(conditions.Contains("AllShipType") || conditions.Contains(ship.ShipType.ToString())))
+                {
+                    {
+                        shipsToRemove.Add(ship);
+                        isRemoved = true;
+                    }
+                }
+                if (isRemoved == false && !(conditions.Contains("AllTiers") || conditions.Contains(ship.Tier.ToString())))
+                {
+                    shipsToRemove.Add(ship);
+                    isRemoved = true;
+                }
+                if ( isRemoved == false && !(conditions.Contains("PS:" + ship.Premium.ToString().ToLower())))
+                {
+                    shipsToRemove.Add(ship);
+                    isRemoved = true;
+                }
+
+            }
+            if ( shipsToRemove.Count > 0 )
+            {
+                foreach(Ship ship in shipsToRemove)
+                {
+                    ShipQuery.Remove(ship);
+                }
+            }
+
+            foreach (Ship ship in ShipQuery) {
 
                 try
                 {
@@ -247,6 +348,17 @@ namespace WoWs_Randomizer.forms
             }
             copySelectedItemToOtherList(userSelectedFields, allFieldNames);
             userSelectedFields.SelectionMode = SelectionMode.One;
+        }
+
+        private void cbPersonalShips_CheckedChanged(object sender, EventArgs e)
+        {
+            if ( cbPersonalShips.Checked )
+            {
+                cbExclusionList.Enabled = true;
+            } else
+            {
+                cbExclusionList.Enabled = false;
+            }
         }
     }
     class Option

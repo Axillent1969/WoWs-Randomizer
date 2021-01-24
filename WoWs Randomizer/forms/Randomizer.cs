@@ -800,6 +800,9 @@ namespace WoWs_Randomizer
         private void listToolStripMenuItem_Click(object sender, EventArgs e)
         {
             List ShowList = new List();
+            ShowList.personalShips = this.PersonalShips;
+            ShowList.ExcludedShips = this.ExcludedShips;
+
             if ( ShowList.ShowDialog(this) == DialogResult.OK)
             {
 

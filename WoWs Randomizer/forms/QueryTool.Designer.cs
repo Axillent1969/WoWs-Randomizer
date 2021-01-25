@@ -1,7 +1,7 @@
 ﻿
 namespace WoWs_Randomizer.forms
 {
-    partial class List
+    partial class QueryTool
     {
         /// <summary>
         /// Required designer variable.
@@ -29,6 +29,7 @@ namespace WoWs_Randomizer.forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QueryTool));
             this.resultGrid = new System.Windows.Forms.DataGridView();
             this.btnShow = new System.Windows.Forms.Button();
             this.allFieldNames = new System.Windows.Forms.ListBox();
@@ -617,7 +618,7 @@ namespace WoWs_Randomizer.forms
             this.lblRecordCount.TabIndex = 43;
             this.lblRecordCount.Text = "0 records displayed.";
             // 
-            // List
+            // QueryTool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -639,8 +640,9 @@ namespace WoWs_Randomizer.forms
             this.Controls.Add(this.allFieldNames);
             this.Controls.Add(this.btnShow);
             this.Controls.Add(this.resultGrid);
-            this.Name = "List";
-            this.Text = "List";
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "QueryTool";
+            this.Text = "Query Tool";
             ((System.ComponentModel.ISupportInitialize)(this.resultGrid)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

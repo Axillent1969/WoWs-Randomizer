@@ -85,6 +85,7 @@ namespace WoWs_Randomizer
             this.buildManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.shipComparisonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.upgradesExaminerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.profilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuProfileEU = new System.Windows.Forms.ToolStripMenuItem();
             this.menuProfileNA = new System.Windows.Forms.ToolStripMenuItem();
@@ -116,7 +117,6 @@ namespace WoWs_Randomizer
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.BGUpdater = new System.ComponentModel.BackgroundWorker();
             this.UpgradeFixer = new System.ComponentModel.BackgroundWorker();
-            this.listToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.LeftPanel.SuspendLayout();
             this.MenuStrip.SuspendLayout();
             this.RightPanel.SuspendLayout();
@@ -640,6 +640,13 @@ namespace WoWs_Randomizer
             this.upgradesExaminerToolStripMenuItem.Text = "Ship &Wikipedia";
             this.upgradesExaminerToolStripMenuItem.Click += new System.EventHandler(this.upgradesExaminerToolStripMenuItem_Click);
             // 
+            // listToolStripMenuItem
+            // 
+            this.listToolStripMenuItem.Name = "listToolStripMenuItem";
+            this.listToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.listToolStripMenuItem.Text = "Query Tool";
+            this.listToolStripMenuItem.Click += new System.EventHandler(this.listToolStripMenuItem_Click);
+            // 
             // profilesToolStripMenuItem
             // 
             this.profilesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -913,13 +920,6 @@ namespace WoWs_Randomizer
             // 
             this.UpgradeFixer.DoWork += new System.ComponentModel.DoWorkEventHandler(this.UpgradeFixer_DoWork);
             this.UpgradeFixer.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.UpgradeFixer_RunWorkerCompleted);
-            // 
-            // listToolStripMenuItem
-            // 
-            this.listToolStripMenuItem.Name = "listToolStripMenuItem";
-            this.listToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.listToolStripMenuItem.Text = "List";
-            this.listToolStripMenuItem.Click += new System.EventHandler(this.listToolStripMenuItem_Click);
             // 
             // FormRandomizer
             // 

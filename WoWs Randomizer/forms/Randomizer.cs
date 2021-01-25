@@ -799,7 +799,7 @@ namespace WoWs_Randomizer
 
         private void listToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            List ShowList = new List();
+            QueryTool ShowList = new QueryTool();
             ShowList.personalShips = this.PersonalShips;
             ShowList.ExcludedShips = this.ExcludedShips;
 

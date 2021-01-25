@@ -156,11 +156,11 @@
     <Compile Include="forms\HelpRandomizer.Designer.cs">
       <DependentUpon>HelpRandomizer.cs</DependentUpon>
     </Compile>
-    <Compile Include="forms\List.cs">
+    <Compile Include="forms\QueryTool.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="forms\List.Designer.cs">
-      <DependentUpon>List.cs</DependentUpon>
+    <Compile Include="forms\QueryTool.Designer.cs">
+      <DependentUpon>QueryTool.cs</DependentUpon>
     </Compile>
     <Compile Include="forms\QueryBuilder.cs">
       <SubType>Form</SubType>
@@ -294,8 +294,8 @@
     <EmbeddedResource Include="forms\HelpRandomizer.resx">
       <DependentUpon>HelpRandomizer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="forms\List.resx">
-      <DependentUpon>List.cs</DependentUpon>
+    <EmbeddedResource Include="forms\QueryTool.resx">
+      <DependentUpon>QueryTool.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\QueryBuilder.resx">
       <DependentUpon>QueryBuilder.cs</DependentUpon>

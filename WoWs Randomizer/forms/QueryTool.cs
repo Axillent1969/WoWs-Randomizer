@@ -13,7 +13,7 @@ using WoWs_Randomizer.utils.ship;
 
 namespace WoWs_Randomizer.forms
 {
-    public partial class List : Form
+    public partial class QueryTool : Form
     {
         private static string CONDITION_ALLSHIPS = "AllShipType";
         private static string CONDITION_ALLTIERS = "AllTiers";
@@ -25,7 +25,7 @@ namespace WoWs_Randomizer.forms
         public List<long> personalShips = new List<long>();
         public HashSet<long> ExcludedShips = new HashSet<long>();
 
-        public List()
+        public QueryTool()
         {
             InitializeComponent();
             resultGrid.DataSource = table;

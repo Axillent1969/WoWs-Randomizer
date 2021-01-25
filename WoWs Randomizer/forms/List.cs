@@ -15,6 +15,10 @@ namespace WoWs_Randomizer.forms
 {
     public partial class List : Form
     {
+        private static string CONDITION_ALLSHIPS = "AllShipType";
+        private static string CONDITION_ALLTIERS = "AllTiers";
+        private static string CONDITION_ALLNATIONS = "AllNations";
+
         private DataTable table = new DataTable();
         List<string> exposedFields = new List<string>();
         private Dictionary<string, Option> mapping = new Dictionary<string, Option>();
@@ -25,20 +29,27 @@ namespace WoWs_Randomizer.forms
         {
             InitializeComponent();
             resultGrid.DataSource = table;
-            GatherExposedFieldNames();
+            PrepareFieldNames();
         }
 
-        private void GatherExposedFieldNames()
+        private void PrepareFieldNames()
         {
-            Type myType = typeof(ShipMetrics);
-            FieldInfo[] fields = myType.GetFields(BindingFlags.Instance | BindingFlags.NonPublic);
+            GatherExposedFieldNames(typeof(Ship));
+            GatherExposedFieldNames(typeof(ShipMetrics));
+            exposedFields.Sort();
+            fillSelector();
+        }
+
+        private void GatherExposedFieldNames(Type clazz)
+        {
+            FieldInfo[] fields = clazz.GetFields(BindingFlags.Instance | BindingFlags.NonPublic);
 
             for (int i = 0; i < fields.Length; i++)
             {
                 string n = fields[i].Name;
                 string disp = n.Replace("k__BackingField", "").Replace("<", "").Replace(">", "");
 
-                var ex = myType.GetProperty(disp);
+                var ex = clazz.GetProperty(disp);
                 bool isDefined = false;
 
                 if (ex != null)
@@ -48,36 +59,11 @@ namespace WoWs_Randomizer.forms
 
                 if (isDefined)
                 {
-                    Option opt = new Option(disp, n,"metrics",fields[i].FieldType.ToString());
+                    Option opt = new Option(disp, n,clazz.Name,fields[i].FieldType.ToString());
                     this.mapping.Add(disp, opt);
                     exposedFields.Add(disp);
                 }
             }
-
-            Type myType2 = typeof(Ship);
-            FieldInfo[] fields2 = myType2.GetFields(BindingFlags.Instance | BindingFlags.NonPublic);
-            for (int i = 0; i < fields2.Length; i++)
-            {
-                string n = fields2[i].Name;
-                string disp = n.Replace("k__BackingField", "").Replace("<", "").Replace(">", "");
-
-                var ex = myType2.GetProperty(disp);
-                bool isDefined = false;
-
-                if (ex != null)
-                {
-                    isDefined = Attribute.IsDefined(ex, typeof(Exposed));
-                }
-
-                if (isDefined)
-                {
-                    Option opt = new Option(disp, n,"ship");
-                    this.mapping.Add(disp, opt);
-                    exposedFields.Add(disp);
-                }
-            }
-            exposedFields.Sort();
-            fillSelector();
         }
 
         private void btnShow_Click(object sender, EventArgs e)
@@ -91,6 +77,7 @@ namespace WoWs_Randomizer.forms
             resultGrid.DataSource = table;
             addHeaders();
             addRows();
+            lblRecordCount.Text = table.Rows.Count + " records found.";
         }
 
         private void fillSelector()
@@ -121,6 +108,69 @@ namespace WoWs_Randomizer.forms
             return ships;
         }
 
+        private List<string> AssembleConditions()
+        {
+            List<string> conditions = new List<string>();
+
+            bool isShipClassSelected = false;
+            var cbShipClass = groupShipClass.Controls.OfType<CheckBox>();
+            foreach (CheckBox cb in cbShipClass)
+            {
+                if (cb.Checked)
+                {
+                    isShipClassSelected = true;
+                    conditions.Add(cb.AccessibleName);
+                }
+            }
+            if (isShipClassSelected == false)
+            {
+                conditions.Add(CONDITION_ALLSHIPS);
+            }
+
+            bool isTierSelected = false;
+            var cbTiers = groupTier.Controls.OfType<CheckBox>();
+            foreach (CheckBox cb in cbTiers)
+            {
+                if (cb.Checked)
+                {
+                    conditions.Add(cb.Tag.ToString());
+                    isTierSelected = true;
+                }
+            }
+            if (isTierSelected == false)
+            {
+                conditions.Add(CONDITION_ALLTIERS);
+            }
+
+            if (cbTechTree.Checked || cbPremium.Checked)
+            {
+                if (cbTechTree.Checked) { conditions.Add("PS:" + cbTechTree.Tag.ToString()); }
+                if (cbPremium.Checked) { conditions.Add("PS:" + cbPremium.Tag.ToString()); }
+            }
+            else
+            {
+                conditions.Add("PS:" + cbTechTree.Tag.ToString());
+                conditions.Add("PS:" + cbPremium.Tag.ToString());
+            }
+
+            bool isNationSelected = false;
+            var cbNations = groupNations.Controls.OfType<CheckBox>();
+            foreach (CheckBox cb in cbNations)
+            {
+                if (cb.Checked)
+                {
+                    conditions.Add(cb.Tag.ToString());
+                    isNationSelected = true;
+                }
+            }
+            if (isNationSelected == false)
+            {
+                conditions.Add(CONDITION_ALLNATIONS);
+            }
+
+            return conditions;
+        }
+
         private void addHeaders()
         {
             table.Columns.Clear();
@@ -134,10 +184,9 @@ namespace WoWs_Randomizer.forms
 
         private void addRows()
         {
-            List<Ship> ShipQuery;
-            List<string> conditions = new List<string>();
-
             table.Rows.Clear();
+            List<Ship> ShipQuery;
+            List<string> conditions = AssembleConditions();
 
             if ( cbAllShips.Checked )
             {
@@ -147,137 +196,77 @@ namespace WoWs_Randomizer.forms
                 ShipQuery = new List<Ship>(AssembleShipList());
             }
 
-            bool isShipClassSelected = false;
-            var cbShipClass = groupShipClass.Controls.OfType<CheckBox>();
-            foreach(CheckBox cb in cbShipClass)
-            {
-                if ( cb.Checked )
-                {
-                    isShipClassSelected = true;
-                    conditions.Add(cb.AccessibleName);
-                }
-            }
-            if ( isShipClassSelected == false )
-            {
-                conditions.Add("AllShipType");
-            }
-
-            bool isTierSelected = false;
-            var cbTiers = groupTier.Controls.OfType<CheckBox>();
-            foreach(CheckBox cb in cbTiers)
-            {
-                if ( cb.Checked )
-                {
-                    conditions.Add(cb.Tag.ToString());
-                    isTierSelected = true;
-                }
-            }
-            if ( isTierSelected == false )
-            {
-                conditions.Add("AllTiers");
-            }
-
-            if ( cbTechTree.Checked || cbPremium.Checked )
-            {
-                if ( cbTechTree.Checked ) { conditions.Add("PS:" + cbTechTree.Tag.ToString()); }
-                if ( cbPremium.Checked ) { conditions.Add("PS:" + cbPremium.Tag.ToString()); }
-            } else
-            {
-                conditions.Add("PS:" + cbTechTree.Tag.ToString());
-                conditions.Add("PS:" + cbPremium.Tag.ToString());
-            }
-
-            bool isNationSelected = false;
-            var cbNations = groupNations.Controls.OfType<CheckBox>();
-            foreach(CheckBox cb in cbNations)
-            {
-                if ( cb.Checked )
-                {
-                    conditions.Add(cb.Tag.ToString());
-                    isNationSelected = true;
-                }
-            }
-            if ( isNationSelected == false )
-            {
-                conditions.Add("AllNations");
-            }
-
-
-            List<Ship> shipsToRemove = new List<Ship>();
             foreach (Ship ship in ShipQuery)
             {
-                bool isRemoved = false;
-                if (!(conditions.Contains("AllShipType") || conditions.Contains(ship.ShipType.ToString())))
+                MetricsExctractor extractor = new MetricsExctractor(ship);
+
+                if (!(conditions.Contains(CONDITION_ALLSHIPS) || conditions.Contains(ship.ShipType.ToString())))
                 {
                     {
-                        shipsToRemove.Add(ship);
-                        isRemoved = true;
+                        continue;
                     }
                 }
-                if (isRemoved == false && !(conditions.Contains("AllTiers") || conditions.Contains(ship.Tier.ToString())))
+                if (!(conditions.Contains(CONDITION_ALLTIERS) || conditions.Contains(ship.Tier.ToString())))
                 {
-                    shipsToRemove.Add(ship);
-                    isRemoved = true;
+                    continue;
                 }
-                if ( isRemoved == false && !(conditions.Contains("PS:" + ship.Premium.ToString().ToLower())))
+                if (!(conditions.Contains("PS:" + ship.Premium.ToString().ToLower())))
                 {
-                    shipsToRemove.Add(ship);
-                    isRemoved = true;
+                    continue;
                 }
-                if ( isRemoved == false && isConditionMetForShip(ship) == false)
+                if (!(conditions.Contains(CONDITION_ALLNATIONS) || conditions.Contains(ship.Country.ToString())))
                 {
-                    shipsToRemove.Add(ship);
+                    continue;
                 }
 
-            }
-            if ( shipsToRemove.Count > 0 )
-            {
-                foreach(Ship ship in shipsToRemove)
+                ShipMetrics metrics = extractor.GetMetrics();
+                if ( isConditionMetForShip(ship,metrics) == false)
                 {
-                    ShipQuery.Remove(ship);
+                    continue;
                 }
-            }
 
-            foreach (Ship ship in ShipQuery) {
-
-                try
-                {
-                    MetricsExctractor Extractor = new MetricsExctractor(ship);
-                    ShipMetrics metrics = Extractor.GetMetrics();
-
-                    DataRow row = table.NewRow();
-
-                    int rowIdx = 0;
-                    foreach (var obj in userSelectedFields.Items)
-                    {
-                        string itm = (string)obj;
-                        FieldInfo fld = null;
-
-                        Option opt = this.mapping[itm];
-                        if ( opt != null )
-                        {
-                            if ( opt.ClassName.Equals("ship"))
-                            {
-                                fld = typeof(Ship).GetField(opt.Value, BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
-                                row[rowIdx] = fld.GetValue(ship);
-                            } else if ( opt.ClassName.Equals("metrics"))
-                            {
-                                fld = typeof(ShipMetrics).GetField(opt.Value, BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
-                                row[rowIdx] = fld.GetValue(metrics);
-                            }
-                        }
-                        rowIdx++;
-                    }
-                    table.Rows.Add(row);
-                } catch (Exception ex) {
-                    Console.WriteLine(ex);
-                    Console.WriteLine(table);
-                    Console.WriteLine(table.Columns.Count);
-                    Console.WriteLine(table.Rows.Count);
-                }
+                populateTableRow(ship, metrics);
             }
 
             resultGrid.Sort(resultGrid.Columns[0], ListSortDirection.Ascending);
+        }
+
+        private void populateTableRow(Ship ship, ShipMetrics metrics)
+        {
+            try
+            {
+                DataRow row = table.NewRow();
+
+                int rowIdx = 0;
+                foreach (var obj in userSelectedFields.Items)
+                {
+                    string itm = (string)obj;
+                    Option opt = this.mapping[itm];
+                    if (opt != null)
+                    {
+                        if (opt.ClassName.Equals(typeof(Ship).Name))
+                        {
+                            row[rowIdx] = GetFieldValue(ship,opt.Value);
+                        }
+                        else if (opt.ClassName.Equals(typeof(ShipMetrics).Name))
+                        {
+                            row[rowIdx] = GetFieldValue(metrics,opt.Value);
+                        }
+                    }
+                    rowIdx++;
+                }
+                table.Rows.Add(row);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+        }
+
+        private object GetFieldValue(object clazz, string fieldName)
+        {
+            FieldInfo fld = clazz.GetType().GetField(fieldName, BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
+            return fld.GetValue(clazz);
         }
 
         private double SafeConvertToDouble(string value)
@@ -292,11 +281,8 @@ namespace WoWs_Randomizer.forms
             return 0.0;
         }
 
-        private bool isConditionMetForShip(Ship ship)
+        private bool isConditionMetForShip(Ship ship, ShipMetrics metrics)
         {
-            MetricsExctractor Extractor = new MetricsExctractor(ship);
-            ShipMetrics metrics = Extractor.GetMetrics();
-
             foreach (string query in listQuery.Items)
             {
                 string[] tmp = query.Split(' ');
@@ -308,30 +294,31 @@ namespace WoWs_Randomizer.forms
                 double fieldValueDbl = 0.0;
                 bool compareDouble = false;
 
-                FieldInfo fld = null;
-                Type fldType = null;
                 Option opt = this.mapping[fldName];
-                if (opt.ClassName.Equals("ship"))
+                
+                if (opt.ClassName.Equals(typeof(Ship).Name))
                 {
-                    fld = typeof(Ship).GetField(opt.Value, BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
-                    fieldValue = fld.GetValue(ship).ToString();
-                    fldType = fld.FieldType;
-                    if (fldType.ToString().Equals("System.Double"))
+                    object val = GetFieldValue(ship, opt.Value);
+                    if (val is double)
                     {
+                        fieldValueDbl = (double)val;
                         compareDouble = true;
-                        fieldValueDbl = (double)fld.GetValue(ship);
                     }
+                    fieldValue = val.ToString();
+
                 }
-                else if (opt.ClassName.Equals("metrics"))
+                else if (opt.ClassName.Equals(typeof(ShipMetrics).Name))
                 {
-                    fld = typeof(ShipMetrics).GetField(opt.Value, BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
-                    fieldValue = fld.GetValue(metrics).ToString();
-                    fldType = fld.FieldType;
-                    if (fldType.ToString().Equals("System.Double"))
+                    object val = GetFieldValue(metrics, opt.Value);
+                    if ( val is double )
                     {
+                        fieldValueDbl = (double)val;
                         compareDouble = true;
-                        fieldValueDbl = (double)fld.GetValue(metrics);
                     }
+                    fieldValue = val.ToString();
+                } else
+                {
+                    return false;
                 }
 
                 if ( compareDouble )
@@ -501,11 +488,12 @@ namespace WoWs_Randomizer.forms
 
         private void btnAddQuery_Click(object sender, EventArgs e)
         {
-            string tmp = "TorpedoSpeed >= 61";
-            listQuery.Items.Add(tmp);
-            tmp = "TorpedoSpeed <= 70";
-            listQuery.Items.Add(tmp);
-
+            QueryBuilder builder = new QueryBuilder();
+            builder.exposedFieldNames = this.exposedFields;
+            if ( builder.ShowDialog() == DialogResult.OK )
+            {
+                listQuery.Items.Add(builder.QueryResult);
+            }
         }
     }
     class Option

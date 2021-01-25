@@ -75,6 +75,7 @@ namespace WoWs_Randomizer.forms
             this.listQuery = new System.Windows.Forms.ListBox();
             this.btnAddQuery = new System.Windows.Forms.Button();
             this.btnRemoveQuery = new System.Windows.Forms.Button();
+            this.lblRecordCount = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.resultGrid)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupShipClass.SuspendLayout();
@@ -98,7 +99,7 @@ namespace WoWs_Randomizer.forms
             // 
             // btnShow
             // 
-            this.btnShow.Location = new System.Drawing.Point(12, 298);
+            this.btnShow.Location = new System.Drawing.Point(12, 271);
             this.btnShow.Name = "btnShow";
             this.btnShow.Size = new System.Drawing.Size(137, 23);
             this.btnShow.TabIndex = 5;
@@ -165,7 +166,7 @@ namespace WoWs_Randomizer.forms
             this.groupBox1.Controls.Add(this.cbExclusionList);
             this.groupBox1.Controls.Add(this.cbPersonalShips);
             this.groupBox1.Controls.Add(this.cbAllShips);
-            this.groupBox1.Location = new System.Drawing.Point(25, 29);
+            this.groupBox1.Location = new System.Drawing.Point(25, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(200, 93);
             this.groupBox1.TabIndex = 13;
@@ -213,7 +214,7 @@ namespace WoWs_Randomizer.forms
             this.groupShipClass.Controls.Add(this.cbDD);
             this.groupShipClass.Controls.Add(this.cbCA);
             this.groupShipClass.Controls.Add(this.cbBB);
-            this.groupShipClass.Location = new System.Drawing.Point(25, 128);
+            this.groupShipClass.Location = new System.Drawing.Point(25, 111);
             this.groupShipClass.Name = "groupShipClass";
             this.groupShipClass.Size = new System.Drawing.Size(200, 100);
             this.groupShipClass.TabIndex = 14;
@@ -397,7 +398,7 @@ namespace WoWs_Randomizer.forms
             this.groupTier.Controls.Add(this.CBTier4);
             this.groupTier.Controls.Add(this.CBTier6);
             this.groupTier.Controls.Add(this.CBTier5);
-            this.groupTier.Location = new System.Drawing.Point(231, 29);
+            this.groupTier.Location = new System.Drawing.Point(231, 12);
             this.groupTier.Name = "groupTier";
             this.groupTier.Size = new System.Drawing.Size(200, 146);
             this.groupTier.TabIndex = 36;
@@ -407,7 +408,7 @@ namespace WoWs_Randomizer.forms
             // cbPremium
             // 
             this.cbPremium.AutoSize = true;
-            this.cbPremium.Location = new System.Drawing.Point(139, 234);
+            this.cbPremium.Location = new System.Drawing.Point(148, 217);
             this.cbPremium.Name = "cbPremium";
             this.cbPremium.Size = new System.Drawing.Size(66, 17);
             this.cbPremium.TabIndex = 37;
@@ -418,7 +419,7 @@ namespace WoWs_Randomizer.forms
             // cbTechTree
             // 
             this.cbTechTree.AutoSize = true;
-            this.cbTechTree.Location = new System.Drawing.Point(33, 234);
+            this.cbTechTree.Location = new System.Drawing.Point(42, 217);
             this.cbTechTree.Name = "cbTechTree";
             this.cbTechTree.Size = new System.Drawing.Size(72, 17);
             this.cbTechTree.TabIndex = 38;
@@ -439,7 +440,7 @@ namespace WoWs_Randomizer.forms
             this.groupNations.Controls.Add(this.CBCountry3);
             this.groupNations.Controls.Add(this.CBCountry2);
             this.groupNations.Controls.Add(this.CBCountry1);
-            this.groupNations.Location = new System.Drawing.Point(437, 29);
+            this.groupNations.Location = new System.Drawing.Point(437, 12);
             this.groupNations.Name = "groupNations";
             this.groupNations.Size = new System.Drawing.Size(214, 292);
             this.groupNations.TabIndex = 39;
@@ -570,9 +571,9 @@ namespace WoWs_Randomizer.forms
             // groupQuery
             // 
             this.groupQuery.Controls.Add(this.listQuery);
-            this.groupQuery.Location = new System.Drawing.Point(231, 181);
+            this.groupQuery.Location = new System.Drawing.Point(231, 164);
             this.groupQuery.Name = "groupQuery";
-            this.groupQuery.Size = new System.Drawing.Size(200, 140);
+            this.groupQuery.Size = new System.Drawing.Size(200, 124);
             this.groupQuery.TabIndex = 40;
             this.groupQuery.TabStop = false;
             this.groupQuery.Text = "Selection query";
@@ -584,12 +585,12 @@ namespace WoWs_Randomizer.forms
             this.listQuery.FormattingEnabled = true;
             this.listQuery.Location = new System.Drawing.Point(7, 20);
             this.listQuery.Name = "listQuery";
-            this.listQuery.Size = new System.Drawing.Size(187, 117);
+            this.listQuery.Size = new System.Drawing.Size(187, 91);
             this.listQuery.TabIndex = 0;
             // 
             // btnAddQuery
             // 
-            this.btnAddQuery.Location = new System.Drawing.Point(13, 264);
+            this.btnAddQuery.Location = new System.Drawing.Point(231, 294);
             this.btnAddQuery.Name = "btnAddQuery";
             this.btnAddQuery.Size = new System.Drawing.Size(93, 23);
             this.btnAddQuery.TabIndex = 41;
@@ -599,7 +600,7 @@ namespace WoWs_Randomizer.forms
             // 
             // btnRemoveQuery
             // 
-            this.btnRemoveQuery.Location = new System.Drawing.Point(129, 264);
+            this.btnRemoveQuery.Location = new System.Drawing.Point(338, 294);
             this.btnRemoveQuery.Name = "btnRemoveQuery";
             this.btnRemoveQuery.Size = new System.Drawing.Size(93, 22);
             this.btnRemoveQuery.TabIndex = 42;
@@ -607,11 +608,21 @@ namespace WoWs_Randomizer.forms
             this.btnRemoveQuery.UseVisualStyleBackColor = true;
             this.btnRemoveQuery.Click += new System.EventHandler(this.btnRemoveQuery_Click);
             // 
+            // lblRecordCount
+            // 
+            this.lblRecordCount.AutoSize = true;
+            this.lblRecordCount.Location = new System.Drawing.Point(13, 307);
+            this.lblRecordCount.Name = "lblRecordCount";
+            this.lblRecordCount.Size = new System.Drawing.Size(101, 13);
+            this.lblRecordCount.TabIndex = 43;
+            this.lblRecordCount.Text = "0 records displayed.";
+            // 
             // List
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1208, 702);
+            this.Controls.Add(this.lblRecordCount);
             this.Controls.Add(this.btnRemoveQuery);
             this.Controls.Add(this.btnAddQuery);
             this.Controls.Add(this.groupQuery);
@@ -693,5 +704,6 @@ namespace WoWs_Randomizer.forms
         private System.Windows.Forms.ListBox listQuery;
         private System.Windows.Forms.Button btnAddQuery;
         private System.Windows.Forms.Button btnRemoveQuery;
+        private System.Windows.Forms.Label lblRecordCount;
     }
 }

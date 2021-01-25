@@ -8,6 +8,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WoWs_Randomizer.objects;
 using WoWs_Randomizer.utils;
 using WoWs_Randomizer.utils.ship;
 
@@ -68,9 +69,14 @@ namespace WoWs_Randomizer.forms
 
         private void btnShow_Click(object sender, EventArgs e)
         {
+            doSearch();
+        }
+
+        private void doSearch()
+        {
             if (userSelectedFields.Items.Count == 0)
             {
-                MessageBox.Show("No items selected...");
+                MessageBox.Show("You have not selected any fields. Select one or more fields to display and try again.", "Unable to search", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             table = new DataTable();
@@ -196,6 +202,7 @@ namespace WoWs_Randomizer.forms
                 ShipQuery = new List<Ship>(AssembleShipList());
             }
 
+            Console.WriteLine("We have " + ShipQuery.Count + " ships to loop...");
             foreach (Ship ship in ShipQuery)
             {
                 MetricsExctractor extractor = new MetricsExctractor(ship);
@@ -224,7 +231,6 @@ namespace WoWs_Randomizer.forms
                 {
                     continue;
                 }
-
                 populateTableRow(ship, metrics);
             }
 
@@ -494,6 +500,129 @@ namespace WoWs_Randomizer.forms
             {
                 listQuery.Items.Add(builder.QueryResult);
             }
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void saveQueryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            QueryReport report = new QueryReport();
+            report.conditions = AssembleConditions();
+            report.queries = new List<string>(listQuery.Items.Cast<string>().ToList());
+            report.selectedFields = new List<string>(userSelectedFields.Items.Cast<string>().ToList());
+            report.unusedFields = new List<string>(allFieldNames.Items.Cast<string>().ToList());
+            report.useExclusionList = cbExclusionList.Checked;
+            report.useAllShips = cbAllShips.Checked;
+
+            Settings settings = Commons.GetSettings();
+            string def = settings.SaveLocation;
+
+            SaveFileDialog saveDlg = new SaveFileDialog();
+            saveDlg.InitialDirectory = def;
+            saveDlg.DefaultExt = "rpt";
+            saveDlg.FileName = "report.rpt";
+            saveDlg.Filter = "Randomizer Query Report (*.rpt)|*.rpt";
+            if (saveDlg.ShowDialog() == DialogResult.OK)
+            {
+                string file = saveDlg.FileName;
+                if (!file.EndsWith(".rpt"))
+                {
+                    file += ".rpt";
+                }
+                BinarySerialize.WriteToBinaryFile(file, report);
+            }
+        }
+
+        private void loadQueryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Settings settings = Commons.GetSettings();
+
+            OpenFileDialog openFile = new OpenFileDialog();
+            openFile.Filter = "Randomizer Query Report (*.rpt)|*.rpt";
+            openFile.DefaultExt = "rpt";
+            openFile.InitialDirectory = settings.SaveLocation;
+
+            string fileName = "";
+            if (openFile.ShowDialog() == DialogResult.OK)
+            {
+                fileName = openFile.FileName;
+            }
+            else
+            {
+                return;
+            }
+
+            QueryReport report = BinarySerialize.ReadFromBinaryFile<QueryReport>(fileName);
+
+            UnselectAllCheckboxes();
+            allFieldNames.Items.Clear();
+            userSelectedFields.Items.Clear();
+            listQuery.Items.Clear();
+
+            if ( report.useAllShips == false ) { cbAllShips.Checked = false; cbPersonalShips.Checked = true; cbExclusionList.Enabled = true; }
+            if ( report.useExclusionList ) { cbExclusionList.Checked = true;  } else { cbExclusionList.Checked = false; }
+
+            foreach(string itm in report.unusedFields) { allFieldNames.Items.Add(itm); }
+            foreach(string itm in report.selectedFields) { userSelectedFields.Items.Add(itm); }
+            foreach(string itm in report.queries) { listQuery.Items.Add(itm); }
+
+            foreach (string itm in report.conditions)
+            {
+                if (itm.Equals("PS:" + cbTechTree.Tag.ToString())) { cbTechTree.Checked = true; }
+                else if (itm.Equals("PS:" + cbPremium.Tag.ToString())) { cbPremium.Checked = true; }
+                else if ( itm.Equals(CONDITION_ALLNATIONS) || itm.Equals(CONDITION_ALLSHIPS) || itm.Equals(CONDITION_ALLTIERS)) { }
+                else { SelectCheckboxByConditionName(itm); }
+            }
+
+            if ( cbPremium.Checked && cbTechTree.Checked )
+            {
+                cbTechTree.Checked = false;
+                cbPremium.Checked = false;
+            }
+
+            btnShow_Click(new object(), new EventArgs());
+        }
+
+        private void SelectCheckboxByConditionName(string conditionName)
+        {
+            var cbNations = groupNations.Controls.OfType<CheckBox>();
+            var cbTiers = groupTier.Controls.OfType<CheckBox>();
+            var cbShipclass = groupShipClass.Controls.OfType<CheckBox>();
+
+            var allCheckboxes = cbNations.Concat<CheckBox>(cbTiers).Concat<CheckBox>(cbShipclass);
+
+            foreach (CheckBox cb in allCheckboxes)
+            {
+                if ( cb.AccessibleName != null && cb.AccessibleName.Equals(conditionName))
+                {
+                    cb.Checked = true;
+                    break;
+                } else if ( cb.Tag != null && cb.Tag.ToString().Equals(conditionName))
+                {
+                    cb.Checked = true;
+                    break;
+                }
+            }
+        }
+
+        private void UnselectAllCheckboxes()
+        {
+            cbAllShips.Checked = true; 
+            cbPersonalShips.Checked = false; 
+            cbExclusionList.Checked = false;
+            cbExclusionList.Enabled = false;
+
+            var cbNations = groupNations.Controls.OfType<CheckBox>();
+            foreach (CheckBox cb in cbNations) { cb.Checked = false; }
+            var cbTiers = groupNations.Controls.OfType<CheckBox>();
+            foreach (CheckBox cb in cbTiers) { cb.Checked = false; }
+            var cbShipclass = groupShipClass.Controls.OfType<CheckBox>();
+            foreach(CheckBox cb in cbShipclass) { cb.Checked = false; }
+            cbTechTree.Checked = false;
+            cbPremium.Checked = false;
         }
     }
     class Option

@@ -224,7 +224,7 @@ namespace WoWs_Randomizer.utils
 
         private void UpdateCommanderSkills()
         {
-            SkillImporter Importer = WGAPI.GetCommanderSkills();
+/*            SkillImporter Importer = WGAPI.GetCommanderSkills();
             if (Importer.Status.ToLower().Equals("ok"))
             {
                 Program.CommanderSkills = new List<Skill>();
@@ -233,7 +233,7 @@ namespace WoWs_Randomizer.utils
                     Program.CommanderSkills.Add(SkillData.Value);
                 }
                 BinarySerialize.WriteToBinaryFile(Commons.GetCommanderSkillFileName(), Program.CommanderSkills);
-            }
+            }*/
         }
 
         private void UpdateFlags()

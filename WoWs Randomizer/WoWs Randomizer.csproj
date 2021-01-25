@@ -260,6 +260,7 @@
     <Compile Include="utils\metrics\MetricsExctractor.cs" />
     <Compile Include="utils\metrics\MetricsTableComposer.cs" />
     <Compile Include="utils\enums\ShipTypes.cs" />
+    <Compile Include="utils\QueryReport.cs" />
     <Compile Include="utils\ShipFinder.cs" />
     <Compile Include="utils\ShipRandomizer.cs" />
     <Compile Include="utils\specialFlags\Flags.cs" />

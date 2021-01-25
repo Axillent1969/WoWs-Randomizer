@@ -87,7 +87,7 @@ namespace WoWs_Randomizer.forms
             // 
             // btnGreaterOrEqualThan
             // 
-            this.btnGreaterOrEqualThan.Location = new System.Drawing.Point(98, 230);
+            this.btnGreaterOrEqualThan.Location = new System.Drawing.Point(137, 201);
             this.btnGreaterOrEqualThan.Name = "btnGreaterOrEqualThan";
             this.btnGreaterOrEqualThan.Size = new System.Drawing.Size(33, 23);
             this.btnGreaterOrEqualThan.TabIndex = 4;
@@ -97,7 +97,7 @@ namespace WoWs_Randomizer.forms
             // 
             // btnLessThan
             // 
-            this.btnLessThan.Location = new System.Drawing.Point(137, 201);
+            this.btnLessThan.Location = new System.Drawing.Point(98, 230);
             this.btnLessThan.Name = "btnLessThan";
             this.btnLessThan.Size = new System.Drawing.Size(33, 23);
             this.btnLessThan.TabIndex = 5;
@@ -119,7 +119,7 @@ namespace WoWs_Randomizer.forms
             // 
             this.txtValue.Location = new System.Drawing.Point(56, 284);
             this.txtValue.Name = "txtValue";
-            this.txtValue.Size = new System.Drawing.Size(100, 20);
+            this.txtValue.Size = new System.Drawing.Size(114, 20);
             this.txtValue.TabIndex = 7;
             this.txtValue.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtValue_KeyUp);
             // 
@@ -135,7 +135,7 @@ namespace WoWs_Randomizer.forms
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 347);
+            this.label2.Location = new System.Drawing.Point(13, 318);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 9;
@@ -144,14 +144,14 @@ namespace WoWs_Randomizer.forms
             // txtQueryResult
             // 
             this.txtQueryResult.Enabled = false;
-            this.txtQueryResult.Location = new System.Drawing.Point(12, 373);
+            this.txtQueryResult.Location = new System.Drawing.Point(12, 334);
             this.txtQueryResult.Name = "txtQueryResult";
             this.txtQueryResult.Size = new System.Drawing.Size(212, 20);
             this.txtQueryResult.TabIndex = 10;
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(16, 409);
+            this.btnOK.Location = new System.Drawing.Point(16, 370);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 11;
@@ -162,7 +162,7 @@ namespace WoWs_Randomizer.forms
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(149, 409);
+            this.btnCancel.Location = new System.Drawing.Point(149, 370);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 12;
@@ -174,7 +174,8 @@ namespace WoWs_Randomizer.forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(242, 450);
+            this.CancelButton = this.btnCancel;
+            this.ClientSize = new System.Drawing.Size(242, 404);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.txtQueryResult);
@@ -188,6 +189,7 @@ namespace WoWs_Randomizer.forms
             this.Controls.Add(this.btnNotEqual);
             this.Controls.Add(this.btnEqual);
             this.Controls.Add(this.fieldSelection);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "QueryBuilder";
             this.Text = "QueryBuilder";

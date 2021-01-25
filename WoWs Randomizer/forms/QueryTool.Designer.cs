@@ -77,12 +77,21 @@ namespace WoWs_Randomizer.forms
             this.btnAddQuery = new System.Windows.Forms.Button();
             this.btnRemoveQuery = new System.Windows.Forms.Button();
             this.lblRecordCount = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadQueryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveQueryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.resultGrid)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupShipClass.SuspendLayout();
             this.groupTier.SuspendLayout();
             this.groupNations.SuspendLayout();
             this.groupQuery.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // resultGrid
@@ -93,14 +102,15 @@ namespace WoWs_Randomizer.forms
             this.resultGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.resultGrid.BackgroundColor = System.Drawing.Color.LightSteelBlue;
             this.resultGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.resultGrid.Location = new System.Drawing.Point(12, 327);
+            this.resultGrid.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.resultGrid.Location = new System.Drawing.Point(0, 339);
             this.resultGrid.Name = "resultGrid";
-            this.resultGrid.Size = new System.Drawing.Size(1184, 363);
+            this.resultGrid.Size = new System.Drawing.Size(1150, 363);
             this.resultGrid.TabIndex = 0;
             // 
             // btnShow
             // 
-            this.btnShow.Location = new System.Drawing.Point(12, 271);
+            this.btnShow.Location = new System.Drawing.Point(14, 286);
             this.btnShow.Name = "btnShow";
             this.btnShow.Size = new System.Drawing.Size(137, 23);
             this.btnShow.TabIndex = 5;
@@ -111,10 +121,10 @@ namespace WoWs_Randomizer.forms
             // allFieldNames
             // 
             this.allFieldNames.FormattingEnabled = true;
-            this.allFieldNames.Location = new System.Drawing.Point(998, 5);
+            this.allFieldNames.Location = new System.Drawing.Point(947, 42);
             this.allFieldNames.Name = "allFieldNames";
             this.allFieldNames.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.allFieldNames.Size = new System.Drawing.Size(198, 316);
+            this.allFieldNames.Size = new System.Drawing.Size(198, 290);
             this.allFieldNames.Sorted = true;
             this.allFieldNames.TabIndex = 8;
             this.allFieldNames.DragOver += new System.Windows.Forms.DragEventHandler(this.allFieldNames_DragOver);
@@ -124,9 +134,9 @@ namespace WoWs_Randomizer.forms
             // 
             this.userSelectedFields.AllowDrop = true;
             this.userSelectedFields.FormattingEnabled = true;
-            this.userSelectedFields.Location = new System.Drawing.Point(710, 5);
+            this.userSelectedFields.Location = new System.Drawing.Point(659, 42);
             this.userSelectedFields.Name = "userSelectedFields";
-            this.userSelectedFields.Size = new System.Drawing.Size(207, 316);
+            this.userSelectedFields.Size = new System.Drawing.Size(207, 290);
             this.userSelectedFields.TabIndex = 9;
             this.userSelectedFields.DragDrop += new System.Windows.Forms.DragEventHandler(this.userSelectedFields_DragDrop);
             this.userSelectedFields.DragOver += new System.Windows.Forms.DragEventHandler(this.userSelectedFields_DragOver);
@@ -134,7 +144,7 @@ namespace WoWs_Randomizer.forms
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(932, 84);
+            this.button2.Location = new System.Drawing.Point(881, 113);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(46, 23);
             this.button2.TabIndex = 10;
@@ -144,7 +154,7 @@ namespace WoWs_Randomizer.forms
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(932, 127);
+            this.button3.Location = new System.Drawing.Point(881, 156);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(46, 23);
             this.button3.TabIndex = 11;
@@ -154,7 +164,7 @@ namespace WoWs_Randomizer.forms
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(932, 173);
+            this.button1.Location = new System.Drawing.Point(881, 202);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(46, 23);
             this.button1.TabIndex = 12;
@@ -167,7 +177,7 @@ namespace WoWs_Randomizer.forms
             this.groupBox1.Controls.Add(this.cbExclusionList);
             this.groupBox1.Controls.Add(this.cbPersonalShips);
             this.groupBox1.Controls.Add(this.cbAllShips);
-            this.groupBox1.Location = new System.Drawing.Point(25, 12);
+            this.groupBox1.Location = new System.Drawing.Point(27, 27);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(200, 93);
             this.groupBox1.TabIndex = 13;
@@ -215,7 +225,7 @@ namespace WoWs_Randomizer.forms
             this.groupShipClass.Controls.Add(this.cbDD);
             this.groupShipClass.Controls.Add(this.cbCA);
             this.groupShipClass.Controls.Add(this.cbBB);
-            this.groupShipClass.Location = new System.Drawing.Point(25, 111);
+            this.groupShipClass.Location = new System.Drawing.Point(27, 126);
             this.groupShipClass.Name = "groupShipClass";
             this.groupShipClass.Size = new System.Drawing.Size(200, 100);
             this.groupShipClass.TabIndex = 14;
@@ -399,7 +409,7 @@ namespace WoWs_Randomizer.forms
             this.groupTier.Controls.Add(this.CBTier4);
             this.groupTier.Controls.Add(this.CBTier6);
             this.groupTier.Controls.Add(this.CBTier5);
-            this.groupTier.Location = new System.Drawing.Point(231, 12);
+            this.groupTier.Location = new System.Drawing.Point(233, 27);
             this.groupTier.Name = "groupTier";
             this.groupTier.Size = new System.Drawing.Size(200, 146);
             this.groupTier.TabIndex = 36;
@@ -409,7 +419,7 @@ namespace WoWs_Randomizer.forms
             // cbPremium
             // 
             this.cbPremium.AutoSize = true;
-            this.cbPremium.Location = new System.Drawing.Point(148, 217);
+            this.cbPremium.Location = new System.Drawing.Point(150, 232);
             this.cbPremium.Name = "cbPremium";
             this.cbPremium.Size = new System.Drawing.Size(66, 17);
             this.cbPremium.TabIndex = 37;
@@ -420,7 +430,7 @@ namespace WoWs_Randomizer.forms
             // cbTechTree
             // 
             this.cbTechTree.AutoSize = true;
-            this.cbTechTree.Location = new System.Drawing.Point(42, 217);
+            this.cbTechTree.Location = new System.Drawing.Point(44, 232);
             this.cbTechTree.Name = "cbTechTree";
             this.cbTechTree.Size = new System.Drawing.Size(72, 17);
             this.cbTechTree.TabIndex = 38;
@@ -441,7 +451,7 @@ namespace WoWs_Randomizer.forms
             this.groupNations.Controls.Add(this.CBCountry3);
             this.groupNations.Controls.Add(this.CBCountry2);
             this.groupNations.Controls.Add(this.CBCountry1);
-            this.groupNations.Location = new System.Drawing.Point(437, 12);
+            this.groupNations.Location = new System.Drawing.Point(439, 27);
             this.groupNations.Name = "groupNations";
             this.groupNations.Size = new System.Drawing.Size(214, 292);
             this.groupNations.TabIndex = 39;
@@ -572,7 +582,7 @@ namespace WoWs_Randomizer.forms
             // groupQuery
             // 
             this.groupQuery.Controls.Add(this.listQuery);
-            this.groupQuery.Location = new System.Drawing.Point(231, 164);
+            this.groupQuery.Location = new System.Drawing.Point(233, 179);
             this.groupQuery.Name = "groupQuery";
             this.groupQuery.Size = new System.Drawing.Size(200, 124);
             this.groupQuery.TabIndex = 40;
@@ -591,7 +601,7 @@ namespace WoWs_Randomizer.forms
             // 
             // btnAddQuery
             // 
-            this.btnAddQuery.Location = new System.Drawing.Point(231, 294);
+            this.btnAddQuery.Location = new System.Drawing.Point(233, 309);
             this.btnAddQuery.Name = "btnAddQuery";
             this.btnAddQuery.Size = new System.Drawing.Size(93, 23);
             this.btnAddQuery.TabIndex = 41;
@@ -601,7 +611,7 @@ namespace WoWs_Randomizer.forms
             // 
             // btnRemoveQuery
             // 
-            this.btnRemoveQuery.Location = new System.Drawing.Point(338, 294);
+            this.btnRemoveQuery.Location = new System.Drawing.Point(340, 309);
             this.btnRemoveQuery.Name = "btnRemoveQuery";
             this.btnRemoveQuery.Size = new System.Drawing.Size(93, 22);
             this.btnRemoveQuery.TabIndex = 42;
@@ -612,17 +622,84 @@ namespace WoWs_Randomizer.forms
             // lblRecordCount
             // 
             this.lblRecordCount.AutoSize = true;
-            this.lblRecordCount.Location = new System.Drawing.Point(13, 307);
+            this.lblRecordCount.Location = new System.Drawing.Point(16, 319);
             this.lblRecordCount.Name = "lblRecordCount";
             this.lblRecordCount.Size = new System.Drawing.Size(101, 13);
             this.lblRecordCount.TabIndex = 43;
             this.lblRecordCount.Text = "0 records displayed.";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(659, 27);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(76, 13);
+            this.label1.TabIndex = 44;
+            this.label1.Text = "Selected fields";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(944, 26);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(77, 13);
+            this.label2.TabIndex = 45;
+            this.label2.Text = "Available fields";
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1150, 24);
+            this.menuStrip1.TabIndex = 46;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.loadQueryToolStripMenuItem,
+            this.saveQueryToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.exitToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
+            this.fileToolStripMenuItem.Text = "&File...";
+            // 
+            // loadQueryToolStripMenuItem
+            // 
+            this.loadQueryToolStripMenuItem.Name = "loadQueryToolStripMenuItem";
+            this.loadQueryToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.loadQueryToolStripMenuItem.Text = "&Load Query";
+            this.loadQueryToolStripMenuItem.Click += new System.EventHandler(this.loadQueryToolStripMenuItem_Click);
+            // 
+            // saveQueryToolStripMenuItem
+            // 
+            this.saveQueryToolStripMenuItem.Name = "saveQueryToolStripMenuItem";
+            this.saveQueryToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveQueryToolStripMenuItem.Text = "&Save Query";
+            this.saveQueryToolStripMenuItem.Click += new System.EventHandler(this.saveQueryToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Text = "&Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
             // QueryTool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1208, 702);
+            this.ClientSize = new System.Drawing.Size(1150, 702);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblRecordCount);
             this.Controls.Add(this.btnRemoveQuery);
             this.Controls.Add(this.btnAddQuery);
@@ -640,7 +717,9 @@ namespace WoWs_Randomizer.forms
             this.Controls.Add(this.allFieldNames);
             this.Controls.Add(this.btnShow);
             this.Controls.Add(this.resultGrid);
+            this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "QueryTool";
             this.Text = "Query Tool";
             ((System.ComponentModel.ISupportInitialize)(this.resultGrid)).EndInit();
@@ -653,6 +732,8 @@ namespace WoWs_Randomizer.forms
             this.groupNations.ResumeLayout(false);
             this.groupNations.PerformLayout();
             this.groupQuery.ResumeLayout(false);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -707,5 +788,13 @@ namespace WoWs_Randomizer.forms
         private System.Windows.Forms.Button btnAddQuery;
         private System.Windows.Forms.Button btnRemoveQuery;
         private System.Windows.Forms.Label lblRecordCount;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem loadQueryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveQueryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
     }
 }

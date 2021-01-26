@@ -30,11 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExclusionList));
             this.CategoryView = new System.Windows.Forms.TreeView();
-            this.ResultTable = new System.Windows.Forms.TableLayoutPanel();
             this.BtnSave = new System.Windows.Forms.Button();
             this.BtnSaveClose = new System.Windows.Forms.Button();
             this.BtnCancel = new System.Windows.Forms.Button();
             this.cbSelectAll = new System.Windows.Forms.CheckBox();
+            this.resultGrid = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.resultGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // CategoryView
@@ -46,27 +47,6 @@
             this.CategoryView.TabIndex = 0;
             this.CategoryView.BeforeSelect += new System.Windows.Forms.TreeViewCancelEventHandler(this.CategoryView_BeforeSelect);
             this.CategoryView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.CategoryView_AfterSelect);
-            // 
-            // ResultTable
-            // 
-            this.ResultTable.AutoScroll = true;
-            this.ResultTable.AutoSize = true;
-            this.ResultTable.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ResultTable.CausesValidation = false;
-            this.ResultTable.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.ResultTable.ColumnCount = 5;
-            this.ResultTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.ResultTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.ResultTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
-            this.ResultTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.ResultTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 145F));
-            this.ResultTable.Location = new System.Drawing.Point(171, 35);
-            this.ResultTable.Name = "ResultTable";
-            this.ResultTable.RowCount = 1;
-            this.ResultTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.ResultTable.Size = new System.Drawing.Size(576, 2);
-            this.ResultTable.TabIndex = 1;
-            this.ResultTable.Visible = false;
             // 
             // BtnSave
             // 
@@ -102,7 +82,7 @@
             // cbSelectAll
             // 
             this.cbSelectAll.AutoSize = true;
-            this.cbSelectAll.Location = new System.Drawing.Point(648, 12);
+            this.cbSelectAll.Location = new System.Drawing.Point(463, 12);
             this.cbSelectAll.Name = "cbSelectAll";
             this.cbSelectAll.Size = new System.Drawing.Size(99, 17);
             this.cbSelectAll.TabIndex = 5;
@@ -110,15 +90,27 @@
             this.cbSelectAll.UseVisualStyleBackColor = true;
             this.cbSelectAll.CheckedChanged += new System.EventHandler(this.cbSelectAll_CheckedChanged);
             // 
+            // resultGrid
+            // 
+            this.resultGrid.AllowUserToAddRows = false;
+            this.resultGrid.AllowUserToDeleteRows = false;
+            this.resultGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.resultGrid.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.resultGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.resultGrid.Location = new System.Drawing.Point(181, 35);
+            this.resultGrid.Name = "resultGrid";
+            this.resultGrid.Size = new System.Drawing.Size(397, 405);
+            this.resultGrid.TabIndex = 6;
+            // 
             // ExclusionList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(759, 458);
+            this.ClientSize = new System.Drawing.Size(586, 451);
+            this.Controls.Add(this.resultGrid);
             this.Controls.Add(this.cbSelectAll);
-            this.Controls.Add(this.ResultTable);
             this.Controls.Add(this.BtnCancel);
             this.Controls.Add(this.BtnSaveClose);
             this.Controls.Add(this.BtnSave);
@@ -128,6 +120,7 @@
             this.Text = "ExclusionList";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ExclusionList_FormClosing);
             this.Load += new System.EventHandler(this.ExclusionList_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.resultGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -136,10 +129,10 @@
         #endregion
 
         private System.Windows.Forms.TreeView CategoryView;
-        private System.Windows.Forms.TableLayoutPanel ResultTable;
         private System.Windows.Forms.Button BtnSave;
         private System.Windows.Forms.Button BtnSaveClose;
         private System.Windows.Forms.Button BtnCancel;
         private System.Windows.Forms.CheckBox cbSelectAll;
+        private System.Windows.Forms.DataGridView resultGrid;
     }
 }

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -13,6 +15,8 @@ namespace WoWs_Randomizer.forms
         public List<long> PersonalShips = new List<long>();
         public HashSet<long> ExcludedShips = new HashSet<long>();
         private bool isDirty = false;
+        private DataTable table = new DataTable();
+
         public ExclusionList()
         {
             InitializeComponent();
@@ -138,74 +142,49 @@ namespace WoWs_Randomizer.forms
                 DrawTable(Result, e.Node.Tag.ToString());
             }
         }
+        private void addHeaders()
+        {
+            List<string> headers = new List<string>()
+        {
+            "Name",
+            "ID",
+            "Class",
+            "Tier",
+            "Excluded"
+        };
+            table.Columns.Clear();
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0017:Simplify object initialization", Justification = "<Pending>")]
+            foreach (string h in headers)
+            {
+                if (h.Equals("Name") || h.Equals("Class"))
+                {
+                    table.Columns.Add(h,typeof(string));
+                } else if ( h.Equals("ID") || h.Equals("Tier"))
+                {
+                    table.Columns.Add(h, typeof(long));
+                } else
+                {
+                    table.Columns.Add(h, typeof(bool));
+                }
+            }
+        }
+
         private void DrawTable(List<Ship> Result, string SelectedCountry, bool selectAll = false) 
         {
-            ResultTable.Visible = false;
-
-            ResultTable.SuspendLayout();
             this.SuspendLayout();
+            table = new DataTable();
+            resultGrid.DataSource = table;
 
-            ResultTable.Controls.Clear();
-            ResultTable.RowStyles.Clear();
-
-            ResultTable.ColumnCount = 5;
-            ResultTable.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 225F));
-            ResultTable.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 275F));
-            ResultTable.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 250F));
-            ResultTable.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 250F));
-            ResultTable.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 150F));
-            ResultTable.RowCount = 1;
-            ResultTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-
-            ResultTable.Controls.Add(new Label() { Text = "Name", Font = new Font("Microsoft Sans Serif", 8.25f, FontStyle.Bold) }, 0, ResultTable.RowCount - 1);
-            ResultTable.Controls.Add(new Label() { Text = "ID", Font = new Font("Microsoft Sans Serif", 8.25f, FontStyle.Bold) }, 1, ResultTable.RowCount - 1);
-            Label shipclass = new Label();
-            shipclass.Text = "Class";
-            shipclass.Font = new Font("Microsoft Sans Serif", 8.25f, FontStyle.Bold);
-            shipclass.Click += new EventHandler(LB_Click);
-            if ( !SelectedCountry.Equals(""))
-            {
-                shipclass.Tag = SelectedCountry;
-            }
-            shipclass.Cursor = Cursors.Hand;
-            ResultTable.Controls.Add(shipclass, 2, ResultTable.RowCount - 1);
-
-            Label tier = new Label();
-            tier.Text = "Tier";
-            tier.Font = new Font("Microsoft Sans Serif", 8.25f, FontStyle.Bold);
-            tier.Click += new EventHandler(LB_Click);
-            if ( !SelectedCountry.Equals(""))
-            {
-                tier.Tag = SelectedCountry;
-            }
-            tier.Cursor = Cursors.Hand;
-
-            ResultTable.Controls.Add(tier, 3, ResultTable.RowCount - 1);
-            ResultTable.Controls.Add(new Label() { Text = "Excluded", Font = new Font("Microsoft Sans Serif", 8.25f, FontStyle.Bold) }, 4, ResultTable.RowCount - 1);
+            addHeaders();
+            table.Rows.Clear();
 
             foreach (Ship ship in Result)
             {
-                ResultTable.RowCount += 1;
-                ResultTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-                ResultTable.Controls.Add(new Label() { Text = ship.Name }, 0, ResultTable.RowCount - 1);
-                ResultTable.Controls.Add(new Label() { Text = Convert.ToString(ship.ID) }, 1, ResultTable.RowCount - 1);
-                ResultTable.Controls.Add(new Label() { Text = ship.ShipType }, 2, ResultTable.RowCount - 1);
-                ResultTable.Controls.Add(new Label() { Text = Convert.ToString(ship.Tier) }, 3, ResultTable.RowCount - 1);
-                CheckBox cb = new CheckBox();
-                cb.Text = "";
-                cb.Tag = ship.ID;
-                cb.Click += new EventHandler(MarkDirty);
-                if ( ExcludedShips.Contains(ship.ID) || selectAll == true)
-                {
-                    cb.Checked = true;
-                }
-                cb.Anchor = AnchorStyles.Top;
-                ResultTable.Controls.Add(cb, 4, ResultTable.RowCount - 1);
+                bool isExcluded = (ExcludedShips.Contains(ship.ID) || selectAll == true) ? true : false;
+                table.Rows.Add(ship.Name, ship.ID.ToString(), ship.ShipType, ship.Tier.ToString(), isExcluded);
             }
-            ResultTable.ResumeLayout(true);
-            ResultTable.Visible = true;
+
+            resultGrid.Sort(resultGrid.Columns[3], ListSortDirection.Ascending);
             this.ResumeLayout(true);
         }
 
@@ -265,29 +244,19 @@ namespace WoWs_Randomizer.forms
 
         private void UpdateWithoutSaveExclusionList()
         {
-            ResultTable.Visible = false;
-            TableLayoutControlCollection controls = ResultTable.Controls;
-            for (int i = 0; i < controls.Count; i++)
+            foreach(DataRow row in table.Rows)
             {
-                if (controls[i] is CheckBox)
+                if ( (bool)row[4] == true)
                 {
-                    using (CheckBox cb = (CheckBox)controls[i])
+                    ExcludedShips.Add((long)row[1]);
+                } else
+                {
+                    if ( ExcludedShips.Contains((long)row[1]))
                     {
-                        if (cb.Checked)
-                        {
-                            ExcludedShips.Add(Convert.ToInt64(cb.Tag));
-                        }
-                        else
-                        {
-                            if (ExcludedShips.Contains(Convert.ToInt64(cb.Tag)))
-                            {
-                                ExcludedShips.Remove(Convert.ToInt64(cb.Tag));
-                            }
-                        }
+                        ExcludedShips.Remove((long)row[1]);
                     }
                 }
             }
-            ResultTable.Visible = true;
         }
 
         private void UpdateExclusionList()

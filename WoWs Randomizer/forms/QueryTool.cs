@@ -184,7 +184,9 @@ namespace WoWs_Randomizer.forms
             foreach (var obj in userSelectedFields.Items)
             {
                 string itm = (string)obj;
-                table.Columns.Add(itm);
+                Option opt = this.mapping[itm];
+                Type t = Type.GetType(opt.FieldType);
+                table.Columns.Add(itm,t);
             }
         }
 
@@ -202,7 +204,6 @@ namespace WoWs_Randomizer.forms
                 ShipQuery = new List<Ship>(AssembleShipList());
             }
 
-            Console.WriteLine("We have " + ShipQuery.Count + " ships to loop...");
             foreach (Ship ship in ShipQuery)
             {
                 MetricsExctractor extractor = new MetricsExctractor(ship);
@@ -252,6 +253,7 @@ namespace WoWs_Randomizer.forms
                     {
                         if (opt.ClassName.Equals(typeof(Ship).Name))
                         {
+                            //object val = GetFieldValue(ship, opt.Value);
                             row[rowIdx] = GetFieldValue(ship,opt.Value);
                         }
                         else if (opt.ClassName.Equals(typeof(ShipMetrics).Name))
@@ -269,10 +271,25 @@ namespace WoWs_Randomizer.forms
             }
         }
 
+        private double GetFieldValueDbl(object clazz, string fieldName)
+        {
+            FieldInfo fld = clazz.GetType().GetField(fieldName, BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
+            Console.WriteLine(fld.FieldType);
+            return double.Parse((string)fld.GetValue(clazz));
+        }
+
         private object GetFieldValue(object clazz, string fieldName)
         {
             FieldInfo fld = clazz.GetType().GetField(fieldName, BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
-            return fld.GetValue(clazz);
+            Console.WriteLine(fieldName + ": " + fld.FieldType);
+            if ( fld.FieldType.ToString().Equals("System.String"))
+            {
+                return (string)fld.GetValue(clazz);
+            } else if ( fld.FieldType.ToString().Equals("System.Int64"))
+            {
+                return Convert.ToDouble(fld.GetValue(clazz));
+            }
+            return Convert.ToDouble(fld.GetValue(clazz));
         }
 
         private double SafeConvertToDouble(string value)

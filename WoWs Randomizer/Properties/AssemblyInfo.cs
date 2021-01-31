@@ -34,5 +34,5 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 // Version currently in production: 1.8.0.31
 // Version under development: 1.8.1.32
-[assembly: AssemblyVersion("1.8.0.31")]
-[assembly: AssemblyFileVersion("1.8.0.31")]
+[assembly: AssemblyVersion("1.8.1.32")]
+[assembly: AssemblyFileVersion("1.8.1.32")]

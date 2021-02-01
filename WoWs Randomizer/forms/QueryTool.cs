@@ -60,7 +60,8 @@ namespace WoWs_Randomizer.forms
 
                 if (isDefined)
                 {
-                    Option opt = new Option(disp, n,clazz.Name,fields[i].FieldType.ToString());
+                    Exposed attr = (Exposed)Attribute.GetCustomAttribute(ex, typeof(Exposed));
+                    Option opt = new Option(disp, n,clazz.Name,fields[i].FieldType.ToString(),attr.getName());
                     this.mapping.Add(disp, opt);
                     exposedFields.Add(disp);
                 }
@@ -253,7 +254,6 @@ namespace WoWs_Randomizer.forms
                     {
                         if (opt.ClassName.Equals(typeof(Ship).Name))
                         {
-                            //object val = GetFieldValue(ship, opt.Value);
                             row[rowIdx] = GetFieldValue(ship,opt.Value);
                         }
                         else if (opt.ClassName.Equals(typeof(ShipMetrics).Name))
@@ -271,23 +271,12 @@ namespace WoWs_Randomizer.forms
             }
         }
 
-        private double GetFieldValueDbl(object clazz, string fieldName)
-        {
-            FieldInfo fld = clazz.GetType().GetField(fieldName, BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
-            Console.WriteLine(fld.FieldType);
-            return double.Parse((string)fld.GetValue(clazz));
-        }
-
         private object GetFieldValue(object clazz, string fieldName)
         {
             FieldInfo fld = clazz.GetType().GetField(fieldName, BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
-            Console.WriteLine(fieldName + ": " + fld.FieldType);
             if ( fld.FieldType.ToString().Equals("System.String"))
             {
                 return (string)fld.GetValue(clazz);
-            } else if ( fld.FieldType.ToString().Equals("System.Int64"))
-            {
-                return Convert.ToDouble(fld.GetValue(clazz));
             }
             return Convert.ToDouble(fld.GetValue(clazz));
         }
@@ -466,6 +455,7 @@ namespace WoWs_Randomizer.forms
             {
                 copySelectedItemToOtherList(allFieldNames, userSelectedFields);
             }
+            lblDescription.Text = "";
         }
 
         private void copySelectedItemToOtherList(ListBox From, ListBox To)
@@ -641,6 +631,27 @@ namespace WoWs_Randomizer.forms
             cbTechTree.Checked = false;
             cbPremium.Checked = false;
         }
+
+        private void allFieldNames_MouseClick(object sender, MouseEventArgs e)
+        {
+            string txt = "";
+            if ( allFieldNames.SelectedItem != null )
+            {
+                foreach(string itm in allFieldNames.SelectedItems)
+                {
+                    Option opt = this.mapping[itm];
+                    if ( !opt.Description.Equals(""))
+                    {
+                        txt += opt.Description + ", ";
+                    }
+                }
+            }
+            if ( txt.EndsWith(", "))
+            {
+                txt = txt.Substring(0, txt.Length - 2);
+            }
+            lblDescription.Text = txt;
+        }
     }
     class Option
     {
@@ -648,18 +659,20 @@ namespace WoWs_Randomizer.forms
         private string value = "";
         private string classname = "";
         private string fieldType = "System.Double";
+        private string description = "";
 
-        public Option(string DisplayName, string Value, string classname, string fieldType = "System.Double")
+        public Option(string DisplayName, string Value, string classname, string fieldType = "System.Double", string description = "")
         {
             this.name = DisplayName;
             this.value = Value;
             this.classname = classname;
             this.fieldType = fieldType;
-            
+            this.description = description;
         }
         public string DisplayName { get { return this.name; } }
         public string Value { get { return this.value; } }
         public string ClassName { get { return this.classname; } }
         public string FieldType { get { return this.fieldType; } }
+        public string Description { get { return this.description; } }
     }
 }

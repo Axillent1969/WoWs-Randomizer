@@ -13,7 +13,7 @@ namespace WoWs_Randomizer.utils.ship
         [JsonProperty("description")]
         public string Description { get; set; }
         [JsonProperty("price_gold")]
-        [Exposed(true)]
+        [Exposed("Price Gold")]
         public long PriceGold { get; set; }
         [JsonProperty("ship_id_str")]
         public string ShipId { get; set; }
@@ -28,16 +28,16 @@ namespace WoWs_Randomizer.utils.ship
         public Dictionary<string,Module> ModuleTree { get; set; }
 
         [JsonProperty("nation")]
-        [Exposed(true)]
+        [Exposed()]
         public string Country { get; set; }
         [JsonProperty("is_premium")]
-        [Exposed(true)]
+        [Exposed()]
         public bool Premium { get; set; }
         [JsonProperty("ship_id")]
-        [Exposed(true)]
+        [Exposed()]
         public long ID { get; set; }
         [JsonProperty("price_credit")]
-        [Exposed(true)]
+        [Exposed("Credit price")]
         public long PriceCredits { get; set; }
 
         [JsonProperty("default_profile")]
@@ -46,19 +46,20 @@ namespace WoWs_Randomizer.utils.ship
         [JsonProperty("upgrades")]
         public long[] Upgrades { get; set; }
         [JsonProperty("tier")]
-        [Exposed(true)]
+        [Exposed()]
         public int Tier { get; set; }
 
         [JsonProperty("mod_slots")]
-        [Exposed(true)]
+        [Exposed()]
         public int NumberOfSlots { get; set; }
         [JsonProperty("type")]
-        [Exposed(true)]
+        [Exposed()]
         public string ShipType { get; set; }
         [JsonProperty("is_special")]
+        [Exposed()]
         public bool Special { get; set; }
         [JsonProperty("name")]
-        [Exposed(true)]
+        [Exposed()]
         public string Name { get; set; }
 
         public List<ConsumableInfo> Consumables { get; set; }

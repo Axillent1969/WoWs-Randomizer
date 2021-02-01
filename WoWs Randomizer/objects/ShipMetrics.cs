@@ -7,42 +7,42 @@ namespace WoWs_Randomizer.utils
     public class ShipMetrics
     {
         // Ship Main Data
-        [Exposed(true)]
+        [Exposed()]
         public double HP { get; set; }
-        [Exposed(true)]
+        [Exposed()]
         public double Speed { get; set; }
-        [Exposed(true)]
+        [Exposed()]
         public string Engine { get; set; }
         public long Tier { get; set; }
         public string ShipClass { get; set; }
         public bool isPremium { get; set; }
 
         //Torpedo Armament
-        [Exposed(true)]
+        [Exposed()]
         public double TorpedoReload { get; set; }
-        [Exposed(true)]
+        [Exposed()]
         public double TorpedoSpeed { get; set; }
-        [Exposed(true)]
+        [Exposed()]
         public double TorpedoDistance { get; set; }
-        [Exposed(true)]
+        [Exposed()]
         public double TorpedoDamage { get; set; }
 
         // Flight Armament
-        [Exposed(true)]
+        [Exposed()]
         public long FighterSquadrons { get; set; }
-        [Exposed(true)]
+        [Exposed()]
         public long BomberSquadrons { get; set; }
-        [Exposed(true)]
+        [Exposed()]
         public long TorpedoSquadrons { get; set; }
 
         // Main Aramament
-        [Exposed(true)]
+        [Exposed()]
         public double RotationTime { get; set; }
-        [Exposed(true)]
+        [Exposed()]
         public double FireChanceMain { get; set; }
-        [Exposed(true)]
+        [Exposed()]
         public double FireRateMain { get; set; }
-        [Exposed(true)]
+        [Exposed()]
         public double ReloadTimeMain()
         {
             if (FireRateMain != 0)
@@ -56,38 +56,38 @@ namespace WoWs_Randomizer.utils
             }
         }
 
-        [Exposed(true)]
+        [Exposed()]
         public long HEDamage { get; set; }
-        [Exposed(true)]
+        [Exposed()]
         public long APDamage { get; set; }
-        [Exposed(true)]
+        [Exposed("Fire range (main)")]
         public double Distance { get; set; }
         public double DistanceIncrease { get; set; }
-        [Exposed(true)]
+        [Exposed()]
         public long MainCaliber { get; set; }
-        [Exposed(true)]
+        [Exposed()]
         public string MainCaliberName { get; set; }
-        [Exposed(true)]
+        [Exposed()]
         public double Dispersion { get; set; }
 
         // Secondary Armament(s)
         public Dictionary<string,SecondariesData> Secondaries { get; set; }
-        [Exposed(true)]
+        [Exposed("Fire range (secondary)")]
         public double SecondaryRange { get; set; }
 
         // Concealment
-        [Exposed(true)]
+        [Exposed()]
         public double SurfaceDetection { get; set; }
-        [Exposed(true)]
+        [Exposed()]
         public double AirDetection { get; set; }
 
         // Mobility
-        [Exposed(true)]
+        [Exposed()]
         public double RudderTime { get; set; }
-        [Exposed(true)]
+        [Exposed()]
         public double TurningRadius { get; set; }
 
-        [Exposed(true)]
+        [Exposed()]
         public double RotationSpeed()
         {
             if ( RotationTime != 0 )

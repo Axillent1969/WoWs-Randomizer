@@ -85,6 +85,7 @@ namespace WoWs_Randomizer.forms
             this.saveQueryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblDescription = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.resultGrid)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupShipClass.SuspendLayout();
@@ -124,9 +125,10 @@ namespace WoWs_Randomizer.forms
             this.allFieldNames.Location = new System.Drawing.Point(947, 42);
             this.allFieldNames.Name = "allFieldNames";
             this.allFieldNames.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.allFieldNames.Size = new System.Drawing.Size(198, 290);
+            this.allFieldNames.Size = new System.Drawing.Size(198, 264);
             this.allFieldNames.Sorted = true;
             this.allFieldNames.TabIndex = 8;
+            this.allFieldNames.MouseClick += new System.Windows.Forms.MouseEventHandler(this.allFieldNames_MouseClick);
             this.allFieldNames.DragOver += new System.Windows.Forms.DragEventHandler(this.allFieldNames_DragOver);
             this.allFieldNames.DoubleClick += new System.EventHandler(this.allFieldNames_DoubleClick);
             // 
@@ -136,7 +138,7 @@ namespace WoWs_Randomizer.forms
             this.userSelectedFields.FormattingEnabled = true;
             this.userSelectedFields.Location = new System.Drawing.Point(659, 42);
             this.userSelectedFields.Name = "userSelectedFields";
-            this.userSelectedFields.Size = new System.Drawing.Size(207, 290);
+            this.userSelectedFields.Size = new System.Drawing.Size(207, 264);
             this.userSelectedFields.TabIndex = 9;
             this.userSelectedFields.DragDrop += new System.Windows.Forms.DragEventHandler(this.userSelectedFields_DragDrop);
             this.userSelectedFields.DragOver += new System.Windows.Forms.DragEventHandler(this.userSelectedFields_DragOver);
@@ -670,34 +672,44 @@ namespace WoWs_Randomizer.forms
             // loadQueryToolStripMenuItem
             // 
             this.loadQueryToolStripMenuItem.Name = "loadQueryToolStripMenuItem";
-            this.loadQueryToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.loadQueryToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.loadQueryToolStripMenuItem.Text = "&Load Query";
             this.loadQueryToolStripMenuItem.Click += new System.EventHandler(this.loadQueryToolStripMenuItem_Click);
             // 
             // saveQueryToolStripMenuItem
             // 
             this.saveQueryToolStripMenuItem.Name = "saveQueryToolStripMenuItem";
-            this.saveQueryToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveQueryToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.saveQueryToolStripMenuItem.Text = "&Save Query";
             this.saveQueryToolStripMenuItem.Click += new System.EventHandler(this.saveQueryToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(132, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.exitToolStripMenuItem.Text = "&Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // lblDescription
+            // 
+            this.lblDescription.AutoSize = true;
+            this.lblDescription.Location = new System.Drawing.Point(947, 319);
+            this.lblDescription.Name = "lblDescription";
+            this.lblDescription.Size = new System.Drawing.Size(10, 13);
+            this.lblDescription.TabIndex = 47;
+            this.lblDescription.Text = ".";
             // 
             // QueryTool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1150, 702);
+            this.Controls.Add(this.lblDescription);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblRecordCount);
@@ -796,5 +808,6 @@ namespace WoWs_Randomizer.forms
         private System.Windows.Forms.ToolStripMenuItem saveQueryToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.Label lblDescription;
     }
 }

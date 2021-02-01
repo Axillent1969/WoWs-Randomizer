@@ -10,11 +10,12 @@ namespace WoWs_Randomizer.utils
 ]
     public class Exposed : System.Attribute
     {
-        private bool exposed;
+        private string name;
 
-        public Exposed(bool isExposed)
+        public Exposed(string name = "")
         {
-            this.exposed = isExposed;
+            this.name = name;
         }
+        public string getName() { return this.name; }
     }
 }

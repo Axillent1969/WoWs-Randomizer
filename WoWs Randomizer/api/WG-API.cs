@@ -13,6 +13,7 @@ using WoWs_Randomizer.utils.version;
 using WoWs_Randomizer.objects.consumables;
 using WoWs_Randomizer.objects;
 using WoWs_Randomizer.objects.version;
+using WoWs_Randomizer.objects.player;
 
 namespace WoWs_Randomizer.api
 {
@@ -203,6 +204,21 @@ namespace WoWs_Randomizer.api
             }
             PlayerShipImport PlayerImport = JsonConvert.DeserializeObject<PlayerShipImport>(responseString);
             return PlayerImport;
+        }
+
+        public static PlayerPersonalDataImport GetPlayerPersonalData(long ID)
+        {
+            try { Setup(); } catch(Exception) { }
+            string path = $"account/info/?application_id={APP_ID}&account_id={ID}";
+            var response = Client.GetAsync(path).Result;
+            if ( response.IsSuccessStatusCode )
+            {
+                var responseContent = response.Content;
+                string responseString = responseContent.ReadAsStringAsync().Result;
+                PlayerPersonalDataImport Import = JsonConvert.DeserializeObject<PlayerPersonalDataImport>(responseString);
+                return Import;
+            }
+            return null;
         }
 
         public static VersionInfoImport GetVersionInfo()

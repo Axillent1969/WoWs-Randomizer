@@ -16,6 +16,7 @@ using WoWs_Randomizer.utils.skills;
 using WoWs_Randomizer.objects.consumables;
 using WoWs_Randomizer.objects;
 using WoWs_Randomizer.objects.version;
+using WoWs_Randomizer.objects.player;
 
 namespace WoWs_Randomizer
 {
@@ -807,11 +808,17 @@ namespace WoWs_Randomizer
             {
 
             }
-            //ExList.PersonalShips = this.PersonalShips;
-            //if (ExList.ShowDialog(this) == DialogResult.OK) { }
-            //LoadExcludedShips();
-            //ExList.Dispose();
-            //lblExcludedShips.Text = ExcludedShips.Count.ToString() + " excluded from randomization.";
+        }
+
+        private void dataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PlayerPersonalDataImport Import = WGAPI.GetPlayerPersonalData(531307177);
+            if ( Import.Status.Equals("ok"))
+            {
+                PlayerPersonalData pdata = Import.Data["531307177"];
+                Console.WriteLine(pdata.HiddenProfile + " - " + pdata.LastBattle);
+                Console.WriteLine(pdata.Statistics.PVPStatistics.MaxPlanesKilled);
+            }
         }
     }
 }

@@ -200,6 +200,8 @@
     </Compile>
     <Compile Include="objects\consumables\ConsumablesInfoImporter.cs" />
     <Compile Include="objects\consumables\ConsumablesInfoTypeImporter.cs" />
+    <Compile Include="objects\player\PlayerAuxilliaryStatistics.cs" />
+    <Compile Include="objects\player\PlayerBatteryStatistics.cs" />
     <Compile Include="objects\player\PlayerPersonalData.cs" />
     <Compile Include="objects\player\PlayerPersonalDataImport.cs" />
     <Compile Include="objects\player\PlayerPVPStatistics.cs" />

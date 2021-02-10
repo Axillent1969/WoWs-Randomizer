@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using WoWs_Randomizer.objects;
 
@@ -94,6 +95,12 @@ namespace WoWs_Randomizer.utils
             DateTime start = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
             DateTime GameDate = start.AddSeconds(unixdate).ToLocalTime();
             return GameDate;
+        }
+
+        public static string ConvertDateToLocalFormat(DateTime date, string locale)
+        {
+            CultureInfo culture = new CultureInfo(locale);
+            return date.ToString("G", culture);
         }
 
         public static string GetFlagURL(string Country)

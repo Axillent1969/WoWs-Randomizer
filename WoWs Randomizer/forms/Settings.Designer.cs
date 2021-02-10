@@ -42,6 +42,8 @@
             this.lblUpdatedTime = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.countryCode = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -110,7 +112,7 @@
             // 
             // BtnOK
             // 
-            this.BtnOK.Location = new System.Drawing.Point(292, 170);
+            this.BtnOK.Location = new System.Drawing.Point(292, 285);
             this.BtnOK.Name = "BtnOK";
             this.BtnOK.Size = new System.Drawing.Size(75, 23);
             this.BtnOK.TabIndex = 7;
@@ -131,7 +133,7 @@
             // lblGameVersion
             // 
             this.lblGameVersion.AutoSize = true;
-            this.lblGameVersion.Location = new System.Drawing.Point(101, 207);
+            this.lblGameVersion.Location = new System.Drawing.Point(94, 275);
             this.lblGameVersion.Name = "lblGameVersion";
             this.lblGameVersion.Size = new System.Drawing.Size(10, 13);
             this.lblGameVersion.TabIndex = 9;
@@ -140,7 +142,7 @@
             // lblUpdatedTime
             // 
             this.lblUpdatedTime.AutoSize = true;
-            this.lblUpdatedTime.Location = new System.Drawing.Point(101, 227);
+            this.lblUpdatedTime.Location = new System.Drawing.Point(94, 295);
             this.lblUpdatedTime.Name = "lblUpdatedTime";
             this.lblUpdatedTime.Size = new System.Drawing.Size(10, 13);
             this.lblUpdatedTime.TabIndex = 10;
@@ -149,7 +151,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(23, 207);
+            this.label4.Location = new System.Drawing.Point(16, 275);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(76, 13);
             this.label4.TabIndex = 11;
@@ -158,17 +160,51 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(23, 227);
+            this.label5.Location = new System.Drawing.Point(16, 295);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(66, 13);
             this.label5.TabIndex = 12;
             this.label5.Text = "Last update:";
             // 
+            // countryCode
+            // 
+            this.countryCode.FormattingEnabled = true;
+            this.countryCode.Items.AddRange(new object[] {
+            "de-DE",
+            "en-US",
+            "en-GB",
+            "en-CA",
+            "es-ES",
+            "fi-FI",
+            "fr-BE",
+            "fr-CA",
+            "fr-FR",
+            "it-IT",
+            "nl-NL",
+            "no-NO",
+            "sv-FI",
+            "sv-SE"});
+            this.countryCode.Location = new System.Drawing.Point(16, 202);
+            this.countryCode.Name = "countryCode";
+            this.countryCode.Size = new System.Drawing.Size(121, 21);
+            this.countryCode.TabIndex = 13;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(19, 183);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(104, 13);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "Country/Localisation";
+            // 
             // FormSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(379, 276);
+            this.ClientSize = new System.Drawing.Size(379, 317);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.countryCode);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.lblUpdatedTime);
@@ -206,5 +242,7 @@
         private System.Windows.Forms.Label lblUpdatedTime;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox countryCode;
+        private System.Windows.Forms.Label label6;
     }
 }

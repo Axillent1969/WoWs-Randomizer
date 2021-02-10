@@ -130,7 +130,8 @@ namespace WoWs_Randomizer.utils
             updateDate = DateTime.Parse(versionInfo.Updated);
             if (!versionInfo.Version.Equals(Application.ProductVersion))
             {
-                string msg = "The new version " + RandomizerVersion + " is available as per " + updateDate.ToShortDateString() + "\nDo You want to download it now?";
+                string cc = Properties.Settings.Default.Locale;
+                string msg = "The new version " + RandomizerVersion + " is available as per " + Commons.ConvertDateToLocalFormat(updateDate,cc) + "\nDo You want to download it now?";
                 var userInput = MessageBox.Show(msg, "New version of the WoWs Randomizer available!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (userInput == DialogResult.Yes)
                 {
@@ -300,7 +301,8 @@ namespace WoWs_Randomizer.utils
             if (MySettings.GameVersion != null && MySettings.GameVersion.Equals(this.GetGameVersion()))
             {
                 MySettings.GameUpdated = this.GetGameDate();
-                MessageBox.Show("Game data has been updated (still same game version): " + this.GetGameDate().ToString(),"Game Data Updated",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                string cc = Properties.Settings.Default.Locale;
+                MessageBox.Show("Game data has been updated (still same game version): " + Commons.ConvertDateToLocalFormat(this.GetGameDate(),cc),"Game Data Updated",MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
             else
             {

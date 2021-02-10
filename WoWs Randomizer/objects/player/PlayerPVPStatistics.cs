@@ -19,6 +19,9 @@ namespace WoWs_Randomizer.objects.player
         [JsonProperty("max_damage_scouting")]
         public long MaxScoutingDamage { get; set; }
 
+        [JsonProperty("max_scouting_damage_ship_id")]
+        public long MaxScountingDamageShipId { get; set; }
+
         [JsonProperty("ships_spotted")]
         public long ShipsSpotted { get; set; }
 
@@ -31,7 +34,7 @@ namespace WoWs_Randomizer.objects.player
         [JsonProperty("dropped_capture_points")]
         public long DroppedCapturePoints { get; set; }
 
-        [JsonProperty("control_capture_points")]
+        [JsonProperty("control_captured_points")]
         public long ControlCapturePoints { get; set; }
 
         [JsonProperty("battles_since_510")]

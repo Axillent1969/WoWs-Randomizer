@@ -19,6 +19,13 @@ namespace WoWs_Randomizer.forms
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0017:Simplify object initialization", Justification = "<Pending>")]
         private void BtnOK_ClickAsync(object sender, EventArgs e)
         {
+            if (countryCode.SelectedItem != null)
+            {
+                string cc = countryCode.SelectedItem.ToString();
+                Properties.Settings.Default.Locale = cc;
+                Properties.Settings.Default.Save();
+            }
+
             Settings settings = new Settings();
             if ( this.Server.SelectedItem != null )
             {
@@ -82,6 +89,12 @@ namespace WoWs_Randomizer.forms
 
         private void LoadSettings()
         {
+            string cc = Properties.Settings.Default.Locale;
+            if ( !cc.Equals(""))
+            {
+                countryCode.SelectedIndex = countryCode.FindStringExact(cc);
+            }
+
             Settings MySettings = Commons.GetSettings();
             if ( MySettings != null )
             {
@@ -93,6 +106,7 @@ namespace WoWs_Randomizer.forms
                 if ( MySettings.GameUpdated != null )
                 {
                     this.lblUpdatedTime.Text = MySettings.GameUpdated.ToString();
+                    //this.lblUpdatedTime.Text = Commons.ConvertDateToLocalFormat(MySettings.GameUpdated,cc);
                     this.lblUpdatedTime.Visible = true;
                 } else
                 {

@@ -156,6 +156,12 @@
     <Compile Include="forms\HelpRandomizer.Designer.cs">
       <DependentUpon>HelpRandomizer.cs</DependentUpon>
     </Compile>
+    <Compile Include="forms\PlayerStats.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\PlayerStats.Designer.cs">
+      <DependentUpon>PlayerStats.cs</DependentUpon>
+    </Compile>
     <Compile Include="forms\QueryTool.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -300,6 +306,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forms\HelpRandomizer.resx">
       <DependentUpon>HelpRandomizer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\PlayerStats.resx">
+      <DependentUpon>PlayerStats.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\QueryTool.resx">
       <DependentUpon>QueryTool.cs</DependentUpon>

@@ -812,13 +812,8 @@ namespace WoWs_Randomizer
 
         private void dataToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PlayerPersonalDataImport Import = WGAPI.GetPlayerPersonalData(531307177);
-            if ( Import.Status.Equals("ok"))
-            {
-                PlayerPersonalData pdata = Import.Data["531307177"];
-                Console.WriteLine(pdata.HiddenProfile + " - " + pdata.LastBattle);
-                Console.WriteLine(pdata.Statistics.PVPStatistics.MaxPlanesKilled);
-            }
+            PlayerStats statsForm = new PlayerStats();
+            statsForm.Show();
         }
     }
 }

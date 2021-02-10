@@ -74,10 +74,10 @@ namespace WoWs_Randomizer.forms
                 lblMaxKillsShip2.Text = findShip.Name;
 
                 PlayerBatteryStatistics torps = stats.PVPStatistics.Torpedoes;
-                lblHits3.Text = secBattery.Hits.ToString();
-                lblFrags3.Text = secBattery.Kills.ToString();
-                lblFired3.Text = secBattery.ShotsFired.ToString();
-                lblMaxKills3.Text = secBattery.MaxKilled.ToString();
+                lblHits3.Text = torps.Hits.ToString();
+                lblFrags3.Text = torps.Kills.ToString();
+                lblFired3.Text = torps.ShotsFired.ToString();
+                lblMaxKills3.Text = torps.MaxKilled.ToString();
 
                 findShip = Program.AllShips.Find(x => x.ID == torps.MaxKilledShipId);
                 lblMaxKillsShip3.Text = findShip.Name;

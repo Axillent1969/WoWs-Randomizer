@@ -26,7 +26,9 @@ namespace WoWs_Randomizer.forms
                 Properties.Settings.Default.Save();
             }
 
-            Settings settings = new Settings();
+            Settings settings = Commons.GetSettings();
+            if ( settings == null ) { settings = new Settings(); }
+
             if ( this.Server.SelectedItem != null )
             {
                 settings.Server = this.Server.SelectedItem.ToString();
@@ -105,8 +107,7 @@ namespace WoWs_Randomizer.forms
                 
                 if ( MySettings.GameUpdated != null )
                 {
-                    this.lblUpdatedTime.Text = MySettings.GameUpdated.ToString();
-                    //this.lblUpdatedTime.Text = Commons.ConvertDateToLocalFormat(MySettings.GameUpdated,cc);
+                    this.lblUpdatedTime.Text = Commons.ConvertDateToLocalFormat(MySettings.GameUpdated,cc);
                     this.lblUpdatedTime.Visible = true;
                 } else
                 {

@@ -257,7 +257,7 @@ namespace WoWs_Randomizer.utils
             ConsumablesInfoImporter import = WGAPI.GetConsumablesInfo();
             if ( !import.Status.Equals("ok")) { return; }
             
-            if ( ForceUpdate || !mySettings.ConsumablesInfoVersion.Equals(import.Version))
+            if ( ForceUpdate || (mySettings.ConsumablesInfoVersion != null && !mySettings.ConsumablesInfoVersion.Equals(import.Version)))
             {
                 foreach(Ship ship in Program.AllShips)
                 {

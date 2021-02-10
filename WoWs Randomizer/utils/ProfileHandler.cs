@@ -25,9 +25,9 @@ namespace WoWs_Randomizer.utils
 
         public bool checkItem(string profileName)
         {
-            if (menuItems.ContainsKey(profileName))
+            if (menuItems.ContainsKey("&" + profileName))
             {
-                ToolStripMenuItem item = menuItems[profileName];
+                ToolStripMenuItem item = menuItems["&"+profileName];
                 item.Checked = true;
                 return true;
             }

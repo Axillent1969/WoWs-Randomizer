@@ -43,6 +43,7 @@ namespace WoWs_Randomizer
         public FormRandomizer()
         {
             InitializeComponent();
+            lblTotalNumberOfShips.Text = "Number of ships in game: " + Program.AllShips.Count.ToString();
             lblQueue.Text = "";
             profileHandler.addMenuitem(menuProfileEU);
             profileHandler.addMenuitem(menuProfileNA);

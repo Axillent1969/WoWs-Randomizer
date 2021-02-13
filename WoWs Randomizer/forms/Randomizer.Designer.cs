@@ -118,6 +118,7 @@ namespace WoWs_Randomizer
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.BGUpdater = new System.ComponentModel.BackgroundWorker();
             this.UpgradeFixer = new System.ComponentModel.BackgroundWorker();
+            this.lblTotalNumberOfShips = new System.Windows.Forms.Label();
             this.LeftPanel.SuspendLayout();
             this.MenuStrip.SuspendLayout();
             this.RightPanel.SuspendLayout();
@@ -130,6 +131,7 @@ namespace WoWs_Randomizer
             // 
             // LeftPanel
             // 
+            this.LeftPanel.Controls.Add(this.lblTotalNumberOfShips);
             this.LeftPanel.Controls.Add(this.CBPremium);
             this.LeftPanel.Controls.Add(this.CBNonPremium);
             this.LeftPanel.Controls.Add(this.lblQueue);
@@ -543,35 +545,35 @@ namespace WoWs_Randomizer
             // loadMyShipsToolStripMenuItem
             // 
             this.loadMyShipsToolStripMenuItem.Name = "loadMyShipsToolStripMenuItem";
-            this.loadMyShipsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.loadMyShipsToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.loadMyShipsToolStripMenuItem.Text = "&Load my ships...";
             this.loadMyShipsToolStripMenuItem.Click += new System.EventHandler(this.LoadMyShipsToolStripMenuItem_ClickAsync);
             // 
             // exclusionListToolStripMenuItem
             // 
             this.exclusionListToolStripMenuItem.Name = "exclusionListToolStripMenuItem";
-            this.exclusionListToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exclusionListToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.exclusionListToolStripMenuItem.Text = "&Exclusion List";
             this.exclusionListToolStripMenuItem.Click += new System.EventHandler(this.ExclusionListToolStripMenuItem_Click);
             // 
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.settingsToolStripMenuItem.Text = "&Settings...";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.SettingsToolStripMenuItem_Click);
             // 
             // dataToolStripMenuItem
             // 
             this.dataToolStripMenuItem.Name = "dataToolStripMenuItem";
-            this.dataToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dataToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.dataToolStripMenuItem.Text = "Player Statistics";
             this.dataToolStripMenuItem.Click += new System.EventHandler(this.dataToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(156, 6);
             // 
             // exportToolStripMenuItem
             // 
@@ -580,7 +582,7 @@ namespace WoWs_Randomizer
             this.listOfModulesToolStripMenuItem,
             this.myShipsInPortToolStripMenuItem});
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.exportToolStripMenuItem.Text = "Ex&port...";
             // 
             // listOfShipsToolStripMenuItem
@@ -607,12 +609,12 @@ namespace WoWs_Randomizer
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(156, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
@@ -930,6 +932,15 @@ namespace WoWs_Randomizer
             this.UpgradeFixer.DoWork += new System.ComponentModel.DoWorkEventHandler(this.UpgradeFixer_DoWork);
             this.UpgradeFixer.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.UpgradeFixer_RunWorkerCompleted);
             // 
+            // lblTotalNumberOfShips
+            // 
+            this.lblTotalNumberOfShips.AutoSize = true;
+            this.lblTotalNumberOfShips.Location = new System.Drawing.Point(19, 711);
+            this.lblTotalNumberOfShips.Name = "lblTotalNumberOfShips";
+            this.lblTotalNumberOfShips.Size = new System.Drawing.Size(10, 13);
+            this.lblTotalNumberOfShips.TabIndex = 32;
+            this.lblTotalNumberOfShips.Text = ".";
+            // 
             // FormRandomizer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1049,6 +1060,7 @@ namespace WoWs_Randomizer
         private System.ComponentModel.BackgroundWorker UpgradeFixer;
         private System.Windows.Forms.ToolStripMenuItem listToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dataToolStripMenuItem;
+        private System.Windows.Forms.Label lblTotalNumberOfShips;
     }
 }
 

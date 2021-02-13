@@ -177,7 +177,7 @@ namespace WoWs_Randomizer.forms
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(12, 252);
+            this.groupBox1.Location = new System.Drawing.Point(12, 266);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(250, 154);
             this.groupBox1.TabIndex = 3;
@@ -286,7 +286,7 @@ namespace WoWs_Randomizer.forms
             this.groupBox2.Controls.Add(this.label13);
             this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Controls.Add(this.label15);
-            this.groupBox2.Location = new System.Drawing.Point(274, 252);
+            this.groupBox2.Location = new System.Drawing.Point(274, 266);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(250, 154);
             this.groupBox2.TabIndex = 4;
@@ -395,7 +395,7 @@ namespace WoWs_Randomizer.forms
             this.groupBox3.Controls.Add(this.label23);
             this.groupBox3.Controls.Add(this.label24);
             this.groupBox3.Controls.Add(this.label25);
-            this.groupBox3.Location = new System.Drawing.Point(538, 252);
+            this.groupBox3.Location = new System.Drawing.Point(538, 266);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(250, 154);
             this.groupBox3.TabIndex = 4;
@@ -506,7 +506,7 @@ namespace WoWs_Randomizer.forms
             this.groupBox4.Controls.Add(this.label8);
             this.groupBox4.Controls.Add(this.label7);
             this.groupBox4.Controls.Add(this.label6);
-            this.groupBox4.Location = new System.Drawing.Point(12, 70);
+            this.groupBox4.Location = new System.Drawing.Point(12, 84);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(250, 176);
             this.groupBox4.TabIndex = 5;
@@ -635,7 +635,7 @@ namespace WoWs_Randomizer.forms
             this.groupBox5.Controls.Add(this.lblXPMax);
             this.groupBox5.Controls.Add(this.label18);
             this.groupBox5.Controls.Add(this.label17);
-            this.groupBox5.Location = new System.Drawing.Point(274, 70);
+            this.groupBox5.Location = new System.Drawing.Point(274, 84);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(250, 176);
             this.groupBox5.TabIndex = 6;
@@ -764,7 +764,7 @@ namespace WoWs_Randomizer.forms
             this.groupBox6.Controls.Add(this.label31);
             this.groupBox6.Controls.Add(this.label32);
             this.groupBox6.Controls.Add(this.label33);
-            this.groupBox6.Location = new System.Drawing.Point(539, 70);
+            this.groupBox6.Location = new System.Drawing.Point(539, 84);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(249, 176);
             this.groupBox6.TabIndex = 7;
@@ -901,7 +901,7 @@ namespace WoWs_Randomizer.forms
             this.groupBox7.Controls.Add(this.lblMaxShipsSpotted);
             this.groupBox7.Controls.Add(this.lblMaxShipsSpottedShipId);
             this.groupBox7.Controls.Add(this.label34);
-            this.groupBox7.Location = new System.Drawing.Point(12, 412);
+            this.groupBox7.Location = new System.Drawing.Point(12, 426);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(776, 127);
             this.groupBox7.TabIndex = 8;
@@ -1090,15 +1090,15 @@ namespace WoWs_Randomizer.forms
             // 
             // lblClanInfo
             // 
-            this.lblClanInfo.Location = new System.Drawing.Point(539, 9);
+            this.lblClanInfo.Location = new System.Drawing.Point(548, 9);
             this.lblClanInfo.Name = "lblClanInfo";
-            this.lblClanInfo.Size = new System.Drawing.Size(249, 49);
+            this.lblClanInfo.Size = new System.Drawing.Size(240, 49);
             this.lblClanInfo.TabIndex = 9;
             this.lblClanInfo.Text = "label43";
             // 
             // btnGetClanInfo
             // 
-            this.btnGetClanInfo.Location = new System.Drawing.Point(721, 45);
+            this.btnGetClanInfo.Location = new System.Drawing.Point(722, 61);
             this.btnGetClanInfo.Name = "btnGetClanInfo";
             this.btnGetClanInfo.Size = new System.Drawing.Size(66, 19);
             this.btnGetClanInfo.TabIndex = 10;
@@ -1110,7 +1110,7 @@ namespace WoWs_Randomizer.forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 544);
+            this.ClientSize = new System.Drawing.Size(800, 558);
             this.Controls.Add(this.btnGetClanInfo);
             this.Controls.Add(this.lblClanInfo);
             this.Controls.Add(this.groupBox7);

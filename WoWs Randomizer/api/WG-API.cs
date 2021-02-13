@@ -246,7 +246,6 @@ namespace WoWs_Randomizer.api
             {
                 var responseContent = response.Content;
                 string responseString = responseContent.ReadAsStringAsync().Result;
-                Console.WriteLine(responseString);
                 ClanImport Import = JsonConvert.DeserializeObject<ClanImport>(responseString);
                 return Import;
             }

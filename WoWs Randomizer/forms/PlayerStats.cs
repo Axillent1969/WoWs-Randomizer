@@ -41,7 +41,7 @@ namespace WoWs_Randomizer.forms
                 PlayerClanInfoData data = clanImport.Data[userId.ToString()];
                 ClanBaseData ClanInfo = data.ClanData;
                 string txt = "";
-                txt += "[" + ClanInfo.Tag + "] " + ClanInfo.Name + " (" + ClanInfo.Count + " members) - " + data.Role + " (member since: " + Commons.ConvertDateToLocalFormat(Commons.ConvertToDate(data.Joined),cc) + ")";
+                txt += "[" + ClanInfo.Tag + "] " + ClanInfo.Name + " (" + ClanInfo.Count + " members)\n" + data.Role + "\n(member since: " + Commons.ConvertDateToLocalFormat(Commons.ConvertToDate(data.Joined),cc) + ")";
                 lblClanInfo.Text = txt;
                 btnGetClanInfo.Tag = data.ClanID;
                 btnGetClanInfo.Visible = true;

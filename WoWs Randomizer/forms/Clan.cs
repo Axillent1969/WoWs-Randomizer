@@ -38,7 +38,7 @@ namespace WoWs_Randomizer.forms
                 lblCreated.Text = Commons.ConvertDateToLocalFormat(Commons.ConvertToDate(Claninfo.Created),cc);
                 lblCreatedBy.Text = Claninfo.CreatedBy;
                 lblLeader.Text = Claninfo.Leader;
-                lblMemberCount.Text = Claninfo.Count + " members";
+                lblMemberCount.Text = Claninfo.Count + " members.";
                 rtDescription.Text = Claninfo.Description;
 
                 AddHeaders();

@@ -64,7 +64,7 @@ namespace WoWs_Randomizer.forms
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(15, 70);
+            this.label3.Location = new System.Drawing.Point(9, 70);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(63, 13);
             this.label3.TabIndex = 2;
@@ -73,7 +73,7 @@ namespace WoWs_Randomizer.forms
             // rtDescription
             // 
             this.rtDescription.Enabled = false;
-            this.rtDescription.Location = new System.Drawing.Point(18, 87);
+            this.rtDescription.Location = new System.Drawing.Point(12, 87);
             this.rtDescription.Name = "rtDescription";
             this.rtDescription.Size = new System.Drawing.Size(435, 78);
             this.rtDescription.TabIndex = 3;
@@ -93,11 +93,13 @@ namespace WoWs_Randomizer.forms
             this.members.AllowUserToAddRows = false;
             this.members.AllowUserToDeleteRows = false;
             this.members.AllowUserToOrderColumns = true;
+            this.members.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.members.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.members.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.members.Location = new System.Drawing.Point(12, 174);
+            this.members.Location = new System.Drawing.Point(12, 185);
             this.members.Name = "members";
             this.members.ReadOnly = true;
-            this.members.Size = new System.Drawing.Size(780, 264);
+            this.members.Size = new System.Drawing.Size(435, 253);
             this.members.TabIndex = 5;
             // 
             // lblCreated
@@ -129,9 +131,9 @@ namespace WoWs_Randomizer.forms
             // 
             // lblMemberCount
             // 
-            this.lblMemberCount.Location = new System.Drawing.Point(692, 151);
+            this.lblMemberCount.Location = new System.Drawing.Point(12, 168);
             this.lblMemberCount.Name = "lblMemberCount";
-            this.lblMemberCount.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.lblMemberCount.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblMemberCount.Size = new System.Drawing.Size(100, 14);
             this.lblMemberCount.TabIndex = 9;
             this.lblMemberCount.Text = "label5";
@@ -140,7 +142,7 @@ namespace WoWs_Randomizer.forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(459, 450);
             this.Controls.Add(this.lblMemberCount);
             this.Controls.Add(this.lblLeader);
             this.Controls.Add(this.lblCreatedBy);
@@ -151,6 +153,7 @@ namespace WoWs_Randomizer.forms
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Clan";
             this.Text = "Clan";

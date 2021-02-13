@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WoWs_Randomizer.api;
 using WoWs_Randomizer.objects;
+using WoWs_Randomizer.objects.clan;
 using WoWs_Randomizer.objects.player;
 using WoWs_Randomizer.utils;
 using WoWs_Randomizer.utils.ship;
@@ -33,6 +34,22 @@ namespace WoWs_Randomizer.forms
 
         private void LoadUserData(long userId)
         {
+            string cc = Properties.Settings.Default.Locale;
+            PlayerClanInfoImport clanImport = WGAPI.GetPlayerClanInfo(userId);
+            if (clanImport.Status.Equals("ok"))
+            {
+                PlayerClanInfoData data = clanImport.Data[userId.ToString()];
+                ClanBaseData ClanInfo = data.ClanData;
+                string txt = "";
+                txt += "[" + ClanInfo.Tag + "] " + ClanInfo.Name + " (" + ClanInfo.Count + " members) - " + data.Role + " (member since: " + Commons.ConvertDateToLocalFormat(Commons.ConvertToDate(data.Joined),cc) + ")";
+                lblClanInfo.Text = txt;
+                btnGetClanInfo.Tag = data.ClanID;
+                btnGetClanInfo.Visible = true;
+            } else
+            {
+                lblClanInfo.Text = "(no clan info availalbe)";
+                btnGetClanInfo.Visible = false;
+            }
             PlayerPersonalDataImport Import = WGAPI.GetPlayerPersonalData(userId);
             if (Import.Status.Equals("ok"))
             {
@@ -120,7 +137,21 @@ namespace WoWs_Randomizer.forms
                 lblCapturePoints.Text = stats.PVPStatistics.CapturePoints.ToString();
                 lblControlCapturePoints.Text = stats.PVPStatistics.ControlCapturePoints.ToString();
                 lblDroppedCapturePoints.Text = stats.PVPStatistics.DroppedCapturePoints.ToString();
+
+                PlayerAuxilliaryStatistics aux = stats.PVPStatistics.Ramming;
+                lblRamming.Text = aux.Kills.ToString();
+                aux = stats.PVPStatistics.Aircraft;
+                lblAircraft.Text = aux.Kills.ToString();
+
             }
+        }
+
+        private void btnGetClanInfo_Click(object sender, EventArgs e)
+        {
+            long ClanID = (long)btnGetClanInfo.Tag;
+            Clan clanForm = new Clan();
+            clanForm.ClanID = ClanID;
+            clanForm.Show();
         }
     }
 }

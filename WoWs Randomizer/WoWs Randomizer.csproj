@@ -108,6 +108,12 @@
     <Compile Include="forms\ChangeLog.Designer.cs">
       <DependentUpon>ChangeLog.cs</DependentUpon>
     </Compile>
+    <Compile Include="forms\Clan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\Clan.Designer.cs">
+      <DependentUpon>Clan.cs</DependentUpon>
+    </Compile>
     <Compile Include="forms\CompareShip.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -204,10 +210,16 @@
     <Compile Include="forms\UpgradeSelector.Designer.cs">
       <DependentUpon>UpgradeSelector.cs</DependentUpon>
     </Compile>
+    <Compile Include="objects\ClanMember.cs" />
+    <Compile Include="objects\clan\ClanData.cs" />
+    <Compile Include="objects\clan\ClanImport.cs" />
     <Compile Include="objects\consumables\ConsumablesInfoImporter.cs" />
     <Compile Include="objects\consumables\ConsumablesInfoTypeImporter.cs" />
+    <Compile Include="objects\player\ClanBaseData.cs" />
     <Compile Include="objects\player\PlayerAuxilliaryStatistics.cs" />
     <Compile Include="objects\player\PlayerBatteryStatistics.cs" />
+    <Compile Include="objects\player\PlayerClanInfoData.cs" />
+    <Compile Include="objects\player\PlayerClanInfoImport.cs" />
     <Compile Include="objects\player\PlayerPersonalData.cs" />
     <Compile Include="objects\player\PlayerPersonalDataImport.cs" />
     <Compile Include="objects\player\PlayerPVPStatistics.cs" />
@@ -282,6 +294,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forms\ChangeLog.resx">
       <DependentUpon>ChangeLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\Clan.resx">
+      <DependentUpon>Clan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\CompareShip.resx">
       <DependentUpon>CompareShip.cs</DependentUpon>

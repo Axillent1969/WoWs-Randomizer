@@ -14,6 +14,7 @@ using WoWs_Randomizer.objects.consumables;
 using WoWs_Randomizer.objects;
 using WoWs_Randomizer.objects.version;
 using WoWs_Randomizer.objects.player;
+using WoWs_Randomizer.objects.clan;
 
 namespace WoWs_Randomizer.api
 {
@@ -216,6 +217,37 @@ namespace WoWs_Randomizer.api
                 var responseContent = response.Content;
                 string responseString = responseContent.ReadAsStringAsync().Result;
                 PlayerPersonalDataImport Import = JsonConvert.DeserializeObject<PlayerPersonalDataImport>(responseString);
+                return Import;
+            }
+            return null;
+        }
+
+        public static PlayerClanInfoImport GetPlayerClanInfo(long ID)
+        {
+            try { Setup(); } catch (Exception) { }
+            string path = $"clans/accountinfo/?application_id={APP_ID}&account_id={ID}&extra=clan";
+            var response = Client.GetAsync(path).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                var responseContent = response.Content;
+                string responseString = responseContent.ReadAsStringAsync().Result;
+                PlayerClanInfoImport Import = JsonConvert.DeserializeObject<PlayerClanInfoImport>(responseString);
+                return Import;
+            }
+            return null;
+        }
+
+        public static ClanImport GetClanInfo(long ClanID)
+        {
+            try { Setup(); } catch (Exception) { }
+            string path = $"clans/info/?application_id={APP_ID}&clan_id={ClanID}&extra=members";
+            var response = Client.GetAsync(path).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                var responseContent = response.Content;
+                string responseString = responseContent.ReadAsStringAsync().Result;
+                Console.WriteLine(responseString);
+                ClanImport Import = JsonConvert.DeserializeObject<ClanImport>(responseString);
                 return Import;
             }
             return null;

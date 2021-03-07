@@ -201,7 +201,8 @@ namespace WoWs_Randomizer.objects.consumables
             map.Add(75, "AirCarrier/4,6,8,10/usa,japan,germany,uk/a");
 
             // REPAIR PARTY
-            map.Add(16, "Battleship/3,4,5,6,7,8,9,10/usa/a");
+            map.Add(16, "Battleship/3,4,5,6,7,8,9,10/usa/t");
+            map.Add(84, "Battleship/3,4,5,6,7,8,9/usa/p");
             map.Add(17, "Battleship/2,3,4,5,6,7,8/japan,germany,france,italy/a");
             map.Add(18, "Battleship/9,10/japan,germany,france/a");
             map.Add(19, "Battleship/3,4,5,6,7,8,9,10/ussr/a");

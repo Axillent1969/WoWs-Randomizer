@@ -209,9 +209,12 @@ namespace WoWs_Randomizer.objects.consumables
             map.Add(20, "Battleship/2,3/uk/a");
             map.Add(21, "Battleship/4,5,6/uk/a");
             map.Add(22, "Battleship/7,8/uk/a");
+            map.Add(85, "Cruiser/3,4,5,6,7/uk/a");
             map.Add(23, "Cruiser/9,10/usa,japan,ussr,france,italy/a");
             map.Add(24, "Cruiser/9,10/germany/a");
             map.Add(25, "Destroyer/9,10/uk/a");
+            map.Add(86, "Destroyer/5,6,7/europe/a");
+            map.Add(87, "Destroyer/8,9,10/europe/a");
             // SPECIALIZED HEAL
             map.Add(26, "Battleship/9,10/uk/a");
             map.Add(27, "Cruiser/8,9,10/uk/a");

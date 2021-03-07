@@ -16,7 +16,6 @@ using WoWs_Randomizer.utils.skills;
 using WoWs_Randomizer.objects.consumables;
 using WoWs_Randomizer.objects;
 using WoWs_Randomizer.objects.version;
-using WoWs_Randomizer.objects.player;
 
 namespace WoWs_Randomizer
 {

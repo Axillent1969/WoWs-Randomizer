@@ -34,7 +34,9 @@ namespace WoWs_Randomizer.forms
 
             Settings settings = Commons.GetSettings();
             gameVersion.Text = settings.GameVersion;
-            gameDate.Text = settings.GameUpdated.ToString();
+            string cc = Properties.Settings.Default.Locale;
+            string dt = Commons.ConvertDateToLocalFormat(settings.GameUpdated, cc);
+            gameDate.Text = dt;
             string cinfo = (settings.ConsumablesInfoVersion == null || settings.ConsumablesInfoVersion.Equals("")) ? "": settings.ConsumablesInfoVersion;
             lblConsumablesInfoVer.Text = cinfo;
         }

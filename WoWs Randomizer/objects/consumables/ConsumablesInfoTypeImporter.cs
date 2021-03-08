@@ -9,6 +9,9 @@ namespace WoWs_Randomizer.objects.consumables
         public List<long> ID { get; set; }
         [JsonProperty("groupId")]
         public long Group { get; set; }
+        [JsonProperty("groupSelection")]
+        public string GroupSelection { get; set; }
+
         [JsonProperty("exceptions")]
         public List<long> Exceptions { get; set; }
 

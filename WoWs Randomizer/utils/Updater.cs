@@ -267,12 +267,21 @@ namespace WoWs_Randomizer.utils
 
                 foreach (KeyValuePair<string, List<ConsumablesInfoTypeImporter>> list in import.Consumables)
                 {
-                    ConsumableType CType;
-                    Enum.TryParse(list.Key, out CType);
+                    Enum.TryParse(list.Key, out ConsumableType CType);
 
                     foreach (ConsumablesInfoTypeImporter con in list.Value)
                     {
-                        List<Ship> ShipList = ShipFinder.FindShips(con.ID, con.Group, con.Exceptions);
+                        List<Ship> ShipList = new List<Ship>();
+
+                        if (con.GroupSelection != null && !con.GroupSelection.Equals("")) { Console.WriteLine("Group:" + con.GroupSelection); }
+                        
+                        if ( con.GroupSelection != null && !con.GroupSelection.Equals(""))
+                        {
+                            ShipList = ShipFinder.FindShips(con.ID, con.GroupSelection, con.Exceptions);
+                        } else
+                        {
+                            ShipList = ShipFinder.FindShips(con.ID, con.Group, con.Exceptions);
+                        }
                         foreach (Ship ship in ShipList)
                         {
                             ship.Consumables.Add(new ConsumableInfo() { Duration = con.Duration, Range = con.Range, Type = CType, Cooldown = con.Cooldown, Charges = con.Charges, ExtraInfo = con.ExtraInfo });

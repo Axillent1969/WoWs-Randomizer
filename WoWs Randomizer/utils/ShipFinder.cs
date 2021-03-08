@@ -7,6 +7,37 @@ namespace WoWs_Randomizer.utils
 {
     class ShipFinder
     {
+        public static List<Ship> FindShips(List<long> ShipIds, string groupSelection, List<long> Exceptions)
+        {
+            List<Ship> Ships = new List<Ship>();
+            if (ShipIds.Count != 0)
+            {
+                foreach (long id in ShipIds)
+                {
+                    Ship ship = Program.AllShips.Find(e => e.ID == id);
+                    Ships.Add(ship);
+                }
+            }
+            else if ( !groupSelection.Equals("") )
+            {
+                List<Ship> subsetShips = getShipsFromGroupSelection(groupSelection);
+                if (subsetShips.Count > 0)
+                {
+                    Ships.AddRange(subsetShips);
+                }
+            }
+
+            if (Exceptions.Count > 0)
+            {
+                foreach (long shipId in Exceptions)
+                {
+                    Ship ship = Ships.Find(e => e.ID == shipId);
+                    if (ship != null) { Ships.Remove(ship); }
+                }
+            }
+            return Ships;
+        }
+
         public static List<Ship> FindShips(List<long> ShipIds, long GroupId,List<long> Exceptions)
         {
             List<Ship> Ships = new List<Ship>();
@@ -22,37 +53,42 @@ namespace WoWs_Randomizer.utils
             {
 
                 string groupSelection = Consumable.GetConsumableInfoByGroupId(GroupId);
-                if ( !groupSelection.Equals(""))
+                List<Ship> subsetShips = getShipsFromGroupSelection(groupSelection);
+                if ( subsetShips.Count > 0 )
                 {
-                    string[] groupSplit = groupSelection.Split('/');
-                    string shipclass = groupSplit[0];
-                    List<string> tiers = ConvertToList(groupSplit[1]);
-                    List<string> nations = ConvertToList(groupSplit[2]);
-                    string flag = groupSplit[3];
-
-                    foreach (string tier in tiers)
-                    {
-                        int currentTier = int.Parse(tier);
-                        foreach (string nation in nations)
-                        {
-                            List<Ship> subsetShips = Program.AllShips.FindAll(e => e.Tier == currentTier && e.Country.Equals(nation) && e.ShipType.Equals(shipclass));
-
-                            if (flag.Equals("t") || flag.Equals("p"))
-                            {
-                                foreach (Ship entry in subsetShips)
-                                {
-                                    if ((flag.Equals("t") && entry.Premium == false) || (flag.Equals("p") && entry.Premium == true)) { Ships.Add(entry); }
-                                }
-                            } else
-                            {
-                                if (subsetShips.Count > 0)
-                                {
-                                    Ships.AddRange(subsetShips);
-                                }
-                            }
-                        }
-                    }
+                    Ships.AddRange(subsetShips);
                 }
+                //if ( !groupSelection.Equals(""))
+                //{
+                //    string[] groupSplit = groupSelection.Split('/');
+                //    string shipclass = groupSplit[0];
+                //    List<string> tiers = ConvertToList(groupSplit[1]);
+                //    List<string> nations = ConvertToList(groupSplit[2]);
+                //    string flag = groupSplit[3];
+
+                //    foreach (string tier in tiers)
+                //    {
+                //        int currentTier = int.Parse(tier);
+                //        foreach (string nation in nations)
+                //        {
+                //            List<Ship> subsetShips = Program.AllShips.FindAll(e => e.Tier == currentTier && e.Country.Equals(nation) && e.ShipType.Equals(shipclass));
+
+                //            if (flag.Equals("t") || flag.Equals("p"))
+                //            {
+                //                foreach (Ship entry in subsetShips)
+                //                {
+                //                    if ((flag.Equals("t") && entry.Premium == false) || (flag.Equals("p") && entry.Premium == true)) { Ships.Add(entry); }
+                //                }
+                //            } else
+                //            {
+                //                if (subsetShips.Count > 0)
+                //                {
+                //                    Ships.AddRange(subsetShips);
+                //                }
+                //            }
+                //        }
+                //    }
+                //}
             }
             if ( Exceptions.Count > 0 )
             {
@@ -62,6 +98,46 @@ namespace WoWs_Randomizer.utils
                     if (ship != null) { Ships.Remove(ship); }
                 }
             }
+            return Ships;
+        }
+
+        private static List<Ship> getShipsFromGroupSelection(string groupSelection)
+        {
+            List<Ship> Ships = new List<Ship>();
+
+            if (!groupSelection.Equals(""))
+            {
+                string[] groupSplit = groupSelection.Split('/');
+                string shipclass = groupSplit[0];
+                List<string> tiers = ConvertToList(groupSplit[1]);
+                List<string> nations = ConvertToList(groupSplit[2]);
+                string flag = groupSplit[3];
+
+                foreach (string tier in tiers)
+                {
+                    int currentTier = int.Parse(tier);
+                    foreach (string nation in nations)
+                    {
+                        List<Ship> subsetShips = Program.AllShips.FindAll(e => e.Tier == currentTier && e.Country.Equals(nation) && e.ShipType.Equals(shipclass));
+
+                        if (flag.Equals("t") || flag.Equals("p"))
+                        {
+                            foreach (Ship entry in subsetShips)
+                            {
+                                if ((flag.Equals("t") && entry.Premium == false) || (flag.Equals("p") && entry.Premium == true)) { Ships.Add(entry); }
+                            }
+                        }
+                        else
+                        {
+                            if (subsetShips.Count > 0)
+                            {
+                                Ships.AddRange(subsetShips);
+                            }
+                        }
+                    }
+                }
+            }
+
             return Ships;
         }
 

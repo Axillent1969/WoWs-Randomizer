@@ -16,7 +16,7 @@ namespace WoWs_Randomizer
     {
         public static List<Ship> AllShips { get; set; }
         public static Dictionary<string, ModuleData> AllModules = null;
-        public static List<Skill> CommanderSkills = null;
+        public static Dictionary<string,List<Skill>> CommanderSkills = null;
         public static List<Consumable> Upgrades = null;
         public static List<Consumable> Flags = null;
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
+using System.Threading;
 using System.Windows.Forms;
 using WoWs_Randomizer.api;
 using WoWs_Randomizer.objects;
@@ -225,6 +226,16 @@ namespace WoWs_Randomizer.utils
 
         private void UpdateCommanderSkills()
         {
+
+            SkillImporter Importer = WGAPI.GetCommanderSkills();
+            if ( Importer.Status.ToLower().Equals("ok"))
+            {
+                Program.CommanderSkills = new Dictionary<string, List<Skill>>();
+                Program.CommanderSkills = Importer.Data;
+                BinarySerialize.WriteToBinaryFile(Commons.GetCommanderSkillFileName(), Program.CommanderSkills);
+                Thread.Sleep(500);
+            }
+
 /*            SkillImporter Importer = WGAPI.GetCommanderSkills();
             if (Importer.Status.ToLower().Equals("ok"))
             {
@@ -273,8 +284,6 @@ namespace WoWs_Randomizer.utils
                     {
                         List<Ship> ShipList = new List<Ship>();
 
-                        if (con.GroupSelection != null && !con.GroupSelection.Equals("")) { Console.WriteLine("Group:" + con.GroupSelection); }
-                        
                         if ( con.GroupSelection != null && !con.GroupSelection.Equals(""))
                         {
                             ShipList = ShipFinder.FindShips(con.ID, con.GroupSelection, con.Exceptions);

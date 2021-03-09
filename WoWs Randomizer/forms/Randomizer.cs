@@ -85,7 +85,8 @@ namespace WoWs_Randomizer
             try { Program.AllModules = BinarySerialize.Read2<Dictionary<string, ModuleData>>(Commons.GetModulesFileName()); } catch (Exception) { allFilesLoaded = false; } 
             try { Program.AllShips = BinarySerialize.Read2<List<Ship>>(Commons.GetShipListFileName()); } catch (Exception) { allFilesLoaded = false; } 
             try { Program.Upgrades = BinarySerialize.ReadFromBinaryFile<List<Consumable>>(Commons.GetUpgradesFileName()); } catch(Exception) { allFilesLoaded = false; }
-            try { Program.CommanderSkills = BinarySerialize.ReadFromBinaryFile<List<Skill>>(Commons.GetCommanderSkillFileName()); } catch(Exception) { allFilesLoaded = false; }
+            //try { Program.CommanderSkills = BinarySerialize.ReadFromBinaryFile<List<Skill>>(Commons.GetCommanderSkillFileName()); } catch(Exception) { allFilesLoaded = false; }
+            try { Program.CommanderSkills = BinarySerialize.ReadFromBinaryFile<Dictionary<string, List<Skill>>>(Commons.GetCommanderSkillFileName()); } catch(Exception) { allFilesLoaded = false; }
             try { Program.Flags = BinarySerialize.ReadFromBinaryFile<List<Consumable>>(Commons.GetFlagsFileName()); } catch (Exception) { allFilesLoaded = false; }
 
             if ( allFilesLoaded == false )

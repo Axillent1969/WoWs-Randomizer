@@ -226,6 +226,11 @@
     <Compile Include="objects\player\PlayerStatistics.cs" />
     <Compile Include="objects\version\ProgramVersionLog.cs" />
     <Compile Include="objects\version\ProgramVersionOLD.cs" />
+    <Compile Include="Properties\BBSkills.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BBSkills.resx</DependentUpon>
+    </Compile>
     <Compile Include="utils\ConsumableControlsHandler.cs" />
     <Compile Include="utils\enums\ConsumableTypes.cs" />
     <Compile Include="objects\modules\ModuleArtillery.cs" />
@@ -346,6 +351,10 @@
     <EmbeddedResource Include="forms\UpgradeSelector.resx">
       <DependentUpon>UpgradeSelector.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\BBSkills.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>BBSkills.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -373,6 +382,30 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Anchor.ico" />
+    <None Include="Resources\Icon_perk_detection_visibility_range_dark.png" />
+    <None Include="Resources\Icon_perk_trigger_gm_atba_reload_bb_dark.png" />
+    <None Include="Resources\Icon_perk_trigger_gm_accuracy_dark.png" />
+    <None Include="Resources\Icon_perk_he_penetration_dark.png" />
+    <None Include="Resources\Icon_perk_he_fire_probability_dark.png" />
+    <None Include="Resources\Icon_perk_gm_turn_dark.png" />
+    <None Include="Resources\Icon_perk_gm_shell_reload_dark.png" />
+    <None Include="Resources\Icon_perk_detection_torpedo_range_dark.png" />
+    <None Include="Resources\Icon_perk_detection_alert_dark.png" />
+    <None Include="Resources\Icon_perk_detection_aiming_dark.png" />
+    <None Include="Resources\Icon_perk_defense_crit_probability_dark.png" />
+    <None Include="Resources\Icon_perk_defence_uw_dark.png" />
+    <None Include="Resources\Icon_perk_defence_fire_probability_dark.png" />
+    <None Include="Resources\Icon_perk_defence_crit_fire_flooding_dark.png" />
+    <None Include="Resources\Icon_perk_consumables_reload_dark.png" />
+    <None Include="Resources\Icon_perk_consumables_duration_dark.png" />
+    <None Include="Resources\Icon_perk_consumables_crashcrew_regencrew_upgrade_dark.png" />
+    <None Include="Resources\Icon_perk_consumables_crashcrew_regencrew_reload_dark.png" />
+    <None Include="Resources\Icon_perk_atba_range_dark.png" />
+    <None Include="Resources\Icon_perk_atba_accuracy_dark.png" />
+    <None Include="Resources\Icon_perk_armament_reload_aa_damage_dark.png" />
+    <None Include="Resources\Icon_perk_ap_damage_bb_dark.png" />
+    <None Include="Resources\Icon_perk_aa_prioritysector_damage_constant_dark.png" />
+    <None Include="Resources\Icon_perk_aa_damage_constant_bubbles_dark.png" />
     <None Include="Resources\Consumable_PCY016_SonarSearch_Short_Premium.png" />
     <None Include="Resources\Consumable_PCY015_SpeedBooster_Imp_Premium.png" />
     <None Include="Resources\Consumable_PCY014_SmokeGenerator_Cycle_Premium.png" />
@@ -384,7 +417,6 @@
     <None Include="Resources\Consumable_PCY010_SpecializedHeal_Premium.png" />
     <None Include="Resources\Consumable_PCY022_ArtilleryBoosterPremium.png" />
     <None Include="Resources\Consumable_PCY020_RlsSearchPremium.png" />
-    <None Include="Resources\Consumable_PCY020_RlsSearchPremium %281%29.png" />
     <None Include="Resources\Consumable_PCY018_TorpedoReloaderPremium.png" />
     <None Include="Resources\Consumable_PCY016_SonarSearchPremium.png" />
     <None Include="Resources\Consumable_PCY015_SpeedBoosterPremium.png" />

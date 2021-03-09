@@ -117,30 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="picPT.Tag" xml:space="preserve">
-    <value>The detection indicator displays the number of opponents that are currently aiming at your ship or squadron.\nFor a ship, the number of opponents aiming at the ship with main battery guns.#For a carrier squadron, the number of ships firing their AA guns at it.#This skill will not work during retraining.</value>
-  </data>
-  <data name="picCE.Tag" xml:space="preserve">
-    <value>Reduces detectability range.#Stacks with other detection range reduction bonuses such as Concealment System Modification 1 (-10% to detectability radius. / +5% to the maximum dispersion of enemy shells that fire on your ship.) and camouflage.</value>
-  </data>
-  <data name="picAFT.Tag" xml:space="preserve">
-    <value>Extends firing range of main guns with a caliber up to and including 139mm and all secondary battery guns. Increases damage per second within the explosion radius of shells fired by large caliber (&gt;85mm) AA guns.</value>
-  </data>
-  <data name="picManSec.Tag" xml:space="preserve">
-    <value>Greatly increases the effectiveness of secondary guns against the manually selected target.#This is not manual aim; the guns still aim automatically. It requires the player to manually#select a target by holding down Ctrl and left-clicking on it. With this skill, the secondaries will not fire at all without manual target selection.</value>
-  </data>
-  <data name="picVigilance.Tag" xml:space="preserve">
-    <value>Extends ship's torpedo acquisition range.#Provides additional time to react to incoming torpedoes.#Stacks with both Target Acquisition System Modification 1 (+50% to range of assured acquisition of enemy ships. / +20% to spotting range. / +20% to the acquisition range of torpedoes.)#and Hydroacoustic Search (While active, detects all enemy ships and torpedoes within the specified radius, without regard of obstacles such as smoke and terrain.).#Does not work on aircraft carrier squadrons.</value>
-  </data>
-  <data name="picAR.Tag" xml:space="preserve">
-    <value>Increases reload speed of all armament as the ship's health decreases.#Increases a carrier squadron's speed as its health decreases.#This skill has no effect on anti-aircraft armament.#Destroyed aircraft do not count against a squadron's health.#This skill will not work during retraining.</value>
-  </data>
-  <data name="picJoA.Tag" xml:space="preserve">
-    <value>Decreases the reload time of all ship and squadron consumables.#Stacks with other consumable reload time modifiers such as the High Alert skill or November Foxtrot (-5% reload time on all consumables.) signal. During retraining, a 50% penalty is applied to the effect of this skill.</value>
-  </data>
-  <data name="picIFA.Tag" xml:space="preserve">
-    <value>Provides a warning of long-range artillery fire.#Displays a warning of a salvo fired at your ship from a distance of more than 4.5 km.#Think of this as a "turn now!" warning.#This skill will not work during retraining.</value>
-  </data>
   <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>

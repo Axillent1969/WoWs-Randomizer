@@ -37,6 +37,7 @@ namespace WoWs_Randomizer
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRandomizer));
             this.LeftPanel = new System.Windows.Forms.Panel();
+            this.lblTotalNumberOfShips = new System.Windows.Forms.Label();
             this.CBPremium = new System.Windows.Forms.CheckBox();
             this.CBNonPremium = new System.Windows.Forms.CheckBox();
             this.lblQueue = new System.Windows.Forms.Label();
@@ -118,7 +119,6 @@ namespace WoWs_Randomizer
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.BGUpdater = new System.ComponentModel.BackgroundWorker();
             this.UpgradeFixer = new System.ComponentModel.BackgroundWorker();
-            this.lblTotalNumberOfShips = new System.Windows.Forms.Label();
             this.LeftPanel.SuspendLayout();
             this.MenuStrip.SuspendLayout();
             this.RightPanel.SuspendLayout();
@@ -168,6 +168,15 @@ namespace WoWs_Randomizer
             this.LeftPanel.Name = "LeftPanel";
             this.LeftPanel.Size = new System.Drawing.Size(200, 822);
             this.LeftPanel.TabIndex = 0;
+            // 
+            // lblTotalNumberOfShips
+            // 
+            this.lblTotalNumberOfShips.AutoSize = true;
+            this.lblTotalNumberOfShips.Location = new System.Drawing.Point(19, 711);
+            this.lblTotalNumberOfShips.Name = "lblTotalNumberOfShips";
+            this.lblTotalNumberOfShips.Size = new System.Drawing.Size(10, 13);
+            this.lblTotalNumberOfShips.TabIndex = 32;
+            this.lblTotalNumberOfShips.Text = ".";
             // 
             // CBPremium
             // 
@@ -631,30 +640,29 @@ namespace WoWs_Randomizer
             // 
             // buildManagerToolStripMenuItem
             // 
-            this.buildManagerToolStripMenuItem.Enabled = false;
             this.buildManagerToolStripMenuItem.Name = "buildManagerToolStripMenuItem";
-            this.buildManagerToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.buildManagerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.buildManagerToolStripMenuItem.Text = "&Build Manager";
             this.buildManagerToolStripMenuItem.Click += new System.EventHandler(this.buildManagerToolStripMenuItem_Click);
             // 
             // shipComparisonToolStripMenuItem
             // 
             this.shipComparisonToolStripMenuItem.Name = "shipComparisonToolStripMenuItem";
-            this.shipComparisonToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.shipComparisonToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.shipComparisonToolStripMenuItem.Text = "Ship &Comparison";
             this.shipComparisonToolStripMenuItem.Click += new System.EventHandler(this.ShipComparisonToolStripMenuItem_Click);
             // 
             // upgradesExaminerToolStripMenuItem
             // 
             this.upgradesExaminerToolStripMenuItem.Name = "upgradesExaminerToolStripMenuItem";
-            this.upgradesExaminerToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.upgradesExaminerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.upgradesExaminerToolStripMenuItem.Text = "Ship &Wikipedia";
             this.upgradesExaminerToolStripMenuItem.Click += new System.EventHandler(this.upgradesExaminerToolStripMenuItem_Click);
             // 
             // listToolStripMenuItem
             // 
             this.listToolStripMenuItem.Name = "listToolStripMenuItem";
-            this.listToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.listToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.listToolStripMenuItem.Text = "Query Tool";
             this.listToolStripMenuItem.Click += new System.EventHandler(this.listToolStripMenuItem_Click);
             // 
@@ -673,21 +681,21 @@ namespace WoWs_Randomizer
             this.menuProfileEU.Checked = true;
             this.menuProfileEU.CheckState = System.Windows.Forms.CheckState.Checked;
             this.menuProfileEU.Name = "menuProfileEU";
-            this.menuProfileEU.Size = new System.Drawing.Size(91, 22);
+            this.menuProfileEU.Size = new System.Drawing.Size(180, 22);
             this.menuProfileEU.Text = "&EU";
             this.menuProfileEU.Click += new System.EventHandler(this.menuProfile_Click);
             // 
             // menuProfileNA
             // 
             this.menuProfileNA.Name = "menuProfileNA";
-            this.menuProfileNA.Size = new System.Drawing.Size(91, 22);
+            this.menuProfileNA.Size = new System.Drawing.Size(180, 22);
             this.menuProfileNA.Text = "&NA";
             this.menuProfileNA.Click += new System.EventHandler(this.menuProfile_Click);
             // 
             // menuProfileRU
             // 
             this.menuProfileRU.Name = "menuProfileRU";
-            this.menuProfileRU.Size = new System.Drawing.Size(91, 22);
+            this.menuProfileRU.Size = new System.Drawing.Size(180, 22);
             this.menuProfileRU.Text = "&RU";
             this.menuProfileRU.Click += new System.EventHandler(this.menuProfile_Click);
             // 
@@ -931,15 +939,6 @@ namespace WoWs_Randomizer
             // 
             this.UpgradeFixer.DoWork += new System.ComponentModel.DoWorkEventHandler(this.UpgradeFixer_DoWork);
             this.UpgradeFixer.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.UpgradeFixer_RunWorkerCompleted);
-            // 
-            // lblTotalNumberOfShips
-            // 
-            this.lblTotalNumberOfShips.AutoSize = true;
-            this.lblTotalNumberOfShips.Location = new System.Drawing.Point(19, 711);
-            this.lblTotalNumberOfShips.Name = "lblTotalNumberOfShips";
-            this.lblTotalNumberOfShips.Size = new System.Drawing.Size(10, 13);
-            this.lblTotalNumberOfShips.TabIndex = 32;
-            this.lblTotalNumberOfShips.Text = ".";
             // 
             // FormRandomizer
             // 

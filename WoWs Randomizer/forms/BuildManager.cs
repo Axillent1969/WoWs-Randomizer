@@ -6,7 +6,6 @@ using System.Windows.Forms;
 using WoWs_Randomizer.objects;
 using WoWs_Randomizer.objects.consumables;
 using WoWs_Randomizer.utils;
-using WoWs_Randomizer.utils.modules;
 using WoWs_Randomizer.utils.ship;
 using WoWs_Randomizer.utils.skills;
 
@@ -72,9 +71,46 @@ namespace WoWs_Randomizer.forms
                 }
             }
         }
+        private void LoadBBSkills()
+        {
+            Dictionary<string, Image> skillsPictures = new Dictionary<string, Image>();
+            skillsPictures.Add("bb11", Properties.BBSkills.gun_feeder);
+            skillsPictures.Add("bb12", Properties.BBSkills.pyrotechnician);
+            skillsPictures.Add("bb13", Properties.BBSkills.consumables_specialist);
+            skillsPictures.Add("bb21", Properties.BBSkills.grease_the_gears);
+            skillsPictures.Add("bb22", Properties.BBSkills.inertia_fuse_for_he_shells);
+            skillsPictures.Add("bb23", Properties.BBSkills.consumables_enhancements);
+            
+            List<Skill> skills = Program.CommanderSkills["bb"];
+            skills.Sort();
+            foreach(Skill s in skills)
+            {
+                PictureBox pb = (PictureBox)panelCaptainSkills.Controls["pic" + s.SortBy.ToString()];
+                if ( s.ImageUrl == null || s.ImageUrl.Equals(""))
+                {
+                    pb.Image = skillsPictures["bb" + s.SortBy.ToString()];
+                } else
+                {
+                    pb.Load(s.ImageUrl);
+                }
+                pb.AccessibleName = s.Name;
+
+                ToolTip ttip = new ToolTip
+                {
+                    AutomaticDelay = 500,
+                    AutoPopDelay = 9000,
+                    ToolTipTitle = s.Name
+                };
+                string tagText = s.Description + "\n" + s.Notes;
+                ttip.SetToolTip(pb, tagText);
+            }
+        }
         private void LoadCommanderSkills()
         {
-            AllSkills = Program.CommanderSkills;
+
+            LoadBBSkills();
+
+/*            AllSkills = Program.CommanderSkills;
             foreach (Skill skill in AllSkills)
             {
                 foreach (Control picCtrl in panelCaptainSkills.Controls)
@@ -110,7 +146,7 @@ namespace WoWs_Randomizer.forms
                         }
                     }
                 }
-            }
+            }*/
         }
 
         private void pictureBox_Paint(object sender, PaintEventArgs e)
@@ -306,9 +342,9 @@ namespace WoWs_Randomizer.forms
                 int tier = skill.Tier;
                 int currentPoints = int.Parse(totalSkillPoints.Text);
                 currentPoints += tier;
-                if ( currentPoints > 19 )
+                if ( currentPoints > 21 )
                 {
-                    throw new Exception("Unable to allocate more than 19 skillpoints!");
+                    throw new Exception("Unable to allocate more than 21 skillpoints!");
                 }
                 totalSkillPoints.Text = currentPoints.ToString();
             }

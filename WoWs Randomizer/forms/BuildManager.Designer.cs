@@ -30,49 +30,36 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BuildManager));
             this.panelCaptainSkills = new System.Windows.Forms.Panel();
-            this.picPT = new System.Windows.Forms.PictureBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.pic46 = new System.Windows.Forms.PictureBox();
+            this.pic45 = new System.Windows.Forms.PictureBox();
+            this.pic44 = new System.Windows.Forms.PictureBox();
+            this.pic43 = new System.Windows.Forms.PictureBox();
+            this.pic42 = new System.Windows.Forms.PictureBox();
+            this.pic41 = new System.Windows.Forms.PictureBox();
+            this.pic36 = new System.Windows.Forms.PictureBox();
+            this.pic35 = new System.Windows.Forms.PictureBox();
+            this.pic34 = new System.Windows.Forms.PictureBox();
+            this.pic33 = new System.Windows.Forms.PictureBox();
+            this.pic32 = new System.Windows.Forms.PictureBox();
+            this.pic31 = new System.Windows.Forms.PictureBox();
+            this.pic26 = new System.Windows.Forms.PictureBox();
+            this.pic25 = new System.Windows.Forms.PictureBox();
+            this.pic24 = new System.Windows.Forms.PictureBox();
+            this.pic23 = new System.Windows.Forms.PictureBox();
+            this.pic22 = new System.Windows.Forms.PictureBox();
+            this.pic21 = new System.Windows.Forms.PictureBox();
+            this.pic16 = new System.Windows.Forms.PictureBox();
+            this.pic15 = new System.Windows.Forms.PictureBox();
+            this.pic14 = new System.Windows.Forms.PictureBox();
+            this.pic13 = new System.Windows.Forms.PictureBox();
+            this.pic12 = new System.Windows.Forms.PictureBox();
+            this.pic11 = new System.Windows.Forms.PictureBox();
             this.totalSkillPoints = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.picCE = new System.Windows.Forms.PictureBox();
-            this.picAFT = new System.Windows.Forms.PictureBox();
-            this.picMassiveAAFire = new System.Windows.Forms.PictureBox();
-            this.picRPF = new System.Windows.Forms.PictureBox();
-            this.picSStab = new System.Windows.Forms.PictureBox();
-            this.picIFHE = new System.Windows.Forms.PictureBox();
-            this.picFP = new System.Windows.Forms.PictureBox();
-            this.picManSec = new System.Windows.Forms.PictureBox();
-            this.picVigilance = new System.Windows.Forms.PictureBox();
-            this.picBFT = new System.Windows.Forms.PictureBox();
-            this.picSI = new System.Windows.Forms.PictureBox();
-            this.picDE = new System.Windows.Forms.PictureBox();
-            this.picAirArmor = new System.Windows.Forms.PictureBox();
-            this.picTAE = new System.Windows.Forms.PictureBox();
-            this.picSE = new System.Windows.Forms.PictureBox();
-            this.picBoS = new System.Windows.Forms.PictureBox();
-            this.picLS = new System.Windows.Forms.PictureBox();
-            this.picSSE = new System.Windows.Forms.PictureBox();
-            this.picIE = new System.Windows.Forms.PictureBox();
-            this.picAR = new System.Windows.Forms.PictureBox();
-            this.picTA = new System.Windows.Forms.PictureBox();
-            this.picEM = new System.Windows.Forms.PictureBox();
-            this.picJoA = new System.Windows.Forms.PictureBox();
-            this.picHA = new System.Windows.Forms.PictureBox();
-            this.picLG = new System.Windows.Forms.PictureBox();
-            this.picDCF = new System.Windows.Forms.PictureBox();
-            this.picIEB = new System.Windows.Forms.PictureBox();
-            this.picIFA = new System.Windows.Forms.PictureBox();
-            this.picASup = new System.Windows.Forms.PictureBox();
-            this.picEL = new System.Windows.Forms.PictureBox();
-            this.picPM = new System.Windows.Forms.PictureBox();
             this.RightPanel = new System.Windows.Forms.Panel();
             this.Headline = new System.Windows.Forms.Label();
             this.ShipMetricsTable = new System.Windows.Forms.TableLayoutPanel();
             this.button2 = new System.Windows.Forms.Button();
-            this.picShip = new System.Windows.Forms.PictureBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
@@ -117,41 +104,33 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
+            this.picShip = new System.Windows.Forms.PictureBox();
             this.panelCaptainSkills.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picPT)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picCE)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picAFT)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picMassiveAAFire)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picRPF)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picSStab)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picIFHE)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picFP)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picManSec)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picVigilance)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picBFT)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picSI)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picDE)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picAirArmor)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picTAE)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picSE)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picBoS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picLS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picSSE)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picIE)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picAR)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picTA)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picEM)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picJoA)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picHA)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picLG)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picDCF)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picIEB)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picIFA)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picASup)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picEL)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picPM)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic46)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic45)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic44)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic43)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic42)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic41)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic36)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic35)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic34)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic33)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic32)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic31)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic26)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic25)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic24)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic23)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic22)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic21)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic16)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic15)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic14)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic13)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic11)).BeginInit();
             this.RightPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picShip)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panelFlags.SuspendLayout();
@@ -169,77 +148,380 @@
             ((System.ComponentModel.ISupportInitialize)(this.picJC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picIY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picHY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picShip)).BeginInit();
             this.SuspendLayout();
             // 
             // panelCaptainSkills
             // 
-            this.panelCaptainSkills.Controls.Add(this.picPT);
-            this.panelCaptainSkills.Controls.Add(this.label4);
+            this.panelCaptainSkills.Controls.Add(this.pic46);
+            this.panelCaptainSkills.Controls.Add(this.pic45);
+            this.panelCaptainSkills.Controls.Add(this.pic44);
+            this.panelCaptainSkills.Controls.Add(this.pic43);
+            this.panelCaptainSkills.Controls.Add(this.pic42);
+            this.panelCaptainSkills.Controls.Add(this.pic41);
+            this.panelCaptainSkills.Controls.Add(this.pic36);
+            this.panelCaptainSkills.Controls.Add(this.pic35);
+            this.panelCaptainSkills.Controls.Add(this.pic34);
+            this.panelCaptainSkills.Controls.Add(this.pic33);
+            this.panelCaptainSkills.Controls.Add(this.pic32);
+            this.panelCaptainSkills.Controls.Add(this.pic31);
+            this.panelCaptainSkills.Controls.Add(this.pic26);
+            this.panelCaptainSkills.Controls.Add(this.pic25);
+            this.panelCaptainSkills.Controls.Add(this.pic24);
+            this.panelCaptainSkills.Controls.Add(this.pic23);
+            this.panelCaptainSkills.Controls.Add(this.pic22);
+            this.panelCaptainSkills.Controls.Add(this.pic21);
+            this.panelCaptainSkills.Controls.Add(this.pic16);
+            this.panelCaptainSkills.Controls.Add(this.pic15);
+            this.panelCaptainSkills.Controls.Add(this.pic14);
+            this.panelCaptainSkills.Controls.Add(this.pic13);
+            this.panelCaptainSkills.Controls.Add(this.pic12);
+            this.panelCaptainSkills.Controls.Add(this.pic11);
             this.panelCaptainSkills.Controls.Add(this.totalSkillPoints);
             this.panelCaptainSkills.Controls.Add(this.label5);
-            this.panelCaptainSkills.Controls.Add(this.label3);
-            this.panelCaptainSkills.Controls.Add(this.label2);
-            this.panelCaptainSkills.Controls.Add(this.label1);
-            this.panelCaptainSkills.Controls.Add(this.picCE);
-            this.panelCaptainSkills.Controls.Add(this.picAFT);
-            this.panelCaptainSkills.Controls.Add(this.picMassiveAAFire);
-            this.panelCaptainSkills.Controls.Add(this.picRPF);
-            this.panelCaptainSkills.Controls.Add(this.picSStab);
-            this.panelCaptainSkills.Controls.Add(this.picIFHE);
-            this.panelCaptainSkills.Controls.Add(this.picFP);
-            this.panelCaptainSkills.Controls.Add(this.picManSec);
-            this.panelCaptainSkills.Controls.Add(this.picVigilance);
-            this.panelCaptainSkills.Controls.Add(this.picBFT);
-            this.panelCaptainSkills.Controls.Add(this.picSI);
-            this.panelCaptainSkills.Controls.Add(this.picDE);
-            this.panelCaptainSkills.Controls.Add(this.picAirArmor);
-            this.panelCaptainSkills.Controls.Add(this.picTAE);
-            this.panelCaptainSkills.Controls.Add(this.picSE);
-            this.panelCaptainSkills.Controls.Add(this.picBoS);
-            this.panelCaptainSkills.Controls.Add(this.picLS);
-            this.panelCaptainSkills.Controls.Add(this.picSSE);
-            this.panelCaptainSkills.Controls.Add(this.picIE);
-            this.panelCaptainSkills.Controls.Add(this.picAR);
-            this.panelCaptainSkills.Controls.Add(this.picTA);
-            this.panelCaptainSkills.Controls.Add(this.picEM);
-            this.panelCaptainSkills.Controls.Add(this.picJoA);
-            this.panelCaptainSkills.Controls.Add(this.picHA);
-            this.panelCaptainSkills.Controls.Add(this.picLG);
-            this.panelCaptainSkills.Controls.Add(this.picDCF);
-            this.panelCaptainSkills.Controls.Add(this.picIEB);
-            this.panelCaptainSkills.Controls.Add(this.picIFA);
-            this.panelCaptainSkills.Controls.Add(this.picASup);
-            this.panelCaptainSkills.Controls.Add(this.picEL);
-            this.panelCaptainSkills.Controls.Add(this.picPM);
             this.panelCaptainSkills.Enabled = false;
             this.panelCaptainSkills.Location = new System.Drawing.Point(16, 127);
             this.panelCaptainSkills.Name = "panelCaptainSkills";
             this.panelCaptainSkills.Size = new System.Drawing.Size(844, 359);
             this.panelCaptainSkills.TabIndex = 0;
             // 
-            // picPT
+            // pic46
             // 
-            this.picPT.AccessibleName = "Priority Target";
-            this.picPT.Location = new System.Drawing.Point(36, 53);
-            this.picPT.Name = "picPT";
-            this.picPT.Padding = new System.Windows.Forms.Padding(5);
-            this.picPT.Size = new System.Drawing.Size(50, 50);
-            this.picPT.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picPT.TabIndex = 0;
-            this.picPT.TabStop = false;
-            this.picPT.Tag = resources.GetString("picPT.Tag");
-            this.picPT.Click += new System.EventHandler(this.pictureBox_Click);
-            this.picPT.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
+            this.pic46.AccessibleName = "";
+            this.pic46.Location = new System.Drawing.Point(573, 282);
+            this.pic46.Name = "pic46";
+            this.pic46.Padding = new System.Windows.Forms.Padding(5);
+            this.pic46.Size = new System.Drawing.Size(50, 50);
+            this.pic46.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pic46.TabIndex = 32;
+            this.pic46.TabStop = false;
+            this.pic46.Tag = "";
+            this.pic46.Click += new System.EventHandler(this.pictureBox_Click);
+            this.pic46.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
             // 
-            // label4
+            // pic45
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(674, 16);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(88, 20);
-            this.label4.TabIndex = 35;
-            this.label4.Text = "Versatility";
+            this.pic45.AccessibleName = "";
+            this.pic45.Location = new System.Drawing.Point(466, 282);
+            this.pic45.Name = "pic45";
+            this.pic45.Padding = new System.Windows.Forms.Padding(5);
+            this.pic45.Size = new System.Drawing.Size(50, 50);
+            this.pic45.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pic45.TabIndex = 31;
+            this.pic45.TabStop = false;
+            this.pic45.Tag = "";
+            this.pic45.Click += new System.EventHandler(this.pictureBox_Click);
+            this.pic45.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
+            // 
+            // pic44
+            // 
+            this.pic44.AccessibleName = "";
+            this.pic44.Location = new System.Drawing.Point(359, 282);
+            this.pic44.Name = "pic44";
+            this.pic44.Padding = new System.Windows.Forms.Padding(5);
+            this.pic44.Size = new System.Drawing.Size(50, 50);
+            this.pic44.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pic44.TabIndex = 30;
+            this.pic44.TabStop = false;
+            this.pic44.Tag = "";
+            this.pic44.Click += new System.EventHandler(this.pictureBox_Click);
+            this.pic44.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
+            // 
+            // pic43
+            // 
+            this.pic43.AccessibleName = "";
+            this.pic43.Location = new System.Drawing.Point(252, 282);
+            this.pic43.Name = "pic43";
+            this.pic43.Padding = new System.Windows.Forms.Padding(5);
+            this.pic43.Size = new System.Drawing.Size(50, 50);
+            this.pic43.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pic43.TabIndex = 29;
+            this.pic43.TabStop = false;
+            this.pic43.Tag = "";
+            this.pic43.Click += new System.EventHandler(this.pictureBox_Click);
+            this.pic43.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
+            // 
+            // pic42
+            // 
+            this.pic42.AccessibleName = "";
+            this.pic42.Location = new System.Drawing.Point(145, 282);
+            this.pic42.Name = "pic42";
+            this.pic42.Padding = new System.Windows.Forms.Padding(5);
+            this.pic42.Size = new System.Drawing.Size(50, 50);
+            this.pic42.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pic42.TabIndex = 28;
+            this.pic42.TabStop = false;
+            this.pic42.Tag = "";
+            this.pic42.Click += new System.EventHandler(this.pictureBox_Click);
+            this.pic42.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
+            // 
+            // pic41
+            // 
+            this.pic41.AccessibleName = "";
+            this.pic41.Location = new System.Drawing.Point(42, 282);
+            this.pic41.Name = "pic41";
+            this.pic41.Padding = new System.Windows.Forms.Padding(5);
+            this.pic41.Size = new System.Drawing.Size(50, 50);
+            this.pic41.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pic41.TabIndex = 27;
+            this.pic41.TabStop = false;
+            this.pic41.Tag = "";
+            this.pic41.Click += new System.EventHandler(this.pictureBox_Click);
+            this.pic41.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
+            // 
+            // pic36
+            // 
+            this.pic36.AccessibleName = "";
+            this.pic36.Location = new System.Drawing.Point(573, 194);
+            this.pic36.Name = "pic36";
+            this.pic36.Padding = new System.Windows.Forms.Padding(5);
+            this.pic36.Size = new System.Drawing.Size(50, 50);
+            this.pic36.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pic36.TabIndex = 26;
+            this.pic36.TabStop = false;
+            this.pic36.Tag = "";
+            this.pic36.Click += new System.EventHandler(this.pictureBox_Click);
+            this.pic36.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
+            // 
+            // pic35
+            // 
+            this.pic35.AccessibleName = "";
+            this.pic35.Location = new System.Drawing.Point(466, 194);
+            this.pic35.Name = "pic35";
+            this.pic35.Padding = new System.Windows.Forms.Padding(5);
+            this.pic35.Size = new System.Drawing.Size(50, 50);
+            this.pic35.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pic35.TabIndex = 25;
+            this.pic35.TabStop = false;
+            this.pic35.Tag = "";
+            this.pic35.Click += new System.EventHandler(this.pictureBox_Click);
+            this.pic35.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
+            // 
+            // pic34
+            // 
+            this.pic34.AccessibleName = "";
+            this.pic34.Location = new System.Drawing.Point(359, 194);
+            this.pic34.Name = "pic34";
+            this.pic34.Padding = new System.Windows.Forms.Padding(5);
+            this.pic34.Size = new System.Drawing.Size(50, 50);
+            this.pic34.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pic34.TabIndex = 24;
+            this.pic34.TabStop = false;
+            this.pic34.Tag = "";
+            this.pic34.Click += new System.EventHandler(this.pictureBox_Click);
+            this.pic34.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
+            // 
+            // pic33
+            // 
+            this.pic33.AccessibleName = "";
+            this.pic33.Location = new System.Drawing.Point(252, 194);
+            this.pic33.Name = "pic33";
+            this.pic33.Padding = new System.Windows.Forms.Padding(5);
+            this.pic33.Size = new System.Drawing.Size(50, 50);
+            this.pic33.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pic33.TabIndex = 23;
+            this.pic33.TabStop = false;
+            this.pic33.Tag = "";
+            this.pic33.Click += new System.EventHandler(this.pictureBox_Click);
+            this.pic33.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
+            // 
+            // pic32
+            // 
+            this.pic32.AccessibleName = "";
+            this.pic32.Location = new System.Drawing.Point(145, 194);
+            this.pic32.Name = "pic32";
+            this.pic32.Padding = new System.Windows.Forms.Padding(5);
+            this.pic32.Size = new System.Drawing.Size(50, 50);
+            this.pic32.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pic32.TabIndex = 22;
+            this.pic32.TabStop = false;
+            this.pic32.Tag = "";
+            this.pic32.Click += new System.EventHandler(this.pictureBox_Click);
+            this.pic32.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
+            // 
+            // pic31
+            // 
+            this.pic31.AccessibleName = "";
+            this.pic31.Location = new System.Drawing.Point(42, 194);
+            this.pic31.Name = "pic31";
+            this.pic31.Padding = new System.Windows.Forms.Padding(5);
+            this.pic31.Size = new System.Drawing.Size(50, 50);
+            this.pic31.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pic31.TabIndex = 21;
+            this.pic31.TabStop = false;
+            this.pic31.Tag = "";
+            this.pic31.Click += new System.EventHandler(this.pictureBox_Click);
+            this.pic31.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
+            // 
+            // pic26
+            // 
+            this.pic26.AccessibleName = "";
+            this.pic26.Location = new System.Drawing.Point(573, 106);
+            this.pic26.Name = "pic26";
+            this.pic26.Padding = new System.Windows.Forms.Padding(5);
+            this.pic26.Size = new System.Drawing.Size(50, 50);
+            this.pic26.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pic26.TabIndex = 20;
+            this.pic26.TabStop = false;
+            this.pic26.Tag = "";
+            this.pic26.Click += new System.EventHandler(this.pictureBox_Click);
+            this.pic26.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
+            // 
+            // pic25
+            // 
+            this.pic25.AccessibleName = "";
+            this.pic25.Location = new System.Drawing.Point(466, 106);
+            this.pic25.Name = "pic25";
+            this.pic25.Padding = new System.Windows.Forms.Padding(5);
+            this.pic25.Size = new System.Drawing.Size(50, 50);
+            this.pic25.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pic25.TabIndex = 19;
+            this.pic25.TabStop = false;
+            this.pic25.Tag = "";
+            this.pic25.Click += new System.EventHandler(this.pictureBox_Click);
+            this.pic25.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
+            // 
+            // pic24
+            // 
+            this.pic24.AccessibleName = "";
+            this.pic24.Location = new System.Drawing.Point(359, 106);
+            this.pic24.Name = "pic24";
+            this.pic24.Padding = new System.Windows.Forms.Padding(5);
+            this.pic24.Size = new System.Drawing.Size(50, 50);
+            this.pic24.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pic24.TabIndex = 18;
+            this.pic24.TabStop = false;
+            this.pic24.Tag = "";
+            this.pic24.Click += new System.EventHandler(this.pictureBox_Click);
+            this.pic24.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
+            // 
+            // pic23
+            // 
+            this.pic23.AccessibleName = "";
+            this.pic23.Location = new System.Drawing.Point(252, 106);
+            this.pic23.Name = "pic23";
+            this.pic23.Padding = new System.Windows.Forms.Padding(5);
+            this.pic23.Size = new System.Drawing.Size(50, 50);
+            this.pic23.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pic23.TabIndex = 17;
+            this.pic23.TabStop = false;
+            this.pic23.Tag = "";
+            this.pic23.Click += new System.EventHandler(this.pictureBox_Click);
+            this.pic23.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
+            // 
+            // pic22
+            // 
+            this.pic22.AccessibleName = "";
+            this.pic22.Location = new System.Drawing.Point(145, 106);
+            this.pic22.Name = "pic22";
+            this.pic22.Padding = new System.Windows.Forms.Padding(5);
+            this.pic22.Size = new System.Drawing.Size(50, 50);
+            this.pic22.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pic22.TabIndex = 16;
+            this.pic22.TabStop = false;
+            this.pic22.Tag = "";
+            this.pic22.Click += new System.EventHandler(this.pictureBox_Click);
+            this.pic22.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
+            // 
+            // pic21
+            // 
+            this.pic21.AccessibleName = "";
+            this.pic21.Location = new System.Drawing.Point(44, 106);
+            this.pic21.Name = "pic21";
+            this.pic21.Padding = new System.Windows.Forms.Padding(5);
+            this.pic21.Size = new System.Drawing.Size(50, 50);
+            this.pic21.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pic21.TabIndex = 15;
+            this.pic21.TabStop = false;
+            this.pic21.Tag = "";
+            this.pic21.Click += new System.EventHandler(this.pictureBox_Click);
+            this.pic21.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
+            // 
+            // pic16
+            // 
+            this.pic16.AccessibleName = "";
+            this.pic16.Location = new System.Drawing.Point(573, 18);
+            this.pic16.Name = "pic16";
+            this.pic16.Padding = new System.Windows.Forms.Padding(5);
+            this.pic16.Size = new System.Drawing.Size(50, 50);
+            this.pic16.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pic16.TabIndex = 14;
+            this.pic16.TabStop = false;
+            this.pic16.Tag = "";
+            this.pic16.Click += new System.EventHandler(this.pictureBox_Click);
+            this.pic16.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
+            // 
+            // pic15
+            // 
+            this.pic15.AccessibleName = "";
+            this.pic15.Location = new System.Drawing.Point(466, 18);
+            this.pic15.Name = "pic15";
+            this.pic15.Padding = new System.Windows.Forms.Padding(5);
+            this.pic15.Size = new System.Drawing.Size(50, 50);
+            this.pic15.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pic15.TabIndex = 13;
+            this.pic15.TabStop = false;
+            this.pic15.Tag = "";
+            this.pic15.Click += new System.EventHandler(this.pictureBox_Click);
+            this.pic15.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
+            // 
+            // pic14
+            // 
+            this.pic14.AccessibleName = "";
+            this.pic14.Location = new System.Drawing.Point(359, 18);
+            this.pic14.Name = "pic14";
+            this.pic14.Padding = new System.Windows.Forms.Padding(5);
+            this.pic14.Size = new System.Drawing.Size(50, 50);
+            this.pic14.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pic14.TabIndex = 12;
+            this.pic14.TabStop = false;
+            this.pic14.Tag = "";
+            this.pic14.Click += new System.EventHandler(this.pictureBox_Click);
+            this.pic14.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
+            // 
+            // pic13
+            // 
+            this.pic13.AccessibleName = "";
+            this.pic13.Location = new System.Drawing.Point(252, 18);
+            this.pic13.Name = "pic13";
+            this.pic13.Padding = new System.Windows.Forms.Padding(5);
+            this.pic13.Size = new System.Drawing.Size(50, 50);
+            this.pic13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pic13.TabIndex = 11;
+            this.pic13.TabStop = false;
+            this.pic13.Tag = "";
+            this.pic13.Click += new System.EventHandler(this.pictureBox_Click);
+            this.pic13.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
+            // 
+            // pic12
+            // 
+            this.pic12.AccessibleName = "";
+            this.pic12.Location = new System.Drawing.Point(145, 18);
+            this.pic12.Name = "pic12";
+            this.pic12.Padding = new System.Windows.Forms.Padding(5);
+            this.pic12.Size = new System.Drawing.Size(50, 50);
+            this.pic12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pic12.TabIndex = 10;
+            this.pic12.TabStop = false;
+            this.pic12.Tag = "";
+            this.pic12.Click += new System.EventHandler(this.pictureBox_Click);
+            this.pic12.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
+            // 
+            // pic11
+            // 
+            this.pic11.AccessibleName = "";
+            this.pic11.BackColor = System.Drawing.SystemColors.Control;
+            this.pic11.Cursor = System.Windows.Forms.Cursors.Default;
+            this.pic11.Location = new System.Drawing.Point(44, 18);
+            this.pic11.Name = "pic11";
+            this.pic11.Padding = new System.Windows.Forms.Padding(5);
+            this.pic11.Size = new System.Drawing.Size(50, 50);
+            this.pic11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pic11.TabIndex = 0;
+            this.pic11.TabStop = false;
+            this.pic11.Tag = "";
+            this.pic11.Click += new System.EventHandler(this.pictureBox_Click);
+            this.pic11.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
             // 
             // totalSkillPoints
             // 
@@ -261,458 +543,6 @@
             this.label5.Size = new System.Drawing.Size(225, 16);
             this.label5.TabIndex = 9;
             this.label5.Text = "Total number of skillpoints allocated:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(473, 16);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(73, 20);
-            this.label3.TabIndex = 34;
-            this.label3.Text = "Support";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(256, 16);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 20);
-            this.label2.TabIndex = 33;
-            this.label2.Text = "Attack";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(47, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(96, 20);
-            this.label1.TabIndex = 32;
-            this.label1.Text = "Endurance";
-            // 
-            // picCE
-            // 
-            this.picCE.AccessibleName = "Concealment Expert";
-            this.picCE.Location = new System.Drawing.Point(735, 259);
-            this.picCE.Name = "picCE";
-            this.picCE.Size = new System.Drawing.Size(50, 50);
-            this.picCE.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picCE.TabIndex = 31;
-            this.picCE.TabStop = false;
-            this.picCE.Tag = resources.GetString("picCE.Tag");
-            this.picCE.Click += new System.EventHandler(this.pictureBox_Click);
-            this.picCE.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
-            // 
-            // picAFT
-            // 
-            this.picAFT.AccessibleName = "Advanced Firing Training";
-            this.picAFT.Location = new System.Drawing.Point(444, 259);
-            this.picAFT.Name = "picAFT";
-            this.picAFT.Size = new System.Drawing.Size(50, 50);
-            this.picAFT.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picAFT.TabIndex = 30;
-            this.picAFT.TabStop = false;
-            this.picAFT.Tag = resources.GetString("picAFT.Tag");
-            this.picAFT.Click += new System.EventHandler(this.pictureBox_Click);
-            this.picAFT.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
-            // 
-            // picMassiveAAFire
-            // 
-            this.picMassiveAAFire.AccessibleName = "Massive AA Fire";
-            this.picMassiveAAFire.Location = new System.Drawing.Point(522, 259);
-            this.picMassiveAAFire.Name = "picMassiveAAFire";
-            this.picMassiveAAFire.Size = new System.Drawing.Size(50, 50);
-            this.picMassiveAAFire.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picMassiveAAFire.TabIndex = 29;
-            this.picMassiveAAFire.TabStop = false;
-            this.picMassiveAAFire.Tag = "Activation of a priority sector increases the amount of instantaneous damage only" +
-    ". Time to the next sector reinforcement is decreased.#Continuous damage boost is" +
-    " eliminated.";
-            this.picMassiveAAFire.Click += new System.EventHandler(this.pictureBox_Click);
-            this.picMassiveAAFire.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
-            // 
-            // picRPF
-            // 
-            this.picRPF.AccessibleName = "Radio Location";
-            this.picRPF.Location = new System.Drawing.Point(661, 259);
-            this.picRPF.Name = "picRPF";
-            this.picRPF.Size = new System.Drawing.Size(50, 50);
-            this.picRPF.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picRPF.TabIndex = 28;
-            this.picRPF.TabStop = false;
-            this.picRPF.Tag = "Shows the direction to the nearest enemy.#Functions on ships only.#This skill wil" +
-    "l not work during retraining.";
-            this.picRPF.Click += new System.EventHandler(this.pictureBox_Click);
-            this.picRPF.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
-            // 
-            // picSStab
-            // 
-            this.picSStab.AccessibleName = "Sight Stabilization";
-            this.picSStab.Location = new System.Drawing.Point(300, 259);
-            this.picSStab.Name = "picSStab";
-            this.picSStab.Size = new System.Drawing.Size(50, 50);
-            this.picSStab.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picSStab.TabIndex = 27;
-            this.picSStab.TabStop = false;
-            this.picSStab.Tag = "Speeds up the aiming of a carrier\'s aircraft.";
-            this.picSStab.Click += new System.EventHandler(this.pictureBox_Click);
-            this.picSStab.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
-            // 
-            // picIFHE
-            // 
-            this.picIFHE.AccessibleName = "Inertia Fuse for HE Shells";
-            this.picIFHE.Location = new System.Drawing.Point(229, 259);
-            this.picIFHE.Name = "picIFHE";
-            this.picIFHE.Size = new System.Drawing.Size(50, 50);
-            this.picIFHE.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picIFHE.TabIndex = 26;
-            this.picIFHE.TabStop = false;
-            this.picIFHE.Tag = "Increases the armor penetration of high explosive (HE) warheads, while decreasing" +
-    " the chance of setting the enemy ship on fire.";
-            this.picIFHE.Click += new System.EventHandler(this.pictureBox_Click);
-            this.picIFHE.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
-            // 
-            // picFP
-            // 
-            this.picFP.AccessibleName = "Fire Prevention";
-            this.picFP.Location = new System.Drawing.Point(108, 259);
-            this.picFP.Name = "picFP";
-            this.picFP.Size = new System.Drawing.Size(50, 50);
-            this.picFP.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picFP.TabIndex = 25;
-            this.picFP.TabStop = false;
-            this.picFP.Tag = "Reduces the risk of fire. The maximum number of fires on a ship is reduced to thr" +
-    "ee.";
-            this.picFP.Click += new System.EventHandler(this.pictureBox_Click);
-            this.picFP.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
-            // 
-            // picManSec
-            // 
-            this.picManSec.AccessibleName = "Manual Fire Control for Secondary Armament";
-            this.picManSec.Location = new System.Drawing.Point(36, 259);
-            this.picManSec.Name = "picManSec";
-            this.picManSec.Size = new System.Drawing.Size(50, 50);
-            this.picManSec.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picManSec.TabIndex = 24;
-            this.picManSec.TabStop = false;
-            this.picManSec.Tag = resources.GetString("picManSec.Tag");
-            this.picManSec.Click += new System.EventHandler(this.pictureBox_Click);
-            this.picManSec.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
-            // 
-            // picVigilance
-            // 
-            this.picVigilance.AccessibleName = "Vigilance";
-            this.picVigilance.Location = new System.Drawing.Point(735, 188);
-            this.picVigilance.Name = "picVigilance";
-            this.picVigilance.Size = new System.Drawing.Size(50, 50);
-            this.picVigilance.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picVigilance.TabIndex = 23;
-            this.picVigilance.TabStop = false;
-            this.picVigilance.Tag = resources.GetString("picVigilance.Tag");
-            this.picVigilance.Click += new System.EventHandler(this.pictureBox_Click);
-            this.picVigilance.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
-            // 
-            // picBFT
-            // 
-            this.picBFT.AccessibleName = "Basic Firing Training";
-            this.picBFT.Location = new System.Drawing.Point(444, 188);
-            this.picBFT.Name = "picBFT";
-            this.picBFT.Size = new System.Drawing.Size(50, 50);
-            this.picBFT.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picBFT.TabIndex = 22;
-            this.picBFT.TabStop = false;
-            this.picBFT.Tag = "Improves the performance of smaller main guns and all secondary and AA guns.#Stac" +
-    "ks with November Echo Settleseven";
-            this.picBFT.Click += new System.EventHandler(this.pictureBox_Click);
-            this.picBFT.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
-            // 
-            // picSI
-            // 
-            this.picSI.AccessibleName = "Superintendent";
-            this.picSI.Location = new System.Drawing.Point(522, 188);
-            this.picSI.Name = "picSI";
-            this.picSI.Size = new System.Drawing.Size(50, 50);
-            this.picSI.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picSI.TabIndex = 21;
-            this.picSI.TabStop = false;
-            this.picSI.Tag = "Increases capacity of consumables.#Does not affect the consumables of aircraft ca" +
-    "rrier squadrons.#This skill will not work during retraining.";
-            this.picSI.Click += new System.EventHandler(this.pictureBox_Click);
-            this.picSI.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
-            // 
-            // picDE
-            // 
-            this.picDE.AccessibleName = "Demolition Expert";
-            this.picDE.Location = new System.Drawing.Point(661, 188);
-            this.picDE.Name = "picDE";
-            this.picDE.Size = new System.Drawing.Size(50, 50);
-            this.picDE.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picDE.TabIndex = 20;
-            this.picDE.TabStop = false;
-            this.picDE.Tag = "Increases the chance of ship and aircraft armament starting fire.";
-            this.picDE.Click += new System.EventHandler(this.pictureBox_Click);
-            this.picDE.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
-            // 
-            // picAirArmor
-            // 
-            this.picAirArmor.AccessibleName = "Aircraft Armor";
-            this.picAirArmor.Location = new System.Drawing.Point(300, 188);
-            this.picAirArmor.Name = "picAirArmor";
-            this.picAirArmor.Size = new System.Drawing.Size(50, 50);
-            this.picAirArmor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picAirArmor.TabIndex = 19;
-            this.picAirArmor.TabStop = false;
-            this.picAirArmor.Tag = "Reduces continuous damage to aircraft in all AA defense zones.";
-            this.picAirArmor.Click += new System.EventHandler(this.pictureBox_Click);
-            this.picAirArmor.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
-            // 
-            // picTAE
-            // 
-            this.picTAE.AccessibleName = "Torpedo Armament Expertise";
-            this.picTAE.Location = new System.Drawing.Point(229, 188);
-            this.picTAE.Name = "picTAE";
-            this.picTAE.Size = new System.Drawing.Size(50, 50);
-            this.picTAE.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picTAE.TabIndex = 18;
-            this.picTAE.TabStop = false;
-            this.picTAE.Tag = "Reduces reload time of torpedo tubes.#Stacks with Torpedo Tubes Modification 3";
-            this.picTAE.Click += new System.EventHandler(this.pictureBox_Click);
-            this.picTAE.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
-            // 
-            // picSE
-            // 
-            this.picSE.AccessibleName = "Survivability Expert";
-            this.picSE.Location = new System.Drawing.Point(108, 188);
-            this.picSE.Name = "picSE";
-            this.picSE.Size = new System.Drawing.Size(50, 50);
-            this.picSE.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picSE.TabIndex = 17;
-            this.picSE.TabStop = false;
-            this.picSE.Tag = "Increases both ship and aircraft HP, including fighters, depending on the ship or" +
-    " aircraft carrier tier.#Example: a Tier V ship would gain 1,750 (5x350) addition" +
-    "al hit points.";
-            this.picSE.Click += new System.EventHandler(this.pictureBox_Click);
-            this.picSE.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
-            // 
-            // picBoS
-            // 
-            this.picBoS.AccessibleName = "Basics of Survivability";
-            this.picBoS.Location = new System.Drawing.Point(36, 189);
-            this.picBoS.Name = "picBoS";
-            this.picBoS.Size = new System.Drawing.Size(50, 50);
-            this.picBoS.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picBoS.TabIndex = 16;
-            this.picBoS.TabStop = false;
-            this.picBoS.Tag = "Accelerates repairs to modules, firefighting, and recovery from flooding.#Reducti" +
-    "on applies only to passive repairs, firefighting, and flood control.";
-            this.picBoS.Click += new System.EventHandler(this.pictureBox_Click);
-            this.picBoS.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
-            // 
-            // picLS
-            // 
-            this.picLS.AccessibleName = "Last Stand";
-            this.picLS.Location = new System.Drawing.Point(735, 123);
-            this.picLS.Name = "picLS";
-            this.picLS.Size = new System.Drawing.Size(50, 50);
-            this.picLS.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picLS.TabIndex = 15;
-            this.picLS.TabStop = false;
-            this.picLS.Tag = "When the engine or steering gears are incapacitated, they continue to operate (bu" +
-    "t with a penalty).#This skill will not work during retraining.";
-            this.picLS.Click += new System.EventHandler(this.pictureBox_Click);
-            this.picLS.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
-            // 
-            // picSSE
-            // 
-            this.picSSE.AccessibleName = "Smoke Screen Expert";
-            this.picSSE.Location = new System.Drawing.Point(444, 123);
-            this.picSSE.Name = "picSSE";
-            this.picSSE.Size = new System.Drawing.Size(50, 50);
-            this.picSSE.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picSSE.TabIndex = 14;
-            this.picSSE.TabStop = false;
-            this.picSSE.Tag = "Expands the smoke screen area.#This skill will not work during retraining.";
-            this.picSSE.Click += new System.EventHandler(this.pictureBox_Click);
-            this.picSSE.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
-            // 
-            // picIE
-            // 
-            this.picIE.AccessibleName = "Improved Engines";
-            this.picIE.Location = new System.Drawing.Point(522, 123);
-            this.picIE.Name = "picIE";
-            this.picIE.Size = new System.Drawing.Size(50, 50);
-            this.picIE.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picIE.TabIndex = 13;
-            this.picIE.TabStop = false;
-            this.picIE.Tag = "Increases the speed of a carrier\'s squadrons.#Stacks with Flight Control Modifica" +
-    "tion 2";
-            this.picIE.Click += new System.EventHandler(this.pictureBox_Click);
-            this.picIE.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
-            // 
-            // picAR
-            // 
-            this.picAR.AccessibleName = "Adrenaline Rush";
-            this.picAR.Location = new System.Drawing.Point(661, 123);
-            this.picAR.Name = "picAR";
-            this.picAR.Size = new System.Drawing.Size(50, 50);
-            this.picAR.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picAR.TabIndex = 12;
-            this.picAR.TabStop = false;
-            this.picAR.Tag = resources.GetString("picAR.Tag");
-            this.picAR.Click += new System.EventHandler(this.pictureBox_Click);
-            this.picAR.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
-            // 
-            // picTA
-            // 
-            this.picTA.AccessibleName = "Torpedo Acceleration";
-            this.picTA.Location = new System.Drawing.Point(300, 123);
-            this.picTA.Name = "picTA";
-            this.picTA.Size = new System.Drawing.Size(50, 50);
-            this.picTA.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picTA.TabIndex = 11;
-            this.picTA.TabStop = false;
-            this.picTA.Tag = "Increases the speed of torpedoes launched from both ships and aircraft while redu" +
-    "cing torpedo range.";
-            this.picTA.Click += new System.EventHandler(this.pictureBox_Click);
-            this.picTA.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
-            // 
-            // picEM
-            // 
-            this.picEM.AccessibleName = "Expert Marksman";
-            this.picEM.Location = new System.Drawing.Point(229, 123);
-            this.picEM.Name = "picEM";
-            this.picEM.Size = new System.Drawing.Size(50, 50);
-            this.picEM.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picEM.TabIndex = 10;
-            this.picEM.TabStop = false;
-            this.picEM.Tag = "Increases the rate of traverse of main gun turrets.";
-            this.picEM.Click += new System.EventHandler(this.pictureBox_Click);
-            this.picEM.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
-            // 
-            // picJoA
-            // 
-            this.picJoA.AccessibleName = "Jack of All Trades";
-            this.picJoA.Location = new System.Drawing.Point(108, 123);
-            this.picJoA.Name = "picJoA";
-            this.picJoA.Size = new System.Drawing.Size(50, 50);
-            this.picJoA.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picJoA.TabIndex = 9;
-            this.picJoA.TabStop = false;
-            this.picJoA.Tag = resources.GetString("picJoA.Tag");
-            this.picJoA.Click += new System.EventHandler(this.pictureBox_Click);
-            this.picJoA.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
-            // 
-            // picHA
-            // 
-            this.picHA.AccessibleName = "High Alert";
-            this.picHA.Location = new System.Drawing.Point(36, 123);
-            this.picHA.Name = "picHA";
-            this.picHA.Size = new System.Drawing.Size(50, 50);
-            this.picHA.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picHA.TabIndex = 8;
-            this.picHA.TabStop = false;
-            this.picHA.Tag = "Hastens the next availability of the ship\'s Damage Control Party.";
-            this.picHA.Click += new System.EventHandler(this.pictureBox_Click);
-            this.picHA.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
-            // 
-            // picLG
-            // 
-            this.picLG.AccessibleName = "Last Gasp";
-            this.picLG.Location = new System.Drawing.Point(735, 53);
-            this.picLG.Name = "picLG";
-            this.picLG.Size = new System.Drawing.Size(50, 50);
-            this.picLG.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picLG.TabIndex = 7;
-            this.picLG.TabStop = false;
-            this.picLG.Tag = "Restores the engine boost of the carrier\'s last strike squadron.#Completely resto" +
-    "res the engine boost for the last attack flight of the carrier\'s planes.";
-            this.picLG.Click += new System.EventHandler(this.pictureBox_Click);
-            this.picLG.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
-            // 
-            // picDCF
-            // 
-            this.picDCF.AccessibleName = "Direction Center for Fighters";
-            this.picDCF.Location = new System.Drawing.Point(444, 53);
-            this.picDCF.Name = "picDCF";
-            this.picDCF.Size = new System.Drawing.Size(50, 50);
-            this.picDCF.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picDCF.TabIndex = 6;
-            this.picDCF.TabStop = false;
-            this.picDCF.Tag = "More effective fighter squadrons.#Applies to both carrier-launched and catapult-l" +
-    "aunched fighters.";
-            this.picDCF.Click += new System.EventHandler(this.pictureBox_Click);
-            this.picDCF.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
-            // 
-            // picIEB
-            // 
-            this.picIEB.AccessibleName = "Improved Engine Boost";
-            this.picIEB.Location = new System.Drawing.Point(522, 53);
-            this.picIEB.Name = "picIEB";
-            this.picIEB.Size = new System.Drawing.Size(50, 50);
-            this.picIEB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picIEB.TabIndex = 5;
-            this.picIEB.TabStop = false;
-            this.picIEB.Tag = "Increases the engine boost time for a carrier\'s squadrons.#Stacks with Aircraft E" +
-    "ngines Modification 1";
-            this.picIEB.Click += new System.EventHandler(this.pictureBox_Click);
-            this.picIEB.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
-            // 
-            // picIFA
-            // 
-            this.picIFA.AccessibleName = "Incoming Fire Alert";
-            this.picIFA.Location = new System.Drawing.Point(661, 53);
-            this.picIFA.Name = "picIFA";
-            this.picIFA.Size = new System.Drawing.Size(50, 50);
-            this.picIFA.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picIFA.TabIndex = 4;
-            this.picIFA.TabStop = false;
-            this.picIFA.Tag = resources.GetString("picIFA.Tag");
-            this.picIFA.Click += new System.EventHandler(this.pictureBox_Click);
-            this.picIFA.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
-            // 
-            // picASup
-            // 
-            this.picASup.AccessibleName = "Air Supremacy";
-            this.picASup.Location = new System.Drawing.Point(300, 53);
-            this.picASup.Name = "picASup";
-            this.picASup.Size = new System.Drawing.Size(50, 50);
-            this.picASup.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picASup.TabIndex = 3;
-            this.picASup.TabStop = false;
-            this.picASup.Tag = "Decreases aircraft servicing time.#Does not affect the cool down time of catapult" +
-    " aircraft consumables.";
-            this.picASup.Click += new System.EventHandler(this.pictureBox_Click);
-            this.picASup.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
-            // 
-            // picEL
-            // 
-            this.picEL.AccessibleName = "Expert Loader";
-            this.picEL.Location = new System.Drawing.Point(229, 53);
-            this.picEL.Name = "picEL";
-            this.picEL.Size = new System.Drawing.Size(50, 50);
-            this.picEL.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picEL.TabIndex = 2;
-            this.picEL.TabStop = false;
-            this.picEL.Tag = "Accelerates shell type switching if all main battery guns are loaded.#All guns mu" +
-    "st be fully loaded for this to have effect.";
-            this.picEL.Click += new System.EventHandler(this.pictureBox_Click);
-            this.picEL.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
-            // 
-            // picPM
-            // 
-            this.picPM.AccessibleName = "Preventive Maintenance";
-            this.picPM.Location = new System.Drawing.Point(108, 53);
-            this.picPM.Name = "picPM";
-            this.picPM.Size = new System.Drawing.Size(50, 50);
-            this.picPM.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picPM.TabIndex = 1;
-            this.picPM.TabStop = false;
-            this.picPM.Tag = "Reduces the risk of main turrets, torpedo tubes, steering gears, and engine becom" +
-    "ing incapacitated.#This skill does not apply to secondary or AA batteries.";
-            this.picPM.Click += new System.EventHandler(this.pictureBox_Click);
-            this.picPM.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
             // 
             // RightPanel
             // 
@@ -754,15 +584,6 @@
             this.button2.Text = "Select Ship";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // picShip
-            // 
-            this.picShip.Location = new System.Drawing.Point(862, 52);
-            this.picShip.Name = "picShip";
-            this.picShip.Size = new System.Drawing.Size(125, 69);
-            this.picShip.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picShip.TabIndex = 7;
-            this.picShip.TabStop = false;
             // 
             // toolStrip1
             // 
@@ -1291,6 +1112,15 @@
             this.label15.TabIndex = 25;
             this.label15.Text = "Captain Skills";
             // 
+            // picShip
+            // 
+            this.picShip.Location = new System.Drawing.Point(862, 52);
+            this.picShip.Name = "picShip";
+            this.picShip.Size = new System.Drawing.Size(125, 69);
+            this.picShip.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picShip.TabIndex = 7;
+            this.picShip.TabStop = false;
+            // 
             // BuildManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1325,41 +1155,32 @@
             this.Text = "Build Manager";
             this.panelCaptainSkills.ResumeLayout(false);
             this.panelCaptainSkills.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picPT)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picCE)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picAFT)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picMassiveAAFire)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picRPF)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picSStab)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picIFHE)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picFP)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picManSec)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picVigilance)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picBFT)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picSI)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picDE)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picAirArmor)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picTAE)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picSE)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picBoS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picLS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picSSE)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picIE)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picAR)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picTA)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picEM)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picJoA)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picHA)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picLG)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picDCF)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picIEB)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picIFA)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picASup)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picEL)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picPM)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic46)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic45)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic44)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic43)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic42)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic41)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic36)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic35)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic34)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic33)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic32)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic31)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic26)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic25)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic24)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic23)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic22)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic21)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic16)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic15)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic14)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic13)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic11)).EndInit();
             this.RightPanel.ResumeLayout(false);
             this.RightPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picShip)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
@@ -1380,6 +1201,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.picJC)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picIY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picHY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picShip)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1388,42 +1210,7 @@
         #endregion
 
         private System.Windows.Forms.Panel panelCaptainSkills;
-        private System.Windows.Forms.PictureBox picCE;
-        private System.Windows.Forms.PictureBox picAFT;
-        private System.Windows.Forms.PictureBox picMassiveAAFire;
-        private System.Windows.Forms.PictureBox picRPF;
-        private System.Windows.Forms.PictureBox picSStab;
-        private System.Windows.Forms.PictureBox picIFHE;
-        private System.Windows.Forms.PictureBox picFP;
-        private System.Windows.Forms.PictureBox picManSec;
-        private System.Windows.Forms.PictureBox picVigilance;
-        private System.Windows.Forms.PictureBox picBFT;
-        private System.Windows.Forms.PictureBox picSI;
-        private System.Windows.Forms.PictureBox picDE;
-        private System.Windows.Forms.PictureBox picAirArmor;
-        private System.Windows.Forms.PictureBox picTAE;
-        private System.Windows.Forms.PictureBox picSE;
-        private System.Windows.Forms.PictureBox picBoS;
-        private System.Windows.Forms.PictureBox picLS;
-        private System.Windows.Forms.PictureBox picSSE;
-        private System.Windows.Forms.PictureBox picIE;
-        private System.Windows.Forms.PictureBox picAR;
-        private System.Windows.Forms.PictureBox picTA;
-        private System.Windows.Forms.PictureBox picEM;
-        private System.Windows.Forms.PictureBox picJoA;
-        private System.Windows.Forms.PictureBox picHA;
-        private System.Windows.Forms.PictureBox picLG;
-        private System.Windows.Forms.PictureBox picDCF;
-        private System.Windows.Forms.PictureBox picIEB;
-        private System.Windows.Forms.PictureBox picIFA;
-        private System.Windows.Forms.PictureBox picASup;
-        private System.Windows.Forms.PictureBox picEL;
-        private System.Windows.Forms.PictureBox picPM;
-        private System.Windows.Forms.PictureBox picPT;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pic11;
         private System.Windows.Forms.Panel RightPanel;
         private System.Windows.Forms.Label Headline;
         private System.Windows.Forms.TableLayoutPanel ShipMetricsTable;
@@ -1475,5 +1262,28 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.PictureBox pic46;
+        private System.Windows.Forms.PictureBox pic45;
+        private System.Windows.Forms.PictureBox pic44;
+        private System.Windows.Forms.PictureBox pic43;
+        private System.Windows.Forms.PictureBox pic42;
+        private System.Windows.Forms.PictureBox pic41;
+        private System.Windows.Forms.PictureBox pic36;
+        private System.Windows.Forms.PictureBox pic35;
+        private System.Windows.Forms.PictureBox pic34;
+        private System.Windows.Forms.PictureBox pic33;
+        private System.Windows.Forms.PictureBox pic32;
+        private System.Windows.Forms.PictureBox pic31;
+        private System.Windows.Forms.PictureBox pic26;
+        private System.Windows.Forms.PictureBox pic25;
+        private System.Windows.Forms.PictureBox pic24;
+        private System.Windows.Forms.PictureBox pic23;
+        private System.Windows.Forms.PictureBox pic22;
+        private System.Windows.Forms.PictureBox pic21;
+        private System.Windows.Forms.PictureBox pic16;
+        private System.Windows.Forms.PictureBox pic15;
+        private System.Windows.Forms.PictureBox pic14;
+        private System.Windows.Forms.PictureBox pic13;
+        private System.Windows.Forms.PictureBox pic12;
     }
 }

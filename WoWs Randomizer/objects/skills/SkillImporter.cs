@@ -9,10 +9,10 @@ namespace WoWs_Randomizer.utils.skills
     {
         [JsonProperty("status")]
         public string Status { get; set; }
-        [JsonProperty("meta")]
-        public MetaData MetaInfo { get; set; }
+        [JsonProperty("version")]
+        public string Version { get; set; }
 
-        [JsonProperty("data")]
-        public Dictionary<string, Skill> Data { get; set; }
+        [JsonProperty("skills")]
+        public Dictionary<string, List<Skill>> Data { get; set; }
     }
 }

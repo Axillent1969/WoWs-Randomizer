@@ -58,37 +58,6 @@ namespace WoWs_Randomizer.utils
                 {
                     Ships.AddRange(subsetShips);
                 }
-                //if ( !groupSelection.Equals(""))
-                //{
-                //    string[] groupSplit = groupSelection.Split('/');
-                //    string shipclass = groupSplit[0];
-                //    List<string> tiers = ConvertToList(groupSplit[1]);
-                //    List<string> nations = ConvertToList(groupSplit[2]);
-                //    string flag = groupSplit[3];
-
-                //    foreach (string tier in tiers)
-                //    {
-                //        int currentTier = int.Parse(tier);
-                //        foreach (string nation in nations)
-                //        {
-                //            List<Ship> subsetShips = Program.AllShips.FindAll(e => e.Tier == currentTier && e.Country.Equals(nation) && e.ShipType.Equals(shipclass));
-
-                //            if (flag.Equals("t") || flag.Equals("p"))
-                //            {
-                //                foreach (Ship entry in subsetShips)
-                //                {
-                //                    if ((flag.Equals("t") && entry.Premium == false) || (flag.Equals("p") && entry.Premium == true)) { Ships.Add(entry); }
-                //                }
-                //            } else
-                //            {
-                //                if (subsetShips.Count > 0)
-                //                {
-                //                    Ships.AddRange(subsetShips);
-                //                }
-                //            }
-                //        }
-                //    }
-                //}
             }
             if ( Exceptions.Count > 0 )
             {

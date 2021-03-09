@@ -113,17 +113,25 @@ namespace WoWs_Randomizer.api
 
         public static SkillImporter GetCommanderSkills()
         {
-            try { Setup(); } catch (Exception) { }
-            string path = $"encyclopedia/crewskills/?application_id={APP_ID}";
-            string responseString = "";
-            var response = Client.GetAsync(path).Result;
-            if (response.IsSuccessStatusCode)
+            using (WebClient wc = new WebClient())
             {
-                var responseContent = response.Content;
-                responseString = responseContent.ReadAsStringAsync().Result;
+                string jsonFile = Commons.GetCurrentDirectory() + "/skills.json";
+                wc.DownloadFile("https://onedrive.live.com/download?cid=919CD8D21AC2180D&resid=919CD8D21AC2180D%2117153&authkey=AHbaH3E2Ks9MGjM", jsonFile);
+                string jsonText = File.ReadAllText(jsonFile);
+                SkillImporter Import = JsonConvert.DeserializeObject<SkillImporter>(jsonText);
+                return Import;
             }
-            SkillImporter Importer = JsonConvert.DeserializeObject<SkillImporter>(responseString);
-            return Importer;
+            /*            try { Setup(); } catch (Exception) { }
+                        string path = $"encyclopedia/crewskills/?application_id={APP_ID}";
+                        string responseString = "";
+                        var response = Client.GetAsync(path).Result;
+                        if (response.IsSuccessStatusCode)
+                        {
+                            var responseContent = response.Content;
+                            responseString = responseContent.ReadAsStringAsync().Result;
+                        }
+                        SkillImporter Importer = JsonConvert.DeserializeObject<SkillImporter>(responseString);
+                        return Importer;*/
         }
 
         public static ShipImporter GetShipData()

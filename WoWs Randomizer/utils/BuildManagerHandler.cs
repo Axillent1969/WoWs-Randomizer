@@ -430,6 +430,8 @@ namespace WoWs_Randomizer.utils
                 metricsLookup.Add(MetricsTableComposer.SHIP_SPEED, Metrics.Speed);
                 metricsLookup.Add(MetricsTableComposer.RUDDER_SHIFT, Metrics.RudderTime);
                 metricsLookup.Add(MetricsTableComposer.AP_DAMAGE, Metrics.APDamage);
+                metricsLookup.Add(MetricsTableComposer.HE_DAMAGE, Metrics.HEDamage);
+                metricsLookup.Add(MetricsTableComposer.TORPEDO_DAMAGE, Metrics.TorpedoDamage);
 
                 mvalue = metricsLookup[accessibleName];
             }
@@ -459,7 +461,8 @@ namespace WoWs_Randomizer.utils
             higherBetter.Add(MetricsTableComposer.FIGHTER_SQUADRONS);
             higherBetter.Add(MetricsTableComposer.SHIP_SPEED);
             higherBetter.Add(MetricsTableComposer.AP_DAMAGE);
-            
+            higherBetter.Add(MetricsTableComposer.HE_DAMAGE);
+            higherBetter.Add(MetricsTableComposer.TORPEDO_DAMAGE);
 
             if (value == mvalue || Math.Round(value, 1) == Math.Round(mvalue, 1))
             {
@@ -659,6 +662,17 @@ namespace WoWs_Randomizer.utils
             AnimateLabel(ap, GetFinalColor(MetricsTableComposer.AP_DAMAGE, damage));
         }
 
+        private void ChangeHEDamage(double percent)
+        {
+            Label ap = GetValueLabel(MetricsTableComposer.HE_DAMAGE);
+            if (ap == null) { return; }
+            double damage = ExtractValue(ap);
+            double damageChange = Math.Round(Metrics.HEDamage * percent, 0);
+            damage += damageChange;
+            ap.Text = damage.ToString();
+            AnimateLabel(ap, GetFinalColor(MetricsTableComposer.HE_DAMAGE, damage));
+        }
+
         private void ChangeTorpedoReload(double percent)
         {
             Label torp = GetValueLabel(MetricsTableComposer.TORPEDO_RELOAD);
@@ -706,8 +720,23 @@ namespace WoWs_Randomizer.utils
 
             currentRange += rangeChange;
 
-            torpRangeLbl.Text = currentRange.ToString() + " km";
+            torpRangeLbl.Text = currentRange.ToString();
             AnimateLabel(torpRangeLbl, GetFinalColor(MetricsTableComposer.TORPEDO_RANGE, currentRange));
+        }
+
+        private void ChangeTorpedoDamage(double percent)
+        {
+            Label torpRangeLbl = GetValueLabel(MetricsTableComposer.TORPEDO_DAMAGE);
+
+            if (torpRangeLbl == null) { return; }
+            double rangeChange = Math.Round(Metrics.TorpedoDamage * percent, 1);
+
+            double currentRange = double.Parse(torpRangeLbl.Text.ToString().Split(' ')[0]);
+
+            currentRange += rangeChange;
+
+            torpRangeLbl.Text = currentRange.ToString() + " km";
+            AnimateLabel(torpRangeLbl, GetFinalColor(MetricsTableComposer.TORPEDO_DAMAGE, currentRange));
         }
 
         private void ChangeTurretTraverseFixedValue(double fixedValue)
@@ -859,6 +888,25 @@ namespace WoWs_Randomizer.utils
             } else if ( perkName.Equals("se"))
             {
                 ChangeShipHP(Metrics.Tier * value);
+            } else if ( perkName.Equals("HEDamage"))
+            {
+                ChangeHEDamage(value);
+            } else if ( perkName.Equals("HighCaliberDetectebility"))
+            {
+                if ( Metrics.MainCaliber >= 149 )
+                {
+                    ChangeConcealmentSurface(value);
+                    ChangeConcealmentAir(value);
+                }
+            } else if ( perkName.Equals("TorpedoDamage"))
+            {
+                ChangeTorpedoDamage(value);
+            } else if ( perkName.Equals("HeavyAPDamage"))
+            {
+                if ( Metrics.MainCaliber >= 190 )
+                {
+                    ChangeAPDamage(value);
+                }
             }
         }
     }

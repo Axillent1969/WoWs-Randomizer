@@ -17,12 +17,14 @@ namespace WoWs_Randomizer.forms
         List<Skill> AllSkills = new List<Skill>();
         Ship selectedShip = null;
         private BuildManagerHandler bmHandler = null;
+        Dictionary<string, Image> skillsPictures = new Dictionary<string, Image>();
 
         public BuildManager()
         {
             InitializeComponent();
-            LoadCommanderSkills();
+            //LoadCommanderSkills();
             LoadFlags();
+            LoadSkillPictures();
         }
 
         private void LoadFlags()
@@ -71,25 +73,30 @@ namespace WoWs_Randomizer.forms
                 }
             }
         }
-        private void LoadBBSkills()
+
+        private void LoadSkills(string commanderSkillset)
         {
-            Dictionary<string, Image> skillsPictures = new Dictionary<string, Image>();
-            skillsPictures.Add("bb11", Properties.BBSkills.gun_feeder);
-            skillsPictures.Add("bb12", Properties.BBSkills.pyrotechnician);
-            skillsPictures.Add("bb13", Properties.BBSkills.consumables_specialist);
-            skillsPictures.Add("bb21", Properties.BBSkills.grease_the_gears);
-            skillsPictures.Add("bb22", Properties.BBSkills.inertia_fuse_for_he_shells);
-            skillsPictures.Add("bb23", Properties.BBSkills.consumables_enhancements);
-            
-            List<Skill> skills = Program.CommanderSkills["bb"];
+            List<Skill> skills = Program.CommanderSkills[commanderSkillset];
             skills.Sort();
-            foreach(Skill s in skills)
+            RenderPictureBoxes(skills, commanderSkillset);
+        }
+
+        private void RenderPictureBoxes(List<Skill> skills, string commanderSkillset)
+        {
+            foreach (Skill s in skills)
             {
                 PictureBox pb = (PictureBox)panelCaptainSkills.Controls["pic" + s.SortBy.ToString()];
-                if ( s.ImageUrl == null || s.ImageUrl.Equals(""))
+                if (s.ImageUrl == null || s.ImageUrl.Equals(""))
                 {
-                    pb.Image = skillsPictures["bb" + s.SortBy.ToString()];
-                } else
+                    if ( skillsPictures.ContainsKey(commanderSkillset + s.SortBy.ToString()))
+                    {
+                        pb.Image = skillsPictures[commanderSkillset + s.SortBy.ToString()];
+                    } else
+                    {
+                        pb.Image = null;
+                    }
+                }
+                else
                 {
                     pb.Load(s.ImageUrl);
                 }
@@ -101,14 +108,15 @@ namespace WoWs_Randomizer.forms
                     AutoPopDelay = 9000,
                     ToolTipTitle = s.Name
                 };
-                string tagText = s.Description + "\n" + s.Notes;
+                string tagText = s.Description + "\n" + s.Effect + "\n" + s.Notes;
                 ttip.SetToolTip(pb, tagText);
             }
         }
+
         private void LoadCommanderSkills()
         {
 
-            LoadBBSkills();
+            //LoadBBSkills();
 
 /*            AllSkills = Program.CommanderSkills;
             foreach (Skill skill in AllSkills)
@@ -149,6 +157,59 @@ namespace WoWs_Randomizer.forms
             }*/
         }
 
+        private void LoadSkillPictures()
+        {
+            skillsPictures.Add("bb11", Properties.BBSkills.gun_feeder);
+            skillsPictures.Add("bb12", Properties.BBSkills.pyrotechnician);
+            skillsPictures.Add("bb13", Properties.BBSkills.consumables_specialist);
+            skillsPictures.Add("bb21", Properties.BBSkills.grease_the_gears);
+            skillsPictures.Add("bb22", Properties.BBSkills.inertia_fuse_for_he_shells);
+            skillsPictures.Add("bb23", Properties.BBSkills.consumables_enhancements);
+            skillsPictures.Add("bb31", Properties.BBSkills.super_heavy_ap_shells);
+            skillsPictures.Add("bb32", Properties.BBSkills.long_range_secondary_battery_shells);
+            skillsPictures.Add("bb33", Properties.BBSkills.adrenaline_rush);
+            skillsPictures.Add("bb41", Properties.BBSkills.dead_eye);
+            skillsPictures.Add("bb42", Properties.BBSkills.improved_scondary_battery_aiming);
+            skillsPictures.Add("bb43", Properties.BBSkills.close_quarters_combat);
+            skillsPictures.Add("bb14", Properties.BBSkills.emergency_repair_specialist);
+            skillsPictures.Add("bb15", Properties.BBSkills.incoming_fire_alert);
+            skillsPictures.Add("bb16", Properties.BBSkills.preventive_maintnance);
+            skillsPictures.Add("bb24", Properties.BBSkills.vigilance);
+            skillsPictures.Add("bb25", Properties.BBSkills.priority_target);
+            skillsPictures.Add("bb26", Properties.BBSkills.aa_gunner);
+            skillsPictures.Add("bb34", Properties.BBSkills.basics_of_survivability);
+            skillsPictures.Add("bb35", Properties.BBSkills.enhanced_anti_torpedo_protection);
+            skillsPictures.Add("bb36", Properties.BBSkills.expert_aa_marksman);
+            skillsPictures.Add("bb44", Properties.BBSkills.emergency_repair_expert);
+            skillsPictures.Add("bb45", Properties.BBSkills.concealment_expert);
+            skillsPictures.Add("bb46", Properties.BBSkills.fire_prevention_expert);
+
+            skillsPictures.Add("dd11", Properties.DDSkills.grease_the_gears);
+            skillsPictures.Add("dd12", Properties.DDSkills.liquidator);
+            skillsPictures.Add("dd13", Properties.DDSkills.consumables_specialist);
+            skillsPictures.Add("dd14", Properties.DDSkills.gun_feeder);
+            skillsPictures.Add("dd21", Properties.DDSkills.pyrotechnician);
+            skillsPictures.Add("dd22", Properties.DDSkills.swift_fish);
+            skillsPictures.Add("dd23", Properties.DDSkills.consumables_enhancements);
+            skillsPictures.Add("dd24", Properties.DDSkills.extra_heavy_ap_shells);
+            skillsPictures.Add("dd31", Properties.DDSkills.main_battery_and_aa_specialist);
+            skillsPictures.Add("dd32", Properties.DDSkills.fill_th_tubes);
+            skillsPictures.Add("dd33", Properties.DDSkills.adrenaline_rush);
+            skillsPictures.Add("dd34", Properties.DDSkills.inertia_fuse_for_he_shells);
+            skillsPictures.Add("dd41", Properties.DDSkills.main_battery_and_aa_expert);
+            skillsPictures.Add("dd42", Properties.DDSkills.swift_in_silence);
+            skillsPictures.Add("dd43", Properties.DDSkills.radio_location);
+            skillsPictures.Add("dd44", Properties.DDSkills.fearless_brawler);
+            skillsPictures.Add("dd15", Properties.DDSkills.incoming_fire_alert);
+            skillsPictures.Add("dd16", Properties.DDSkills.preventive_maintenance);
+            skillsPictures.Add("dd25", Properties.DDSkills.priority_target);
+            skillsPictures.Add("dd26", Properties.DDSkills.last_stand);
+            skillsPictures.Add("dd35", Properties.DDSkills.superintendent);
+            skillsPictures.Add("dd36", Properties.DDSkills.survivability_expert);
+            skillsPictures.Add("dd45", Properties.DDSkills.concealment_expert);
+            skillsPictures.Add("dd46", Properties.DDSkills.dazzle);
+
+        }
         private void pictureBox_Paint(object sender, PaintEventArgs e)
         {
             PictureBox box = (PictureBox)sender;
@@ -195,6 +256,7 @@ namespace WoWs_Randomizer.forms
                     box.BorderStyle = BorderStyle.None;
                     box.AccessibleDescription = "";
                     box.Refresh();
+                    box.Image = null;
                 }
             }
             totalSkillPoints.Text = "0";
@@ -227,6 +289,8 @@ namespace WoWs_Randomizer.forms
         public void SelectShip(Ship RandomizedShip)
         {
             ClearSelections();
+            selectedShip = RandomizedShip;
+
             TableLayoutPanel tl = this.Controls.Find("ShipMetricsTable", true).FirstOrDefault() as TableLayoutPanel;
             MetricsExctractor Extractor = new MetricsExctractor(RandomizedShip);
             Metrics = Extractor.GetMetrics();
@@ -264,12 +328,36 @@ namespace WoWs_Randomizer.forms
                 upgradeSlot6.Visible = true;
             }
 
-            selectedShip = RandomizedShip;
+            string type = RandomizedShip.ShipType.ToLower();
+            LoadSkills(AbbreviateShipType(type));
+            
             bmHandler = new BuildManagerHandler(ShipMetricsTable, Metrics);
+        }
+
+        private string AbbreviateShipType(string longShipType)
+        {
+            if (longShipType.Equals("battleship"))
+            {
+                return "bb";
+            }
+            else if (longShipType.Equals("cruiser"))
+            {
+                return "ca";
+            }
+            else if (longShipType.Equals("destroyer"))
+            {
+                return "dd";
+            }
+            else if (longShipType.Equals("aircarrier"))
+            {
+                return "cv";
+            }
+            return "";
         }
 
         private void pictureBox_Click(object sender, EventArgs e)
         {
+            bool isCommanderSkill = false;
             PictureBox box = (PictureBox)sender;
             if ( box.AccessibleDescription == null || box.AccessibleDescription.Equals(""))
             {
@@ -289,11 +377,24 @@ namespace WoWs_Randomizer.forms
                         }
                     } else
                     {
+                        isCommanderSkill = true;
                         AddSkillPoints(box.AccessibleName); 
                     }
                     box.AccessibleDescription = "X";
-                    bmHandler.ApplyValue(box.AccessibleName);
-                    
+                    if ( isCommanderSkill )
+                    {
+                        Skill currentSkill = FindSkillByAccessibleName(box.AccessibleName);
+                        if ( currentSkill != null )
+                        {
+                            foreach(Perk perk in currentSkill.Perks)
+                            {
+                                bmHandler.ApplyValue(perk.ID, perk.Value);
+                            }
+                        }
+                    } else
+                    {
+                        bmHandler.ApplyValue(box.AccessibleName);
+                    }
                 } 
                 catch(Exception ex) 
                 { 
@@ -313,17 +414,40 @@ namespace WoWs_Randomizer.forms
                     }
                 } else
                 {
+                    isCommanderSkill = true;
                     RemoveSkillPoints(box.AccessibleName);
                 }
                 box.AccessibleDescription = "";
-                bmHandler.RemoveValue(box.AccessibleName);
+                if ( isCommanderSkill )
+                {
+                    Skill currentSkill = FindSkillByAccessibleName(box.AccessibleName);
+                    if (currentSkill != null)
+                    {
+                        foreach (Perk perk in currentSkill.Perks)
+                        {
+                            bmHandler.RemoveValue(perk.ID, perk.Value);
+                        }
+                    }
+                } else
+                {
+                    bmHandler.RemoveValue(box.AccessibleName);
+                }
             }
             box.Refresh();
         }
 
+        private Skill FindSkillByAccessibleName(string accessibleName)
+        {
+            string type = selectedShip.ShipType.ToLower();
+            string commanderSkillset = AbbreviateShipType(type);
+            List<Skill> skills = Program.CommanderSkills[commanderSkillset];
+            Skill currentSkill = skills.Find(s => s.Name.Equals(accessibleName));
+            return currentSkill;
+        }
+
         private void RemoveSkillPoints(string skillname)
         {
-            Skill skill = AllSkills.Find(x => x.Name == skillname);
+            Skill skill = FindSkillByAccessibleName(skillname);
             if (skill != null)
             {
                 int tier = skill.Tier;
@@ -336,7 +460,7 @@ namespace WoWs_Randomizer.forms
 
         private void AddSkillPoints(string skillname)
         {
-            Skill skill = AllSkills.Find(x => x.Name == skillname);
+            Skill skill = FindSkillByAccessibleName(skillname);
             if ( skill != null )
             {
                 int tier = skill.Tier;

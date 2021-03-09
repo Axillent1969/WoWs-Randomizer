@@ -6,10 +6,10 @@ namespace WoWs_Randomizer.utils.skills
     [Serializable]
     class Perk
     {
-        [JsonProperty("perk_id")]
-        public int ID { get; set; }
-        [JsonProperty("description")]
-        public string Description { get; set; }
+        [JsonProperty("perkid")]
+        public string ID { get; set; }
+        [JsonProperty("value")]
+        public double Value { get; set; }
 
     }
 }

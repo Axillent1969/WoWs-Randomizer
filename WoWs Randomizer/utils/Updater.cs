@@ -233,7 +233,7 @@ namespace WoWs_Randomizer.utils
                 Program.CommanderSkills = new Dictionary<string, List<Skill>>();
                 Program.CommanderSkills = Importer.Data;
                 BinarySerialize.WriteToBinaryFile(Commons.GetCommanderSkillFileName(), Program.CommanderSkills);
-                Thread.Sleep(500);
+                Thread.Sleep(250);
             }
 
 /*            SkillImporter Importer = WGAPI.GetCommanderSkills();

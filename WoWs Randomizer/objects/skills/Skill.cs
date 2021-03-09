@@ -10,7 +10,7 @@ namespace WoWs_Randomizer.utils.skills
         [JsonProperty("name")]
         public string Name { get; set; }
 
-        [JsonProperty("tier")]
+        [JsonProperty("points")]
         public int Tier { get; set; }
         [JsonProperty("icon")]
         public string ImageUrl { get; set; }
@@ -20,6 +20,9 @@ namespace WoWs_Randomizer.utils.skills
         public string Effect { get; set; }
         [JsonProperty("notes")]
         public string Notes { get; set; }
+        [JsonProperty("perks")]
+        public List<Perk> Perks { get; set; }
+
         [JsonProperty("sort")]
         public int SortBy { get; set; }
 

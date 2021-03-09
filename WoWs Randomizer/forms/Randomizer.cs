@@ -113,7 +113,6 @@ namespace WoWs_Randomizer
             Settings mySettings = Commons.GetSettings();
             Updater.AddConsumablesInfo(mySettings,ForceSave);
             Commons.SaveSettings(mySettings);
-
         }
 
         private void UpdateCounterLabels()

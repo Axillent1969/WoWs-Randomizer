@@ -231,6 +231,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BBSkills.resx</DependentUpon>
     </Compile>
+    <Compile Include="Properties\DDSkills.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DDSkills.resx</DependentUpon>
+    </Compile>
     <Compile Include="utils\ConsumableControlsHandler.cs" />
     <Compile Include="utils\enums\ConsumableTypes.cs" />
     <Compile Include="objects\modules\ModuleArtillery.cs" />
@@ -355,6 +360,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>BBSkills.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\DDSkills.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DDSkills.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -382,6 +391,30 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Anchor.ico" />
+    <None Include="Resources\swift_in_silence.png" />
+    <None Include="Resources\swift_fish.png" />
+    <None Include="Resources\survivability_expert.png" />
+    <None Include="Resources\superintendent.png" />
+    <None Include="Resources\radio_location.png" />
+    <None Include="Resources\pyrotechnician.png" />
+    <None Include="Resources\priority_target.png" />
+    <None Include="Resources\preventive_maintenance.png" />
+    <None Include="Resources\main_battery_and_aa_specialist.png" />
+    <None Include="Resources\main_battery_and_aa_expert.png" />
+    <None Include="Resources\last_stand.png" />
+    <None Include="Resources\inertia_fuse_for_he_shells.png" />
+    <None Include="Resources\incoming_fire_alert.png" />
+    <None Include="Resources\gun_feeder.png" />
+    <None Include="Resources\fill_th_tubes.png" />
+    <None Include="Resources\fearless_brawler.png" />
+    <None Include="Resources\extra-heavy_ap_shells.png" />
+    <None Include="Resources\dazzle.png" />
+    <None Include="Resources\consumables_enhancements.png" />
+    <None Include="Resources\concealment_expert.png" />
+    <None Include="Resources\adrenaline_rush.png" />
+    <None Include="Resources\liquidator.png" />
+    <None Include="Resources\grease_the_gears.png" />
+    <None Include="Resources\consumabls_specialist.png" />
     <None Include="Resources\Icon_perk_detection_visibility_range_dark.png" />
     <None Include="Resources\Icon_perk_trigger_gm_atba_reload_bb_dark.png" />
     <None Include="Resources\Icon_perk_trigger_gm_accuracy_dark.png" />

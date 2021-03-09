@@ -41,9 +41,41 @@ namespace WoWs_Randomizer.utils
             }
         }
 
+        public void ApplyValue(string perkId, double perkValue)
+        {
+            if ( perkId.Equals("GSMaxDist"))
+            {
+                selectedSkillsUpgrades.Add(perkId, perkValue);
+            }
+            else if (perkId.Equals("SGRudderTime"))
+            {
+                selectedRudderSkills.Add(perkId, perkValue);
+            }
+            ExecutePerk(perkId, perkValue);
+        }
+
+        public void RemoveValue(string perkId, double perkValue)
+        {
+            if (perkId.Equals("GSMaxDist"))
+            {
+                selectedSkillsUpgrades.Remove(perkId);
+            }
+            else if (perkId.Equals("SGRudderTime"))
+            {
+                selectedRudderSkills.Remove(perkId);
+            }
+            if ( perkValue < 0 )
+            {
+                ExecutePerk(perkId, Math.Abs(perkValue));
+            } else
+            {
+                double v = perkValue - (perkValue * 2);
+                ExecutePerk(perkId, v);
+            }
+        }
+
         public void ApplyValue(string accessibleName)
         {
-            
             // Captain Skills
             if (accessibleName.Equals("Concealment Expert") || accessibleName.Equals("4265791408"))
             {
@@ -185,7 +217,6 @@ namespace WoWs_Randomizer.utils
                     Consumable Upgrade = Program.Upgrades.Find(x => x.ID == upgradeId);
                     if (Upgrade != null)
                     {
-                        //Console.WriteLine(Upgrade.ID);
                         foreach (KeyValuePair<string, ConsumableProfile> Perk in Upgrade.Profile)
                         {
                             double value = GetPerkValueToAdd(Perk.Key, Perk.Value.Value);
@@ -302,12 +333,7 @@ namespace WoWs_Randomizer.utils
             else if (accessibleName.Equals("4289556400") || accessibleName.Equals("4275924912"))
             {
                 //Flags
-                Label range = GetValueLabel(MetricsTableComposer.SHIP_SPEED);
-                double distance = double.Parse(range.Text.ToString().Split(' ')[0]);
-                double totalIncrease = Math.Round(Metrics.Speed * 0.05, 1);
-                distance -= totalIncrease;
-                range.Text = distance.ToString() + " knots";
-                AnimateLabel(range, GetFinalColor(MetricsTableComposer.SHIP_SPEED, distance));
+                ChangeShipSpeed(0.05);
             }
             else if (accessibleName.Equals("4276973488"))
             {
@@ -403,6 +429,7 @@ namespace WoWs_Randomizer.utils
                 metricsLookup.Add(MetricsTableComposer.FIGHTER_SQUADRONS, Metrics.FighterSquadrons);
                 metricsLookup.Add(MetricsTableComposer.SHIP_SPEED, Metrics.Speed);
                 metricsLookup.Add(MetricsTableComposer.RUDDER_SHIFT, Metrics.RudderTime);
+                metricsLookup.Add(MetricsTableComposer.AP_DAMAGE, Metrics.APDamage);
 
                 mvalue = metricsLookup[accessibleName];
             }
@@ -431,6 +458,7 @@ namespace WoWs_Randomizer.utils
             higherBetter.Add(MetricsTableComposer.TRAVERSE_SPEED);
             higherBetter.Add(MetricsTableComposer.FIGHTER_SQUADRONS);
             higherBetter.Add(MetricsTableComposer.SHIP_SPEED);
+            higherBetter.Add(MetricsTableComposer.AP_DAMAGE);
             
 
             if (value == mvalue || Math.Round(value, 1) == Math.Round(mvalue, 1))
@@ -465,26 +493,18 @@ namespace WoWs_Randomizer.utils
             label.Refresh();
         }
 
+        private void ChangeShipSpeed(double percent)
+        {
+            Label range = GetValueLabel(MetricsTableComposer.SHIP_SPEED);
+            double distance = double.Parse(range.Text.ToString().Split(' ')[0]);
+            double totalIncrease = Math.Round(Metrics.Speed * percent, 1);
+            distance += totalIncrease;
+            range.Text = distance.ToString() + " knots";
+            AnimateLabel(range, GetFinalColor(MetricsTableComposer.SHIP_SPEED, distance));
+        }
+
         private void ChangeConcealment(double percent)
         {
-            /*
-            Label surfaceDetection = GetValueLabel(MetricsTableComposer.SURFACE_DETECTION);
-            Label airDetection = GetValueLabel(MetricsTableComposer.AIR_DETECTION);
-
-            double surfaceDetValue = ExtractValue(surfaceDetection);
-            double airDetValue = ExtractValue(airDetection);
-
-            double baseValueSurface = Math.Round(Metrics.SurfaceDetection * percent, 1);
-            double baseValueAir = Math.Round(Metrics.AirDetection * percent, 1);
-
-            surfaceDetValue = surfaceDetValue - baseValueSurface;
-            airDetValue = airDetValue - baseValueAir;
-
-            surfaceDetection.Text = surfaceDetValue.ToString();
-            AnimateLabel(surfaceDetection, GetFinalColor(MetricsTableComposer.SURFACE_DETECTION, surfaceDetValue));
-            airDetection.Text = airDetValue.ToString();
-            AnimateLabel(airDetection, GetFinalColor(MetricsTableComposer.AIR_DETECTION, airDetValue));
-            */
             ChangeConcealmentAir(percent);
             ChangeConcealmentSurface(percent);
         }
@@ -508,7 +528,6 @@ namespace WoWs_Randomizer.utils
             Label surfaceDetection = GetValueLabel(MetricsTableComposer.SURFACE_DETECTION);
 
             double surfaceDetValue = ExtractValue(surfaceDetection);
-
             double baseValueSurface = Math.Round(Metrics.SurfaceDetection * percent, 1);
 
             surfaceDetValue = surfaceDetValue - baseValueSurface;
@@ -629,6 +648,17 @@ namespace WoWs_Randomizer.utils
             }
         }
 
+        private void ChangeAPDamage(double percent)
+        {
+            Label ap = GetValueLabel(MetricsTableComposer.AP_DAMAGE);
+            if (ap == null) { return; }
+            double damage = ExtractValue(ap);
+            double damageChange = Math.Round(Metrics.APDamage * percent, 0);
+            damage += damageChange;
+            ap.Text = damage.ToString();
+            AnimateLabel(ap, GetFinalColor(MetricsTableComposer.AP_DAMAGE, damage));
+        }
+
         private void ChangeTorpedoReload(double percent)
         {
             Label torp = GetValueLabel(MetricsTableComposer.TORPEDO_RELOAD);
@@ -649,15 +679,17 @@ namespace WoWs_Randomizer.utils
             AnimateLabel(hp, GetFinalColor(MetricsTableComposer.SHIP_HP, hpValue));
         }
 
-        private void ChangeTorpedoSpeed(double fixedValue)
+        private void ChangeTorpedoSpeed(double percent)
         {
             Label torpSpeedLbl = GetValueLabel(MetricsTableComposer.TORPEDO_SPEED);
 
             if (torpSpeedLbl == null) { return; }
 
+            double speedChange = Math.Round(Metrics.TorpedoSpeed * percent, 0);
+
             double currentSpeed = double.Parse(torpSpeedLbl.Text.ToString().Split(' ')[0]);
 
-            currentSpeed += fixedValue;
+            currentSpeed += speedChange;
 
             torpSpeedLbl.Text = currentSpeed.ToString() + " knots";
             AnimateLabel(torpSpeedLbl, GetFinalColor(MetricsTableComposer.TORPEDO_SPEED, currentSpeed));
@@ -690,7 +722,7 @@ namespace WoWs_Randomizer.utils
             double currentTime = double.Parse(travTimeLbl.Text.ToString().Split(' ')[0]);
 
             currentSpeed += fixedValue;
-            currentTime = Math.Round(180 / currentSpeed, 1);
+            currentTime = Math.Round(180 / currentSpeed, 2);
 
             travSpeedLbl.Text = currentSpeed.ToString() + " deg/sec";
             AnimateLabel(travSpeedLbl, GetFinalColor(MetricsTableComposer.TRAVERSE_SPEED, currentSpeed));
@@ -709,7 +741,7 @@ namespace WoWs_Randomizer.utils
             double currentTime = double.Parse(travTimeLbl.Text.ToString().Split(' ')[0]);
 
             currentSpeed += Math.Round(Metrics.RotationSpeed() * percent, 1);
-            currentTime = Math.Round(180 / currentSpeed, 1);
+            currentTime = Math.Round(180 / currentSpeed, 2);
 
             travSpeedLbl.Text = currentSpeed.ToString() + " deg/sec";
             AnimateLabel(travSpeedLbl, GetFinalColor(MetricsTableComposer.TRAVERSE_SPEED, currentSpeed));
@@ -775,41 +807,58 @@ namespace WoWs_Randomizer.utils
 
         private void ExecutePerk(string perkName, double value)
         {
-            if ( perkName.Equals("GMRotationSpeed"))
+            if (perkName.Equals("GMRotationSpeed"))
             {
                 ChangeTurretTraverse(value);
-            } else if ( perkName.Equals("GSShotDelay"))
+            } else if (perkName.Equals("GSShotDelay"))
             {
                 ChangeReloadSecondaries(value);
-            } else if ( perkName.Equals("GMShotDelay"))
+            } else if (perkName.Equals("GMShotDelay"))
             {
                 ChangeReloadMain(value);
-            } else if ( perkName.Equals("GMMaxDist"))
+            } else if (perkName.Equals("GMMaxDist"))
             {
                 ChangeMainGunRange(value);
-            } else if ( perkName.Equals("visibilityDistCoeff"))
+            } else if (perkName.Equals("visibilityDistCoeff"))
             {
                 ChangeConcealment(value);
-            } else if ( perkName.Equals("GTShotDelay"))
+            } else if (perkName.Equals("GTShotDelay"))
             {
                 ChangeTorpedoReload(value);
-            } else if ( perkName.Equals("torpedoSpeedMultiplier"))
+            } else if (perkName.Equals("torpedoSpeedMultiplier"))
             {
                 ChangeTorpedoSpeed(value);
-            } else if ( perkName.Equals("GSMaxDist"))
+            } else if (perkName.Equals("GSMaxDist"))
             {
                 ChangeSecondaryRanges(value);
-            } else if ( perkName.Equals("SGRudderTime"))
+            } else if (perkName.Equals("SGRudderTime"))
             {
                 ChangeRudderShiftTime(value);
-            } else if ( perkName.Equals("visibilityFactorByPlane")) 
+            } else if (perkName.Equals("visibilityFactorByPlane"))
             {
                 ChangeConcealmentAir(value);
-            } else if ( perkName.Equals("visibilityFactor"))
+            } else if (perkName.Equals("visibilityFactor"))
             {
                 ChangeConcealmentSurface(value);
-            } else
+            } else if ( perkName.Equals("FCMain"))
             {
+                ChangeFirechanceMainFixedValue(value);
+            } else if ( perkName.Equals("FCSecondary"))
+            {
+                ChangeFirechanceSecondariesFixedValue(value);
+            } else if ( perkName.Equals("ifhe"))
+            {
+                ChangeFirechanceMain(value);
+                ChangeFirechanceSecondaries(value);
+            } else if ( perkName.Equals("APDamage"))
+            {
+                ChangeAPDamage(value);
+            } else if ( perkName.Equals("ShipSpeed"))
+            {
+                ChangeShipSpeed(value);
+            } else if ( perkName.Equals("se"))
+            {
+                ChangeShipHP(Metrics.Tier * value);
             }
         }
     }

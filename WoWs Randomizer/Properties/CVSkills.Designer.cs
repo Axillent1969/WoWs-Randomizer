@@ -22,14 +22,14 @@ namespace WoWs_Randomizer.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class DDSkills {
+    internal class CVSkills {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal DDSkills() {
+        internal CVSkills() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace WoWs_Randomizer.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WoWs_Randomizer.Properties.DDSkills", typeof(DDSkills).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WoWs_Randomizer.Properties.CVSkills", typeof(CVSkills).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -63,9 +63,9 @@ namespace WoWs_Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap adrenaline_rush {
+        internal static System.Drawing.Bitmap air_supremacy {
             get {
-                object obj = ResourceManager.GetObject("adrenaline_rush", resourceCulture);
+                object obj = ResourceManager.GetObject("air_supremacy", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace WoWs_Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap concealment_expert {
+        internal static System.Drawing.Bitmap aircraft_armor {
             get {
-                object obj = ResourceManager.GetObject("concealment_expert", resourceCulture);
+                object obj = ResourceManager.GetObject("aircraft_armor", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace WoWs_Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap consumables_enhancements {
+        internal static System.Drawing.Bitmap bomber_flight_control {
             get {
-                object obj = ResourceManager.GetObject("consumables_enhancements", resourceCulture);
+                object obj = ResourceManager.GetObject("bomber_flight_control", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace WoWs_Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap consumables_specialist {
+        internal static System.Drawing.Bitmap close_quarters_expert {
             get {
-                object obj = ResourceManager.GetObject("consumables_specialist", resourceCulture);
+                object obj = ResourceManager.GetObject("close_quarters_expert", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +103,9 @@ namespace WoWs_Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap dazzle {
+        internal static System.Drawing.Bitmap direction_center_for_fighters {
             get {
-                object obj = ResourceManager.GetObject("dazzle", resourceCulture);
+                object obj = ResourceManager.GetObject("direction_center_for_fighters", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +113,9 @@ namespace WoWs_Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap extra_heavy_ap_shells {
+        internal static System.Drawing.Bitmap engine_techie {
             get {
-                object obj = ResourceManager.GetObject("extra_heavy_ap_shells", resourceCulture);
+                object obj = ResourceManager.GetObject("engine_techie", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,9 +123,9 @@ namespace WoWs_Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap fearless_brawler {
+        internal static System.Drawing.Bitmap enhanced_aircraft_armor {
             get {
-                object obj = ResourceManager.GetObject("fearless_brawler", resourceCulture);
+                object obj = ResourceManager.GetObject("enhanced_aircraft_armor", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,9 +133,9 @@ namespace WoWs_Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap fill_the_tubes {
+        internal static System.Drawing.Bitmap enhanced_armor_piercing_ammunition {
             get {
-                object obj = ResourceManager.GetObject("fill_the_tubes", resourceCulture);
+                object obj = ResourceManager.GetObject("enhanced_armor_piercing_ammunition", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,9 +143,9 @@ namespace WoWs_Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap grease_the_gears {
+        internal static System.Drawing.Bitmap enhanced_reactions {
             get {
-                object obj = ResourceManager.GetObject("grease_the_gears", resourceCulture);
+                object obj = ResourceManager.GetObject("enhanced_reactions", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -153,9 +153,9 @@ namespace WoWs_Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap gun_feeder {
+        internal static System.Drawing.Bitmap hidden_menace {
             get {
-                object obj = ResourceManager.GetObject("gun_feeder", resourceCulture);
+                object obj = ResourceManager.GetObject("hidden_menace", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -163,9 +163,9 @@ namespace WoWs_Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap incoming_fire_alert {
+        internal static System.Drawing.Bitmap improved_engine_boost {
             get {
-                object obj = ResourceManager.GetObject("incoming_fire_alert", resourceCulture);
+                object obj = ResourceManager.GetObject("improved_engine_boost", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -173,9 +173,9 @@ namespace WoWs_Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap inertia_fuse_for_he_shells {
+        internal static System.Drawing.Bitmap improved_engines {
             get {
-                object obj = ResourceManager.GetObject("inertia_fuse_for_he_shells", resourceCulture);
+                object obj = ResourceManager.GetObject("improved_engines", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -183,9 +183,9 @@ namespace WoWs_Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap last_stand {
+        internal static System.Drawing.Bitmap interceptor {
             get {
-                object obj = ResourceManager.GetObject("last_stand", resourceCulture);
+                object obj = ResourceManager.GetObject("interceptor", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -193,9 +193,9 @@ namespace WoWs_Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap liquidator {
+        internal static System.Drawing.Bitmap last_grasp {
             get {
-                object obj = ResourceManager.GetObject("liquidator", resourceCulture);
+                object obj = ResourceManager.GetObject("last_grasp", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -203,9 +203,9 @@ namespace WoWs_Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap main_battery_and_aa_expert {
+        internal static System.Drawing.Bitmap patrol_group_leader {
             get {
-                object obj = ResourceManager.GetObject("main_battery_and_aa_expert", resourceCulture);
+                object obj = ResourceManager.GetObject("patrol_group_leader", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -213,9 +213,9 @@ namespace WoWs_Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap main_battery_and_aa_specialist {
+        internal static System.Drawing.Bitmap proximity_fuze {
             get {
-                object obj = ResourceManager.GetObject("main_battery_and_aa_specialist", resourceCulture);
+                object obj = ResourceManager.GetObject("proximity_fuze", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -223,9 +223,9 @@ namespace WoWs_Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap preventive_maintenance {
+        internal static System.Drawing.Bitmap repair_specialist {
             get {
-                object obj = ResourceManager.GetObject("preventive_maintenance", resourceCulture);
+                object obj = ResourceManager.GetObject("repair_specialist", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -233,9 +233,9 @@ namespace WoWs_Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap priority_target {
+        internal static System.Drawing.Bitmap search_and_destroy {
             get {
-                object obj = ResourceManager.GetObject("priority_target", resourceCulture);
+                object obj = ResourceManager.GetObject("search_and_destroy", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -243,9 +243,9 @@ namespace WoWs_Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap pyrotechnician {
+        internal static System.Drawing.Bitmap secondary_armament_expert {
             get {
-                object obj = ResourceManager.GetObject("pyrotechnician", resourceCulture);
+                object obj = ResourceManager.GetObject("secondary_armament_expert", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -253,9 +253,9 @@ namespace WoWs_Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap radio_location {
+        internal static System.Drawing.Bitmap sight_stabilization {
             get {
-                object obj = ResourceManager.GetObject("radio_location", resourceCulture);
+                object obj = ResourceManager.GetObject("sight_stabilization", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -263,9 +263,9 @@ namespace WoWs_Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap superintendent {
+        internal static System.Drawing.Bitmap survivability_expert_cv {
             get {
-                object obj = ResourceManager.GetObject("superintendent", resourceCulture);
+                object obj = ResourceManager.GetObject("survivability_expert_cv", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -273,29 +273,9 @@ namespace WoWs_Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap survivability_expert {
+        internal static System.Drawing.Bitmap torpedo_bomber {
             get {
-                object obj = ResourceManager.GetObject("survivability_expert", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap swift_fish {
-            get {
-                object obj = ResourceManager.GetObject("swift_fish", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap swift_in_silence {
-            get {
-                object obj = ResourceManager.GetObject("swift_in_silence", resourceCulture);
+                object obj = ResourceManager.GetObject("torpedo_bomber", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

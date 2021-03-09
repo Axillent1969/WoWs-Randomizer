@@ -118,76 +118,70 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="adrenaline_rush" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\adrenaline_rush.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="aircraft_armor" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\aircraft_armor.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="concealment_expert" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\concealment_expert.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="air_supremacy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\air_supremacy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="consumables_enhancements" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\consumables_enhancements.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="bomber_flight_control" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bomber_flight_control.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="consumables_specialist" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\consumabls_specialist.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="close_quarters_expert" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\close_quarters_expert.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="dazzle" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\dazzle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="direction_center_for_fighters" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\direction_center_for_fighters.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="extra_heavy_ap_shells" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\extra-heavy_ap_shells.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="engine_techie" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\engine_techie.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="fearless_brawler" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\fearless_brawler.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="enhanced_aircraft_armor" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\enhanced_aircraft_armor.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="fill_the_tubes" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\fill_th_tubes.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="enhanced_armor_piercing_ammunition" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\enhanced_armor-piercing_ammunition.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="grease_the_gears" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\grease_the_gears.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="enhanced_reactions" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\enhanced_reactions.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="gun_feeder" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\gun_feeder.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="hidden_menace" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\hidden_menace.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="incoming_fire_alert" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\incoming_fire_alert.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="improved_engines" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\improved_engines.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="inertia_fuse_for_he_shells" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\inertia_fuse_for_he_shells.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="improved_engine_boost" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\improved_engine_boost.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="last_stand" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\last_stand.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="interceptor" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\interceptor.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="liquidator" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\liquidator.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="last_grasp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\last_grasp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="main_battery_and_aa_expert" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\main_battery_and_aa_expert.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="patrol_group_leader" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\patrol_group_leader.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="main_battery_and_aa_specialist" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\main_battery_and_aa_specialist.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="proximity_fuze" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\proximity_fuze.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="preventive_maintenance" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\preventive_maintenance.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="repair_specialist" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\repair_specialist.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="priority_target" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\priority_target.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="search_and_destroy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\search_and_destroy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="pyrotechnician" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pyrotechnician.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="secondary_armament_expert" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\secondary_armament_expert.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="radio_location" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\radio_location.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="sight_stabilization" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sight_stabilization.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="superintendent" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\superintendent.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="survivability_expert_cv" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\survivability_expert_cv.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="survivability_expert" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\survivability_expert.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="swift_fish" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\swift_fish.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="swift_in_silence" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\swift_in_silence.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="torpedo_bomber" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\torpedo_bomber.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

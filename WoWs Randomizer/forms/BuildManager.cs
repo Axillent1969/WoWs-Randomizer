@@ -193,7 +193,7 @@ namespace WoWs_Randomizer.forms
             skillsPictures.Add("dd23", Properties.DDSkills.consumables_enhancements);
             skillsPictures.Add("dd24", Properties.DDSkills.extra_heavy_ap_shells);
             skillsPictures.Add("dd31", Properties.DDSkills.main_battery_and_aa_specialist);
-            skillsPictures.Add("dd32", Properties.DDSkills.fill_th_tubes);
+            skillsPictures.Add("dd32", Properties.DDSkills.fill_the_tubes);
             skillsPictures.Add("dd33", Properties.DDSkills.adrenaline_rush);
             skillsPictures.Add("dd34", Properties.DDSkills.inertia_fuse_for_he_shells);
             skillsPictures.Add("dd41", Properties.DDSkills.main_battery_and_aa_expert);
@@ -208,6 +208,62 @@ namespace WoWs_Randomizer.forms
             skillsPictures.Add("dd36", Properties.DDSkills.survivability_expert);
             skillsPictures.Add("dd45", Properties.DDSkills.concealment_expert);
             skillsPictures.Add("dd46", Properties.DDSkills.dazzle);
+
+            skillsPictures.Add("ca11", Properties.DDSkills.grease_the_gears);
+            skillsPictures.Add("ca12", Properties.DDSkills.swift_fish);
+            skillsPictures.Add("ca13", Properties.DDSkills.consumables_specialist);
+            skillsPictures.Add("ca14", Properties.DDSkills.gun_feeder);
+            skillsPictures.Add("ca15", Properties.DDSkills.incoming_fire_alert);
+            skillsPictures.Add("ca16", Properties.DDSkills.last_stand);
+
+            skillsPictures.Add("ca21", Properties.DDSkills.pyrotechnician);
+            skillsPictures.Add("ca22", Properties.DDSkills.fill_the_tubes);
+            skillsPictures.Add("ca23", Properties.DDSkills.consumables_enhancements);
+            skillsPictures.Add("ca24", Properties.CASkills.eye_in_the_sky);
+            skillsPictures.Add("ca25", Properties.DDSkills.priority_target);
+            skillsPictures.Add("ca26", Properties.BBSkills.expert_aa_marksman);
+
+            skillsPictures.Add("ca31", Properties.CASkills.heavy_he_and_sap_shells);
+            skillsPictures.Add("ca32", Properties.CASkills.enhanced_torpedo_explosive_charge);
+            skillsPictures.Add("ca33", Properties.DDSkills.adrenaline_rush);
+            skillsPictures.Add("ca34", Properties.CASkills.heavy_ap_shells);
+            skillsPictures.Add("ca35", Properties.DDSkills.superintendent);
+            skillsPictures.Add("ca36", Properties.DDSkills.survivability_expert);
+
+            skillsPictures.Add("ca41", Properties.CASkills.top_grade_gunner);
+            skillsPictures.Add("ca42", Properties.CASkills.outnumbered);
+            skillsPictures.Add("ca43", Properties.DDSkills.radio_location);
+            skillsPictures.Add("ca44", Properties.DDSkills.inertia_fuse_for_he_shells);
+            skillsPictures.Add("ca45", Properties.DDSkills.concealment_expert);
+            skillsPictures.Add("ca46", Properties.CASkills.aa_gunner);
+
+            skillsPictures.Add("cv11", Properties.CVSkills.last_grasp);
+            skillsPictures.Add("cv12", Properties.CVSkills.improved_engine_boost);
+            skillsPictures.Add("cv13", Properties.CVSkills.engine_techie);
+            skillsPictures.Add("cv14", Properties.CVSkills.air_supremacy);
+            skillsPictures.Add("cv15", Properties.CVSkills.direction_center_for_fighters);
+            skillsPictures.Add("cv16", Properties.CVSkills.search_and_destroy);
+
+            skillsPictures.Add("cv21", Properties.CVSkills.torpedo_bomber);
+            skillsPictures.Add("cv22", Properties.DDSkills.swift_fish);
+            skillsPictures.Add("cv23", Properties.CVSkills.improved_engines);
+            skillsPictures.Add("cv24", Properties.CVSkills.repair_specialist);
+            skillsPictures.Add("cv25", Properties.CVSkills.secondary_armament_expert);
+            skillsPictures.Add("cv26", Properties.CVSkills.patrol_group_leader);
+
+            skillsPictures.Add("cv31", Properties.CVSkills.sight_stabilization);
+            skillsPictures.Add("cv32", Properties.CVSkills.enhanced_armor_piercing_ammunition);
+            skillsPictures.Add("cv33", Properties.DDSkills.pyrotechnician);
+            skillsPictures.Add("cv34", Properties.CVSkills.aircraft_armor);
+            skillsPictures.Add("cv35", Properties.CVSkills.survivability_expert_cv);
+            skillsPictures.Add("cv36", Properties.CVSkills.interceptor);
+
+            skillsPictures.Add("cv41", Properties.CVSkills.bomber_flight_control);
+            skillsPictures.Add("cv42", Properties.CVSkills.proximity_fuze);
+            skillsPictures.Add("cv43", Properties.CVSkills.close_quarters_expert);
+            skillsPictures.Add("cv44", Properties.CVSkills.enhanced_aircraft_armor);
+            skillsPictures.Add("cv45", Properties.CVSkills.hidden_menace);
+            skillsPictures.Add("cv46", Properties.CVSkills.enhanced_reactions);
 
         }
         private void pictureBox_Paint(object sender, PaintEventArgs e)

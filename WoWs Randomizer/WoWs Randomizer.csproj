@@ -231,6 +231,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BBSkills.resx</DependentUpon>
     </Compile>
+    <Compile Include="Properties\CASkills.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CASkills.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\CVSkills.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CVSkills.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\DDSkills.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -360,6 +370,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>BBSkills.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\CASkills.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CASkills.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\CVSkills.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CVSkills.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\DDSkills.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>DDSkills.Designer.cs</LastGenOutput>
@@ -391,6 +409,35 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Anchor.ico" />
+    <None Include="Resources\survivability_expert_cv.png" />
+    <None Include="Resources\torpedo_bomber.png" />
+    <None Include="Resources\sight_stabilization.png" />
+    <None Include="Resources\secondary_armament_expert.png" />
+    <None Include="Resources\search_and_destroy.png" />
+    <None Include="Resources\repair_specialist.png" />
+    <None Include="Resources\proximity_fuze.png" />
+    <None Include="Resources\patrol_group_leader.png" />
+    <None Include="Resources\last_grasp.png" />
+    <None Include="Resources\interceptor.png" />
+    <None Include="Resources\improved_engines.png" />
+    <None Include="Resources\improved_engine_boost.png" />
+    <None Include="Resources\hidden_menace.png" />
+    <None Include="Resources\enhanced_reactions.png" />
+    <None Include="Resources\enhanced_armor-piercing_ammunition.png" />
+    <None Include="Resources\enhanced_aircraft_armor.png" />
+    <None Include="Resources\engine_techie.png" />
+    <None Include="Resources\direction_center_for_fighters.png" />
+    <None Include="Resources\close_quarters_expert.png" />
+    <None Include="Resources\bomber_flight_control.png" />
+    <None Include="Resources\aircraft_armor.png" />
+    <None Include="Resources\air_supremacy.png" />
+    <None Include="Resources\aa_gunner.png" />
+    <None Include="Resources\heavy_he_and_sap_shells.png" />
+    <None Include="Resources\heavy_ap_shells.png" />
+    <None Include="Resources\top_grade_gunner.png" />
+    <None Include="Resources\outnumbered.png" />
+    <None Include="Resources\eye_in_the_sky.png" />
+    <None Include="Resources\enhanced_torpedo_explosive_charge.png" />
     <None Include="Resources\swift_in_silence.png" />
     <None Include="Resources\swift_fish.png" />
     <None Include="Resources\survivability_expert.png" />

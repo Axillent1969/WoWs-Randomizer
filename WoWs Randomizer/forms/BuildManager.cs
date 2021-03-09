@@ -76,9 +76,21 @@ namespace WoWs_Randomizer.forms
 
         private void LoadSkills(string commanderSkillset)
         {
+            string log = "";
+            try
+            {
+
+            log += "Loading skills for : " + commanderSkillset;
             List<Skill> skills = Program.CommanderSkills[commanderSkillset];
+            log += "Found " + skills.Count + " skills.";
             skills.Sort();
+            log += "Rendering boxes...";
             RenderPictureBoxes(skills, commanderSkillset);
+            } catch(Exception e)
+            {
+                log += e.Message;
+                MessageBox.Show(log);
+            }
         }
 
         private void RenderPictureBoxes(List<Skill> skills, string commanderSkillset)
@@ -680,7 +692,16 @@ namespace WoWs_Randomizer.forms
                             AddSkillPoints(skill);
                             box.AccessibleDescription = "X";
                             bmHandler.PerformAnimation(false);
-                            bmHandler.ApplyValue(box.AccessibleName);
+
+                            Skill currentSkill = FindSkillByAccessibleName(box.AccessibleName);
+                            if (currentSkill != null)
+                            {
+                                foreach (Perk perk in currentSkill.Perks)
+                                {
+                                    bmHandler.ApplyValue(perk.ID, perk.Value);
+                                }
+                            }
+
                             box.Refresh();
                         }
                     }

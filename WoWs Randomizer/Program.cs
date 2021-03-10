@@ -10,6 +10,7 @@ using WoWs_Randomizer.utils.module;
 using WoWs_Randomizer.utils.skills;
 using WoWs_Randomizer.objects.consumables;
 using WoWs_Randomizer.objects;
+using static WoWs_Randomizer.utils.enums.LogLevels;
 
 namespace WoWs_Randomizer
 {
@@ -21,6 +22,7 @@ namespace WoWs_Randomizer
         public static List<Consumable> Upgrades = null;
         public static List<Consumable> Flags = null;
         public static Settings Settings = null;
+        public static LogHandler LOG = new LogHandler("Wows_Randomizer " + Application.ProductVersion);
 
         /// <summary>
         /// The main entry point for the application.
@@ -28,6 +30,9 @@ namespace WoWs_Randomizer
         [STAThread]
         static void Main()
         {
+            LOG.SetLogLevel(LogLevel.ALL);
+            LOG.DeleteLogFromDisk();
+            LOG.Debug("Application start");
             LoadShips();
             try { Settings = Commons.GetSettings(); } catch (Exception) {  }
             Application.EnableVisualStyles();
@@ -40,13 +45,15 @@ namespace WoWs_Randomizer
             string ShipFile = Commons.GetShipListFileName();
             if ( File.Exists(ShipFile))
             {
+                LOG.Debug("Shipfile exists: " + ShipFile);
                 try
                 {
                     AllShips = BinarySerialize.ReadFromBinaryFile<List<Ship>>(ShipFile);
-                } catch(Exception) { AllShips = new List<Ship>(); }
+                } catch(Exception e) { AllShips = new List<Ship>(); LOG.Error("Exception during load", e); }
 
             } else
             {
+                LOG.Debug("No shipfile exists");
                 AllShips = new List<Ship>();
             }
         }

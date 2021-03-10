@@ -14,6 +14,13 @@ namespace WoWs_Randomizer.utils
             return System.IO.Path.GetDirectoryName(AssemblyLocation);
         }
 
+        public static string GetLogFileName(string suffix = "obj")
+        {
+            string CurrentDirectory = GetCurrentDirectory();
+            string FileName = CurrentDirectory + @"\log." + suffix;
+            return FileName;
+        }
+
         public static string GetFlagsFileName()
         {
             string CurrentDirectory = GetCurrentDirectory();

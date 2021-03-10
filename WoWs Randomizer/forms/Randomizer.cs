@@ -38,9 +38,11 @@ namespace WoWs_Randomizer
         private Updater randomizerUpdater = null;
 
         private bool callUpdateAll = false;
+        private LogHandler LOG = Program.LOG;
 
         public FormRandomizer()
         {
+            LOG.Debug("Open form: Randomizer");
             InitializeComponent();
             lblTotalNumberOfShips.Text = "Number of ships in game: " + Program.AllShips.Count.ToString();
             lblQueue.Text = "";
@@ -53,9 +55,11 @@ namespace WoWs_Randomizer
             this.ChangeLog = randomizerUpdater.GetChangeLog();
             this.RandomizerVersion = randomizerUpdater.GetRandomizerVersion();
 
+            LOG.Info("Randomizer version: " + this.RandomizerVersion);
             //Settings MySettings = Commons.GetSettings();
             if (Program.Settings != null && !Program.Settings.Server.Equals(""))
             {
+                LOG.Debug("Profile selected: " + Program.Settings.Server.ToString());
                 profileHandler.checkItem(Program.Settings.Server.ToString());
             }
             if (randomizerUpdater.IsUpdateRequired() == false && Program.Settings != null && Program.Settings.UserID != 0)
@@ -63,12 +67,14 @@ namespace WoWs_Randomizer
                 LoadAllData();
             } else if (Program.Settings == null )
             {
+                LOG.Debug("Open settings and force Update");
                 OpenSettingsForceUpdate();
                 this.Refresh();
                 callUpdateAll = true;
 
             } else
             {
+                LOG.Debug("Forced update");
                 callUpdateAll = true;
             }
         }
@@ -81,20 +87,23 @@ namespace WoWs_Randomizer
 
         private void LoadAllData()
         {
+            LOG.Info("Loading game data");
             bool allFilesLoaded = true;
-            try { Program.AllModules = BinarySerialize.Read2<Dictionary<string, ModuleData>>(Commons.GetModulesFileName()); } catch (Exception) { allFilesLoaded = false; } 
-            try { Program.AllShips = BinarySerialize.Read2<List<Ship>>(Commons.GetShipListFileName()); } catch (Exception) { allFilesLoaded = false; } 
-            try { Program.Upgrades = BinarySerialize.ReadFromBinaryFile<List<Consumable>>(Commons.GetUpgradesFileName()); } catch(Exception) { allFilesLoaded = false; }
+            try { Program.AllModules = BinarySerialize.Read2<Dictionary<string, ModuleData>>(Commons.GetModulesFileName()); } catch (Exception e) { allFilesLoaded = false; LOG.Error("Unable to load Modules", e); } 
+            try { Program.AllShips = BinarySerialize.Read2<List<Ship>>(Commons.GetShipListFileName()); } catch (Exception e) { allFilesLoaded = false; LOG.Error("Unable to load Ships",e); } 
+            try { Program.Upgrades = BinarySerialize.ReadFromBinaryFile<List<Consumable>>(Commons.GetUpgradesFileName()); } catch(Exception e) { allFilesLoaded = false; LOG.Error("Unable to load Upgrades", e); }
             //try { Program.CommanderSkills = BinarySerialize.ReadFromBinaryFile<List<Skill>>(Commons.GetCommanderSkillFileName()); } catch(Exception) { allFilesLoaded = false; }
-            try { Program.CommanderSkills = BinarySerialize.ReadFromBinaryFile<Dictionary<string, List<Skill>>>(Commons.GetCommanderSkillFileName()); } catch(Exception) { allFilesLoaded = false; }
-            try { Program.Flags = BinarySerialize.ReadFromBinaryFile<List<Consumable>>(Commons.GetFlagsFileName()); } catch (Exception) { allFilesLoaded = false; }
+            try { Program.CommanderSkills = BinarySerialize.ReadFromBinaryFile<Dictionary<string, List<Skill>>>(Commons.GetCommanderSkillFileName()); } catch(Exception e) { allFilesLoaded = false; LOG.Error("Unable to load Skills", e); }
+            try { Program.Flags = BinarySerialize.ReadFromBinaryFile<List<Consumable>>(Commons.GetFlagsFileName()); } catch (Exception e) { allFilesLoaded = false; LOG.Error("Unable to load Consumables", e); }
 
             if ( allFilesLoaded == false )
             {
+                LOG.Info("One or more files missing - force update");
                 StartLoadingAnimation();
                 BGUpdater.RunWorkerAsync();
             } else
             {
+                LOG.Info("All files loaded.");
                 FinalizeLoad();
             }
         }
@@ -109,6 +118,7 @@ namespace WoWs_Randomizer
 
         private void AddConsumablesInfo()
         {
+            LOG.Debug("If Ships has been loaded, we will not have Consumables on them. Then we will force a reload/add of the consumables to corresponding ship.");
             bool ForceSave = (Program.AllShips[0].Consumables == null || Program.AllShips[0].Consumables.Count == 0);
             //Settings mySettings = Commons.GetSettings();
             Updater.AddConsumablesInfo(ForceSave);
@@ -119,10 +129,12 @@ namespace WoWs_Randomizer
         {
             lblShipsInPort.Text = PersonalShips.Count.ToString() + " ships in port.";
             lblExcludedShips.Text = ExcludedShips.Count.ToString() + " excluded from randomization.";
+            LOG.Debug("Counters updated");
         }
 
         private void readPersonalShipsFile()
         {
+            LOG.Debug("Load personal ships");
             string FileName = Commons.GetPersonalShipsFileName();
             this.PersonalShips.Clear();
             List<PlayerShip> Ships = BinarySerialize.ReadFromBinaryFile<List<PlayerShip>>(FileName);
@@ -145,6 +157,7 @@ namespace WoWs_Randomizer
 
         public void LoadExcludedShips()
         {
+            LOG.Debug("Load exclusion list");
             ExcludedShips.Clear();
             if (File.Exists(Commons.GetExclusionListFileName()))
             {
@@ -159,9 +172,9 @@ namespace WoWs_Randomizer
         /// <param name="e"></param>
         private void RandomizeButton_Click(object sender, EventArgs e)
         {
+            LOG.Debug("RandomizeButton_Click: Randomizing...");
             shipDescription.Text = "";
-            Settings settings = Commons.GetSettings();
-            if (settings.SaveLocation.Equals("")) { BtnRecommendedBuild.Enabled = false; } else { BtnRecommendedBuild.Enabled = true; }
+            if (Program.Settings.SaveLocation.Equals("")) { BtnRecommendedBuild.Enabled = false; } else { BtnRecommendedBuild.Enabled = true; }
 
             RandomizedShip = null;
             LoadingImage.Dock = DockStyle.Fill;
@@ -177,8 +190,10 @@ namespace WoWs_Randomizer
 
         private void BackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            LOG.Debug("Randomize complete. Start render...");
             if (ShipLoaded)
             {
+                LOG.Info("Randomized ship: " + ShipName.Text);
                 FlagImage.Visible = true;
                 ShipImage.Visible = true;
                 ShipName.Visible = true;
@@ -192,6 +207,7 @@ namespace WoWs_Randomizer
             }
             else
             {
+                LOG.Info("No ship found");
                 FlagImage.Visible = false;
                 ShipImage.Visible = false;
                 ShipName.Visible = false;
@@ -277,6 +293,7 @@ namespace WoWs_Randomizer
 
         private Dictionary<string,List<string>> GetSelection()
         {
+            LOG.Debug("Getting selection criterias");
             System.Collections.Generic.IEnumerable<CheckBox> CheckBoxes = LeftPanel.Controls.OfType<CheckBox>();
             List<string> selectionCC = new List<string>();
             List<string> selectionShipclass = new List<string>();
@@ -316,13 +333,15 @@ namespace WoWs_Randomizer
         
         private void ShipImage_Click(object sender, EventArgs e)
         {
+            LOG.Debug("ShipImage_Click: " + ShipName.Text.ToString());
+            if ( ShipName.Text.ToString().Equals("")) { LOG.Debug("No ship selected"); return; }
             WGAPI.OpenShipWikipedia(ShipName.Text.ToString());
         }
 
         private void LoadShipMetrics()
         {
             if ( RandomizedShip == null ) { return;  }
-
+            LOG.Debug("Loading ship metrics");
             MetricsExctractor Extractor = new MetricsExctractor(RandomizedShip);
             MetricsDrawer Drawer = new MetricsDrawer(ShipMetricsTable);
             MetricsTableComposer.DrawTable(Extractor, Drawer);
@@ -358,6 +377,7 @@ namespace WoWs_Randomizer
 
         private void BtnBuildMgr_Click(object sender, EventArgs e)
         {
+            LOG.Debug("BtnBuildMgr_Click");
             BuildManager BManager = new BuildManager();
             BManager.SelectShip(RandomizedShip);
             BManager.Show();
@@ -390,11 +410,13 @@ namespace WoWs_Randomizer
 
         private void OpenSettingsForceUpdate()
         {
+            LOG.Debug("OpenSettingsForceUpdate()");
             FormSettings settingsForm = new FormSettings();
             Program.Settings = new Settings();
 
             if (settingsForm.ShowDialog(this) == DialogResult.OK)
             {
+                LOG.Info("Settings closed OK; callUpdateAll = true");
                 callUpdateAll = true;
             }
             settingsForm.Dispose();
@@ -807,6 +829,7 @@ namespace WoWs_Randomizer
         private void FormRandomizer_FormClosing(object sender, FormClosingEventArgs e)
         {
             Commons.SaveSettings(Program.Settings);
+            Program.LOG.Flush(true);
         }
     }
 }

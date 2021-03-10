@@ -31,8 +31,9 @@ namespace WoWs_Randomizer
         static void Main()
         {
             LOG.SetLogLevel(LogLevel.ALL);
+            LOG.Info("Application start");
+            LOG.Debug(LOG.ToString());
             LOG.DeleteLogFromDisk();
-            LOG.Debug("Application start");
             LoadShips();
             try { Settings = Commons.GetSettings(); } catch (Exception) {  }
             Application.EnableVisualStyles();

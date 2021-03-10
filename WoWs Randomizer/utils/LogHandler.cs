@@ -22,7 +22,7 @@ namespace WoWs_Randomizer.utils
 
         public override string ToString()
         {
-            return "LogHandler: " + this.name + " (" + base.ToString() + ")";
+            return "LogHandler: " + this.name + " (" + base.ToString() + ") @ " + this.level.ToString();
         }
 
         public void DeleteLogFromDisk()

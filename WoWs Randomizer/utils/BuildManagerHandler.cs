@@ -15,6 +15,7 @@ namespace WoWs_Randomizer.utils
         private bool KeepTransparancy = false;
         private Dictionary<string,double> selectedSkillsUpgrades = new Dictionary<string, double>(); // Currently only used for secondaries count
         private Dictionary<string, double> selectedRudderSkills = new Dictionary<string, double>();
+        private LogHandler LOG = Program.LOG;
 
         public BuildManagerHandler(TableLayoutPanel ShipMetricsTable, ShipMetrics originalMetrics)
         {
@@ -43,6 +44,7 @@ namespace WoWs_Randomizer.utils
 
         public void ApplyValue(string perkId, double perkValue)
         {
+            LOG.Debug("ApplyValue: " + perkId + "=" + perkValue);
             if ( perkId.Equals("GSMaxDist"))
             {
                 selectedSkillsUpgrades.Add(perkId, perkValue);
@@ -56,6 +58,7 @@ namespace WoWs_Randomizer.utils
 
         public void RemoveValue(string perkId, double perkValue)
         {
+            LOG.Debug("RemoveValue: " + perkId + "=" + perkValue);
             if (perkId.Equals("GSMaxDist"))
             {
                 selectedSkillsUpgrades.Remove(perkId);
@@ -76,6 +79,7 @@ namespace WoWs_Randomizer.utils
 
         public void ApplyValue(string accessibleName)
         {
+            LOG.Debug("ApplyValue: " + accessibleName);
             // Captain Skills
             if (accessibleName.Equals("Concealment Expert") || accessibleName.Equals("4265791408"))
             {
@@ -236,6 +240,7 @@ namespace WoWs_Randomizer.utils
 
         public void RemoveValue(string accessibleName)
         {
+            LOG.Debug("RemoveValue: " + accessibleName);
             if (accessibleName.Equals("Concealment Expert") || accessibleName.Equals("4265791408"))
             {
                 ChangeConcealment(-0.1);

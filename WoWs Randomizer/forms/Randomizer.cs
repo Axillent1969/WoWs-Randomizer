@@ -377,7 +377,7 @@ namespace WoWs_Randomizer
 
         private void BtnBuildMgr_Click(object sender, EventArgs e)
         {
-            LOG.Debug("BtnBuildMgr_Click");
+            LOG.Debug("BtnBuildMgr_Click: " +RandomizedShip.Name);
             BuildManager BManager = new BuildManager();
             BManager.SelectShip(RandomizedShip);
             BManager.Show();
@@ -536,6 +536,7 @@ namespace WoWs_Randomizer
 
         private void loadUserShipsInPort(long UserID, bool hideMessage = false)
         {
+            LOG.Debug("loadUserShipsInPort");
             PlayerShipImport Importer = WGAPI.GetPlayerShips(UserID);
             if (Importer.Status.ToLower().Equals("ok"))
             {
@@ -565,12 +566,14 @@ namespace WoWs_Randomizer
             }
             else
             {
+                LOG.Warning("Unable to import personal ships: " + Importer.Status);
                 MessageBox.Show("Some error occured during gathering of data. Try again later.", "Connection error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 
         private void menuProfile_Click(object sender, EventArgs e)
         {
+            LOG.Debug("menuProfile_Click");
             ToolStripMenuItem item = (ToolStripMenuItem)sender;
             if (item.Checked)
             {
@@ -585,16 +588,19 @@ namespace WoWs_Randomizer
 
                 LoadAllData();
                 Thread.Sleep(500);
+                LOG.Debug("Profile loaded: " + item.Text);
                 MessageBox.Show("Profile has been loaded.", "Profile loaded", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                LOG.Warning("Exception received; handling... ", ex);
                 profileHandler.clearCurrentProfile();
-                Settings settings = new Settings();
-                settings.Server = item.Text;
-                Commons.SaveSettings(settings);
-                settings = null;
+                //Settings settings = new Settings();
+                if ( Program.Settings == null ) { Program.Settings = new Settings(); }
+                Program.Settings.Server = item.Text;
+                //Commons.SaveSettings(settings);
+                //settings = null;
                 Program.AllShips.Clear();
 
                 loadMyShipsToolStripMenuItem.Enabled = false;
@@ -605,10 +611,10 @@ namespace WoWs_Randomizer
                     callUpdateAll = false;
                     BGUpdater.RunWorkerAsync();
                 }
-                Settings MySettings = Commons.GetSettings();
-                if (MySettings != null)
+                //Settings MySettings = Commons.GetSettings();
+                if (Program.Settings != null)
                 {
-                    if (!MySettings.Server.Equals("") && !MySettings.Nickname.Equals(""))
+                    if (!Program.Settings.Server.Equals("") && !Program.Settings.Nickname.Equals(""))
                     {
                         loadMyShipsToolStripMenuItem.Enabled = true;
                     }
@@ -705,10 +711,10 @@ namespace WoWs_Randomizer
         private void SettingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenSettingsForceUpdate();
-            Settings MySettings = Commons.GetSettings();
-            if (MySettings != null)
+            //Settings MySettings = Commons.GetSettings();
+            if (Program.Settings != null)
             {
-                if (!MySettings.Server.Equals("") && !MySettings.Nickname.Equals(""))
+                if (!Program.Settings.Server.Equals("") && !Program.Settings.Nickname.Equals(""))
                 {
                     loadMyShipsToolStripMenuItem.Enabled = true;
                 }
@@ -717,12 +723,12 @@ namespace WoWs_Randomizer
 
         private void LoadMyShipsToolStripMenuItem_ClickAsync(object sender, EventArgs e)
         {
-            Settings MySettings = Commons.GetSettings();
-            if (MySettings == null) { MessageBox.Show("Unable to load ships...Settings not found.", "Load Personal Ships Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
+            //Settings MySettings = Commons.GetSettings();
+            if (Program.Settings == null) { MessageBox.Show("Unable to load ships...Settings not found.", "Load Personal Ships Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
 
-            if (MySettings.UserID != 0)
+            if (Program.Settings.UserID != 0)
             {
-                loadUserShipsInPort(MySettings.UserID);
+                loadUserShipsInPort(Program.Settings.UserID);
             }
             else
             {

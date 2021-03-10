@@ -98,6 +98,16 @@ namespace WoWs_Randomizer.utils.ship
             }
         }
 
+        public override string ToString()
+        {
+            string rv = "";
+            rv += "Ship: " + this.Name + " (" + this.ID + "), ";
+            rv += "Premium: " + this.Premium + ", ";
+            rv += "Tier: " + this.Tier + ", ";
+            rv += "Type: " + this.ShipType;
+            return rv;
+        }
+
         public int CompareTo(Ship obj)
         {
             if ( obj == null ) { return 0; }

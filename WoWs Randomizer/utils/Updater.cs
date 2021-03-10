@@ -25,9 +25,11 @@ namespace WoWs_Randomizer.utils
         private string GameVersion = "";
         private DateTime GameDate = new DateTime();
         private bool UpdateNeeded = false;
+        private LogHandler LOG = Program.LOG;
 
         public Updater()
         {
+            LOG.Debug("Updater started");
             CheckProgramVersion();
             VersionChecker();
         }
@@ -41,10 +43,11 @@ namespace WoWs_Randomizer.utils
 
         private void VersionChecker()
         {
-            //Settings MySettings = Commons.GetSettings();
+            LOG.Debug("VersionChecker()");
             if (Program.Settings == null) { return; }
             if (Program.Settings.GameVersion == null )
             {
+                LOG.Debug("No version stored. Getting new version.");
                 LoadGameVersionAsync();
             }
             if (Program.Settings.Server == null || Program.Settings.Server.Equals(""))
@@ -57,9 +60,11 @@ namespace WoWs_Randomizer.utils
 
             if (LastCheck == null || DateTime.Compare(LastCheck.AddHours(23), Today) <= 0)
             {
+                LOG.Debug("Last check not performed or more than 23 hours ago. Perform new check!");
                 Program.Settings.LastChecked = Today;
                 if (Program.Settings.UserID != 0)
                 {
+                    LOG.Debug("Loading users ships");
                     loadUserShipsInPort(Program.Settings.UserID, true);
                 }
 
@@ -69,15 +74,18 @@ namespace WoWs_Randomizer.utils
                     VersionInfo Info = Import.VersionInfo;
                     GameVersion = Info.GameVersion;
                     GameDate = Commons.ConvertToDate(Info.Updated);
+                    LOG.Info("Gameversion: " + Info.GameVersion);
                     if (Program.Settings.GameVersion != null && Program.Settings.GameVersion.Equals(Info.GameVersion))
                     {
                         if (DateTime.Compare(Program.Settings.GameUpdated, GameDate) != 0)
                         {
+                            LOG.Info("Game data needs to be updated. Not same game date.");
                             UpdateNeeded = true;
                         }
                     }
                     else
                     {
+                        LOG.Info("Game data needs to be updated. Not same game version");
                         UpdateNeeded = true;
                     }
                     //Commons.SaveSettings(MySettings);
@@ -123,6 +131,7 @@ namespace WoWs_Randomizer.utils
 
         private void CheckProgramVersion()
         {
+            LOG.Debug("CheckProgramVersion()-RandomizerVersion: " + Application.ProductVersion);
             ProgramVersion versionInfo = WGAPI.GetProgramVersion();
             ChangeLog = versionInfo.ChangeLog;
             RandomizerVersion = versionInfo.Version;
@@ -131,17 +140,20 @@ namespace WoWs_Randomizer.utils
             updateDate = DateTime.Parse(versionInfo.Updated);
             if (!versionInfo.Version.Equals(Application.ProductVersion))
             {
+                LOG.Debug("New version available.");
                 string cc = Properties.Settings.Default.Locale;
                 string msg = "The new version " + RandomizerVersion + " is available as per " + Commons.ConvertDateToLocalFormat(updateDate,cc) + "\nDo You want to download it now?";
                 var userInput = MessageBox.Show(msg, "New version of the WoWs Randomizer available!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (userInput == DialogResult.Yes)
                 {
+                    LOG.Debug("User requested download of new Randomizer version");
                     string downloadsPath = KnownFolders.GetPath(KnownFolder.Downloads);
                     string fileName = downloadsPath + "\\" + Path.GetFileName(System.Reflection.Assembly.GetEntryAssembly().Location);
                     using (WebClient wc = new WebClient())
                     {
                         wc.DownloadFile(versionInfo.URL, fileName);
                         MessageBox.Show("The new version has been downloaded to Your download folder.\n(" + fileName + ")\nClose this program and replace the EXE-file in this folder with the downloaded one.", "New version downloaded", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LOG.Debug("Download complete.");
                     }
                 }
             }
@@ -149,6 +161,7 @@ namespace WoWs_Randomizer.utils
 
         public void loadUserShipsInPort(long UserID, bool hideMessage = false)
         {
+            LOG.Debug("loadUserShipsInPort()");
             PlayerShipImport Importer = WGAPI.GetPlayerShips(UserID);
             if (Importer.Status.ToLower().Equals("ok"))
             {
@@ -170,15 +183,18 @@ namespace WoWs_Randomizer.utils
                 {
                     MessageBox.Show("Your ships have been imported.", "Load Personal Data", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+                LOG.Debug("User ships downloaded ok");
             }
             else
             {
+                LOG.Warning("Download of users ships failed!");
                 MessageBox.Show("Some error occured during gathering of data. Try again later.", "Connection error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 
         private void UpdateModules()
         {
+            LOG.Debug("UpdateModules()");
             try
             {
                 Program.AllModules = WGAPI.GetAllModules();
@@ -193,6 +209,7 @@ namespace WoWs_Randomizer.utils
 
         private void UpdateShips()
         {
+            LOG.Debug("UpdateShips()");
             List<Ship> AllShips = WGAPI.GetAllShipsFromWG();
             if (AllShips != null)
             {
@@ -212,6 +229,7 @@ namespace WoWs_Randomizer.utils
 
         private void UpdateUpgrades()
         {
+            LOG.Debug("UpdateUpgrades()");
             ConsumablesImporter Importer = WGAPI.GetUpgrades();
             if (Importer.Status.ToLower().Equals("ok"))
             {
@@ -226,7 +244,7 @@ namespace WoWs_Randomizer.utils
 
         private void UpdateCommanderSkills()
         {
-
+            LOG.Debug("UpdateCommanderSkills()");
             SkillImporter Importer = WGAPI.GetCommanderSkills();
             if ( Importer.Status.ToLower().Equals("ok"))
             {
@@ -250,6 +268,7 @@ namespace WoWs_Randomizer.utils
 
         private void UpdateFlags()
         {
+            LOG.Debug("UpdateFlags()");
             ConsumablesImporter Importer = WGAPI.GetFlags();
             if (Importer.Status.ToLower().Equals("ok"))
             {
@@ -305,7 +324,7 @@ namespace WoWs_Randomizer.utils
         public void UpdateAll()
         {
             //Settings MySettings = Commons.GetSettings();
-
+            LOG.Debug("UpdateAll()");
             this.LoadGameVersionAsync();
             this.UpdateModules();
             this.UpdateShips();

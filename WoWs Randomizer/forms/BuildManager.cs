@@ -18,17 +18,19 @@ namespace WoWs_Randomizer.forms
         Ship selectedShip = null;
         private BuildManagerHandler bmHandler = null;
         Dictionary<string, Image> skillsPictures = new Dictionary<string, Image>();
+        private LogHandler LOG = Program.LOG;
 
         public BuildManager()
         {
+            LOG.Debug("BuildManager: START");
             InitializeComponent();
-            //LoadCommanderSkills();
             LoadFlags();
             LoadSkillPictures();
         }
 
         private void LoadFlags()
         {
+            LOG.Debug("LoadFlags()");
             foreach(Consumable flag in Program.Flags)
             {
                 foreach(Control picCtr in panelFlags.Controls)
@@ -76,25 +78,22 @@ namespace WoWs_Randomizer.forms
 
         private void LoadSkills(string commanderSkillset)
         {
-            string log = "";
+            LOG.Debug("LoadSkills(" + commanderSkillset + ")");
             try
             {
-
-            log += "Loading skills for : " + commanderSkillset;
-            List<Skill> skills = Program.CommanderSkills[commanderSkillset];
-            log += "Found " + skills.Count + " skills.";
-            skills.Sort();
-            log += "Rendering boxes...";
-            RenderPictureBoxes(skills, commanderSkillset);
+                List<Skill> skills = Program.CommanderSkills[commanderSkillset];
+                skills.Sort();
+                RenderPictureBoxes(skills, commanderSkillset);
             } catch(Exception e)
             {
-                log += e.Message;
-                MessageBox.Show(log);
+                LOG.Error("Unable to process skills: " + commanderSkillset, e);
+                MessageBox.Show("Unable to process skills. Try to restart the program and try again");
             }
         }
 
         private void RenderPictureBoxes(List<Skill> skills, string commanderSkillset)
         {
+            LOG.Debug("RenderPictureBoxes(" + skills.Count + ", " + commanderSkillset + ")");
             foreach (Skill s in skills)
             {
                 PictureBox pb = (PictureBox)panelCaptainSkills.Controls["pic" + s.SortBy.ToString()];
@@ -171,6 +170,7 @@ namespace WoWs_Randomizer.forms
 
         private void LoadSkillPictures()
         {
+            LOG.Debug("Loading image sets");
             skillsPictures.Add("bb11", Properties.BBSkills.gun_feeder);
             skillsPictures.Add("bb12", Properties.BBSkills.pyrotechnician);
             skillsPictures.Add("bb13", Properties.BBSkills.consumables_specialist);
@@ -298,6 +298,7 @@ namespace WoWs_Randomizer.forms
 
         private void ClearSelections(bool keepSelectedShip = false)
         {
+            LOG.Debug("ClearSelections(" + keepSelectedShip + ")");
             bmHandler = null;
             upgradeSlot1.Controls.Clear();
             upgradeSlot2.Controls.Clear();
@@ -356,6 +357,7 @@ namespace WoWs_Randomizer.forms
 
         public void SelectShip(Ship RandomizedShip)
         {
+            LOG.Debug("SelectShip(" + RandomizedShip.Name + ")");
             ClearSelections();
             selectedShip = RandomizedShip;
 
@@ -549,7 +551,7 @@ namespace WoWs_Randomizer.forms
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            LOG.Debug("SaveBuild()");
             ShipBuild build = new ShipBuild();
             build.ID = selectedShip.ID;
             build.Name = selectedShip.Name;
@@ -632,11 +634,9 @@ namespace WoWs_Randomizer.forms
 
             build.Upgrades = Upgrades;
             build.Modified = DateTime.Now;
+            build.GameVersion = Program.Settings.GameVersion;
 
-            Settings settings = Commons.GetSettings();
-            build.GameVersion = settings.GameVersion;
-
-            string def = settings.SaveLocation;
+            string def = Program.Settings.SaveLocation;
             SaveFileDialog saveDlg = new SaveFileDialog();
             saveDlg.InitialDirectory = def;
             saveDlg.DefaultExt = "bld";
@@ -655,6 +655,7 @@ namespace WoWs_Randomizer.forms
 
         public void LoadBuild(ShipBuild build)
         {
+            LOG.Debug("LoadBuild(" + build.ID + ")");
             Ship findShip = Program.AllShips.Find(x => x.ID == build.ID);
             SelectShip(findShip);
 
@@ -761,24 +762,20 @@ namespace WoWs_Randomizer.forms
 
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Settings settings = Commons.GetSettings();
-
             OpenFileDialog openFile = new OpenFileDialog();
             openFile.Filter = "Randomizer Ship Build (*.bld)|*.bld";
             openFile.DefaultExt = "bld";
-            openFile.InitialDirectory = settings.SaveLocation;
+            openFile.InitialDirectory = Program.Settings.SaveLocation;
 
-            string fileName = "";
             if ( openFile.ShowDialog() == DialogResult.OK)
             {
-                fileName = openFile.FileName;
+                string fileName = openFile.FileName;
+                ShipBuild build = BinarySerialize.ReadFromBinaryFile<ShipBuild>(fileName);
+                LoadBuild(build);
             } else
             {
                 return;
             }
-
-            ShipBuild build = BinarySerialize.ReadFromBinaryFile<ShipBuild>(fileName);
-            LoadBuild(build);
         }
 
         private void toolStripButton4_Click(object sender, EventArgs e)

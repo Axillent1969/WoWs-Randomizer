@@ -26,29 +26,29 @@ namespace WoWs_Randomizer.forms
                 Properties.Settings.Default.Save();
             }
 
-            Settings settings = Commons.GetSettings();
-            if ( settings == null ) { settings = new Settings(); }
+            //Settings settings = Commons.GetSettings();
+            //if ( settings == null ) { settings = new Settings(); }
 
             if ( this.Server.SelectedItem != null )
             {
-                settings.Server = this.Server.SelectedItem.ToString();
+                Program.Settings.Server = this.Server.SelectedItem.ToString();
             } else
             {
-                settings.Server = "";
+                Program.Settings.Server = "";
             }
             bool UpdateUserData = false;
-            if ( !this.Nickname.Text.Equals(settings.Nickname) || Convert.ToInt64(this.UserID.Text) == 0 ) {
+            if ( !this.Nickname.Text.Equals(Program.Settings.Nickname) || Convert.ToInt64(this.UserID.Text) == 0 ) {
                 UpdateUserData = true;
             }
 
-            settings.Nickname = this.Nickname.Text;
-            settings.SaveLocation = this.SaveDir.Text;
-            settings.UserID = Convert.ToInt64(this.UserID.Text);
-            Commons.SaveSettings(settings);
+            Program.Settings.Nickname = this.Nickname.Text;
+            Program.Settings.SaveLocation = this.SaveDir.Text;
+            Program.Settings.UserID = Convert.ToInt64(this.UserID.Text);
+            //Commons.SaveSettings(settings);
             
             if ( UpdateUserData )
             {
-                bool PlayerLookup = UpdateUserPlayerIDAsync(settings);
+                bool PlayerLookup = UpdateUserPlayerIDAsync();
                 if ( PlayerLookup == false )
                 {
                     this.DialogResult = DialogResult.Cancel;
@@ -63,24 +63,25 @@ namespace WoWs_Randomizer.forms
 
             if ( this.DialogResult == DialogResult.OK )
             {
+                Commons.SaveSettings(Program.Settings);
                 this.Close();
             }
         }
 
-        private bool UpdateUserPlayerIDAsync(Settings MySettings)
+        private bool UpdateUserPlayerIDAsync()
         {
-            if (MySettings.UserID == 0 && !MySettings.Nickname.Equals("") && !MySettings.Server.Equals(""))
+            if (Program.Settings.UserID == 0 && !Program.Settings.Nickname.Equals("") && !Program.Settings.Server.Equals(""))
             {
-                PlayerSearch PlayerImporter = WGAPI.SearchPlayer(MySettings.Nickname);
+                PlayerSearch PlayerImporter = WGAPI.SearchPlayer(Program.Settings.Nickname);
                 if (PlayerImporter.Status.ToLower() == "ok")
                 {
-                    MySettings.UserID = PlayerImporter.Player[0].ID;
-                    Commons.SaveSettings(MySettings);
+                    Program.Settings.UserID = PlayerImporter.Player[0].ID;
+                    //Commons.SaveSettings(MySettings);
                     return true;
                 }
                 else
                 {
-                    MessageBox.Show("Unable to find a player with that nickname: " + MySettings.Nickname, "Error on Get User Info");
+                    MessageBox.Show("Unable to find a player with that nickname: " + Program.Settings.Nickname, "Error on Get User Info");
                     return false;
                 }
             } else
@@ -97,17 +98,17 @@ namespace WoWs_Randomizer.forms
                 countryCode.SelectedIndex = countryCode.FindStringExact(cc);
             }
 
-            Settings MySettings = Commons.GetSettings();
-            if ( MySettings != null )
+            //Settings MySettings = Commons.GetSettings();
+            if ( Program.Settings != null )
             {
-                this.SaveDir.Text = MySettings.SaveLocation;
-                this.Nickname.Text = MySettings.Nickname;
-                this.Server.SelectedItem = MySettings.Server;
-                this.UserID.Text = MySettings.UserID.ToString();
+                this.SaveDir.Text = Program.Settings.SaveLocation;
+                this.Nickname.Text = Program.Settings.Nickname;
+                this.Server.SelectedItem = Program.Settings.Server;
+                this.UserID.Text = Program.Settings.UserID.ToString();
                 
-                if ( MySettings.GameUpdated != null )
+                if (Program.Settings.GameUpdated != null )
                 {
-                    this.lblUpdatedTime.Text = Commons.ConvertDateToLocalFormat(MySettings.GameUpdated,cc);
+                    this.lblUpdatedTime.Text = Commons.ConvertDateToLocalFormat(Program.Settings.GameUpdated,cc);
                     this.lblUpdatedTime.Visible = true;
                 } else
                 {
@@ -117,9 +118,9 @@ namespace WoWs_Randomizer.forms
                     this.lblGameVersion.Text = "?";
                     this.lblGameVersion.Visible = false;
                 }
-                if ( MySettings.GameVersion != null )
+                if (Program.Settings.GameVersion != null )
                 {
-                    this.lblGameVersion.Text = MySettings.GameVersion;
+                    this.lblGameVersion.Text = Program.Settings.GameVersion;
                     this.lblGameVersion.Visible = true;
                 } else
                 {

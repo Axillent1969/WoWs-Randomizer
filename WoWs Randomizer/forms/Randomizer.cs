@@ -53,15 +53,15 @@ namespace WoWs_Randomizer
             this.ChangeLog = randomizerUpdater.GetChangeLog();
             this.RandomizerVersion = randomizerUpdater.GetRandomizerVersion();
 
-            Settings MySettings = Commons.GetSettings();
-            if ( MySettings != null && !MySettings.Server.Equals(""))
+            //Settings MySettings = Commons.GetSettings();
+            if (Program.Settings != null && !Program.Settings.Server.Equals(""))
             {
-                profileHandler.checkItem(MySettings.Server.ToString());
+                profileHandler.checkItem(Program.Settings.Server.ToString());
             }
-            if (randomizerUpdater.IsUpdateRequired() == false && MySettings != null && MySettings.UserID != 0)
+            if (randomizerUpdater.IsUpdateRequired() == false && Program.Settings != null && Program.Settings.UserID != 0)
             {
                 LoadAllData();
-            } else if ( MySettings == null )
+            } else if (Program.Settings == null )
             {
                 OpenSettingsForceUpdate();
                 this.Refresh();
@@ -110,9 +110,9 @@ namespace WoWs_Randomizer
         private void AddConsumablesInfo()
         {
             bool ForceSave = (Program.AllShips[0].Consumables == null || Program.AllShips[0].Consumables.Count == 0);
-            Settings mySettings = Commons.GetSettings();
-            Updater.AddConsumablesInfo(mySettings,ForceSave);
-            Commons.SaveSettings(mySettings);
+            //Settings mySettings = Commons.GetSettings();
+            Updater.AddConsumablesInfo(ForceSave);
+            //Commons.SaveSettings(mySettings);
         }
 
         private void UpdateCounterLabels()
@@ -391,6 +391,7 @@ namespace WoWs_Randomizer
         private void OpenSettingsForceUpdate()
         {
             FormSettings settingsForm = new FormSettings();
+            Program.Settings = new Settings();
 
             if (settingsForm.ShowDialog(this) == DialogResult.OK)
             {
@@ -801,6 +802,11 @@ namespace WoWs_Randomizer
         {
             PlayerStats statsForm = new PlayerStats();
             statsForm.Show();
+        }
+
+        private void FormRandomizer_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Commons.SaveSettings(Program.Settings);
         }
     }
 }

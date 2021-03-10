@@ -641,28 +641,28 @@ namespace WoWs_Randomizer
             // buildManagerToolStripMenuItem
             // 
             this.buildManagerToolStripMenuItem.Name = "buildManagerToolStripMenuItem";
-            this.buildManagerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.buildManagerToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.buildManagerToolStripMenuItem.Text = "&Build Manager";
             this.buildManagerToolStripMenuItem.Click += new System.EventHandler(this.buildManagerToolStripMenuItem_Click);
             // 
             // shipComparisonToolStripMenuItem
             // 
             this.shipComparisonToolStripMenuItem.Name = "shipComparisonToolStripMenuItem";
-            this.shipComparisonToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.shipComparisonToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.shipComparisonToolStripMenuItem.Text = "Ship &Comparison";
             this.shipComparisonToolStripMenuItem.Click += new System.EventHandler(this.ShipComparisonToolStripMenuItem_Click);
             // 
             // upgradesExaminerToolStripMenuItem
             // 
             this.upgradesExaminerToolStripMenuItem.Name = "upgradesExaminerToolStripMenuItem";
-            this.upgradesExaminerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.upgradesExaminerToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.upgradesExaminerToolStripMenuItem.Text = "Ship &Wikipedia";
             this.upgradesExaminerToolStripMenuItem.Click += new System.EventHandler(this.upgradesExaminerToolStripMenuItem_Click);
             // 
             // listToolStripMenuItem
             // 
             this.listToolStripMenuItem.Name = "listToolStripMenuItem";
-            this.listToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.listToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.listToolStripMenuItem.Text = "Query Tool";
             this.listToolStripMenuItem.Click += new System.EventHandler(this.listToolStripMenuItem_Click);
             // 
@@ -681,21 +681,21 @@ namespace WoWs_Randomizer
             this.menuProfileEU.Checked = true;
             this.menuProfileEU.CheckState = System.Windows.Forms.CheckState.Checked;
             this.menuProfileEU.Name = "menuProfileEU";
-            this.menuProfileEU.Size = new System.Drawing.Size(180, 22);
+            this.menuProfileEU.Size = new System.Drawing.Size(91, 22);
             this.menuProfileEU.Text = "&EU";
             this.menuProfileEU.Click += new System.EventHandler(this.menuProfile_Click);
             // 
             // menuProfileNA
             // 
             this.menuProfileNA.Name = "menuProfileNA";
-            this.menuProfileNA.Size = new System.Drawing.Size(180, 22);
+            this.menuProfileNA.Size = new System.Drawing.Size(91, 22);
             this.menuProfileNA.Text = "&NA";
             this.menuProfileNA.Click += new System.EventHandler(this.menuProfile_Click);
             // 
             // menuProfileRU
             // 
             this.menuProfileRU.Name = "menuProfileRU";
-            this.menuProfileRU.Size = new System.Drawing.Size(180, 22);
+            this.menuProfileRU.Size = new System.Drawing.Size(91, 22);
             this.menuProfileRU.Text = "&RU";
             this.menuProfileRU.Click += new System.EventHandler(this.menuProfile_Click);
             // 
@@ -956,6 +956,7 @@ namespace WoWs_Randomizer
             this.MainMenuStrip = this.MenuStrip;
             this.Name = "FormRandomizer";
             this.Text = "WoWs Randomizer";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormRandomizer_FormClosing);
             this.Load += new System.EventHandler(this.FormRandomizer_Load);
             this.LeftPanel.ResumeLayout(false);
             this.LeftPanel.PerformLayout();

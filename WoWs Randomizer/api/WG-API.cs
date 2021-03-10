@@ -342,15 +342,14 @@ namespace WoWs_Randomizer.api
         private static void Setup()
         {
             Client = new HttpClient();
-            Settings MySettings = Commons.GetSettings();
-            if (MySettings == null)
+            if (Program.Settings == null)
             {
                 Client.BaseAddress = new Uri("https://api.worldofwarships.eu/wows/");
             }
             else
             {
-                string URL = $"https://api.worldofwarships.{MySettings.Server}/wows/";
-                if (MySettings != null && MySettings.Server != null && MySettings.Server.Equals("NA"))
+                string URL = $"https://api.worldofwarships.{Program.Settings.Server}/wows/";
+                if (Program.Settings != null && Program.Settings.Server != null && Program.Settings.Server.Equals("NA"))
                 {
                     URL = URL.Replace(".NA", ".com");
                 }

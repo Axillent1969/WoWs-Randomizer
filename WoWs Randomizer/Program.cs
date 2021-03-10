@@ -9,6 +9,7 @@ using WoWs_Randomizer.utils.ship;
 using WoWs_Randomizer.utils.module;
 using WoWs_Randomizer.utils.skills;
 using WoWs_Randomizer.objects.consumables;
+using WoWs_Randomizer.objects;
 
 namespace WoWs_Randomizer
 {
@@ -19,6 +20,7 @@ namespace WoWs_Randomizer
         public static Dictionary<string,List<Skill>> CommanderSkills = null;
         public static List<Consumable> Upgrades = null;
         public static List<Consumable> Flags = null;
+        public static Settings Settings = null;
 
         /// <summary>
         /// The main entry point for the application.
@@ -27,6 +29,7 @@ namespace WoWs_Randomizer
         static void Main()
         {
             LoadShips();
+            try { Settings = Commons.GetSettings(); } catch (Exception) {  }
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FormRandomizer());

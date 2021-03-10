@@ -41,26 +41,26 @@ namespace WoWs_Randomizer.utils
 
         private void VersionChecker()
         {
-            Settings MySettings = Commons.GetSettings();
-            if (MySettings == null) { return; }
-            if ( MySettings.GameVersion == null )
+            //Settings MySettings = Commons.GetSettings();
+            if (Program.Settings == null) { return; }
+            if (Program.Settings.GameVersion == null )
             {
                 LoadGameVersionAsync();
             }
-            if ( MySettings.Server == null || MySettings.Server.Equals(""))
+            if (Program.Settings.Server == null || Program.Settings.Server.Equals(""))
             {
                 return;
             }
 
             DateTime Today = DateTime.Now;
-            DateTime LastCheck = MySettings.LastChecked;
+            DateTime LastCheck = Program.Settings.LastChecked;
 
             if (LastCheck == null || DateTime.Compare(LastCheck.AddHours(23), Today) <= 0)
             {
-                MySettings.LastChecked = Today;
-                if (MySettings.UserID != 0)
+                Program.Settings.LastChecked = Today;
+                if (Program.Settings.UserID != 0)
                 {
-                    loadUserShipsInPort(MySettings.UserID, true);
+                    loadUserShipsInPort(Program.Settings.UserID, true);
                 }
 
                 VersionInfoImport Import = WGAPI.GetVersionInfo();
@@ -69,9 +69,9 @@ namespace WoWs_Randomizer.utils
                     VersionInfo Info = Import.VersionInfo;
                     GameVersion = Info.GameVersion;
                     GameDate = Commons.ConvertToDate(Info.Updated);
-                    if (MySettings.GameVersion != null && MySettings.GameVersion.Equals(Info.GameVersion))
+                    if (Program.Settings.GameVersion != null && Program.Settings.GameVersion.Equals(Info.GameVersion))
                     {
-                        if (DateTime.Compare(MySettings.GameUpdated, GameDate) != 0)
+                        if (DateTime.Compare(Program.Settings.GameUpdated, GameDate) != 0)
                         {
                             UpdateNeeded = true;
                         }
@@ -80,28 +80,28 @@ namespace WoWs_Randomizer.utils
                     {
                         UpdateNeeded = true;
                     }
-                    Commons.SaveSettings(MySettings);
+                    //Commons.SaveSettings(MySettings);
                 }
             }
             else
             {
-                MySettings.LastChecked = Today;
-                Commons.SaveSettings(MySettings);
+                Program.Settings.LastChecked = Today;
+                //Commons.SaveSettings(MySettings);
             }
         }
 
-        private void LoadGameVersionAsync(Settings settings = null)
+        private void LoadGameVersionAsync()
         {
-            Settings MySettings = null;
-            bool noSave = false;
-            if ( settings == null )
+            //Settings MySettings = null;
+/*            bool noSave = false;
+            if (Program.Settings == null )
             {
-                MySettings = Commons.GetSettings();
+                //MySettings = Commons.GetSettings();
             } else
             {
-                MySettings = settings;
+               
                 noSave = true;
-            }
+            }*/
             VersionInfoImport Import = WGAPI.GetVersionInfo();
             if (Import.Status.Equals("ok"))
             {
@@ -110,13 +110,13 @@ namespace WoWs_Randomizer.utils
                 string Version = Info.GameVersion;
                 this.GameDate = Commons.ConvertToDate(UpdatedAt);
                 this.GameVersion = Version;
-                if (MySettings != null)
+                if (Program.Settings != null)
                 {
-                    MySettings.GameUpdated = GameDate;
-                    MySettings.GameVersion = Version;
-                    if ( noSave == false) { 
+                    Program.Settings.GameUpdated = GameDate;
+                    Program.Settings.GameVersion = Version;
+/*                    if ( noSave == false) { 
                         Commons.SaveSettings(MySettings);
-                    }
+                    }*/
                 }
             }
         }
@@ -262,19 +262,19 @@ namespace WoWs_Randomizer.utils
             }
         }
 
-        public static void AddConsumablesInfo(Settings mySettings, bool ForceUpdate = false)
+        public static void AddConsumablesInfo(bool ForceUpdate = false)
         {
-            if ( mySettings == null ) { return; }
+            if (Program.Settings == null ) { return; }
             ConsumablesInfoImporter import = WGAPI.GetConsumablesInfo();
             if ( !import.Status.Equals("ok")) { return; }
             
-            if ( ForceUpdate || (mySettings.ConsumablesInfoVersion != null && !mySettings.ConsumablesInfoVersion.Equals(import.Version)))
+            if ( ForceUpdate || (Program.Settings.ConsumablesInfoVersion != null && !Program.Settings.ConsumablesInfoVersion.Equals(import.Version)))
             {
                 foreach(Ship ship in Program.AllShips)
                 {
                     ship.Consumables = new List<ConsumableInfo>();
                 }
-                mySettings.ConsumablesInfoVersion = import.Version;
+                Program.Settings.ConsumablesInfoVersion = import.Version;
 
                 foreach (KeyValuePair<string, List<ConsumablesInfoTypeImporter>> list in import.Consumables)
                 {
@@ -304,31 +304,31 @@ namespace WoWs_Randomizer.utils
 
         public void UpdateAll()
         {
-            Settings MySettings = Commons.GetSettings();
+            //Settings MySettings = Commons.GetSettings();
 
-            this.LoadGameVersionAsync(MySettings);
+            this.LoadGameVersionAsync();
             this.UpdateModules();
             this.UpdateShips();
-            Updater.AddConsumablesInfo(MySettings, true);
+            Updater.AddConsumablesInfo(true);
             this.UpdateUpgrades();
             this.UpdateCommanderSkills();
             this.UpdateFlags();
 
-            this.loadUserShipsInPort(MySettings.UserID, true);
+            this.loadUserShipsInPort(Program.Settings.UserID, true);
 
-            if (MySettings.GameVersion != null && MySettings.GameVersion.Equals(this.GetGameVersion()))
+            if (Program.Settings.GameVersion != null && Program.Settings.GameVersion.Equals(this.GetGameVersion()))
             {
-                MySettings.GameUpdated = this.GetGameDate();
+                Program.Settings.GameUpdated = this.GetGameDate();
                 string cc = Properties.Settings.Default.Locale;
                 MessageBox.Show("Game data has been updated (still same game version): " + Commons.ConvertDateToLocalFormat(this.GetGameDate(),cc),"Game Data Updated",MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
             else
             {
-                MySettings.GameUpdated = this.GetGameDate();
-                MySettings.GameVersion = this.GetGameVersion();
+                Program.Settings.GameUpdated = this.GetGameDate();
+                Program.Settings.GameVersion = this.GetGameVersion();
                 MessageBox.Show("Game version has changed: New version = " + this.GetGameVersion(), "Game Data Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            Commons.SaveSettings(MySettings);
+            //Commons.SaveSettings(MySettings);
         }
     }
 }

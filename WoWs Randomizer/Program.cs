@@ -30,15 +30,37 @@ namespace WoWs_Randomizer
         [STAThread]
         static void Main()
         {
-            LOG.SetLogLevel(LogLevel.ALL);
+            SetLogLevel();
             LOG.Info("Application start");
             LOG.Debug(LOG.ToString());
-            LOG.DeleteLogFromDisk();
             LoadShips();
-            try { Settings = Commons.GetSettings(); } catch (Exception) {  }
+            try { Settings = Commons.GetSettings(); } catch (Exception e) { LOG.Error("Unable to load settings", e); }
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FormRandomizer());
+        }
+
+        static void SetLogLevel()
+        {
+            LOG.SetLogLevel(LogLevel.ERROR); //DEFAULT LOGLEVEL
+
+            string[] args = Environment.GetCommandLineArgs();
+
+            if (args.Length > 0)
+            {
+                foreach (string cla in args)
+                {
+                    if (cla.StartsWith("--loglevel="))
+                    {
+                        string[] argsplit = cla.Split('=');
+                        LogLevel level;
+                        if (Enum.TryParse(argsplit[1], true, out level))
+                        {
+                            LOG.SetLogLevel(level);
+                        }
+                    }
+                }
+            }
         }
 
         static void LoadShips()

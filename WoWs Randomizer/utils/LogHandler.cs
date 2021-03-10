@@ -14,6 +14,7 @@ namespace WoWs_Randomizer.utils
         private LogLevel level = LogLevel.WARNING;
         private List<LogEntry> logEntries = new List<LogEntry>();
         private List<LogEntry> flushedEntries = new List<LogEntry>();
+        private bool autoDeleteOnFirstFlush = true;
 
         public LogHandler(string LogName)
         {
@@ -24,6 +25,12 @@ namespace WoWs_Randomizer.utils
         {
             return "LogHandler: " + this.name + " (" + base.ToString() + ") @ " + this.level.ToString();
         }
+
+        public void SetAutoDeleteOnFirstFlush(bool state)
+        {
+            this.autoDeleteOnFirstFlush = state;
+        }
+        public bool GetAutoDeleteOnFirstFlushState() { return this.autoDeleteOnFirstFlush; }
 
         public void DeleteLogFromDisk()
         {
@@ -40,17 +47,18 @@ namespace WoWs_Randomizer.utils
 
         public void Flush(bool complete = false)
         {
-            string fileName = Commons.GetLogFileName();
-            _ = WriteToDisk();
+            _ = WriteToDisk(!this.autoDeleteOnFirstFlush);
+            this.autoDeleteOnFirstFlush = false;
             flushedEntries.AddRange(logEntries);
             logEntries.Clear();
             if ( complete )
             {
+                string fileName = Commons.GetLogFileName();
                 BinarySerialize.WriteToBinaryFile<List<LogEntry>>(fileName, flushedEntries);
             }
         }
 
-        private async Task WriteToDisk()
+        private async Task WriteToDisk(bool append)
         {
             string fileName = Commons.GetLogFileName("txt");
             string log = "";
@@ -61,7 +69,7 @@ namespace WoWs_Randomizer.utils
                 log += entry.ToString();
                 isFirst = false;
             }
-            using (StreamWriter file = new StreamWriter(fileName, append: true))
+            using (StreamWriter file = new StreamWriter(fileName, append: append))
             {
                 await file.WriteLineAsync(log);
             }

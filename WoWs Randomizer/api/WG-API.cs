@@ -11,7 +11,6 @@ using WoWs_Randomizer.utils.ship;
 using WoWs_Randomizer.utils.skills;
 using WoWs_Randomizer.utils.version;
 using WoWs_Randomizer.objects.consumables;
-using WoWs_Randomizer.objects;
 using WoWs_Randomizer.objects.version;
 using WoWs_Randomizer.objects.player;
 using WoWs_Randomizer.objects.clan;

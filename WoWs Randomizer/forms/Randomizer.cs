@@ -94,7 +94,13 @@ namespace WoWs_Randomizer
             try { Program.Upgrades = BinarySerialize.ReadFromBinaryFile<List<Consumable>>(Commons.GetUpgradesFileName()); } catch(Exception e) { allFilesLoaded = false; LOG.Error("Unable to load Upgrades", e); }
             //try { Program.CommanderSkills = BinarySerialize.ReadFromBinaryFile<List<Skill>>(Commons.GetCommanderSkillFileName()); } catch(Exception) { allFilesLoaded = false; }
             try { Program.CommanderSkills = BinarySerialize.ReadFromBinaryFile<Dictionary<string, List<Skill>>>(Commons.GetCommanderSkillFileName()); } catch(Exception e) { allFilesLoaded = false; LOG.Error("Unable to load Skills", e); }
-            try { Program.Flags = BinarySerialize.ReadFromBinaryFile<List<Consumable>>(Commons.GetFlagsFileName()); } catch (Exception e) { allFilesLoaded = false; LOG.Error("Unable to load Consumables", e); }
+            try { Program.Flags = BinarySerialize.ReadFromBinaryFile<List<Consumable>>(Commons.GetFlagsFileName()); } catch (Exception e) { allFilesLoaded = false; LOG.Error("Unable to load Flags", e); }
+
+            if ( Program.Flags.Count == 0 || Program.CommanderSkills.Count == 0 || Program.Upgrades.Count == 0 || Program.AllShips.Count == 0 || Program.AllModules.Count == 0)
+            {
+                LOG.Warning("Not all files loaded; " + Program.Flags.Count + "," + Program.CommanderSkills.Count + "," + Program.Upgrades.Count + "," + Program.AllShips.Count + "," + Program.AllModules.Count);
+                allFilesLoaded = false;
+            }
 
             if ( allFilesLoaded == false )
             {
@@ -136,22 +142,28 @@ namespace WoWs_Randomizer
         {
             LOG.Debug("Load personal ships");
             string FileName = Commons.GetPersonalShipsFileName();
-            this.PersonalShips.Clear();
-            List<PlayerShip> Ships = BinarySerialize.ReadFromBinaryFile<List<PlayerShip>>(FileName);
-            foreach (PlayerShip PlayerShipData in Ships)
+            if ( File.Exists(FileName))
             {
-                Ship findShip = Program.AllShips.Find(x => x.ID == PlayerShipData.ID);
-                if (findShip != null)
+                this.PersonalShips.Clear();
+                List<PlayerShip> Ships = BinarySerialize.ReadFromBinaryFile<List<PlayerShip>>(FileName);
+                foreach (PlayerShip PlayerShipData in Ships)
                 {
-                    if (!findShip.Name.StartsWith("["))
+                    Ship findShip = Program.AllShips.Find(x => x.ID == PlayerShipData.ID);
+                    if (findShip != null)
+                    {
+                        if (!findShip.Name.StartsWith("["))
+                        {
+                            this.PersonalShips.Add(PlayerShipData.ID);
+                        }
+                    }
+                    else
                     {
                         this.PersonalShips.Add(PlayerShipData.ID);
                     }
                 }
-                else
-                {
-                    this.PersonalShips.Add(PlayerShipData.ID);
-                }
+            } else
+            {
+                LOG.Warning("Personal ships not found");
             }
         }
 
@@ -162,6 +174,9 @@ namespace WoWs_Randomizer
             if (File.Exists(Commons.GetExclusionListFileName()))
             {
                 ExcludedShips = BinarySerialize.ReadFromBinaryFile<HashSet<long>>(Commons.GetExclusionListFileName());
+            } else
+            {
+                LOG.Warning("Exclusion list missing");
             }
         }
 

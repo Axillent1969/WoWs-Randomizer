@@ -24,6 +24,8 @@ namespace WoWs_Randomizer.forms
                 string cc = countryCode.SelectedItem.ToString();
                 Properties.Settings.Default.Locale = cc;
                 Properties.Settings.Default.Save();
+
+                Program.Settings.LanguageCode = cc;
             }
 
             //Settings settings = Commons.GetSettings();

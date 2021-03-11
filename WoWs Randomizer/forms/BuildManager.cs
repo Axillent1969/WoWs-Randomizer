@@ -293,6 +293,7 @@ namespace WoWs_Randomizer.forms
 
         private void button2_Click(object sender, EventArgs e)
         {
+            LOG.Debug("button2_Click");
             DoShipSelect();
         }
 
@@ -427,6 +428,7 @@ namespace WoWs_Randomizer.forms
 
         private void pictureBox_Click(object sender, EventArgs e)
         {
+            LOG.Debug("pictureBox_Click");
             bool isCommanderSkill = false;
             PictureBox box = (PictureBox)sender;
             if ( box.AccessibleDescription == null || box.AccessibleDescription.Equals(""))
@@ -435,6 +437,7 @@ namespace WoWs_Randomizer.forms
                 {
                     if ( box.Parent.Name.Equals("panelFlags"))
                     {
+                        LOG.Debug("panelFlags");
                         int count = int.Parse(combatFlagsCount.Text);
                         if ( box.AccessibleRole == AccessibleRole.Alert)
                         {
@@ -447,6 +450,7 @@ namespace WoWs_Randomizer.forms
                         }
                     } else
                     {
+                        LOG.Debug("CommanderSkill = true");
                         isCommanderSkill = true;
                         AddSkillPoints(box.AccessibleName); 
                     }
@@ -508,15 +512,18 @@ namespace WoWs_Randomizer.forms
 
         private Skill FindSkillByAccessibleName(string accessibleName)
         {
+            LOG.Debug("FindSkillByAccessibleName(" + accessibleName + ")");
             string type = selectedShip.ShipType.ToLower();
             string commanderSkillset = AbbreviateShipType(type);
             List<Skill> skills = Program.CommanderSkills[commanderSkillset];
             Skill currentSkill = skills.Find(s => s.Name.Equals(accessibleName));
+            LOG.Debug("Return: " + currentSkill.Name);
             return currentSkill;
         }
 
         private void RemoveSkillPoints(string skillname)
         {
+            LOG.Debug("RemoveSkillPoints(" + skillname + ")");
             Skill skill = FindSkillByAccessibleName(skillname);
             if (skill != null)
             {
@@ -530,6 +537,7 @@ namespace WoWs_Randomizer.forms
 
         private void AddSkillPoints(string skillname)
         {
+            LOG.Debug("AddSkillPoints(" + skillname + ")");
             Skill skill = FindSkillByAccessibleName(skillname);
             if ( skill != null )
             {
@@ -546,6 +554,7 @@ namespace WoWs_Randomizer.forms
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            LOG.Debug("exitTooStripMenuItem_Click()");
             this.Close();
         }
 
@@ -780,6 +789,7 @@ namespace WoWs_Randomizer.forms
 
         private void toolStripButton4_Click(object sender, EventArgs e)
         {
+            LOG.Debug("toolStripButton4_Click()");
             if ( MessageBox.Show("This will remove the selected ship and all selected skills, upgrades and flags. Unsaved changes will be lost.\nDo You want to continue?","Clear selection",MessageBoxButtons.YesNo,MessageBoxIcon.Question,MessageBoxDefaultButton.Button2)==DialogResult.Yes)
             {
                 ClearSelections();
@@ -788,11 +798,13 @@ namespace WoWs_Randomizer.forms
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
+            LOG.Debug("toolStripButton1_Click()");
             DoShipSelect();
         }
 
         private void DoShipSelect()
         {
+            LOG.Debug("DoShipSelect()");
             using (ShipSelector select = new ShipSelector())
             {
                 select.Text = "Select ship";
@@ -809,7 +821,7 @@ namespace WoWs_Randomizer.forms
         private void upgradeSlot1_Click(object sender, EventArgs e)
         {
             if ( selectedShip == null ) { return;  }
-            
+            LOG.Debug("upgradeSlot1_Click()");
             Panel panel = null;
             if ( sender is PictureBox)
             {
@@ -835,6 +847,7 @@ namespace WoWs_Randomizer.forms
 
         private void Box_Click(object sender, EventArgs e, int selectedSlot = 1)
         {
+            LOG.Debug("Box_Click()");
             PictureBox selectedBox = (PictureBox)sender;
             PictureBox box2 = new PictureBox();
             box2.Name = "Upgrade";
@@ -867,12 +880,14 @@ namespace WoWs_Randomizer.forms
 
         private void applyUpgradeValues(string upgradeId, bool animate = true)
         {
+            LOG.Debug("applyUpgradeValues(" + upgradeId + ", " + animate + ")");
             bmHandler.PerformAnimation(animate);
             bmHandler.ApplyValue(upgradeId);
         }
 
         private void removeUpgradeValues(string upgradeId)
         {
+            LOG.Debug("removeUpgradeValues(" + upgradeId + ")");
             bmHandler.PerformAnimation(false);
             bmHandler.RemoveValue(upgradeId);
             bmHandler.PerformAnimation(true);
@@ -880,6 +895,7 @@ namespace WoWs_Randomizer.forms
 
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
+            LOG.Debug("toolStripButton3_Click()");
             if ( selectedShip != null )
             {
                 ;

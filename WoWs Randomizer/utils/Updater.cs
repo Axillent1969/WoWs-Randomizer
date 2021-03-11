@@ -38,7 +38,6 @@ namespace WoWs_Randomizer.utils
         public string GetRandomizerVersion() { return RandomizerVersion; }
         public string GetGameVersion() { return GameVersion; }
         public DateTime GetGameDate() { return GameDate; }
-
         public bool IsUpdateRequired() { return UpdateNeeded; }
 
         private void VersionChecker()
@@ -88,13 +87,11 @@ namespace WoWs_Randomizer.utils
                         LOG.Info("Game data needs to be updated. Not same game version");
                         UpdateNeeded = true;
                     }
-                    //Commons.SaveSettings(MySettings);
                 }
             }
             else
             {
                 Program.Settings.LastChecked = Today;
-                //Commons.SaveSettings(MySettings);
             }
         }
 
@@ -122,9 +119,6 @@ namespace WoWs_Randomizer.utils
                 {
                     Program.Settings.GameUpdated = GameDate;
                     Program.Settings.GameVersion = Version;
-/*                    if ( noSave == false) { 
-                        Commons.SaveSettings(MySettings);
-                    }*/
                 }
             }
         }
@@ -204,7 +198,7 @@ namespace WoWs_Randomizer.utils
                 }
                 BinarySerialize.WriteToBinaryFile(Commons.GetModulesFileName(), Program.AllModules);
             }
-            catch (Exception) { }
+            catch (Exception e ) { LOG.Error("Error during Module import: ",e); }
         }
 
         private void UpdateShips()
@@ -223,8 +217,6 @@ namespace WoWs_Randomizer.utils
             {
                 ship.ApplyUpgradeCorrections();
             }
-            //Properties.Settings.Default.UpgradeFix = true;
-            //Properties.Settings.Default.Save();
         }
 
         private void UpdateUpgrades()
@@ -239,6 +231,9 @@ namespace WoWs_Randomizer.utils
                     Program.Upgrades.Add(Data.Value);
                 }
                 BinarySerialize.WriteToBinaryFile(Commons.GetUpgradesFileName(), Program.Upgrades);
+            } else
+            {
+                LOG.Warning("Unable to import Upgrades: " + Importer.Status.ToString());
             }
         }
 
@@ -251,7 +246,10 @@ namespace WoWs_Randomizer.utils
                 Program.CommanderSkills = new Dictionary<string, List<Skill>>();
                 Program.CommanderSkills = Importer.Data;
                 BinarySerialize.WriteToBinaryFile(Commons.GetCommanderSkillFileName(), Program.CommanderSkills);
-                Thread.Sleep(250);
+                LOG.Info("Imported commander skills: " + Program.CommanderSkills["dd"].Count + ", " + Program.CommanderSkills["ca"].Count + ", " + Program.CommanderSkills["bb"].Count + ", " + Program.CommanderSkills["cv"].Count);
+            } else
+            {
+                LOG.Warning("Unable to import commander skills: " + Importer.Status.ToString());
             }
 
 /*            SkillImporter Importer = WGAPI.GetCommanderSkills();
@@ -323,7 +321,6 @@ namespace WoWs_Randomizer.utils
 
         public void UpdateAll()
         {
-            //Settings MySettings = Commons.GetSettings();
             LOG.Debug("UpdateAll()");
             this.LoadGameVersionAsync();
             this.UpdateModules();
@@ -339,15 +336,16 @@ namespace WoWs_Randomizer.utils
             {
                 Program.Settings.GameUpdated = this.GetGameDate();
                 string cc = Properties.Settings.Default.Locale;
+                LOG.Debug("Game data updated; Same game version: " + Commons.ConvertDateToLocalFormat(this.GetGameDate(), cc));
                 MessageBox.Show("Game data has been updated (still same game version): " + Commons.ConvertDateToLocalFormat(this.GetGameDate(),cc),"Game Data Updated",MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
             else
             {
                 Program.Settings.GameUpdated = this.GetGameDate();
                 Program.Settings.GameVersion = this.GetGameVersion();
+                LOG.Info("Game data updated to version " + this.GetGameVersion());
                 MessageBox.Show("Game version has changed: New version = " + this.GetGameVersion(), "Game Data Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            //Commons.SaveSettings(MySettings);
         }
     }
 }

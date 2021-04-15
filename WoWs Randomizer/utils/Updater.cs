@@ -237,7 +237,7 @@ namespace WoWs_Randomizer.utils
             }
         }
 
-        private void UpdateCommanderSkills()
+        public void UpdateCommanderSkills()
         {
             LOG.Debug("UpdateCommanderSkills()");
             SkillImporter Importer = WGAPI.GetCommanderSkills();

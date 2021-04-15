@@ -56,7 +56,6 @@ namespace WoWs_Randomizer
             this.RandomizerVersion = randomizerUpdater.GetRandomizerVersion();
 
             LOG.Info("Randomizer version: " + this.RandomizerVersion);
-            //Settings MySettings = Commons.GetSettings();
             if (Program.Settings != null && !Program.Settings.Server.Equals(""))
             {
                 LOG.Debug("Profile selected: " + Program.Settings.Server.ToString());

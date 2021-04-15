@@ -175,7 +175,10 @@ namespace WoWs_Randomizer.utils.ship
                 //upgrades.Add(4293054384); // Main Battery Mod 1
                 if ( this.Country.ToString().ToLower().Equals(Countries.USA.ToString().ToLower()))
                 {
-                    upgrades.Add(4264742832); // Artillery Plotting Room Mod 1
+                    if ( this.ID != 3445536752 ) // Austin can not use APR mod 1
+                    {
+                        upgrades.Add(4264742832); // Artillery Plotting Room Mod 1
+                    }
                 } else
                 {
                     upgrades.Add(4259499952); // Aiming Systems Mod 1
@@ -189,7 +192,13 @@ namespace WoWs_Randomizer.utils.ship
                 {
                     upgrades.Add(4289908656); // AA Guns Mod 1
                 }
-                upgrades.Add(4281520048); // Secondary Battery Mod 1
+                if ( this.ID == 3740153648 || this.ID == 3445536752)
+                {
+                    // Not allowed to use Secondary Battery Mod 1
+                } else
+                {
+                    upgrades.Add(4281520048); // Secondary Battery Mod 1
+                }
             }
 
             if ( this.Tier >= 6)

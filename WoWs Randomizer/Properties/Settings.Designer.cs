@@ -34,5 +34,17 @@ namespace WoWs_Randomizer.Properties {
                 this["Locale"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.2")]
+        public string CommanderSkillsVersion {
+            get {
+                return ((string)(this["CommanderSkillsVersion"]));
+            }
+            set {
+                this["CommanderSkillsVersion"] = value;
+            }
+        }
     }
 }

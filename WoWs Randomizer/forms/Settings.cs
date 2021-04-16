@@ -28,9 +28,6 @@ namespace WoWs_Randomizer.forms
                 Program.Settings.LanguageCode = cc;
             }
 
-            //Settings settings = Commons.GetSettings();
-            //if ( settings == null ) { settings = new Settings(); }
-
             if ( this.Server.SelectedItem != null )
             {
                 Program.Settings.Server = this.Server.SelectedItem.ToString();
@@ -46,7 +43,6 @@ namespace WoWs_Randomizer.forms
             Program.Settings.Nickname = this.Nickname.Text;
             Program.Settings.SaveLocation = this.SaveDir.Text;
             Program.Settings.UserID = Convert.ToInt64(this.UserID.Text);
-            //Commons.SaveSettings(settings);
             
             if ( UpdateUserData )
             {
@@ -78,7 +74,6 @@ namespace WoWs_Randomizer.forms
                 if (PlayerImporter.Status.ToLower() == "ok")
                 {
                     Program.Settings.UserID = PlayerImporter.Player[0].ID;
-                    //Commons.SaveSettings(MySettings);
                     return true;
                 }
                 else
@@ -100,7 +95,6 @@ namespace WoWs_Randomizer.forms
                 countryCode.SelectedIndex = countryCode.FindStringExact(cc);
             }
 
-            //Settings MySettings = Commons.GetSettings();
             if ( Program.Settings != null )
             {
                 this.SaveDir.Text = Program.Settings.SaveLocation;

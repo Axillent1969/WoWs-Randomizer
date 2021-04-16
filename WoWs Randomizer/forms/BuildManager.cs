@@ -477,7 +477,8 @@ namespace WoWs_Randomizer.forms
                     }
                 } 
                 catch(Exception ex) 
-                { 
+                {
+                    LOG.Error(ex.Message);
                     MessageBox.Show(ex.Message, "Error allocating skillpoints/flags", MessageBoxButtons.OK, MessageBoxIcon.Error);  
                     box.AccessibleDescription = ""; 
                 }
@@ -518,6 +519,7 @@ namespace WoWs_Randomizer.forms
 
         private Skill FindSkillByAccessibleName(string accessibleName)
         {
+            if ( accessibleName.Equals("")) { return null; }
             LOG.Debug("FindSkillByAccessibleName(" + accessibleName + ")");
             string type = selectedShip.ShipType.ToLower();
             string commanderSkillset = AbbreviateShipType(type);

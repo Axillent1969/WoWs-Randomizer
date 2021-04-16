@@ -237,16 +237,26 @@ namespace WoWs_Randomizer.utils
             }
         }
 
-        public void UpdateCommanderSkills()
+        public void UpdateCommanderSkills(bool ForceUpdate = false)
         {
             LOG.Debug("UpdateCommanderSkills()");
             SkillImporter Importer = WGAPI.GetCommanderSkills();
             if ( Importer.Status.ToLower().Equals("ok"))
             {
-                Program.CommanderSkills = new Dictionary<string, List<Skill>>();
-                Program.CommanderSkills = Importer.Data;
-                BinarySerialize.WriteToBinaryFile(Commons.GetCommanderSkillFileName(), Program.CommanderSkills);
-                LOG.Info("Imported commander skills: " + Program.CommanderSkills["dd"].Count + ", " + Program.CommanderSkills["ca"].Count + ", " + Program.CommanderSkills["bb"].Count + ", " + Program.CommanderSkills["cv"].Count);
+                string csv = Properties.Settings.Default.CommanderSkillsVersion;
+
+                if (ForceUpdate || (!csv.Equals("") && !csv.Equals(Importer.Version)))
+                {
+                    Program.CommanderSkills = new Dictionary<string, List<Skill>>();
+                    Program.CommanderSkills = Importer.Data;
+                    BinarySerialize.WriteToBinaryFile(Commons.GetCommanderSkillFileName(), Program.CommanderSkills);
+                    Properties.Settings.Default.CommanderSkillsVersion = Importer.Version;
+                    Properties.Settings.Default.Save();
+                    LOG.Info("Imported commander skills: " + Program.CommanderSkills["dd"].Count + ", " + Program.CommanderSkills["ca"].Count + ", " + Program.CommanderSkills["bb"].Count + ", " + Program.CommanderSkills["cv"].Count);
+                } else
+                {
+                    LOG.Info("Commander skills are up to date. No import/refresh needed.");
+                }
             } else
             {
                 LOG.Warning("Unable to import commander skills: " + Importer.Status.ToString());
@@ -327,7 +337,7 @@ namespace WoWs_Randomizer.utils
             this.UpdateShips();
             Updater.AddConsumablesInfo(true);
             this.UpdateUpgrades();
-            this.UpdateCommanderSkills();
+            this.UpdateCommanderSkills(true);
             this.UpdateFlags();
 
             this.loadUserShipsInPort(Program.Settings.UserID, true);

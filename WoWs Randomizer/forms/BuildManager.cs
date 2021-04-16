@@ -96,19 +96,25 @@ namespace WoWs_Randomizer.forms
             LOG.Debug("RenderPictureBoxes(" + skills.Count + ", " + commanderSkillset + ")");
             foreach (Skill s in skills)
             {
+                LOG.Debug("Skill: " + s.Name);
+                LOG.Debug("Render image: " + s.SortBy.ToString());
                 PictureBox pb = (PictureBox)panelCaptainSkills.Controls["pic" + s.SortBy.ToString()];
                 if (s.ImageUrl == null || s.ImageUrl.Equals(""))
                 {
+                    LOG.Debug("No image URL. Loading resource");
                     if ( skillsPictures.ContainsKey(commanderSkillset + s.SortBy.ToString()))
                     {
+                        LOG.Debug("Found resource...");
                         pb.Image = skillsPictures[commanderSkillset + s.SortBy.ToString()];
                     } else
                     {
+                        LOG.Warning("No resource found for image " + s.SortBy.ToString());
                         pb.Image = null;
                     }
                 }
                 else
                 {
+                    LOG.Debug("Loading url: " + s.ImageUrl);
                     pb.Load(s.ImageUrl);
                 }
                 pb.AccessibleName = s.Name;

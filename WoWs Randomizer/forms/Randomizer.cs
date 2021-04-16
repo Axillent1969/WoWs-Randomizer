@@ -108,6 +108,8 @@ namespace WoWs_Randomizer
                 BGUpdater.RunWorkerAsync();
             } else
             {
+                randomizerUpdater.UpdateCommanderSkills();
+                Updater.AddConsumablesInfo(false);
                 LOG.Info("All files loaded.");
                 FinalizeLoad();
             }

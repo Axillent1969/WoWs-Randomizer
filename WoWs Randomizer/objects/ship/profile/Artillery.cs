@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Newtonsoft.Json; 
+using Newtonsoft.Json;
+using WoWs_Randomizer.objects.ship.profile;
 
 namespace WoWs_Randomizer.utils.ship.profile
 {
@@ -25,6 +26,8 @@ namespace WoWs_Randomizer.utils.ship.profile
 
         [JsonProperty("gun_rate")]
         public double RateOfFire { get; set; }
+        [JsonProperty("slots")]
+        public Dictionary<string,ArtillerySlot> Slots { get; set; }
         public double ReloadTime()
         {
             if ( RateOfFire != 0 )

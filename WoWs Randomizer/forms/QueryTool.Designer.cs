@@ -734,6 +734,9 @@ namespace WoWs_Randomizer.forms
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "QueryTool";
             this.Text = "Query Tool";
+            this.ResizeBegin += new System.EventHandler(this.QueryTool_ResizeBegin);
+            this.ResizeEnd += new System.EventHandler(this.QueryTool_ResizeEnd);
+            this.Resize += new System.EventHandler(this.QueryTool_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.resultGrid)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

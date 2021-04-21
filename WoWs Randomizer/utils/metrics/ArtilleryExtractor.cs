@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using WoWs_Randomizer.objects.ship.profile;
 using WoWs_Randomizer.utils.module;
 using WoWs_Randomizer.utils.ship;
 
@@ -36,6 +38,8 @@ namespace WoWs_Randomizer.utils.metrics
         public long ID() { return id; }
         public long CreditCost() { return credit; }
 
+        public Dictionary<string,ArtillerySlot> Slots { get; set; }
+
         private void extract()
         {
 
@@ -45,6 +49,7 @@ namespace WoWs_Randomizer.utils.metrics
                 fireRate = module.Artillery.GunRate;
                 apDamage = module.Artillery.APDamage;
                 heDamage = module.Artillery.HEDamage;
+                
             }
             else
             {
@@ -74,6 +79,8 @@ namespace WoWs_Randomizer.utils.metrics
             }
             credit = module.PriceCredits;
             id = module.ID;
+
+            Slots = selectedShip.Profile.Artillery.Slots;
         }
     }
 }

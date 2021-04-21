@@ -36,7 +36,7 @@ namespace WoWs_Randomizer.utils.modules
                         if (data.Profile["hull"].ContainsKey("artillery_barrels"))
                         {
                             string value = data.Profile["hull"]["artillery_barrels"].ToString();
-                            data.ArtillerBarrels = Double.Parse(value);
+                            data.ArtilleryBarrels = Double.Parse(value);
                         }
                         if (data.Profile["hull"].ContainsKey("atba_barrels"))
                         {

@@ -26,6 +26,8 @@ namespace WoWs_Randomizer.forms
         public List<long> personalShips = new List<long>();
         public HashSet<long> ExcludedShips = new HashSet<long>();
 
+        private int formHeightStart = 0;
+
         public QueryTool()
         {
             InitializeComponent();
@@ -651,6 +653,29 @@ namespace WoWs_Randomizer.forms
                 txt = txt.Substring(0, txt.Length - 2);
             }
             lblDescription.Text = txt;
+        }
+
+        private void QueryTool_ResizeEnd(object sender, EventArgs e)
+        {
+            int diff = this.Height - formHeightStart;
+            resultGrid.Height += diff;
+            formHeightStart = 0;
+            resultGrid.Enabled = true;
+            resultGrid.BackgroundColor = Color.LightSteelBlue;
+        }
+
+        private void QueryTool_ResizeBegin(object sender, EventArgs e)
+        {
+            formHeightStart = this.Height;
+            resultGrid.Enabled = false;
+            resultGrid.BackgroundColor = Color.LightSlateGray;
+        }
+
+        private void QueryTool_Resize(object sender, EventArgs e)
+        {
+            int diff = this.Height - formHeightStart;
+            resultGrid.Height += diff;
+            formHeightStart = this.Height;
         }
     }
     class Option

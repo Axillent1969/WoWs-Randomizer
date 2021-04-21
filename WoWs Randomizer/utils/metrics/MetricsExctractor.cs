@@ -198,56 +198,13 @@ namespace WoWs_Randomizer.utils
 
                     ArtilleryExtractor artilleryExtractor = new ArtilleryExtractor(MData, RandomizedShip);
 
-                    double rotationTime = 0;
-                    double fireRate = 0;
-                    long apDamage = 0;
-                    long heDamage = 0;
-
-                    rotationTime = artilleryExtractor.RotationTime();
-                    fireRate = artilleryExtractor.FireRate();
-                    apDamage = artilleryExtractor.APDamage();
-                    heDamage = artilleryExtractor.HEDamage();
-                    /*
-                    if (MData.Artillery != null)
-                    {
-                        rotationTime = MData.Artillery.RotationTime;
-                        fireRate = MData.Artillery.GunRate;
-                        apDamage = MData.Artillery.APDamage;
-                        heDamage = MData.Artillery.HEDamage;
-                    }
-                    else
-                    {
-                        rotationTime = double.Parse(MData.Profile["artillery"]["rotation_time"].ToString());
-                        fireRate = double.Parse(MData.Profile["artillery"]["gun_rate"].ToString());
-                        if (MData.Profile["artillery"]["max_damage_AP"] != null)
-                        {
-                            apDamage = long.Parse(MData.Profile["artillery"]["max_damage_AP"].ToString());
-                        }
-                        if (MData.Profile["artillery"]["max_damage_HE"] != null)
-                        {
-                            heDamage = long.Parse(MData.Profile["artillery"]["max_damage_HE"].ToString());
-                        }
-                    }
-                    string name = MData.Name;
-                    if (name.Contains(" mm/") || name.Contains(" mm "))
-                    {
-                        string caliber = name.Substring(0, name.IndexOf(" "));
-                        long guncaliber = long.Parse(caliber);
-                        Metrics.MainCaliber = guncaliber;
-                    }
-                    if (RandomizedShip.Profile.Artillery != null && RandomizedShip.Profile.Artillery.Dispersion != 0)
-                    {
-                        Metrics.Dispersion = RandomizedShip.Profile.Artillery.Dispersion;
-                    }
-
-                    */
                     Metrics.MainCaliber = artilleryExtractor.GunCaliber();
                     Metrics.Dispersion = artilleryExtractor.Dispersion();
                     Metrics.MainCaliberName = MData.Name;
-                    Metrics.RotationTime = rotationTime;
-                    Metrics.FireRateMain = fireRate;
-                    Metrics.APDamage = apDamage;
-                    Metrics.HEDamage = heDamage;
+                    Metrics.RotationTime = artilleryExtractor.RotationTime();
+                    Metrics.FireRateMain = artilleryExtractor.FireRate();
+                    Metrics.APDamage = artilleryExtractor.APDamage();
+                    Metrics.HEDamage = artilleryExtractor.HEDamage();
 
                 }
             }

@@ -224,6 +224,7 @@
     <Compile Include="objects\player\PlayerPersonalDataImport.cs" />
     <Compile Include="objects\player\PlayerPVPStatistics.cs" />
     <Compile Include="objects\player\PlayerStatistics.cs" />
+    <Compile Include="objects\ship\profile\ArtillerySlot.cs" />
     <Compile Include="objects\version\ProgramVersionLog.cs" />
     <Compile Include="objects\version\ProgramVersionOLD.cs" />
     <Compile Include="Properties\BBSkills.Designer.cs">

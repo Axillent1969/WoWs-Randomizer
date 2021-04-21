@@ -31,7 +31,7 @@ namespace WoWs_Randomizer.utils.module
         public double AABarrels { get; set; }
         public double TorpedoBarrels { get; set; }
         public double PlanesAmount { get; set; }
-        public double ArtillerBarrels { get; set; }
+        public double ArtilleryBarrels { get; set; }
         public double SecondaryBarrels { get; set; }
 
         public double EngineSpeed { get; set; }

@@ -342,10 +342,10 @@ namespace WoWs_Randomizer.utils
 
             this.loadUserShipsInPort(Program.Settings.UserID, true);
 
+            string cc = Properties.Settings.Default.Locale;
             if (Program.Settings.GameVersion != null && Program.Settings.GameVersion.Equals(this.GetGameVersion()))
             {
                 Program.Settings.GameUpdated = this.GetGameDate();
-                string cc = Properties.Settings.Default.Locale;
                 LOG.Debug("Game data updated; Same game version: " + Commons.ConvertDateToLocalFormat(this.GetGameDate(), cc));
                 MessageBox.Show("Game data has been updated (still same game version): " + Commons.ConvertDateToLocalFormat(this.GetGameDate(),cc),"Game Data Updated",MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
@@ -353,7 +353,7 @@ namespace WoWs_Randomizer.utils
             {
                 Program.Settings.GameUpdated = this.GetGameDate();
                 Program.Settings.GameVersion = this.GetGameVersion();
-                LOG.Info("Game data updated to version " + this.GetGameVersion());
+                LOG.Info("Game data updated to version " + this.GetGameVersion() + " as per " + Commons.ConvertDateToLocalFormat(this.GetGameDate(), cc));
                 MessageBox.Show("Game version has changed: New version = " + this.GetGameVersion(), "Game Data Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }

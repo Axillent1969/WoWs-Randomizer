@@ -350,6 +350,9 @@ namespace WoWs_Randomizer.forms
             combatFlagsCount.Text = "0";
             panelFlags.Enabled = false;
 
+            cbCamoflage.Checked = false;
+            cbCamoflage.Enabled = false;
+
             Metrics = null;
             if ( keepSelectedShip == false)
             {
@@ -407,6 +410,8 @@ namespace WoWs_Randomizer.forms
 
             string type = RandomizedShip.ShipType.ToLower();
             LoadSkills(AbbreviateShipType(type));
+
+            cbCamoflage.Enabled = true;
             
             bmHandler = new BuildManagerHandler(ShipMetricsTable, Metrics);
         }
@@ -584,6 +589,10 @@ namespace WoWs_Randomizer.forms
                     }
                 }
             }
+            if ( cbCamoflage.Checked )
+            {
+                skills.Add("Camoflage");
+            }
             build.Skills = skills;
 
             List<string> Flags = new List<string>();
@@ -701,26 +710,32 @@ namespace WoWs_Randomizer.forms
 
             foreach (string skill in build.Skills)
             {
-                foreach (Control ctrl in panelCaptainSkills.Controls)
+                if ( skill.Equals("Camoflage"))
                 {
-                    if (ctrl is PictureBox box)
+                    cbCamoflage.Checked = true;
+                } else
+                {
+                    foreach (Control ctrl in panelCaptainSkills.Controls)
                     {
-                        if (box.AccessibleName != null && box.AccessibleName.ToString().Equals(skill))
+                        if (ctrl is PictureBox box)
                         {
-                            AddSkillPoints(skill);
-                            box.AccessibleDescription = "X";
-                            bmHandler.PerformAnimation(false);
-
-                            Skill currentSkill = FindSkillByAccessibleName(box.AccessibleName);
-                            if (currentSkill != null)
+                            if (box.AccessibleName != null && box.AccessibleName.ToString().Equals(skill))
                             {
-                                foreach (Perk perk in currentSkill.Perks)
-                                {
-                                    bmHandler.ApplyValue(perk.ID, perk.Value);
-                                }
-                            }
+                                AddSkillPoints(skill);
+                                box.AccessibleDescription = "X";
+                                bmHandler.PerformAnimation(false);
 
-                            box.Refresh();
+                                Skill currentSkill = FindSkillByAccessibleName(box.AccessibleName);
+                                if (currentSkill != null)
+                                {
+                                    foreach (Perk perk in currentSkill.Perks)
+                                    {
+                                        bmHandler.ApplyValue(perk.ID, perk.Value);
+                                    }
+                                }
+
+                                box.Refresh();
+                            }
                         }
                     }
                 }
@@ -773,6 +788,10 @@ namespace WoWs_Randomizer.forms
                     ttip.SetToolTip(upgradeSlot6, consumable.Name);
                 }
                 applyUpgradeValues(consumable.ID.ToString(), false);
+            }
+            if ( cbCamoflage.Checked )
+            {
+                bmHandler.ApplyValue("Camoflage");
             }
             bmHandler.PerformAnimation(true);
         }
@@ -911,6 +930,17 @@ namespace WoWs_Randomizer.forms
                 {
                     ClearSelections(true);
                 }
+            }
+        }
+
+        private void cbCamoflage_CheckedChanged(object sender, EventArgs e)
+        {
+            if ( cbCamoflage.Checked )
+            {
+                bmHandler.ApplyValue("Camoflage");
+            } else
+            {
+                bmHandler.RemoveValue("Camoflage");
             }
         }
     }

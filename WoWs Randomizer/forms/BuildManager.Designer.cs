@@ -105,6 +105,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.picShip = new System.Windows.Forms.PictureBox();
+            this.cbCamoflage = new System.Windows.Forms.CheckBox();
             this.panelCaptainSkills.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic46)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic45)).BeginInit();
@@ -546,6 +547,7 @@
             // 
             // RightPanel
             // 
+            this.RightPanel.Controls.Add(this.cbCamoflage);
             this.RightPanel.Controls.Add(this.Headline);
             this.RightPanel.Controls.Add(this.ShipMetricsTable);
             this.RightPanel.Location = new System.Drawing.Point(864, 127);
@@ -572,7 +574,7 @@
             this.ShipMetricsTable.Name = "ShipMetricsTable";
             this.ShipMetricsTable.RowCount = 1;
             this.ShipMetricsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 714F));
-            this.ShipMetricsTable.Size = new System.Drawing.Size(219, 714);
+            this.ShipMetricsTable.Size = new System.Drawing.Size(219, 687);
             this.ShipMetricsTable.TabIndex = 0;
             // 
             // button2
@@ -1121,6 +1123,18 @@
             this.picShip.TabIndex = 7;
             this.picShip.TabStop = false;
             // 
+            // cbCamoflage
+            // 
+            this.cbCamoflage.AutoSize = true;
+            this.cbCamoflage.Enabled = false;
+            this.cbCamoflage.Location = new System.Drawing.Point(6, 715);
+            this.cbCamoflage.Name = "cbCamoflage";
+            this.cbCamoflage.Size = new System.Drawing.Size(169, 17);
+            this.cbCamoflage.TabIndex = 2;
+            this.cbCamoflage.Text = "Apply Camoflage concealment";
+            this.cbCamoflage.UseVisualStyleBackColor = true;
+            this.cbCamoflage.CheckedChanged += new System.EventHandler(this.cbCamoflage_CheckedChanged);
+            // 
             // BuildManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1285,5 +1299,6 @@
         private System.Windows.Forms.PictureBox pic14;
         private System.Windows.Forms.PictureBox pic13;
         private System.Windows.Forms.PictureBox pic12;
+        private System.Windows.Forms.CheckBox cbCamoflage;
     }
 }

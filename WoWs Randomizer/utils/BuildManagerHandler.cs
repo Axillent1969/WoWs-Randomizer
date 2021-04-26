@@ -86,6 +86,10 @@ namespace WoWs_Randomizer.utils
                 ChangeConcealment(0.1);
 
             }
+            else if ( accessibleName.Equals("Camoflage"))
+            {
+                ChangeConcealment(0.03);
+            }
             else if (accessibleName.Equals("Advanced Firing Training"))
             {
                 Label caliber = GetValueLabel(MetricsTableComposer.GUN_CALIBER);
@@ -245,6 +249,9 @@ namespace WoWs_Randomizer.utils
             {
                 ChangeConcealment(-0.1);
 
+            } else if ( accessibleName.Equals("Camoflage"))
+            {
+                ChangeConcealment(-0.03);
             }
             else if (accessibleName.Equals("Advanced Firing Training"))
             {

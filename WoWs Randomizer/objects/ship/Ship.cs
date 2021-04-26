@@ -136,8 +136,7 @@ namespace WoWs_Randomizer.utils.ship
 
         public bool canEquipEngineBoostMod1()
         {
-            return (this.GetConsumableInfo(ConsumableType.SpeedBoost) != null);
-
+            return (this.GetConsumableInfo(ConsumableType.SpeedBoost) != null || this.GetConsumableInfo(ConsumableType.EmergencyEnginePower) != null);
         }
 
         public bool canEquipEmergencyEnginePower()

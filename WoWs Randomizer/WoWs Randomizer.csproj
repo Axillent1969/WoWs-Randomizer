@@ -295,6 +295,7 @@
     <Compile Include="utils\ExposedAttribute.cs" />
     <Compile Include="utils\LogEntry.cs" />
     <Compile Include="utils\LogHandler.cs" />
+    <Compile Include="utils\messages\MessageImporter.cs" />
     <Compile Include="utils\metrics\ArtilleryExtractor.cs" />
     <Compile Include="utils\metrics\TorpedoExtractor.cs" />
     <Compile Include="utils\ProfileHandler.cs" />

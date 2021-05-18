@@ -119,6 +119,13 @@ namespace WoWs_Randomizer
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.BGUpdater = new System.ComponentModel.BackgroundWorker();
             this.UpgradeFixer = new System.ComponentModel.BackgroundWorker();
+            this.id = new System.Windows.Forms.Label();
+            this.datespan = new System.Windows.Forms.Label();
+            this.message = new System.Windows.Forms.Label();
+            this.link = new System.Windows.Forms.LinkLabel();
+            this.closeMessageButton = new System.Windows.Forms.Button();
+            this.messageBox = new System.Windows.Forms.Panel();
+            this.dontShowAgain = new System.Windows.Forms.CheckBox();
             this.LeftPanel.SuspendLayout();
             this.MenuStrip.SuspendLayout();
             this.RightPanel.SuspendLayout();
@@ -127,6 +134,7 @@ namespace WoWs_Randomizer
             ((System.ComponentModel.ISupportInitialize)(this.ShipImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LoadingImage)).BeginInit();
             this.statusStrip1.SuspendLayout();
+            this.messageBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // LeftPanel
@@ -940,12 +948,86 @@ namespace WoWs_Randomizer
             this.UpgradeFixer.DoWork += new System.ComponentModel.DoWorkEventHandler(this.UpgradeFixer_DoWork);
             this.UpgradeFixer.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.UpgradeFixer_RunWorkerCompleted);
             // 
+            // id
+            // 
+            this.id.Location = new System.Drawing.Point(638, 13);
+            this.id.Name = "id";
+            this.id.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.id.Size = new System.Drawing.Size(172, 13);
+            this.id.TabIndex = 0;
+            this.id.Text = "label2";
+            // 
+            // datespan
+            // 
+            this.datespan.Location = new System.Drawing.Point(638, 32);
+            this.datespan.Name = "datespan";
+            this.datespan.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.datespan.Size = new System.Drawing.Size(172, 13);
+            this.datespan.TabIndex = 1;
+            this.datespan.Text = "label2";
+            // 
+            // message
+            // 
+            this.message.Location = new System.Drawing.Point(10, 15);
+            this.message.Name = "message";
+            this.message.Size = new System.Drawing.Size(611, 41);
+            this.message.TabIndex = 2;
+            this.message.Text = "label2";
+            // 
+            // link
+            // 
+            this.link.Location = new System.Drawing.Point(416, 107);
+            this.link.Name = "link";
+            this.link.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.link.Size = new System.Drawing.Size(394, 23);
+            this.link.TabIndex = 3;
+            this.link.TabStop = true;
+            this.link.Text = "linkLabel1";
+            this.link.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.link_LinkClicked);
+            // 
+            // closeMessageButton
+            // 
+            this.closeMessageButton.Location = new System.Drawing.Point(5, 107);
+            this.closeMessageButton.Name = "closeMessageButton";
+            this.closeMessageButton.Size = new System.Drawing.Size(75, 23);
+            this.closeMessageButton.TabIndex = 4;
+            this.closeMessageButton.Text = "Close";
+            this.closeMessageButton.UseVisualStyleBackColor = true;
+            this.closeMessageButton.Click += new System.EventHandler(this.closeMessageButton_Click);
+            // 
+            // messageBox
+            // 
+            this.messageBox.BackColor = System.Drawing.SystemColors.Info;
+            this.messageBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.messageBox.Controls.Add(this.dontShowAgain);
+            this.messageBox.Controls.Add(this.datespan);
+            this.messageBox.Controls.Add(this.closeMessageButton);
+            this.messageBox.Controls.Add(this.link);
+            this.messageBox.Controls.Add(this.message);
+            this.messageBox.Controls.Add(this.id);
+            this.messageBox.Location = new System.Drawing.Point(13, 24);
+            this.messageBox.Name = "messageBox";
+            this.messageBox.Size = new System.Drawing.Size(825, 140);
+            this.messageBox.TabIndex = 11;
+            this.messageBox.VisibleChanged += new System.EventHandler(this.messageBox_VisibleChanged);
+            // 
+            // dontShowAgain
+            // 
+            this.dontShowAgain.AutoSize = true;
+            this.dontShowAgain.Location = new System.Drawing.Point(86, 111);
+            this.dontShowAgain.Name = "dontShowAgain";
+            this.dontShowAgain.Size = new System.Drawing.Size(180, 17);
+            this.dontShowAgain.TabIndex = 5;
+            this.dontShowAgain.Text = "Don\'t Show This Message Again";
+            this.dontShowAgain.UseVisualStyleBackColor = true;
+            // 
             // FormRandomizer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(850, 877);
             this.Controls.Add(this.LoadingImage);
+            this.Controls.Add(this.messageBox);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.ResultBox);
             this.Controls.Add(this.MenuStrip);
@@ -957,7 +1039,7 @@ namespace WoWs_Randomizer
             this.Name = "FormRandomizer";
             this.Text = "WoWs Randomizer";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormRandomizer_FormClosing);
-            this.Load += new System.EventHandler(this.FormRandomizer_Load);
+            this.Click += new System.EventHandler(this.FormRandomizer_Click);
             this.LeftPanel.ResumeLayout(false);
             this.LeftPanel.PerformLayout();
             this.MenuStrip.ResumeLayout(false);
@@ -971,6 +1053,8 @@ namespace WoWs_Randomizer
             ((System.ComponentModel.ISupportInitialize)(this.LoadingImage)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.messageBox.ResumeLayout(false);
+            this.messageBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1061,6 +1145,13 @@ namespace WoWs_Randomizer
         private System.Windows.Forms.ToolStripMenuItem listToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dataToolStripMenuItem;
         private System.Windows.Forms.Label lblTotalNumberOfShips;
+        private System.Windows.Forms.LinkLabel link;
+        private System.Windows.Forms.Label message;
+        private System.Windows.Forms.Label datespan;
+        private System.Windows.Forms.Label id;
+        private System.Windows.Forms.Button closeMessageButton;
+        private System.Windows.Forms.Panel messageBox;
+        private System.Windows.Forms.CheckBox dontShowAgain;
     }
 }
 

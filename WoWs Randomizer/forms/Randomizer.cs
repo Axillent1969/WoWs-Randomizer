@@ -16,6 +16,7 @@ using WoWs_Randomizer.utils.skills;
 using WoWs_Randomizer.objects.consumables;
 using WoWs_Randomizer.objects;
 using WoWs_Randomizer.objects.version;
+using WoWs_Randomizer.utils.messages;
 
 namespace WoWs_Randomizer
 {
@@ -39,6 +40,7 @@ namespace WoWs_Randomizer
 
         private bool callUpdateAll = false;
         private LogHandler LOG = Program.LOG;
+        private bool messageBoxHasBeenShown = false;
 
         public FormRandomizer()
         {
@@ -75,6 +77,58 @@ namespace WoWs_Randomizer
             {
                 LOG.Debug("Forced update");
                 callUpdateAll = true;
+            }
+            GetMessage();
+        }
+
+        private void GetMessage()
+        {
+
+            MessageImporter message = WGAPI.GetMessage();
+            if (message.Status.Equals("ok"))
+            {
+                /*                Console.WriteLine("StartDate: " + message.StartDate);
+                                Console.WriteLine("EndDate: " + message.EndDate);
+                                Console.WriteLine("ID: " + message.MessageID);
+                                Console.WriteLine("link: " + message.URL);
+                                Console.WriteLine("Message: " + message.Message);
+                                Console.WriteLine("Icons: " + message.Images.Count);
+                                foreach (KeyValuePair<string, string> kv in message.Images)
+                                {
+                                    Console.WriteLine(kv.Key + " = " + kv.Value);
+                                }*/
+
+                string dontshowId = Properties.Settings.Default.MessageBoxId;
+                LOG.Debug("Dont show MessageID: " + dontshowId);
+                LOG.Debug("Loaded MessageID: " + message.MessageID);
+
+                if ( dontshowId.Trim().Equals(message.MessageID.Trim(),StringComparison.OrdinalIgnoreCase))
+                {
+                    LOG.Debug("Ignoring MessageID: " + message.MessageID);
+                    messageBox.Visible = false;
+                } else
+                {
+                    LOG.Info("Showing message " + message.MessageID);
+
+                    messageBox.Controls["message"].Text = message.Message;
+                    messageBox.Controls["datespan"].Text = message.EndDate + " - " + message.StartDate;
+                    if (message.URL.Length > 0)
+                    {
+                        messageBox.Controls["link"].Text = message.URL;
+                    }
+                    else
+                    {
+                        messageBox.Controls["link"].Text = "";
+                        messageBox.Controls["link"].Visible = false;
+                    }
+                    messageBox.Controls["id"].Text = message.MessageID;
+
+                    LeftPanel.Click += FormRandomizer_Click;
+                    RightPanel.Click += FormRandomizer_Click;
+
+                    messageBox.Visible = true;
+                }
+
             }
         }
 
@@ -127,9 +181,7 @@ namespace WoWs_Randomizer
         {
             LOG.Debug("If Ships has been loaded, we will not have Consumables on them. Then we will force a reload/add of the consumables to corresponding ship.");
             bool ForceSave = (Program.AllShips[0].Consumables == null || Program.AllShips[0].Consumables.Count == 0);
-            //Settings mySettings = Commons.GetSettings();
             Updater.AddConsumablesInfo(ForceSave);
-            //Commons.SaveSettings(mySettings);
         }
 
         private void UpdateCounterLabels()
@@ -350,7 +402,11 @@ namespace WoWs_Randomizer
         private void ShipImage_Click(object sender, EventArgs e)
         {
             LOG.Debug("ShipImage_Click: " + ShipName.Text.ToString());
-            if ( ShipName.Text.ToString().Equals("")) { LOG.Debug("No ship selected"); return; }
+            if ( messageBox.Visible ) { messageBox.Visible = false; }
+            if ( ShipName.Text.ToString().Equals("") || ShipName.Text.ToString().Equals(" ")) { 
+                LOG.Debug("No ship selected"); 
+                return; 
+            }
             WGAPI.OpenShipWikipedia(ShipName.Text.ToString());
         }
 
@@ -612,11 +668,8 @@ namespace WoWs_Randomizer
             {
                 LOG.Warning("Exception received; handling... ", ex);
                 profileHandler.clearCurrentProfile();
-                //Settings settings = new Settings();
                 if ( Program.Settings == null ) { Program.Settings = new Settings(); }
                 Program.Settings.Server = item.Text;
-                //Commons.SaveSettings(settings);
-                //settings = null;
                 Program.AllShips.Clear();
 
                 loadMyShipsToolStripMenuItem.Enabled = false;
@@ -627,7 +680,6 @@ namespace WoWs_Randomizer
                     callUpdateAll = false;
                     BGUpdater.RunWorkerAsync();
                 }
-                //Settings MySettings = Commons.GetSettings();
                 if (Program.Settings != null)
                 {
                     if (!Program.Settings.Server.Equals("") && !Program.Settings.Nickname.Equals(""))
@@ -727,7 +779,6 @@ namespace WoWs_Randomizer
         private void SettingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenSettingsForceUpdate();
-            //Settings MySettings = Commons.GetSettings();
             if (Program.Settings != null)
             {
                 if (!Program.Settings.Server.Equals("") && !Program.Settings.Nickname.Equals(""))
@@ -739,7 +790,6 @@ namespace WoWs_Randomizer
 
         private void LoadMyShipsToolStripMenuItem_ClickAsync(object sender, EventArgs e)
         {
-            //Settings MySettings = Commons.GetSettings();
             if (Program.Settings == null) { MessageBox.Show("Unable to load ships...Settings not found.", "Load Personal Ships Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
 
             if (Program.Settings.UserID != 0)
@@ -754,6 +804,7 @@ namespace WoWs_Randomizer
 
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            LOG.Debug("ExitToolStripMenuItem_Click()");
             if (System.Windows.Forms.Application.MessageLoop)
             {
                 System.Windows.Forms.Application.Exit();
@@ -764,13 +815,9 @@ namespace WoWs_Randomizer
             }
         }
 
-        private void FormRandomizer_Load(object sender, EventArgs e)
-        {
-
-        }
-
         protected override void OnLoad(EventArgs e)
         {
+            LOG.Debug("OnLoad()");
             base.OnLoad(e);
 
             this.isLoaded = true;
@@ -778,6 +825,7 @@ namespace WoWs_Randomizer
 
         protected override void OnPaint(PaintEventArgs e)
         {
+            LOG.Debug("OnPaint()");
             base.OnPaint(e);
             if ( this.isLoaded )
             {
@@ -787,8 +835,10 @@ namespace WoWs_Randomizer
 
         protected virtual void OnLoadComplete(EventArgs e)
         {
+            LOG.Debug("OnLoadComplete()");
             if ( callUpdateAll )
             {
+                LOG.Debug("callUpdateAll");
                 callUpdateAll = false;
                 StartLoadingAnimation();
                 BGUpdater.RunWorkerAsync();
@@ -797,11 +847,13 @@ namespace WoWs_Randomizer
 
         private void BGUpdater_DoWork(object sender, DoWorkEventArgs e)
         {
+            LOG.Debug("BGUpdater_DoWork()");
             randomizerUpdater.UpdateAll();
         }
 
         private void BGUpdater_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            LOG.Debug("BGUpdater_RunWorkerCompleted()");
             FinalizeLoad();
 
             LoadingImage.Dock = DockStyle.None;
@@ -815,12 +867,14 @@ namespace WoWs_Randomizer
 
         private void UpgradeFixer_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            LOG.Debug("UpgradeFixer_RunWorkerCompleted");
             LoadingImage.Dock = DockStyle.None;
             LoadingImage.Visible = false;
         }
 
         private void StatusLabel_Click(object sender, EventArgs e)
         {
+            LOG.Debug("Link clicked to Twitch.tv");
             string HREF = @"https://www.twitch.tv/Axillent/";
             System.Diagnostics.Process.Start(HREF);
         }
@@ -832,26 +886,68 @@ namespace WoWs_Randomizer
 
         private void listToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            LOG.Debug("listToolStripMenuItem_Click()");
             QueryTool ShowList = new QueryTool();
             ShowList.personalShips = this.PersonalShips;
             ShowList.ExcludedShips = this.ExcludedShips;
 
             if ( ShowList.ShowDialog(this) == DialogResult.OK)
             {
-
+                LOG.Debug("QueryTool - OK clicked");
             }
         }
 
         private void dataToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            LOG.Debug("dataToolStripMenuItem_Click()");
             PlayerStats statsForm = new PlayerStats();
             statsForm.Show();
         }
 
         private void FormRandomizer_FormClosing(object sender, FormClosingEventArgs e)
         {
+            LOG.Debug("FormRandomizer_FormClosing()");
             Commons.SaveSettings(Program.Settings);
             Program.LOG.Flush(true);
+        }
+
+        private void closeMessageButton_Click(object sender, EventArgs e)
+        {
+            LOG.Debug("closeMessageButton_Click()");
+            messageBox.Visible = false;
+        }
+
+        private void link_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            LOG.Debug("Clicked link in messagebox: " + messageBox.Controls["link"].Text);
+            string HREF = messageBox.Controls["link"].Text;
+            System.Diagnostics.Process.Start(HREF);
+        }
+
+        private void FormRandomizer_Click(object sender, EventArgs e)
+        {
+            if ( messageBox.Visible )
+            {
+                LOG.Debug("MessageBox visible; Make it invisible.");
+                messageBox.Visible = false;
+            }
+        }
+
+        private void messageBox_VisibleChanged(object sender, EventArgs e)
+        {
+            LOG.Debug("messageBox_VisibleChanged(): " + messageBox.Visible);
+            if ( messageBoxHasBeenShown )
+            {
+                if ( dontShowAgain.Checked )
+                {
+                    LOG.Debug("dontShowAgain: " + messageBox.Controls["id"].Text);
+                    Properties.Settings.Default.MessageBoxId = messageBox.Controls["id"].Text;
+                    Properties.Settings.Default.Save();
+                }
+            } else
+            {
+                messageBoxHasBeenShown = messageBox.Visible;
+            }
         }
     }
 }

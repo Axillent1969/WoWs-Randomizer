@@ -46,5 +46,17 @@ namespace WoWs_Randomizer.Properties {
                 this["CommanderSkillsVersion"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public string MessageBoxId {
+            get {
+                return ((string)(this["MessageBoxId"]));
+            }
+            set {
+                this["MessageBoxId"] = value;
+            }
+        }
     }
 }

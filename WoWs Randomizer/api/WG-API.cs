@@ -14,6 +14,7 @@ using WoWs_Randomizer.objects.consumables;
 using WoWs_Randomizer.objects.version;
 using WoWs_Randomizer.objects.player;
 using WoWs_Randomizer.objects.clan;
+using WoWs_Randomizer.utils.messages;
 
 namespace WoWs_Randomizer.api
 {
@@ -21,6 +22,20 @@ namespace WoWs_Randomizer.api
     {
         static readonly string APP_ID = "";
         static HttpClient Client = new HttpClient();
+
+        public static MessageImporter GetMessage()
+        {
+            using (WebClient wc = new WebClient())
+            {
+                String jsonFile = Commons.GetCurrentDirectory() + "/message.json";
+                wc.DownloadFile("https://onedrive.live.com/download?cid=919CD8D21AC2180D&resid=919CD8D21AC2180D%2117342&authkey=ABLMJUI7LzuHm9o", jsonFile);
+                string jsonText = File.ReadAllText(jsonFile);
+
+                MessageImporter Import = null;
+                Import = JsonConvert.DeserializeObject<MessageImporter>(jsonText);
+                return Import;
+            }
+        }
 
         public static ProgramVersion GetProgramVersion()
         {

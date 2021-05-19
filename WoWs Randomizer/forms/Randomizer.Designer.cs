@@ -126,6 +126,8 @@ namespace WoWs_Randomizer
             this.closeMessageButton = new System.Windows.Forms.Button();
             this.messageBox = new System.Windows.Forms.Panel();
             this.dontShowAgain = new System.Windows.Forms.CheckBox();
+            this.messageGeneratorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.headline = new System.Windows.Forms.Label();
             this.LeftPanel.SuspendLayout();
             this.MenuStrip.SuspendLayout();
             this.RightPanel.SuspendLayout();
@@ -641,7 +643,8 @@ namespace WoWs_Randomizer
             this.buildManagerToolStripMenuItem,
             this.shipComparisonToolStripMenuItem,
             this.upgradesExaminerToolStripMenuItem,
-            this.listToolStripMenuItem});
+            this.listToolStripMenuItem,
+            this.messageGeneratorToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
             this.toolsToolStripMenuItem.Text = "&Tools";
@@ -649,28 +652,28 @@ namespace WoWs_Randomizer
             // buildManagerToolStripMenuItem
             // 
             this.buildManagerToolStripMenuItem.Name = "buildManagerToolStripMenuItem";
-            this.buildManagerToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.buildManagerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.buildManagerToolStripMenuItem.Text = "&Build Manager";
             this.buildManagerToolStripMenuItem.Click += new System.EventHandler(this.buildManagerToolStripMenuItem_Click);
             // 
             // shipComparisonToolStripMenuItem
             // 
             this.shipComparisonToolStripMenuItem.Name = "shipComparisonToolStripMenuItem";
-            this.shipComparisonToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.shipComparisonToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.shipComparisonToolStripMenuItem.Text = "Ship &Comparison";
             this.shipComparisonToolStripMenuItem.Click += new System.EventHandler(this.ShipComparisonToolStripMenuItem_Click);
             // 
             // upgradesExaminerToolStripMenuItem
             // 
             this.upgradesExaminerToolStripMenuItem.Name = "upgradesExaminerToolStripMenuItem";
-            this.upgradesExaminerToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.upgradesExaminerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.upgradesExaminerToolStripMenuItem.Text = "Ship &Wikipedia";
             this.upgradesExaminerToolStripMenuItem.Click += new System.EventHandler(this.upgradesExaminerToolStripMenuItem_Click);
             // 
             // listToolStripMenuItem
             // 
             this.listToolStripMenuItem.Name = "listToolStripMenuItem";
-            this.listToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.listToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.listToolStripMenuItem.Text = "Query Tool";
             this.listToolStripMenuItem.Click += new System.EventHandler(this.listToolStripMenuItem_Click);
             // 
@@ -950,6 +953,7 @@ namespace WoWs_Randomizer
             // 
             // id
             // 
+            this.id.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.id.Location = new System.Drawing.Point(638, 13);
             this.id.Name = "id";
             this.id.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -968,7 +972,7 @@ namespace WoWs_Randomizer
             // 
             // message
             // 
-            this.message.Location = new System.Drawing.Point(10, 15);
+            this.message.Location = new System.Drawing.Point(9, 29);
             this.message.Name = "message";
             this.message.Size = new System.Drawing.Size(611, 41);
             this.message.TabIndex = 2;
@@ -976,10 +980,10 @@ namespace WoWs_Randomizer
             // 
             // link
             // 
-            this.link.Location = new System.Drawing.Point(416, 107);
+            this.link.Location = new System.Drawing.Point(272, 107);
             this.link.Name = "link";
             this.link.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.link.Size = new System.Drawing.Size(394, 23);
+            this.link.Size = new System.Drawing.Size(538, 23);
             this.link.TabIndex = 3;
             this.link.TabStop = true;
             this.link.Text = "linkLabel1";
@@ -999,6 +1003,7 @@ namespace WoWs_Randomizer
             // 
             this.messageBox.BackColor = System.Drawing.SystemColors.Info;
             this.messageBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.messageBox.Controls.Add(this.headline);
             this.messageBox.Controls.Add(this.dontShowAgain);
             this.messageBox.Controls.Add(this.datespan);
             this.messageBox.Controls.Add(this.closeMessageButton);
@@ -1020,6 +1025,23 @@ namespace WoWs_Randomizer
             this.dontShowAgain.TabIndex = 5;
             this.dontShowAgain.Text = "Don\'t Show This Message Again";
             this.dontShowAgain.UseVisualStyleBackColor = true;
+            // 
+            // messageGeneratorToolStripMenuItem
+            // 
+            this.messageGeneratorToolStripMenuItem.Name = "messageGeneratorToolStripMenuItem";
+            this.messageGeneratorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.messageGeneratorToolStripMenuItem.Text = "Message Generator";
+            this.messageGeneratorToolStripMenuItem.Click += new System.EventHandler(this.messageGeneratorToolStripMenuItem_Click);
+            // 
+            // headline
+            // 
+            this.headline.AutoSize = true;
+            this.headline.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.headline.Location = new System.Drawing.Point(9, 13);
+            this.headline.Name = "headline";
+            this.headline.Size = new System.Drawing.Size(126, 13);
+            this.headline.TabIndex = 6;
+            this.headline.Text = "Important information";
             // 
             // FormRandomizer
             // 
@@ -1152,6 +1174,8 @@ namespace WoWs_Randomizer
         private System.Windows.Forms.Button closeMessageButton;
         private System.Windows.Forms.Panel messageBox;
         private System.Windows.Forms.CheckBox dontShowAgain;
+        private System.Windows.Forms.ToolStripMenuItem messageGeneratorToolStripMenuItem;
+        private System.Windows.Forms.Label headline;
     }
 }
 

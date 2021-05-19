@@ -17,6 +17,7 @@ using WoWs_Randomizer.objects.consumables;
 using WoWs_Randomizer.objects;
 using WoWs_Randomizer.objects.version;
 using WoWs_Randomizer.utils.messages;
+using System.Globalization;
 
 namespace WoWs_Randomizer
 {
@@ -46,6 +47,22 @@ namespace WoWs_Randomizer
         {
             LOG.Debug("Open form: Randomizer");
             InitializeComponent();
+
+            messageGeneratorToolStripMenuItem.Visible = false;
+            try
+            {
+                LOG.Debug("Determine if MessageGenerator should be visible");
+                string cn = Environment.MachineName;
+                if (cn.Equals("DESKTOP-EDV3TG4"))
+                {
+                    LOG.Debug("MessageGenerator is visible.");
+                    messageGeneratorToolStripMenuItem.Visible = true;
+                }
+            }
+            catch (Exception)
+            {
+            }
+
             lblTotalNumberOfShips.Text = "Number of ships in game: " + Program.AllShips.Count.ToString();
             lblQueue.Text = "";
             profileHandler.addMenuitem(menuProfileEU);
@@ -83,7 +100,7 @@ namespace WoWs_Randomizer
 
         private void GetMessage()
         {
-
+            messageBox.Visible = false;
             MessageImporter message = WGAPI.GetMessage();
             if (message.Status.Equals("ok"))
             {
@@ -102,9 +119,14 @@ namespace WoWs_Randomizer
                 LOG.Debug("Dont show MessageID: " + dontshowId);
                 LOG.Debug("Loaded MessageID: " + message.MessageID);
 
-                if ( dontshowId.Trim().Equals(message.MessageID.Trim(),StringComparison.OrdinalIgnoreCase))
+
+
+                if (dontshowId.Trim().Equals(message.MessageID.Trim(), StringComparison.OrdinalIgnoreCase))
                 {
                     LOG.Debug("Ignoring MessageID: " + message.MessageID);
+                    messageBox.Visible = false;
+                } else if ( !dateIsInRange(message.StartDate,message.EndDate) ) {
+                    LOG.Debug("Date is not in range for MessageID: " + message.MessageID + " (" + message.StartDate + "-" + message.EndDate + ")");
                     messageBox.Visible = false;
                 } else
                 {
@@ -128,10 +150,23 @@ namespace WoWs_Randomizer
 
                     messageBox.Visible = true;
                 }
-
             }
         }
 
+        private bool dateIsInRange(string startdate, string enddate)
+        {
+            var cultureInfo = new CultureInfo("sv-SE");
+            
+            DateTime start = DateTime.Parse(startdate, cultureInfo);
+            DateTime endDate = DateTime.Parse(enddate, cultureInfo);
+
+            if ( start.CompareTo(DateTime.Now) <= 0 && endDate.CompareTo(DateTime.Now) >= 0 )
+            {
+                return true;
+            }
+            return false;
+
+        }
         private void StartLoadingAnimation()
         {
             LoadingImage.Dock = DockStyle.Fill;
@@ -948,6 +983,12 @@ namespace WoWs_Randomizer
             {
                 messageBoxHasBeenShown = messageBox.Visible;
             }
+        }
+
+        private void messageGeneratorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageGenerator BManager = new MessageGenerator();
+            BManager.Show();
         }
     }
 }

@@ -162,6 +162,12 @@
     <Compile Include="forms\HelpRandomizer.Designer.cs">
       <DependentUpon>HelpRandomizer.cs</DependentUpon>
     </Compile>
+    <Compile Include="forms\MessageGenerator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\MessageGenerator.Designer.cs">
+      <DependentUpon>MessageGenerator.cs</DependentUpon>
+    </Compile>
     <Compile Include="forms\PlayerStats.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -347,6 +353,9 @@
     <EmbeddedResource Include="forms\HelpRandomizer.resx">
       <DependentUpon>HelpRandomizer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="forms\MessageGenerator.resx">
+      <DependentUpon>MessageGenerator.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\PlayerStats.resx">
       <DependentUpon>PlayerStats.cs</DependentUpon>
     </EmbeddedResource>
@@ -414,6 +423,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Anchor.ico" />
+    <None Include="Resources\swift_in_silence1.png" />
     <None Include="Resources\survivability_expert_cv.png" />
     <None Include="Resources\torpedo_bomber.png" />
     <None Include="Resources\sight_stabilization.png" />

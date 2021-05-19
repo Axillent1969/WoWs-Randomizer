@@ -186,7 +186,7 @@ namespace WoWs_Randomizer.forms
             skillsPictures.Add("bb31", Properties.BBSkills.super_heavy_ap_shells);
             skillsPictures.Add("bb32", Properties.BBSkills.long_range_secondary_battery_shells);
             skillsPictures.Add("bb33", Properties.BBSkills.adrenaline_rush);
-            skillsPictures.Add("bb41", Properties.BBSkills.dead_eye);
+            skillsPictures.Add("bb41", Properties.BBSkills.swift_in_silence);
             skillsPictures.Add("bb42", Properties.BBSkills.improved_scondary_battery_aiming);
             skillsPictures.Add("bb43", Properties.BBSkills.close_quarters_combat);
             skillsPictures.Add("bb14", Properties.BBSkills.emergency_repair_specialist);

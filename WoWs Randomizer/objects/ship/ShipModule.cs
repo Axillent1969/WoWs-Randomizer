@@ -24,5 +24,6 @@ namespace WoWs_Randomizer.utils.ship
         public long[] FlightControl { get; set; }
         [JsonProperty("dive_bomber")]
         public long[] DiveBomber { get; set; }
+        public long[] Airstrike { get; set; }
     }
 }

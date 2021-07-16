@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using WoWs_Randomizer.objects.modules;
 using WoWs_Randomizer.utils.modules;
 
 namespace WoWs_Randomizer.utils.module
@@ -36,6 +37,7 @@ namespace WoWs_Randomizer.utils.module
 
         public double EngineSpeed { get; set; }
         public ModuleArtillery Artillery { get; set; }
+        public ModuleAirstrike Airstrike { get; set; }
 
         public double FireDistance { get; set; }
         public double FireDistanceIncrease { get; set; }

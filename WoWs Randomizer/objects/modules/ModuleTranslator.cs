@@ -1,4 +1,5 @@
 ﻿using System;
+using WoWs_Randomizer.objects.modules;
 using WoWs_Randomizer.utils.module;
 
 namespace WoWs_Randomizer.utils.modules
@@ -112,6 +113,13 @@ namespace WoWs_Randomizer.utils.modules
                     fighter.CruiseSpeed = int.Parse(data.Profile["fighter"]["cruise_speed"].ToString());
 
                     data.Fighter = fighter;
+                }
+
+                if ( data.Profile.ContainsKey("airstrike"))
+                {
+                    ModuleAirstrike airstrike = new ModuleAirstrike();
+                    ///TODO: Add airstrike when data exists in API
+
                 }
             }
         }

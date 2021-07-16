@@ -221,6 +221,7 @@
     <Compile Include="objects\clan\ClanImport.cs" />
     <Compile Include="objects\consumables\ConsumablesInfoImporter.cs" />
     <Compile Include="objects\consumables\ConsumablesInfoTypeImporter.cs" />
+    <Compile Include="objects\modules\ModuleAirstrike.cs" />
     <Compile Include="objects\player\ClanBaseData.cs" />
     <Compile Include="objects\player\PlayerAuxilliaryStatistics.cs" />
     <Compile Include="objects\player\PlayerBatteryStatistics.cs" />

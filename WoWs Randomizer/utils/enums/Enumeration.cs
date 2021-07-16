@@ -41,7 +41,6 @@ namespace WoWs_Randomizer.utils
             Console.WriteLine(Abbreviation.ToString());
             Console.WriteLine(otherValue.ToString());
 
-            //return Abbreviation.ToString().Equals(otherValue.ToString());
             return ((typeMatches && valueMatches) || Abbreviation.ToString().Equals(otherValue.Abbreviation.ToString()));
         }
 

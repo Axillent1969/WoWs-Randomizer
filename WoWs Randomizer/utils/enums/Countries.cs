@@ -15,6 +15,7 @@ namespace WoWs_Randomizer.utils
         public static readonly Countries CW = new Countries("commonwealth", "Commonwealth");
         public static readonly Countries EUR = new Countries("europe", "Europe");
         public static readonly Countries PAM = new Countries("pan_america", "Pan-America");
+        public static readonly Countries NL = new Countries("netherlands", "Netherlands");
 
         public Countries(string abbreviation, string name) : base(abbreviation,name)
         {

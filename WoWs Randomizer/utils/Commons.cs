@@ -124,7 +124,8 @@ namespace WoWs_Randomizer.utils
                 { "italy", "https://wiki.gcdn.co/images/d/d1/Wows_flag_Italy.png" },
                 { "pan_asia", "https://wiki.gcdn.co/images/3/33/Wows_flag_Pan_Asia.png" },
                 { "pan_america", "https://wiki.gcdn.co/images/9/9e/Wows_flag_Pan_America.png" },
-                { "europe", "https://wiki.gcdn.co/images/5/52/Wows_flag_Europe.png" }
+                { "europe", "https://wiki.gcdn.co/images/5/52/Wows_flag_Europe.png" },
+                {"netherlands","https://wiki.gcdn.co/images/c/c8/Wows_flag_Netherlands.png" }
             };
 
             return Flags[Country.ToLower()];

@@ -200,7 +200,6 @@ namespace WoWs_Randomizer.api
 
         public static PlayerSearch SearchPlayer(string PlayerNickname)
         {
-            //https://api.worldofwarships.com/wows/account/list/?application_id=1f859aa19885c6a2f61598578621f5e1&search=Axillent
             try { Setup(); } catch (Exception) { }
             string path = $"account/list/?application_id={APP_ID}&search={PlayerNickname}";
             string responseString = "";

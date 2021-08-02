@@ -57,6 +57,7 @@
             this.totalSkillPoints = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.RightPanel = new System.Windows.Forms.Panel();
+            this.cbCamoflage = new System.Windows.Forms.CheckBox();
             this.Headline = new System.Windows.Forms.Label();
             this.ShipMetricsTable = new System.Windows.Forms.TableLayoutPanel();
             this.button2 = new System.Windows.Forms.Button();
@@ -105,7 +106,6 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.picShip = new System.Windows.Forms.PictureBox();
-            this.cbCamoflage = new System.Windows.Forms.CheckBox();
             this.panelCaptainSkills.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic46)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic45)).BeginInit();
@@ -528,7 +528,7 @@
             // 
             this.totalSkillPoints.AutoSize = true;
             this.totalSkillPoints.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalSkillPoints.Location = new System.Drawing.Point(816, 331);
+            this.totalSkillPoints.Location = new System.Drawing.Point(612, 335);
             this.totalSkillPoints.Name = "totalSkillPoints";
             this.totalSkillPoints.Size = new System.Drawing.Size(15, 16);
             this.totalSkillPoints.TabIndex = 8;
@@ -539,7 +539,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(560, 331);
+            this.label5.Location = new System.Drawing.Point(356, 335);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(225, 16);
             this.label5.TabIndex = 9;
@@ -554,6 +554,18 @@
             this.RightPanel.Name = "RightPanel";
             this.RightPanel.Size = new System.Drawing.Size(228, 744);
             this.RightPanel.TabIndex = 5;
+            // 
+            // cbCamoflage
+            // 
+            this.cbCamoflage.AutoSize = true;
+            this.cbCamoflage.Enabled = false;
+            this.cbCamoflage.Location = new System.Drawing.Point(6, 715);
+            this.cbCamoflage.Name = "cbCamoflage";
+            this.cbCamoflage.Size = new System.Drawing.Size(169, 17);
+            this.cbCamoflage.TabIndex = 2;
+            this.cbCamoflage.Text = "Apply Camoflage concealment";
+            this.cbCamoflage.UseVisualStyleBackColor = true;
+            this.cbCamoflage.CheckedChanged += new System.EventHandler(this.cbCamoflage_CheckedChanged);
             // 
             // Headline
             // 
@@ -799,7 +811,7 @@
             // 
             this.combatFlagsCount.AutoSize = true;
             this.combatFlagsCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.combatFlagsCount.Location = new System.Drawing.Point(702, 162);
+            this.combatFlagsCount.Location = new System.Drawing.Point(653, 162);
             this.combatFlagsCount.Name = "combatFlagsCount";
             this.combatFlagsCount.Size = new System.Drawing.Size(15, 16);
             this.combatFlagsCount.TabIndex = 25;
@@ -839,7 +851,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.label6.Location = new System.Drawing.Point(714, 162);
+            this.label6.Location = new System.Drawing.Point(665, 162);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(116, 16);
             this.label6.TabIndex = 26;
@@ -1122,18 +1134,6 @@
             this.picShip.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picShip.TabIndex = 7;
             this.picShip.TabStop = false;
-            // 
-            // cbCamoflage
-            // 
-            this.cbCamoflage.AutoSize = true;
-            this.cbCamoflage.Enabled = false;
-            this.cbCamoflage.Location = new System.Drawing.Point(6, 715);
-            this.cbCamoflage.Name = "cbCamoflage";
-            this.cbCamoflage.Size = new System.Drawing.Size(169, 17);
-            this.cbCamoflage.TabIndex = 2;
-            this.cbCamoflage.Text = "Apply Camoflage concealment";
-            this.cbCamoflage.UseVisualStyleBackColor = true;
-            this.cbCamoflage.CheckedChanged += new System.EventHandler(this.cbCamoflage_CheckedChanged);
             // 
             // BuildManager
             // 

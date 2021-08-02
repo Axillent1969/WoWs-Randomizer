@@ -116,6 +116,25 @@
             this.HullTable = new System.Windows.Forms.TableLayoutPanel();
             this.modulePic = new System.Windows.Forms.PictureBox();
             this.Upgrades = new System.Windows.Forms.TabPage();
+            this.upgrade5 = new System.Windows.Forms.Panel();
+            this.lblCostSlot5 = new System.Windows.Forms.Label();
+            this.lblPerks5 = new System.Windows.Forms.Label();
+            this.lblDescription5 = new System.Windows.Forms.Label();
+            this.lblHeadline5 = new System.Windows.Forms.Label();
+            this.picture5 = new System.Windows.Forms.PictureBox();
+            this.upgrade4 = new System.Windows.Forms.Panel();
+            this.lblCostSlot4 = new System.Windows.Forms.Label();
+            this.lblPerks4 = new System.Windows.Forms.Label();
+            this.lblDescription4 = new System.Windows.Forms.Label();
+            this.lblHeadline4 = new System.Windows.Forms.Label();
+            this.picture4 = new System.Windows.Forms.PictureBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rbSlot6 = new System.Windows.Forms.RadioButton();
+            this.rbSlot5 = new System.Windows.Forms.RadioButton();
+            this.rbSlot4 = new System.Windows.Forms.RadioButton();
+            this.rbSlot3 = new System.Windows.Forms.RadioButton();
+            this.rbSlot2 = new System.Windows.Forms.RadioButton();
+            this.rbSlot1 = new System.Windows.Forms.RadioButton();
             this.upgrade3 = new System.Windows.Forms.Panel();
             this.lblCostSlot3 = new System.Windows.Forms.Label();
             this.lblPerks3 = new System.Windows.Forms.Label();
@@ -240,25 +259,6 @@
             this.plane0 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel23 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox23 = new System.Windows.Forms.PictureBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.rbSlot1 = new System.Windows.Forms.RadioButton();
-            this.rbSlot2 = new System.Windows.Forms.RadioButton();
-            this.rbSlot3 = new System.Windows.Forms.RadioButton();
-            this.rbSlot4 = new System.Windows.Forms.RadioButton();
-            this.rbSlot5 = new System.Windows.Forms.RadioButton();
-            this.rbSlot6 = new System.Windows.Forms.RadioButton();
-            this.upgrade4 = new System.Windows.Forms.Panel();
-            this.lblCostSlot4 = new System.Windows.Forms.Label();
-            this.lblPerks4 = new System.Windows.Forms.Label();
-            this.lblDescription4 = new System.Windows.Forms.Label();
-            this.lblHeadline4 = new System.Windows.Forms.Label();
-            this.picture4 = new System.Windows.Forms.PictureBox();
-            this.upgrade5 = new System.Windows.Forms.Panel();
-            this.lblCostSlot5 = new System.Windows.Forms.Label();
-            this.lblPerks5 = new System.Windows.Forms.Label();
-            this.lblDescription5 = new System.Windows.Forms.Label();
-            this.lblHeadline5 = new System.Windows.Forms.Label();
-            this.picture5 = new System.Windows.Forms.PictureBox();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.InfoPanel.SuspendLayout();
@@ -283,6 +283,11 @@
             this.hullPanel0.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.modulePic)).BeginInit();
             this.Upgrades.SuspendLayout();
+            this.upgrade5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picture5)).BeginInit();
+            this.upgrade4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picture4)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.upgrade3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picture3)).BeginInit();
             this.upgrade2.SuspendLayout();
@@ -354,11 +359,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox24)).BeginInit();
             this.plane0.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox23)).BeginInit();
-            this.groupBox1.SuspendLayout();
-            this.upgrade4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picture4)).BeginInit();
-            this.upgrade5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picture5)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -1328,6 +1328,207 @@
             this.Upgrades.TabIndex = 10;
             this.Upgrades.Text = "Upgrades";
             this.Upgrades.Click += new System.EventHandler(this.Upgrades_Click);
+            // 
+            // upgrade5
+            // 
+            this.upgrade5.Controls.Add(this.lblCostSlot5);
+            this.upgrade5.Controls.Add(this.lblPerks5);
+            this.upgrade5.Controls.Add(this.lblDescription5);
+            this.upgrade5.Controls.Add(this.lblHeadline5);
+            this.upgrade5.Controls.Add(this.picture5);
+            this.upgrade5.Location = new System.Drawing.Point(440, 411);
+            this.upgrade5.Name = "upgrade5";
+            this.upgrade5.Size = new System.Drawing.Size(427, 125);
+            this.upgrade5.TabIndex = 9;
+            this.upgrade5.Visible = false;
+            // 
+            // lblCostSlot5
+            // 
+            this.lblCostSlot5.Location = new System.Drawing.Point(287, 6);
+            this.lblCostSlot5.Name = "lblCostSlot5";
+            this.lblCostSlot5.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.lblCostSlot5.Size = new System.Drawing.Size(137, 13);
+            this.lblCostSlot5.TabIndex = 7;
+            this.lblCostSlot5.Text = "label10";
+            // 
+            // lblPerks5
+            // 
+            this.lblPerks5.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPerks5.Location = new System.Drawing.Point(87, 44);
+            this.lblPerks5.Name = "lblPerks5";
+            this.lblPerks5.Size = new System.Drawing.Size(313, 72);
+            this.lblPerks5.TabIndex = 6;
+            this.lblPerks5.Text = "label1";
+            // 
+            // lblDescription5
+            // 
+            this.lblDescription5.AutoSize = true;
+            this.lblDescription5.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDescription5.Location = new System.Drawing.Point(87, 22);
+            this.lblDescription5.Name = "lblDescription5";
+            this.lblDescription5.Size = new System.Drawing.Size(29, 12);
+            this.lblDescription5.TabIndex = 5;
+            this.lblDescription5.Text = "label1";
+            // 
+            // lblHeadline5
+            // 
+            this.lblHeadline5.AutoSize = true;
+            this.lblHeadline5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHeadline5.Location = new System.Drawing.Point(3, 6);
+            this.lblHeadline5.Name = "lblHeadline5";
+            this.lblHeadline5.Size = new System.Drawing.Size(41, 13);
+            this.lblHeadline5.TabIndex = 4;
+            this.lblHeadline5.Text = "label1";
+            // 
+            // picture5
+            // 
+            this.picture5.Location = new System.Drawing.Point(3, 22);
+            this.picture5.Name = "picture5";
+            this.picture5.Size = new System.Drawing.Size(78, 66);
+            this.picture5.TabIndex = 2;
+            this.picture5.TabStop = false;
+            // 
+            // upgrade4
+            // 
+            this.upgrade4.Controls.Add(this.lblCostSlot4);
+            this.upgrade4.Controls.Add(this.lblPerks4);
+            this.upgrade4.Controls.Add(this.lblDescription4);
+            this.upgrade4.Controls.Add(this.lblHeadline4);
+            this.upgrade4.Controls.Add(this.picture4);
+            this.upgrade4.Location = new System.Drawing.Point(438, 280);
+            this.upgrade4.Name = "upgrade4";
+            this.upgrade4.Size = new System.Drawing.Size(427, 125);
+            this.upgrade4.TabIndex = 9;
+            this.upgrade4.Visible = false;
+            // 
+            // lblCostSlot4
+            // 
+            this.lblCostSlot4.Location = new System.Drawing.Point(287, 6);
+            this.lblCostSlot4.Name = "lblCostSlot4";
+            this.lblCostSlot4.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.lblCostSlot4.Size = new System.Drawing.Size(137, 13);
+            this.lblCostSlot4.TabIndex = 7;
+            this.lblCostSlot4.Text = "label10";
+            // 
+            // lblPerks4
+            // 
+            this.lblPerks4.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPerks4.Location = new System.Drawing.Point(87, 44);
+            this.lblPerks4.Name = "lblPerks4";
+            this.lblPerks4.Size = new System.Drawing.Size(313, 72);
+            this.lblPerks4.TabIndex = 6;
+            this.lblPerks4.Text = "label1";
+            // 
+            // lblDescription4
+            // 
+            this.lblDescription4.AutoSize = true;
+            this.lblDescription4.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDescription4.Location = new System.Drawing.Point(87, 22);
+            this.lblDescription4.Name = "lblDescription4";
+            this.lblDescription4.Size = new System.Drawing.Size(29, 12);
+            this.lblDescription4.TabIndex = 5;
+            this.lblDescription4.Text = "label1";
+            // 
+            // lblHeadline4
+            // 
+            this.lblHeadline4.AutoSize = true;
+            this.lblHeadline4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHeadline4.Location = new System.Drawing.Point(3, 6);
+            this.lblHeadline4.Name = "lblHeadline4";
+            this.lblHeadline4.Size = new System.Drawing.Size(41, 13);
+            this.lblHeadline4.TabIndex = 4;
+            this.lblHeadline4.Text = "label1";
+            // 
+            // picture4
+            // 
+            this.picture4.Location = new System.Drawing.Point(3, 22);
+            this.picture4.Name = "picture4";
+            this.picture4.Size = new System.Drawing.Size(78, 66);
+            this.picture4.TabIndex = 2;
+            this.picture4.TabStop = false;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.rbSlot6);
+            this.groupBox1.Controls.Add(this.rbSlot5);
+            this.groupBox1.Controls.Add(this.rbSlot4);
+            this.groupBox1.Controls.Add(this.rbSlot3);
+            this.groupBox1.Controls.Add(this.rbSlot2);
+            this.groupBox1.Controls.Add(this.rbSlot1);
+            this.groupBox1.Location = new System.Drawing.Point(463, 18);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(200, 175);
+            this.groupBox1.TabIndex = 9;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Upgrade Slot";
+            // 
+            // rbSlot6
+            // 
+            this.rbSlot6.AutoSize = true;
+            this.rbSlot6.Location = new System.Drawing.Point(7, 139);
+            this.rbSlot6.Name = "rbSlot6";
+            this.rbSlot6.Size = new System.Drawing.Size(59, 17);
+            this.rbSlot6.TabIndex = 5;
+            this.rbSlot6.Text = "Slot #6";
+            this.rbSlot6.UseVisualStyleBackColor = true;
+            this.rbSlot6.CheckedChanged += new System.EventHandler(this.rbSlot1_CheckedChanged);
+            // 
+            // rbSlot5
+            // 
+            this.rbSlot5.AutoSize = true;
+            this.rbSlot5.Location = new System.Drawing.Point(6, 116);
+            this.rbSlot5.Name = "rbSlot5";
+            this.rbSlot5.Size = new System.Drawing.Size(59, 17);
+            this.rbSlot5.TabIndex = 4;
+            this.rbSlot5.Text = "Slot #5";
+            this.rbSlot5.UseVisualStyleBackColor = true;
+            this.rbSlot5.CheckedChanged += new System.EventHandler(this.rbSlot1_CheckedChanged);
+            // 
+            // rbSlot4
+            // 
+            this.rbSlot4.AutoSize = true;
+            this.rbSlot4.Location = new System.Drawing.Point(7, 93);
+            this.rbSlot4.Name = "rbSlot4";
+            this.rbSlot4.Size = new System.Drawing.Size(59, 17);
+            this.rbSlot4.TabIndex = 3;
+            this.rbSlot4.Text = "Slot #4";
+            this.rbSlot4.UseVisualStyleBackColor = true;
+            this.rbSlot4.CheckedChanged += new System.EventHandler(this.rbSlot1_CheckedChanged);
+            // 
+            // rbSlot3
+            // 
+            this.rbSlot3.AutoSize = true;
+            this.rbSlot3.Location = new System.Drawing.Point(7, 67);
+            this.rbSlot3.Name = "rbSlot3";
+            this.rbSlot3.Size = new System.Drawing.Size(59, 17);
+            this.rbSlot3.TabIndex = 2;
+            this.rbSlot3.Text = "Slot #3";
+            this.rbSlot3.UseVisualStyleBackColor = true;
+            this.rbSlot3.CheckedChanged += new System.EventHandler(this.rbSlot1_CheckedChanged);
+            // 
+            // rbSlot2
+            // 
+            this.rbSlot2.AutoSize = true;
+            this.rbSlot2.Location = new System.Drawing.Point(7, 44);
+            this.rbSlot2.Name = "rbSlot2";
+            this.rbSlot2.Size = new System.Drawing.Size(59, 17);
+            this.rbSlot2.TabIndex = 1;
+            this.rbSlot2.Text = "Slot #2";
+            this.rbSlot2.UseVisualStyleBackColor = true;
+            this.rbSlot2.CheckedChanged += new System.EventHandler(this.rbSlot1_CheckedChanged);
+            // 
+            // rbSlot1
+            // 
+            this.rbSlot1.AutoSize = true;
+            this.rbSlot1.Checked = true;
+            this.rbSlot1.Location = new System.Drawing.Point(7, 20);
+            this.rbSlot1.Name = "rbSlot1";
+            this.rbSlot1.Size = new System.Drawing.Size(59, 17);
+            this.rbSlot1.TabIndex = 0;
+            this.rbSlot1.TabStop = true;
+            this.rbSlot1.Text = "Slot #1";
+            this.rbSlot1.UseVisualStyleBackColor = true;
+            this.rbSlot1.CheckedChanged += new System.EventHandler(this.rbSlot1_CheckedChanged);
             // 
             // upgrade3
             // 
@@ -2705,207 +2906,6 @@
             this.pictureBox23.TabIndex = 2;
             this.pictureBox23.TabStop = false;
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.rbSlot6);
-            this.groupBox1.Controls.Add(this.rbSlot5);
-            this.groupBox1.Controls.Add(this.rbSlot4);
-            this.groupBox1.Controls.Add(this.rbSlot3);
-            this.groupBox1.Controls.Add(this.rbSlot2);
-            this.groupBox1.Controls.Add(this.rbSlot1);
-            this.groupBox1.Location = new System.Drawing.Point(463, 18);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 175);
-            this.groupBox1.TabIndex = 9;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Upgrade Slot";
-            // 
-            // rbSlot1
-            // 
-            this.rbSlot1.AutoSize = true;
-            this.rbSlot1.Checked = true;
-            this.rbSlot1.Location = new System.Drawing.Point(7, 20);
-            this.rbSlot1.Name = "rbSlot1";
-            this.rbSlot1.Size = new System.Drawing.Size(59, 17);
-            this.rbSlot1.TabIndex = 0;
-            this.rbSlot1.TabStop = true;
-            this.rbSlot1.Text = "Slot #1";
-            this.rbSlot1.UseVisualStyleBackColor = true;
-            this.rbSlot1.CheckedChanged += new System.EventHandler(this.rbSlot1_CheckedChanged);
-            // 
-            // rbSlot2
-            // 
-            this.rbSlot2.AutoSize = true;
-            this.rbSlot2.Location = new System.Drawing.Point(7, 44);
-            this.rbSlot2.Name = "rbSlot2";
-            this.rbSlot2.Size = new System.Drawing.Size(59, 17);
-            this.rbSlot2.TabIndex = 1;
-            this.rbSlot2.Text = "Slot #2";
-            this.rbSlot2.UseVisualStyleBackColor = true;
-            this.rbSlot2.CheckedChanged += new System.EventHandler(this.rbSlot1_CheckedChanged);
-            // 
-            // rbSlot3
-            // 
-            this.rbSlot3.AutoSize = true;
-            this.rbSlot3.Location = new System.Drawing.Point(7, 67);
-            this.rbSlot3.Name = "rbSlot3";
-            this.rbSlot3.Size = new System.Drawing.Size(59, 17);
-            this.rbSlot3.TabIndex = 2;
-            this.rbSlot3.Text = "Slot #3";
-            this.rbSlot3.UseVisualStyleBackColor = true;
-            this.rbSlot3.CheckedChanged += new System.EventHandler(this.rbSlot1_CheckedChanged);
-            // 
-            // rbSlot4
-            // 
-            this.rbSlot4.AutoSize = true;
-            this.rbSlot4.Location = new System.Drawing.Point(7, 93);
-            this.rbSlot4.Name = "rbSlot4";
-            this.rbSlot4.Size = new System.Drawing.Size(59, 17);
-            this.rbSlot4.TabIndex = 3;
-            this.rbSlot4.Text = "Slot #4";
-            this.rbSlot4.UseVisualStyleBackColor = true;
-            this.rbSlot4.CheckedChanged += new System.EventHandler(this.rbSlot1_CheckedChanged);
-            // 
-            // rbSlot5
-            // 
-            this.rbSlot5.AutoSize = true;
-            this.rbSlot5.Location = new System.Drawing.Point(6, 116);
-            this.rbSlot5.Name = "rbSlot5";
-            this.rbSlot5.Size = new System.Drawing.Size(59, 17);
-            this.rbSlot5.TabIndex = 4;
-            this.rbSlot5.Text = "Slot #5";
-            this.rbSlot5.UseVisualStyleBackColor = true;
-            this.rbSlot5.CheckedChanged += new System.EventHandler(this.rbSlot1_CheckedChanged);
-            // 
-            // rbSlot6
-            // 
-            this.rbSlot6.AutoSize = true;
-            this.rbSlot6.Location = new System.Drawing.Point(7, 139);
-            this.rbSlot6.Name = "rbSlot6";
-            this.rbSlot6.Size = new System.Drawing.Size(59, 17);
-            this.rbSlot6.TabIndex = 5;
-            this.rbSlot6.Text = "Slot #6";
-            this.rbSlot6.UseVisualStyleBackColor = true;
-            this.rbSlot6.CheckedChanged += new System.EventHandler(this.rbSlot1_CheckedChanged);
-            // 
-            // upgrade4
-            // 
-            this.upgrade4.Controls.Add(this.lblCostSlot4);
-            this.upgrade4.Controls.Add(this.lblPerks4);
-            this.upgrade4.Controls.Add(this.lblDescription4);
-            this.upgrade4.Controls.Add(this.lblHeadline4);
-            this.upgrade4.Controls.Add(this.picture4);
-            this.upgrade4.Location = new System.Drawing.Point(438, 280);
-            this.upgrade4.Name = "upgrade4";
-            this.upgrade4.Size = new System.Drawing.Size(427, 125);
-            this.upgrade4.TabIndex = 9;
-            this.upgrade4.Visible = false;
-            // 
-            // lblCostSlot4
-            // 
-            this.lblCostSlot4.Location = new System.Drawing.Point(287, 6);
-            this.lblCostSlot4.Name = "lblCostSlot4";
-            this.lblCostSlot4.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.lblCostSlot4.Size = new System.Drawing.Size(137, 13);
-            this.lblCostSlot4.TabIndex = 7;
-            this.lblCostSlot4.Text = "label10";
-            // 
-            // lblPerks4
-            // 
-            this.lblPerks4.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPerks4.Location = new System.Drawing.Point(87, 44);
-            this.lblPerks4.Name = "lblPerks4";
-            this.lblPerks4.Size = new System.Drawing.Size(313, 72);
-            this.lblPerks4.TabIndex = 6;
-            this.lblPerks4.Text = "label1";
-            // 
-            // lblDescription4
-            // 
-            this.lblDescription4.AutoSize = true;
-            this.lblDescription4.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDescription4.Location = new System.Drawing.Point(87, 22);
-            this.lblDescription4.Name = "lblDescription4";
-            this.lblDescription4.Size = new System.Drawing.Size(29, 12);
-            this.lblDescription4.TabIndex = 5;
-            this.lblDescription4.Text = "label1";
-            // 
-            // lblHeadline4
-            // 
-            this.lblHeadline4.AutoSize = true;
-            this.lblHeadline4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHeadline4.Location = new System.Drawing.Point(3, 6);
-            this.lblHeadline4.Name = "lblHeadline4";
-            this.lblHeadline4.Size = new System.Drawing.Size(41, 13);
-            this.lblHeadline4.TabIndex = 4;
-            this.lblHeadline4.Text = "label1";
-            // 
-            // picture4
-            // 
-            this.picture4.Location = new System.Drawing.Point(3, 22);
-            this.picture4.Name = "picture4";
-            this.picture4.Size = new System.Drawing.Size(78, 66);
-            this.picture4.TabIndex = 2;
-            this.picture4.TabStop = false;
-            // 
-            // upgrade5
-            // 
-            this.upgrade5.Controls.Add(this.lblCostSlot5);
-            this.upgrade5.Controls.Add(this.lblPerks5);
-            this.upgrade5.Controls.Add(this.lblDescription5);
-            this.upgrade5.Controls.Add(this.lblHeadline5);
-            this.upgrade5.Controls.Add(this.picture5);
-            this.upgrade5.Location = new System.Drawing.Point(440, 411);
-            this.upgrade5.Name = "upgrade5";
-            this.upgrade5.Size = new System.Drawing.Size(427, 125);
-            this.upgrade5.TabIndex = 9;
-            this.upgrade5.Visible = false;
-            // 
-            // lblCostSlot5
-            // 
-            this.lblCostSlot5.Location = new System.Drawing.Point(287, 6);
-            this.lblCostSlot5.Name = "lblCostSlot5";
-            this.lblCostSlot5.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.lblCostSlot5.Size = new System.Drawing.Size(137, 13);
-            this.lblCostSlot5.TabIndex = 7;
-            this.lblCostSlot5.Text = "label10";
-            // 
-            // lblPerks5
-            // 
-            this.lblPerks5.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPerks5.Location = new System.Drawing.Point(87, 44);
-            this.lblPerks5.Name = "lblPerks5";
-            this.lblPerks5.Size = new System.Drawing.Size(313, 72);
-            this.lblPerks5.TabIndex = 6;
-            this.lblPerks5.Text = "label1";
-            // 
-            // lblDescription5
-            // 
-            this.lblDescription5.AutoSize = true;
-            this.lblDescription5.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDescription5.Location = new System.Drawing.Point(87, 22);
-            this.lblDescription5.Name = "lblDescription5";
-            this.lblDescription5.Size = new System.Drawing.Size(29, 12);
-            this.lblDescription5.TabIndex = 5;
-            this.lblDescription5.Text = "label1";
-            // 
-            // lblHeadline5
-            // 
-            this.lblHeadline5.AutoSize = true;
-            this.lblHeadline5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHeadline5.Location = new System.Drawing.Point(3, 6);
-            this.lblHeadline5.Name = "lblHeadline5";
-            this.lblHeadline5.Size = new System.Drawing.Size(41, 13);
-            this.lblHeadline5.TabIndex = 4;
-            this.lblHeadline5.Text = "label1";
-            // 
-            // picture5
-            // 
-            this.picture5.Location = new System.Drawing.Point(3, 22);
-            this.picture5.Name = "picture5";
-            this.picture5.Size = new System.Drawing.Size(78, 66);
-            this.picture5.TabIndex = 2;
-            this.picture5.TabStop = false;
-            // 
             // ShipWiki
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2917,7 +2917,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ShipWiki";
             this.Text = "Ship Wikipedia";
-            this.Load += new System.EventHandler(this.ShipWiki_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -2944,6 +2943,14 @@
             this.hullPanel0.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.modulePic)).EndInit();
             this.Upgrades.ResumeLayout(false);
+            this.upgrade5.ResumeLayout(false);
+            this.upgrade5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picture5)).EndInit();
+            this.upgrade4.ResumeLayout(false);
+            this.upgrade4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picture4)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.upgrade3.ResumeLayout(false);
             this.upgrade3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picture3)).EndInit();
@@ -3028,14 +3035,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox24)).EndInit();
             this.plane0.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox23)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.upgrade4.ResumeLayout(false);
-            this.upgrade4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picture4)).EndInit();
-            this.upgrade5.ResumeLayout(false);
-            this.upgrade5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picture5)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

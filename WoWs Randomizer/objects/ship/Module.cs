@@ -18,7 +18,8 @@ namespace WoWs_Randomizer.utils.ship
         [JsonProperty("price_credit")]
         public long PriceCredit { get; set; }
         
-        //Skip next_ships
+        [JsonProperty("next_ships")]
+        public List<long> NextShips { get; set; }
 
         [JsonProperty("module_id")]
         public long ID { get; set; }

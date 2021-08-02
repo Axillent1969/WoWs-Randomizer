@@ -52,6 +52,10 @@ namespace WoWs_Randomizer.utils.ship
         [JsonProperty("mod_slots")]
         [Exposed()]
         public int NumberOfSlots { get; set; }
+
+        [JsonProperty("next_ships")]
+        public Dictionary<string,long> NextShips { get; set; }
+
         [JsonProperty("type")]
         [Exposed()]
         public string ShipType { get; set; }

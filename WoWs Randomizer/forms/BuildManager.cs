@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows.Forms;
 using WoWs_Randomizer.objects;
 using WoWs_Randomizer.objects.consumables;
+using WoWs_Randomizer.objects.exceptions;
 using WoWs_Randomizer.utils;
 using WoWs_Randomizer.utils.ship;
 using WoWs_Randomizer.utils.skills;
@@ -455,7 +456,7 @@ namespace WoWs_Randomizer.forms
                             count++;
                             if ( count > 8 )
                             {
-                                throw new Exception("You can only select 8 combat flags");
+                                throw new AllocatingException("You can only select 8 combat flags");
                             }
                             combatFlagsCount.Text = count.ToString();
                         }
@@ -480,7 +481,13 @@ namespace WoWs_Randomizer.forms
                     {
                         bmHandler.ApplyValue(box.AccessibleName);
                     }
-                } 
+                }
+                catch(AllocatingException ae)
+                {
+                    LOG.Info("User tried to allocate more skillpoints or flags than allowed");
+                    MessageBox.Show(ae.Message, "Error allocating skillpoints/flags", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    box.AccessibleDescription = "";
+                }
                 catch(Exception ex) 
                 {
                     LOG.Error(ex.Message);
@@ -559,7 +566,7 @@ namespace WoWs_Randomizer.forms
                 currentPoints += tier;
                 if ( currentPoints > 21 )
                 {
-                    throw new Exception("Unable to allocate more than 21 skillpoints!");
+                    throw new AllocatingException("Unable to allocate more than 21 skillpoints!");
                 }
                 totalSkillPoints.Text = currentPoints.ToString();
             }

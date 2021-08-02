@@ -27,10 +27,6 @@ namespace WoWs_Randomizer.forms
             InitializeComponent();
         }
 
-        private void ShipWiki_Load(object sender, EventArgs e)
-        {
-        }
-
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             DoShipSelect();

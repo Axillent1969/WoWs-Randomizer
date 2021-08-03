@@ -75,8 +75,10 @@ namespace WoWs_Randomizer.utils.ship
             modules.Add(4182685456, new ModuleAirstrike() { AvailableFlights = 1, NumberOfAttackingFlight = 8, AircraftHP = 1940, NumberOfBombs = 6, MaxDamage = 5800, Penetration = 34, FireChance = 33.0, Range = 11.0, ReloadTime = 80 });
             modules.Add(4181636880, new ModuleAirstrike() { AvailableFlights = 2, NumberOfAttackingFlight = 10, AircraftHP = 2020, NumberOfBombs = 6, MaxDamage = 5800, Penetration = 34, FireChance = 33.0, Range = 12.0, ReloadTime = 100 });
             modules.Add(4180588304, new ModuleAirstrike() { AvailableFlights = 2, NumberOfAttackingFlight = 10, AircraftHP = 2110, NumberOfBombs = 6, MaxDamage = 6100, Penetration = 36, FireChance = 35.0, Range = 12.0, ReloadTime = 100 });
-            // Kijkduin, Eendracht, Haarlem, Johan De Witt
-            // 4183734032, 4182685456, 4181636880, 4180588304
+            modules.Add(4179539728, new ModuleAirstrike() { AvailableFlights = 2, NumberOfAttackingFlight = 12, AircraftHP = 2200, NumberOfBombs = 6, MaxDamage = 6800, Penetration = 38, FireChance = 39.0, Range = 13.0, ReloadTime = 100 });
+
+            // Kijkduin, Eendracht, Haarlem, Johan De Witt, Gouden Leeuw
+            // 4183734032, 4182685456, 4181636880, 4180588304, 4179539728
             /*            if ( this.ID == 4183734032 )
                         {
                             ModuleAirstrike airstrike = new ModuleAirstrike();
@@ -93,7 +95,7 @@ namespace WoWs_Randomizer.utils.ship
                             return airstrike;
                         }
             */
-            
+
             if ( modules.ContainsKey(this.ID))
             {
                 return modules[this.ID];

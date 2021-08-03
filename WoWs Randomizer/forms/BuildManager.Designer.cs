@@ -183,7 +183,7 @@
             this.panelCaptainSkills.Enabled = false;
             this.panelCaptainSkills.Location = new System.Drawing.Point(16, 127);
             this.panelCaptainSkills.Name = "panelCaptainSkills";
-            this.panelCaptainSkills.Size = new System.Drawing.Size(844, 359);
+            this.panelCaptainSkills.Size = new System.Drawing.Size(668, 359);
             this.panelCaptainSkills.TabIndex = 0;
             // 
             // pic46
@@ -550,7 +550,7 @@
             this.RightPanel.Controls.Add(this.cbCamoflage);
             this.RightPanel.Controls.Add(this.Headline);
             this.RightPanel.Controls.Add(this.ShipMetricsTable);
-            this.RightPanel.Location = new System.Drawing.Point(864, 127);
+            this.RightPanel.Location = new System.Drawing.Point(699, 127);
             this.RightPanel.Name = "RightPanel";
             this.RightPanel.Size = new System.Drawing.Size(228, 744);
             this.RightPanel.TabIndex = 5;
@@ -591,7 +591,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(993, 52);
+            this.button2.Location = new System.Drawing.Point(828, 52);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 6;
@@ -609,7 +609,7 @@
             this.ClearSelectionsToolBarButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1104, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(942, 25);
             this.toolStrip1.TabIndex = 10;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -670,7 +670,7 @@
             this.fileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1104, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(942, 24);
             this.menuStrip1.TabIndex = 11;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -716,9 +716,9 @@
             this.upgradeSlot1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.upgradeSlot1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.upgradeSlot1.Enabled = false;
-            this.upgradeSlot1.Location = new System.Drawing.Point(13, 529);
+            this.upgradeSlot1.Location = new System.Drawing.Point(52, 531);
             this.upgradeSlot1.Name = "upgradeSlot1";
-            this.upgradeSlot1.Size = new System.Drawing.Size(112, 100);
+            this.upgradeSlot1.Size = new System.Drawing.Size(76, 75);
             this.upgradeSlot1.TabIndex = 12;
             this.upgradeSlot1.Tag = "1";
             this.upgradeSlot1.Click += new System.EventHandler(this.upgradeSlot1_Click);
@@ -728,9 +728,9 @@
             this.upgradeSlot2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.upgradeSlot2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.upgradeSlot2.Enabled = false;
-            this.upgradeSlot2.Location = new System.Drawing.Point(150, 529);
+            this.upgradeSlot2.Location = new System.Drawing.Point(158, 531);
             this.upgradeSlot2.Name = "upgradeSlot2";
-            this.upgradeSlot2.Size = new System.Drawing.Size(112, 100);
+            this.upgradeSlot2.Size = new System.Drawing.Size(76, 75);
             this.upgradeSlot2.TabIndex = 13;
             this.upgradeSlot2.Tag = "2";
             this.upgradeSlot2.Click += new System.EventHandler(this.upgradeSlot1_Click);
@@ -740,9 +740,9 @@
             this.upgradeSlot3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.upgradeSlot3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.upgradeSlot3.Enabled = false;
-            this.upgradeSlot3.Location = new System.Drawing.Point(290, 529);
+            this.upgradeSlot3.Location = new System.Drawing.Point(264, 531);
             this.upgradeSlot3.Name = "upgradeSlot3";
-            this.upgradeSlot3.Size = new System.Drawing.Size(112, 100);
+            this.upgradeSlot3.Size = new System.Drawing.Size(76, 75);
             this.upgradeSlot3.TabIndex = 13;
             this.upgradeSlot3.Tag = "3";
             this.upgradeSlot3.Click += new System.EventHandler(this.upgradeSlot1_Click);
@@ -752,9 +752,9 @@
             this.upgradeSlot4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.upgradeSlot4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.upgradeSlot4.Enabled = false;
-            this.upgradeSlot4.Location = new System.Drawing.Point(444, 529);
+            this.upgradeSlot4.Location = new System.Drawing.Point(370, 531);
             this.upgradeSlot4.Name = "upgradeSlot4";
-            this.upgradeSlot4.Size = new System.Drawing.Size(112, 100);
+            this.upgradeSlot4.Size = new System.Drawing.Size(76, 75);
             this.upgradeSlot4.TabIndex = 13;
             this.upgradeSlot4.Tag = "4";
             this.upgradeSlot4.Click += new System.EventHandler(this.upgradeSlot1_Click);
@@ -764,9 +764,9 @@
             this.upgradeSlot5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.upgradeSlot5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.upgradeSlot5.Enabled = false;
-            this.upgradeSlot5.Location = new System.Drawing.Point(590, 529);
+            this.upgradeSlot5.Location = new System.Drawing.Point(476, 531);
             this.upgradeSlot5.Name = "upgradeSlot5";
-            this.upgradeSlot5.Size = new System.Drawing.Size(112, 100);
+            this.upgradeSlot5.Size = new System.Drawing.Size(76, 75);
             this.upgradeSlot5.TabIndex = 14;
             this.upgradeSlot5.Tag = "5";
             this.upgradeSlot5.Click += new System.EventHandler(this.upgradeSlot1_Click);
@@ -776,9 +776,9 @@
             this.upgradeSlot6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.upgradeSlot6.Cursor = System.Windows.Forms.Cursors.Hand;
             this.upgradeSlot6.Enabled = false;
-            this.upgradeSlot6.Location = new System.Drawing.Point(744, 529);
+            this.upgradeSlot6.Location = new System.Drawing.Point(582, 531);
             this.upgradeSlot6.Name = "upgradeSlot6";
-            this.upgradeSlot6.Size = new System.Drawing.Size(112, 100);
+            this.upgradeSlot6.Size = new System.Drawing.Size(76, 75);
             this.upgradeSlot6.TabIndex = 14;
             this.upgradeSlot6.Tag = "6";
             this.upgradeSlot6.Click += new System.EventHandler(this.upgradeSlot1_Click);
@@ -804,14 +804,14 @@
             this.panelFlags.Enabled = false;
             this.panelFlags.Location = new System.Drawing.Point(16, 679);
             this.panelFlags.Name = "panelFlags";
-            this.panelFlags.Size = new System.Drawing.Size(843, 189);
+            this.panelFlags.Size = new System.Drawing.Size(668, 189);
             this.panelFlags.TabIndex = 16;
             // 
             // combatFlagsCount
             // 
             this.combatFlagsCount.AutoSize = true;
             this.combatFlagsCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.combatFlagsCount.Location = new System.Drawing.Point(653, 162);
+            this.combatFlagsCount.Location = new System.Drawing.Point(499, 162);
             this.combatFlagsCount.Name = "combatFlagsCount";
             this.combatFlagsCount.Size = new System.Drawing.Size(15, 16);
             this.combatFlagsCount.TabIndex = 25;
@@ -822,7 +822,7 @@
             this.pictureBox2.AccessibleName = "4265439152";
             this.pictureBox2.AccessibleRole = System.Windows.Forms.AccessibleRole.Alert;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(137, 128);
+            this.pictureBox2.Location = new System.Drawing.Point(44, 116);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(50, 50);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -837,7 +837,7 @@
             this.pictureBox1.AccessibleName = "4264390576";
             this.pictureBox1.AccessibleRole = System.Windows.Forms.AccessibleRole.Alert;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(13, 128);
+            this.pictureBox1.Location = new System.Drawing.Point(145, 116);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(50, 50);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -851,7 +851,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.label6.Location = new System.Drawing.Point(665, 162);
+            this.label6.Location = new System.Drawing.Point(511, 162);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(116, 16);
             this.label6.TabIndex = 26;
@@ -862,7 +862,7 @@
             this.picID2.AccessibleName = "4287459248";
             this.picID2.AccessibleRole = System.Windows.Forms.AccessibleRole.Alert;
             this.picID2.Image = ((System.Drawing.Image)(resources.GetObject("picID2.Image")));
-            this.picID2.Location = new System.Drawing.Point(137, 4);
+            this.picID2.Location = new System.Drawing.Point(252, 60);
             this.picID2.Name = "picID2";
             this.picID2.Size = new System.Drawing.Size(50, 50);
             this.picID2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -877,7 +877,7 @@
             this.picJWU.AccessibleName = "4274876336";
             this.picJWU.AccessibleRole = System.Windows.Forms.AccessibleRole.Alert;
             this.picJWU.Image = ((System.Drawing.Image)(resources.GetObject("picJWU.Image")));
-            this.picJWU.Location = new System.Drawing.Point(731, 60);
+            this.picJWU.Location = new System.Drawing.Point(359, 4);
             this.picJWU.Name = "picJWU";
             this.picJWU.Size = new System.Drawing.Size(50, 50);
             this.picJWU.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -892,7 +892,7 @@
             this.picIX.AccessibleName = "4275924912";
             this.picIX.AccessibleRole = System.Windows.Forms.AccessibleRole.Alert;
             this.picIX.Image = ((System.Drawing.Image)(resources.GetObject("picIX.Image")));
-            this.picIX.Location = new System.Drawing.Point(577, 60);
+            this.picIX.Location = new System.Drawing.Point(252, 4);
             this.picIX.Name = "picIX";
             this.picIX.Size = new System.Drawing.Size(50, 50);
             this.picIX.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -907,7 +907,7 @@
             this.picVL.AccessibleName = "4276973488";
             this.picVL.AccessibleRole = System.Windows.Forms.AccessibleRole.Alert;
             this.picVL.Image = ((System.Drawing.Image)(resources.GetObject("picVL.Image")));
-            this.picVL.Location = new System.Drawing.Point(431, 60);
+            this.picVL.Location = new System.Drawing.Point(466, 4);
             this.picVL.Name = "picVL";
             this.picVL.Size = new System.Drawing.Size(50, 50);
             this.picVL.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -921,7 +921,7 @@
             this.picNES.AccessibleName = "4278022064";
             this.picNES.AccessibleRole = System.Windows.Forms.AccessibleRole.Alert;
             this.picNES.Image = ((System.Drawing.Image)(resources.GetObject("picNES.Image")));
-            this.picNES.Location = new System.Drawing.Point(277, 59);
+            this.picNES.Location = new System.Drawing.Point(44, 4);
             this.picNES.Name = "picNES";
             this.picNES.Size = new System.Drawing.Size(50, 50);
             this.picNES.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -935,7 +935,7 @@
             this.picNF.AccessibleName = "4280119216";
             this.picNF.AccessibleRole = System.Windows.Forms.AccessibleRole.Alert;
             this.picNF.Image = ((System.Drawing.Image)(resources.GetObject("picNF.Image")));
-            this.picNF.Location = new System.Drawing.Point(137, 59);
+            this.picNF.Location = new System.Drawing.Point(44, 60);
             this.picNF.Name = "picNF";
             this.picNF.Size = new System.Drawing.Size(50, 50);
             this.picNF.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -951,7 +951,7 @@
             this.picSM.AccessibleName = "4289556400";
             this.picSM.AccessibleRole = System.Windows.Forms.AccessibleRole.Alert;
             this.picSM.Image = ((System.Drawing.Image)(resources.GetObject("picSM.Image")));
-            this.picSM.Location = new System.Drawing.Point(13, 60);
+            this.picSM.Location = new System.Drawing.Point(145, 60);
             this.picSM.Name = "picSM";
             this.picSM.Size = new System.Drawing.Size(50, 50);
             this.picSM.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -966,7 +966,7 @@
             this.picMYS.AccessibleName = "4282216368";
             this.picMYS.AccessibleRole = System.Windows.Forms.AccessibleRole.Alert;
             this.picMYS.Image = ((System.Drawing.Image)(resources.GetObject("picMYS.Image")));
-            this.picMYS.Location = new System.Drawing.Point(731, 3);
+            this.picMYS.Location = new System.Drawing.Point(145, 4);
             this.picMYS.Name = "picMYS";
             this.picMYS.Size = new System.Drawing.Size(50, 50);
             this.picMYS.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -981,7 +981,7 @@
             this.picJYB.AccessibleName = "4285362096";
             this.picJYB.AccessibleRole = System.Windows.Forms.AccessibleRole.Alert;
             this.picJYB.Image = ((System.Drawing.Image)(resources.GetObject("picJYB.Image")));
-            this.picJYB.Location = new System.Drawing.Point(577, 4);
+            this.picJYB.Location = new System.Drawing.Point(359, 60);
             this.picJYB.Name = "picJYB";
             this.picJYB.Size = new System.Drawing.Size(50, 50);
             this.picJYB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -996,7 +996,7 @@
             this.picJC.AccessibleName = "4284313520";
             this.picJC.AccessibleRole = System.Windows.Forms.AccessibleRole.Alert;
             this.picJC.Image = ((System.Drawing.Image)(resources.GetObject("picJC.Image")));
-            this.picJC.Location = new System.Drawing.Point(431, 4);
+            this.picJC.Location = new System.Drawing.Point(577, 60);
             this.picJC.Name = "picJC";
             this.picJC.Size = new System.Drawing.Size(50, 50);
             this.picJC.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1011,7 +1011,7 @@
             this.picIY.AccessibleName = "4286410672";
             this.picIY.AccessibleRole = System.Windows.Forms.AccessibleRole.Alert;
             this.picIY.Image = ((System.Drawing.Image)(resources.GetObject("picIY.Image")));
-            this.picIY.Location = new System.Drawing.Point(277, 3);
+            this.picIY.Location = new System.Drawing.Point(466, 60);
             this.picIY.Name = "picIY";
             this.picIY.Size = new System.Drawing.Size(50, 50);
             this.picIY.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1026,7 +1026,7 @@
             this.picHY.AccessibleName = "4288507824";
             this.picHY.AccessibleRole = System.Windows.Forms.AccessibleRole.Alert;
             this.picHY.Image = ((System.Drawing.Image)(resources.GetObject("picHY.Image")));
-            this.picHY.Location = new System.Drawing.Point(13, 4);
+            this.picHY.Location = new System.Drawing.Point(577, 4);
             this.picHY.Name = "picHY";
             this.picHY.Size = new System.Drawing.Size(50, 50);
             this.picHY.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1040,7 +1040,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(10, 489);
+            this.label7.Location = new System.Drawing.Point(25, 491);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(100, 24);
             this.label7.TabIndex = 17;
@@ -1050,7 +1050,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(13, 513);
+            this.label8.Location = new System.Drawing.Point(52, 515);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(40, 13);
             this.label8.TabIndex = 18;
@@ -1060,7 +1060,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(150, 513);
+            this.label9.Location = new System.Drawing.Point(158, 515);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(40, 13);
             this.label9.TabIndex = 19;
@@ -1070,7 +1070,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(290, 513);
+            this.label10.Location = new System.Drawing.Point(264, 515);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(40, 13);
             this.label10.TabIndex = 20;
@@ -1080,7 +1080,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(444, 513);
+            this.label11.Location = new System.Drawing.Point(370, 515);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(40, 13);
             this.label11.TabIndex = 21;
@@ -1090,7 +1090,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(590, 513);
+            this.label12.Location = new System.Drawing.Point(476, 515);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(40, 13);
             this.label12.TabIndex = 22;
@@ -1100,7 +1100,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(744, 513);
+            this.label13.Location = new System.Drawing.Point(582, 515);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(40, 13);
             this.label13.TabIndex = 23;
@@ -1110,7 +1110,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(348, 652);
+            this.label14.Location = new System.Drawing.Point(25, 652);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(138, 24);
             this.label14.TabIndex = 24;
@@ -1128,7 +1128,7 @@
             // 
             // picShip
             // 
-            this.picShip.Location = new System.Drawing.Point(862, 52);
+            this.picShip.Location = new System.Drawing.Point(697, 52);
             this.picShip.Name = "picShip";
             this.picShip.Size = new System.Drawing.Size(125, 69);
             this.picShip.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1139,7 +1139,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1104, 883);
+            this.ClientSize = new System.Drawing.Size(942, 883);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);

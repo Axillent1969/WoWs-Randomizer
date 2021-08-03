@@ -889,7 +889,7 @@ namespace WoWs_Randomizer.forms
             box2.Image = selectedBox.Image;
             box2.Tag = selectedBox.Tag;
             box2.SizeMode = PictureBoxSizeMode.AutoSize;
-            box2.Location = new System.Drawing.Point(20, 15);
+            box2.Location = new System.Drawing.Point(5, 5);
             box2.Click += upgradeSlot1_Click;
 
             ToolTip ttip = new ToolTip();

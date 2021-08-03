@@ -425,6 +425,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Anchor.ico" />
+    <None Include="Resources\airstrike.png" />
     <None Include="Resources\swift_in_silence1.png" />
     <None Include="Resources\survivability_expert_cv.png" />
     <None Include="Resources\torpedo_bomber.png" />

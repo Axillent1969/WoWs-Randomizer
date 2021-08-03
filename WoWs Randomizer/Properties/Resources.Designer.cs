@@ -63,6 +63,16 @@ namespace WoWs_Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap airstrike {
+            get {
+                object obj = ResourceManager.GetObject("airstrike", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Consumable_PCY005_Spotter {
             get {
                 object obj = ResourceManager.GetObject("Consumable_PCY005_Spotter", resourceCulture);

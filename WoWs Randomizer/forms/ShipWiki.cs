@@ -11,6 +11,7 @@ using static WoWs_Randomizer.utils.ConsumableTypes;
 using WoWs_Randomizer.utils;
 using WoWs_Randomizer.api;
 using System.Linq;
+using WoWs_Randomizer.objects.modules;
 
 namespace WoWs_Randomizer.forms
 {
@@ -500,6 +501,52 @@ namespace WoWs_Randomizer.forms
                     }
                 }
                 c++;
+            }
+
+            if ( selectedShip.Modules.Airstrike != null )
+            {
+                Control ctr = MainArmament.Controls["main" + c.ToString()];
+                ModuleData module = Program.AllModules[selectedShip.Modules.Airstrike.ToString()];
+                LoadMainArmamentsControl(module, ctr);
+            } else
+            {
+                ModuleAirstrike airstrike = selectedShip.GetAirstrikeModule();
+                if ( airstrike != null )
+                {
+                    Control ctr = MainArmament.Controls["main" + c.ToString()];
+                    ctr.Visible = true;
+                    TableLayoutPanel panel = getTable(ctr);
+                    PictureBox picture = getPicture(ctr);
+                    Label nameLabel = getLabel(ctr);
+
+                    picture.Image = Properties.Resources.airstrike;
+
+                    nameLabel.Text = "HE Bomb Airstrike";
+                    panel.Controls.Add(createHeadlineLabel("Flights/Size"), 0, 0);
+                    panel.Controls.Add(createLabel(airstrike.AvailableFlights.ToString() + "/" + airstrike.NumberOfAttackingFlight.ToString()), 0, 1);
+
+                    panel.Controls.Add(createHeadlineLabel("HP"), 1, 0);
+                    panel.Controls.Add(createLabel(airstrike.AircraftHP.ToString()), 1, 1);
+
+                    panel.Controls.Add(createHeadlineLabel("Payload"), 2, 0);
+                    panel.Controls.Add(createLabel(airstrike.NumberOfBombs.ToString()), 2, 1);
+
+                    panel.Controls.Add(createHeadlineLabel("Damage"), 3, 0);
+                    panel.Controls.Add(createLabel(airstrike.MaxDamage.ToString()), 3, 1);
+
+                    panel.Controls.Add(createHeadlineLabel("Penetration"), 4, 0);
+                    panel.Controls.Add(createLabel(airstrike.Penetration.ToString() + " mm"), 4, 1);
+
+                    panel.Controls.Add(createHeadlineLabel("Firechance"), 5, 0);
+                    panel.Controls.Add(createLabel(airstrike.FireChance.ToString() + " %"), 5, 1);
+
+                    panel.Controls.Add(createHeadlineLabel("Range"), 6, 0);
+                    panel.Controls.Add(createLabel(airstrike.Range.ToString() + " km"), 6, 1);
+
+                    panel.Controls.Add(createHeadlineLabel("Reload"), 7, 0);
+                    panel.Controls.Add(createLabel(airstrike.ReloadTime.ToString() + " sec"), 7, 1);
+
+                }
             }
         }
 

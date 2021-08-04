@@ -48,8 +48,10 @@ namespace WoWs_Randomizer.forms
             USA.Tag = "usa";
             TreeNode USSR = new TreeNode("USSR");
             USSR.Tag = "ussr";
+            TreeNode NL = new TreeNode("The Netherlands");
+            NL.Tag = "netherlands";
 
-            TreeNode[] AllCountries = new TreeNode[] { Commonwealth, Europe, France, Germany, Japan, Italy, PAA, PAN, UK, USA, USSR };
+            TreeNode[] AllCountries = new TreeNode[] { Commonwealth, Europe, France, Germany, Japan, Italy, NL, PAA, PAN, UK, USA, USSR };
 
             RootNode.Nodes.AddRange(AllCountries);
             CategoryView.Nodes.Add(RootNode);

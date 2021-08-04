@@ -88,6 +88,7 @@ namespace WoWs_Randomizer
             this.shipComparisonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.upgradesExaminerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.messageGeneratorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.profilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuProfileEU = new System.Windows.Forms.ToolStripMenuItem();
             this.menuProfileNA = new System.Windows.Forms.ToolStripMenuItem();
@@ -125,9 +126,9 @@ namespace WoWs_Randomizer
             this.link = new System.Windows.Forms.LinkLabel();
             this.closeMessageButton = new System.Windows.Forms.Button();
             this.messageBox = new System.Windows.Forms.Panel();
-            this.dontShowAgain = new System.Windows.Forms.CheckBox();
-            this.messageGeneratorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.headline = new System.Windows.Forms.Label();
+            this.dontShowAgain = new System.Windows.Forms.CheckBox();
+            this.CBCountry12 = new System.Windows.Forms.CheckBox();
             this.LeftPanel.SuspendLayout();
             this.MenuStrip.SuspendLayout();
             this.RightPanel.SuspendLayout();
@@ -141,6 +142,7 @@ namespace WoWs_Randomizer
             // 
             // LeftPanel
             // 
+            this.LeftPanel.Controls.Add(this.CBCountry12);
             this.LeftPanel.Controls.Add(this.lblTotalNumberOfShips);
             this.LeftPanel.Controls.Add(this.CBPremium);
             this.LeftPanel.Controls.Add(this.CBNonPremium);
@@ -191,7 +193,7 @@ namespace WoWs_Randomizer
             // CBPremium
             // 
             this.CBPremium.AutoSize = true;
-            this.CBPremium.Location = new System.Drawing.Point(112, 546);
+            this.CBPremium.Location = new System.Drawing.Point(112, 563);
             this.CBPremium.Name = "CBPremium";
             this.CBPremium.Size = new System.Drawing.Size(66, 17);
             this.CBPremium.TabIndex = 31;
@@ -202,7 +204,7 @@ namespace WoWs_Randomizer
             // CBNonPremium
             // 
             this.CBNonPremium.AutoSize = true;
-            this.CBNonPremium.Location = new System.Drawing.Point(19, 546);
+            this.CBNonPremium.Location = new System.Drawing.Point(19, 563);
             this.CBNonPremium.Name = "CBNonPremium";
             this.CBNonPremium.Size = new System.Drawing.Size(72, 17);
             this.CBNonPremium.TabIndex = 30;
@@ -240,7 +242,7 @@ namespace WoWs_Randomizer
             // cbSingleSelect
             // 
             this.cbSingleSelect.AutoSize = true;
-            this.cbSingleSelect.Location = new System.Drawing.Point(19, 578);
+            this.cbSingleSelect.Location = new System.Drawing.Point(19, 595);
             this.cbSingleSelect.Name = "cbSingleSelect";
             this.cbSingleSelect.Size = new System.Drawing.Size(133, 17);
             this.cbSingleSelect.TabIndex = 26;
@@ -251,7 +253,7 @@ namespace WoWs_Randomizer
             // CBTier10
             // 
             this.CBTier10.AutoSize = true;
-            this.CBTier10.Location = new System.Drawing.Point(112, 510);
+            this.CBTier10.Location = new System.Drawing.Point(112, 527);
             this.CBTier10.Name = "CBTier10";
             this.CBTier10.Size = new System.Drawing.Size(59, 17);
             this.CBTier10.TabIndex = 25;
@@ -262,7 +264,7 @@ namespace WoWs_Randomizer
             // CBTier9
             // 
             this.CBTier9.AutoSize = true;
-            this.CBTier9.Location = new System.Drawing.Point(112, 487);
+            this.CBTier9.Location = new System.Drawing.Point(112, 504);
             this.CBTier9.Name = "CBTier9";
             this.CBTier9.Size = new System.Drawing.Size(53, 17);
             this.CBTier9.TabIndex = 24;
@@ -273,7 +275,7 @@ namespace WoWs_Randomizer
             // CBTier8
             // 
             this.CBTier8.AutoSize = true;
-            this.CBTier8.Location = new System.Drawing.Point(112, 463);
+            this.CBTier8.Location = new System.Drawing.Point(112, 480);
             this.CBTier8.Name = "CBTier8";
             this.CBTier8.Size = new System.Drawing.Size(53, 17);
             this.CBTier8.TabIndex = 23;
@@ -284,7 +286,7 @@ namespace WoWs_Randomizer
             // CBTier7
             // 
             this.CBTier7.AutoSize = true;
-            this.CBTier7.Location = new System.Drawing.Point(112, 439);
+            this.CBTier7.Location = new System.Drawing.Point(112, 456);
             this.CBTier7.Name = "CBTier7";
             this.CBTier7.Size = new System.Drawing.Size(53, 17);
             this.CBTier7.TabIndex = 22;
@@ -295,7 +297,7 @@ namespace WoWs_Randomizer
             // CBTier6
             // 
             this.CBTier6.AutoSize = true;
-            this.CBTier6.Location = new System.Drawing.Point(112, 415);
+            this.CBTier6.Location = new System.Drawing.Point(112, 432);
             this.CBTier6.Name = "CBTier6";
             this.CBTier6.Size = new System.Drawing.Size(53, 17);
             this.CBTier6.TabIndex = 21;
@@ -306,7 +308,7 @@ namespace WoWs_Randomizer
             // CBTier5
             // 
             this.CBTier5.AutoSize = true;
-            this.CBTier5.Location = new System.Drawing.Point(19, 510);
+            this.CBTier5.Location = new System.Drawing.Point(19, 527);
             this.CBTier5.Name = "CBTier5";
             this.CBTier5.Size = new System.Drawing.Size(53, 17);
             this.CBTier5.TabIndex = 20;
@@ -317,7 +319,7 @@ namespace WoWs_Randomizer
             // CBTier4
             // 
             this.CBTier4.AutoSize = true;
-            this.CBTier4.Location = new System.Drawing.Point(19, 487);
+            this.CBTier4.Location = new System.Drawing.Point(19, 504);
             this.CBTier4.Name = "CBTier4";
             this.CBTier4.Size = new System.Drawing.Size(53, 17);
             this.CBTier4.TabIndex = 19;
@@ -328,7 +330,7 @@ namespace WoWs_Randomizer
             // CBTier3
             // 
             this.CBTier3.AutoSize = true;
-            this.CBTier3.Location = new System.Drawing.Point(19, 463);
+            this.CBTier3.Location = new System.Drawing.Point(19, 480);
             this.CBTier3.Name = "CBTier3";
             this.CBTier3.Size = new System.Drawing.Size(53, 17);
             this.CBTier3.TabIndex = 18;
@@ -339,7 +341,7 @@ namespace WoWs_Randomizer
             // CBTier2
             // 
             this.CBTier2.AutoSize = true;
-            this.CBTier2.Location = new System.Drawing.Point(19, 439);
+            this.CBTier2.Location = new System.Drawing.Point(19, 456);
             this.CBTier2.Name = "CBTier2";
             this.CBTier2.Size = new System.Drawing.Size(53, 17);
             this.CBTier2.TabIndex = 17;
@@ -350,7 +352,7 @@ namespace WoWs_Randomizer
             // CBTier1
             // 
             this.CBTier1.AutoSize = true;
-            this.CBTier1.Location = new System.Drawing.Point(19, 415);
+            this.CBTier1.Location = new System.Drawing.Point(19, 432);
             this.CBTier1.Name = "CBTier1";
             this.CBTier1.Size = new System.Drawing.Size(53, 17);
             this.CBTier1.TabIndex = 16;
@@ -361,7 +363,7 @@ namespace WoWs_Randomizer
             // CBShipclass4
             // 
             this.CBShipclass4.AutoSize = true;
-            this.CBShipclass4.Location = new System.Drawing.Point(112, 373);
+            this.CBShipclass4.Location = new System.Drawing.Point(112, 390);
             this.CBShipclass4.Name = "CBShipclass4";
             this.CBShipclass4.Size = new System.Drawing.Size(56, 17);
             this.CBShipclass4.TabIndex = 15;
@@ -372,7 +374,7 @@ namespace WoWs_Randomizer
             // CBShipclass2
             // 
             this.CBShipclass2.AutoSize = true;
-            this.CBShipclass2.Location = new System.Drawing.Point(112, 349);
+            this.CBShipclass2.Location = new System.Drawing.Point(112, 366);
             this.CBShipclass2.Name = "CBShipclass2";
             this.CBShipclass2.Size = new System.Drawing.Size(58, 17);
             this.CBShipclass2.TabIndex = 14;
@@ -383,7 +385,7 @@ namespace WoWs_Randomizer
             // CBShipclass3
             // 
             this.CBShipclass3.AutoSize = true;
-            this.CBShipclass3.Location = new System.Drawing.Point(19, 373);
+            this.CBShipclass3.Location = new System.Drawing.Point(19, 390);
             this.CBShipclass3.Name = "CBShipclass3";
             this.CBShipclass3.Size = new System.Drawing.Size(72, 17);
             this.CBShipclass3.TabIndex = 13;
@@ -394,7 +396,7 @@ namespace WoWs_Randomizer
             // CBShipclass1
             // 
             this.CBShipclass1.AutoSize = true;
-            this.CBShipclass1.Location = new System.Drawing.Point(19, 349);
+            this.CBShipclass1.Location = new System.Drawing.Point(19, 366);
             this.CBShipclass1.Name = "CBShipclass1";
             this.CBShipclass1.Size = new System.Drawing.Size(71, 17);
             this.CBShipclass1.TabIndex = 12;
@@ -652,30 +654,37 @@ namespace WoWs_Randomizer
             // buildManagerToolStripMenuItem
             // 
             this.buildManagerToolStripMenuItem.Name = "buildManagerToolStripMenuItem";
-            this.buildManagerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.buildManagerToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.buildManagerToolStripMenuItem.Text = "&Build Manager";
             this.buildManagerToolStripMenuItem.Click += new System.EventHandler(this.buildManagerToolStripMenuItem_Click);
             // 
             // shipComparisonToolStripMenuItem
             // 
             this.shipComparisonToolStripMenuItem.Name = "shipComparisonToolStripMenuItem";
-            this.shipComparisonToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.shipComparisonToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.shipComparisonToolStripMenuItem.Text = "Ship &Comparison";
             this.shipComparisonToolStripMenuItem.Click += new System.EventHandler(this.ShipComparisonToolStripMenuItem_Click);
             // 
             // upgradesExaminerToolStripMenuItem
             // 
             this.upgradesExaminerToolStripMenuItem.Name = "upgradesExaminerToolStripMenuItem";
-            this.upgradesExaminerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.upgradesExaminerToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.upgradesExaminerToolStripMenuItem.Text = "Ship &Wikipedia";
             this.upgradesExaminerToolStripMenuItem.Click += new System.EventHandler(this.upgradesExaminerToolStripMenuItem_Click);
             // 
             // listToolStripMenuItem
             // 
             this.listToolStripMenuItem.Name = "listToolStripMenuItem";
-            this.listToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.listToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.listToolStripMenuItem.Text = "Query Tool";
             this.listToolStripMenuItem.Click += new System.EventHandler(this.listToolStripMenuItem_Click);
+            // 
+            // messageGeneratorToolStripMenuItem
+            // 
+            this.messageGeneratorToolStripMenuItem.Name = "messageGeneratorToolStripMenuItem";
+            this.messageGeneratorToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.messageGeneratorToolStripMenuItem.Text = "Message Generator";
+            this.messageGeneratorToolStripMenuItem.Click += new System.EventHandler(this.messageGeneratorToolStripMenuItem_Click);
             // 
             // profilesToolStripMenuItem
             // 
@@ -1016,6 +1025,16 @@ namespace WoWs_Randomizer
             this.messageBox.TabIndex = 11;
             this.messageBox.VisibleChanged += new System.EventHandler(this.messageBox_VisibleChanged);
             // 
+            // headline
+            // 
+            this.headline.AutoSize = true;
+            this.headline.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.headline.Location = new System.Drawing.Point(9, 13);
+            this.headline.Name = "headline";
+            this.headline.Size = new System.Drawing.Size(126, 13);
+            this.headline.TabIndex = 6;
+            this.headline.Text = "Important information";
+            // 
             // dontShowAgain
             // 
             this.dontShowAgain.AutoSize = true;
@@ -1026,22 +1045,16 @@ namespace WoWs_Randomizer
             this.dontShowAgain.Text = "Don\'t Show This Message Again";
             this.dontShowAgain.UseVisualStyleBackColor = true;
             // 
-            // messageGeneratorToolStripMenuItem
+            // CBCountry12
             // 
-            this.messageGeneratorToolStripMenuItem.Name = "messageGeneratorToolStripMenuItem";
-            this.messageGeneratorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.messageGeneratorToolStripMenuItem.Text = "Message Generator";
-            this.messageGeneratorToolStripMenuItem.Click += new System.EventHandler(this.messageGeneratorToolStripMenuItem_Click);
-            // 
-            // headline
-            // 
-            this.headline.AutoSize = true;
-            this.headline.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.headline.Location = new System.Drawing.Point(9, 13);
-            this.headline.Name = "headline";
-            this.headline.Size = new System.Drawing.Size(126, 13);
-            this.headline.TabIndex = 6;
-            this.headline.Text = "Important information";
+            this.CBCountry12.AutoSize = true;
+            this.CBCountry12.Location = new System.Drawing.Point(19, 327);
+            this.CBCountry12.Name = "CBCountry12";
+            this.CBCountry12.Size = new System.Drawing.Size(106, 17);
+            this.CBCountry12.TabIndex = 33;
+            this.CBCountry12.Tag = "netherlands";
+            this.CBCountry12.Text = "NL - Netherlands";
+            this.CBCountry12.UseVisualStyleBackColor = true;
             // 
             // FormRandomizer
             // 
@@ -1176,6 +1189,7 @@ namespace WoWs_Randomizer
         private System.Windows.Forms.CheckBox dontShowAgain;
         private System.Windows.Forms.ToolStripMenuItem messageGeneratorToolStripMenuItem;
         private System.Windows.Forms.Label headline;
+        private System.Windows.Forms.CheckBox CBCountry12;
     }
 }
 

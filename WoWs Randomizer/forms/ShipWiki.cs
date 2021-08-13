@@ -11,7 +11,7 @@ using static WoWs_Randomizer.utils.ConsumableTypes;
 using WoWs_Randomizer.utils;
 using WoWs_Randomizer.api;
 using System.Linq;
-using WoWs_Randomizer.objects.modules;
+using WoWs_Randomizer.utils.modules;
 
 namespace WoWs_Randomizer.forms
 {

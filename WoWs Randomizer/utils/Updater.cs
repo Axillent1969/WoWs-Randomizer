@@ -300,6 +300,7 @@ namespace WoWs_Randomizer.utils
                 foreach(Ship ship in Program.AllShips)
                 {
                     ship.Consumables = new List<ConsumableInfo>();
+                    ship.Airstrike = new ModuleAirstrike();
                 }
                 Program.Settings.ConsumablesInfoVersion = import.Version;
 
@@ -322,6 +323,18 @@ namespace WoWs_Randomizer.utils
                         {
                             ship.Consumables.Add(new ConsumableInfo() { Duration = con.Duration, Range = con.Range, Type = CType, Cooldown = con.Cooldown, Charges = con.Charges, ExtraInfo = con.ExtraInfo });
                         }
+                    }
+                }
+
+                foreach(KeyValuePair<string,ModuleAirstrike> airstrike in import.Airstrike)
+                {
+                    long shipId = Convert.ToInt64(airstrike.Key);
+                    //Ship ship = Program.AllShips.Find(e => e.ID == id);
+                    Ship ship = Program.AllShips.Find(e => e.ID == shipId);
+                    if ( ship != null )
+                    {
+                        ship.Airstrike = airstrike.Value;
+                        Console.WriteLine("Added airstrike on " + ship.Name);
                     }
                 }
                 UpdateUpgradesInfo();

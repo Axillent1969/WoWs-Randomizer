@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
-using WoWs_Randomizer.objects.modules;
 using WoWs_Randomizer.utils.modules;
 
 namespace WoWs_Randomizer.utils.module

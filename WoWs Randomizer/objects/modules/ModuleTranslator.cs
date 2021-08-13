@@ -1,5 +1,4 @@
 ﻿using System;
-using WoWs_Randomizer.objects.modules;
 using WoWs_Randomizer.utils.module;
 
 namespace WoWs_Randomizer.utils.modules

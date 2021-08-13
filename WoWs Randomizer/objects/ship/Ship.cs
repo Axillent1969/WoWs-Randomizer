@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using WoWs_Randomizer.objects.consumables;
-using WoWs_Randomizer.objects.modules;
+using WoWs_Randomizer.utils.modules;
 using WoWs_Randomizer.utils.ship.profile;
 using static WoWs_Randomizer.utils.ConsumableTypes;
 
@@ -67,40 +67,11 @@ namespace WoWs_Randomizer.utils.ship
         [Exposed()]
         public string Name { get; set; }
 
+        public ModuleAirstrike Airstrike { get; set; }
         public ModuleAirstrike GetAirstrikeModule()
         {
-            Dictionary<long, ModuleAirstrike> modules = new Dictionary<long, ModuleAirstrike>();
-
-            modules.Add(4183734032, new ModuleAirstrike() { AvailableFlights = 1, NumberOfAttackingFlight = 6, AircraftHP = 1850, NumberOfBombs = 6, MaxDamage = 5100, Penetration = 32, FireChance = 29.0, Range = 10.0, ReloadTime = 80 });
-            modules.Add(4182685456, new ModuleAirstrike() { AvailableFlights = 1, NumberOfAttackingFlight = 8, AircraftHP = 1940, NumberOfBombs = 6, MaxDamage = 5800, Penetration = 34, FireChance = 33.0, Range = 11.0, ReloadTime = 80 });
-            modules.Add(4181636880, new ModuleAirstrike() { AvailableFlights = 2, NumberOfAttackingFlight = 10, AircraftHP = 2020, NumberOfBombs = 6, MaxDamage = 5800, Penetration = 34, FireChance = 33.0, Range = 12.0, ReloadTime = 100 });
-            modules.Add(4180588304, new ModuleAirstrike() { AvailableFlights = 2, NumberOfAttackingFlight = 10, AircraftHP = 2110, NumberOfBombs = 6, MaxDamage = 6100, Penetration = 36, FireChance = 35.0, Range = 12.0, ReloadTime = 100 });
-            modules.Add(4179539728, new ModuleAirstrike() { AvailableFlights = 2, NumberOfAttackingFlight = 12, AircraftHP = 2200, NumberOfBombs = 6, MaxDamage = 6800, Penetration = 38, FireChance = 39.0, Range = 13.0, ReloadTime = 100 });
-
-            // Kijkduin, Eendracht, Haarlem, Johan De Witt, Gouden Leeuw
-            // 4183734032, 4182685456, 4181636880, 4180588304, 4179539728
-            /*            if ( this.ID == 4183734032 )
-                        {
-                            ModuleAirstrike airstrike = new ModuleAirstrike();
-                            airstrike.AvailableFlights = 1;
-                            airstrike.NumberOfAttackingFlight = 6;
-                            airstrike.AircraftHP = 1850;
-                            airstrike.NumberOfBombs = 6;
-                            airstrike.MaxDamage = 5100;
-                            airstrike.Penetration = 32;
-                            airstrike.FireChance = 29.0;
-                            airstrike.Range = 10.0;
-                            airstrike.ReloadTime = 80;
-
-                            return airstrike;
-                        }
-            */
-
-            if ( modules.ContainsKey(this.ID))
-            {
-                return modules[this.ID];
-            }
-            return null;
+            return this.Airstrike;
+ 
         }
 
         public List<ConsumableInfo> Consumables { get; set; }

@@ -18,7 +18,6 @@ using WoWs_Randomizer.objects;
 using WoWs_Randomizer.objects.version;
 using WoWs_Randomizer.utils.messages;
 using System.Globalization;
-using WoWs_Randomizer.objects.modules;
 
 namespace WoWs_Randomizer
 {

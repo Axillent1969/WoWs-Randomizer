@@ -550,16 +550,16 @@
             this.RightPanel.Controls.Add(this.cbCamoflage);
             this.RightPanel.Controls.Add(this.Headline);
             this.RightPanel.Controls.Add(this.ShipMetricsTable);
-            this.RightPanel.Location = new System.Drawing.Point(699, 127);
+            this.RightPanel.Location = new System.Drawing.Point(702, 52);
             this.RightPanel.Name = "RightPanel";
-            this.RightPanel.Size = new System.Drawing.Size(228, 744);
+            this.RightPanel.Size = new System.Drawing.Size(228, 876);
             this.RightPanel.TabIndex = 5;
             // 
             // cbCamoflage
             // 
             this.cbCamoflage.AutoSize = true;
             this.cbCamoflage.Enabled = false;
-            this.cbCamoflage.Location = new System.Drawing.Point(6, 715);
+            this.cbCamoflage.Location = new System.Drawing.Point(15, 849);
             this.cbCamoflage.Name = "cbCamoflage";
             this.cbCamoflage.Size = new System.Drawing.Size(169, 17);
             this.cbCamoflage.TabIndex = 2;
@@ -586,12 +586,12 @@
             this.ShipMetricsTable.Name = "ShipMetricsTable";
             this.ShipMetricsTable.RowCount = 1;
             this.ShipMetricsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 714F));
-            this.ShipMetricsTable.Size = new System.Drawing.Size(219, 687);
+            this.ShipMetricsTable.Size = new System.Drawing.Size(219, 816);
             this.ShipMetricsTable.TabIndex = 0;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(828, 52);
+            this.button2.Location = new System.Drawing.Point(17, 55);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 6;
@@ -1128,7 +1128,7 @@
             // 
             // picShip
             // 
-            this.picShip.Location = new System.Drawing.Point(697, 52);
+            this.picShip.Location = new System.Drawing.Point(559, 52);
             this.picShip.Name = "picShip";
             this.picShip.Size = new System.Drawing.Size(125, 69);
             this.picShip.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1139,7 +1139,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(942, 883);
+            this.ClientSize = new System.Drawing.Size(942, 932);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);

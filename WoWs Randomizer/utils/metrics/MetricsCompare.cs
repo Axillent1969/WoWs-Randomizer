@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -58,6 +59,13 @@ namespace WoWs_Randomizer.utils
             biggerIsBetter.Add(MetricsTableComposer.TORPEDO_DAMAGE);
             biggerIsBetter.Add(MetricsTableComposer.HE_DAMAGE);
             biggerIsBetter.Add(MetricsTableComposer.AP_DAMAGE);
+            for(int i = 0; i < 6; i++)
+            {
+                biggerIsBetter.Add("Slot #" + i.ToString() + ": " + MetricsTableComposer.AA_CALIBER);
+                biggerIsBetter.Add("Slot #" + i.ToString() + ": " + MetricsTableComposer.AA_DAMAGE);
+            }
+            //biggerIsBetter.Add(MetricsTableComposer.AA_CALIBER);
+            //biggerIsBetter.Add(MetricsTableComposer.AA_DAMAGE);
 
             smallerIsBetter.Add(MetricsTableComposer.RELOAD_MAIN);
             smallerIsBetter.Add(MetricsTableComposer.RELOAOD_SECONDARY);
@@ -78,6 +86,7 @@ namespace WoWs_Randomizer.utils
                 {
                     double tBase = double.Parse(BaseValue.Text.Split(' ')[0]);
                     double tVal = double.Parse(Value.Text.Split(' ')[0]);
+
                     if (tVal > tBase)
                     {
                         return Color.LightGreen;

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using WoWs_Randomizer.objects.ship.profile;
 using WoWs_Randomizer.utils.ship.profile;
 
 namespace WoWs_Randomizer.utils
@@ -33,6 +35,10 @@ namespace WoWs_Randomizer.utils
         public const string AP_DAMAGE = "Max AP-damage";
         public const string HE_DAMAGE = "Max HE-damage";
         public const string TORPEDO_DAMAGE = "Torpedo damage";
+        public const string AA = "Anti Aircraft";
+        public const string AA_CALIBER = "Caliber";
+        public const string AA_DAMAGE = "Damage";
+
 
         public static void DrawTable(MetricsExctractor Extractor, MetricsDrawer Table)
         {
@@ -99,6 +105,20 @@ namespace WoWs_Randomizer.utils
                 Table.AppendRow(TORPEDO_DAMAGE, Metrics.TorpedoDamage.ToString());
                 Table.AppendRow(TORPEDO_RELOAD, Metrics.TorpedoReload.ToString() + " sec");
                 Table.AppendRow(TORPEDO_RANGE, Metrics.TorpedoDistance.ToString() + " km");
+            }
+
+            if ( Metrics.AntiAircraft != null )
+            {
+                Table.AppendHeadline(AA);
+                Dictionary<string,AntiAircraftMount> mounts = Metrics.AntiAircraft.AAMounts;
+                foreach(KeyValuePair<string,AntiAircraftMount> entry in mounts)
+                {
+                    //Table.AppendFullRow(entry.Value.Name);
+                    Table.AppendRow("Slot #" + entry.Key.ToString() + ": " + AA_CALIBER, entry.Value.Caliber.ToString() + " mm",entry.Value.Guns.ToString() + " pcs of " + entry.Value.Name,"AA Mount #" + entry.Key.ToString());
+                    //Table.AppendRow("# guns", entry.Value.Guns.ToString());
+                    Table.AppendRow("Slot #" + entry.Key.ToString() + ": " + AA_DAMAGE, entry.Value.Damage.ToString());
+                }
+
             }
 
             if (Metrics.FighterSquadrons != 0 || Metrics.BomberSquadrons != 0 || Metrics.TorpedoSquadrons != 0)

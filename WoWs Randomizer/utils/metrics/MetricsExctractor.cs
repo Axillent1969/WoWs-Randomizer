@@ -49,6 +49,7 @@ namespace WoWs_Randomizer.utils
             CalculateFireChanceMain();
             CalculateConcealment();
             CalculateFireControl();
+            CalculateAntiAircraft();
         }
 
         private void CalculateMainData()
@@ -302,6 +303,11 @@ namespace WoWs_Randomizer.utils
                 }
             }
             return MData;
+        }
+
+        private void CalculateAntiAircraft()
+        {
+            Metrics.AntiAircraft = RandomizedShip.Profile.AntiAircraft;
         }
     }
 }

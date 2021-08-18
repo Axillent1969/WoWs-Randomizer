@@ -334,7 +334,7 @@ namespace WoWs_Randomizer.utils
                     if ( ship != null )
                     {
                         ship.Airstrike = airstrike.Value;
-                        Console.WriteLine("Added airstrike on " + ship.Name);
+                        //Console.WriteLine("Added airstrike on " + ship.Name);
                     }
                 }
                 UpdateUpgradesInfo();

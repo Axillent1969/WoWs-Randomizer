@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using WoWs_Randomizer.objects.ship.profile;
 using WoWs_Randomizer.utils.ship.profile;
 
 namespace WoWs_Randomizer.utils
@@ -99,5 +100,7 @@ namespace WoWs_Randomizer.utils
                 return 0;
             }
         }
+
+        public AntiAircraft AntiAircraft { get; set; }
     }
 }

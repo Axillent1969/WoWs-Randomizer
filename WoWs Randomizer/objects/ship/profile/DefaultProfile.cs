@@ -1,5 +1,6 @@
 ﻿using System;
 using Newtonsoft.Json;
+using WoWs_Randomizer.objects.ship.profile;
 
 namespace WoWs_Randomizer.utils.ship.profile
 {
@@ -20,5 +21,7 @@ namespace WoWs_Randomizer.utils.ship.profile
 
         [JsonProperty("concealment")]
         public Concealment Concealment { get; set; }
+        [JsonProperty("anti_aircraft")]
+        public AntiAircraft AntiAircraft { get; set; }
     }
 }

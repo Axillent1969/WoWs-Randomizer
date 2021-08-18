@@ -83,12 +83,12 @@ namespace WoWs_Randomizer.utils
         public double AirDetection { get; set; }
 
         // Mobility
-        [Exposed()]
+        [Exposed("Rudder shift")]
         public double RudderTime { get; set; }
-        [Exposed()]
+        [Exposed("Turning radius")]
         public double TurningRadius { get; set; }
 
-        [Exposed()]
+        [Exposed("Rotation speed")]
         public double RotationSpeed()
         {
             if ( RotationTime != 0 )
@@ -102,5 +102,11 @@ namespace WoWs_Randomizer.utils
         }
 
         public AntiAircraft AntiAircraft { get; set; }
+
+        [Exposed()]
+        public string AAInfo() {
+            if ( AntiAircraft == null ) { return ""; }
+            return AntiAircraft.ToString();
+        }
     }
 }

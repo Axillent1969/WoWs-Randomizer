@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WoWs_Randomizer.objects;
+using WoWs_Randomizer.objects.ship.profile;
 using WoWs_Randomizer.utils;
 using WoWs_Randomizer.utils.ship;
 
@@ -39,13 +40,37 @@ namespace WoWs_Randomizer.forms
         {
             GatherExposedFieldNames(typeof(Ship));
             GatherExposedFieldNames(typeof(ShipMetrics));
+            GatherExposedMethodNames();
             exposedFields.Sort();
             fillSelector();
+        }
+
+        private void GatherExposedMethodNames()
+        {
+
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            MethodInfo[] methods = assembly.GetTypes()
+                      .SelectMany(t => t.GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic))
+                      .Where(m => m.GetCustomAttributes(typeof(Exposed), false).Length > 0)
+                      .ToArray();
+
+
+            foreach (MethodInfo info in methods)
+            {
+                var ex = info.DeclaringType.GetMethod(info.Name);
+                Exposed attr = info.DeclaringType.GetMethod(info.Name).GetCustomAttributes(true).OfType<Exposed>().FirstOrDefault();
+
+                Option opt = new Option(info.Name, info.Name, info.DeclaringType.Name, info.ReturnType.ToString(), attr.getName());
+                this.mapping.Add(info.Name, opt);
+                exposedFields.Add(info.Name);
+            }
         }
 
         private void GatherExposedFieldNames(Type clazz)
         {
             FieldInfo[] fields = clazz.GetFields(BindingFlags.Instance | BindingFlags.NonPublic);
+            //MethodInfo[] methods = clazz.GetMethods( BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic );
+
 
             for (int i = 0; i < fields.Length; i++)
             {
@@ -63,11 +88,35 @@ namespace WoWs_Randomizer.forms
                 if (isDefined)
                 {
                     Exposed attr = (Exposed)Attribute.GetCustomAttribute(ex, typeof(Exposed));
-                    Option opt = new Option(disp, n,clazz.Name,fields[i].FieldType.ToString(),attr.getName());
+                    Option opt = new Option(disp, n, clazz.Name, fields[i].FieldType.ToString(), attr.getName());
                     this.mapping.Add(disp, opt);
                     exposedFields.Add(disp);
                 }
             }
+
+            /*
+            for(int i = 0; i < methods.Length;i++)
+            {
+                string n = methods[i].Name;
+                string disp = n.Replace("k__BackingField", "").Replace("<", "").Replace(">", "");
+
+                var ex = clazz.GetProperty(disp);
+                bool isDefined = false;
+
+                if (ex != null)
+                {
+                    isDefined = Attribute.IsDefined(ex, typeof(Exposed));
+                }
+
+                if (isDefined)
+                {
+                    Exposed attr = (Exposed)Attribute.GetCustomAttribute(ex, typeof(Exposed));
+                    Option opt = new Option(disp, n, clazz.Name, methods[i].ReturnType.ToString(), attr.getName());
+                    this.mapping.Add(disp, opt);
+                    exposedFields.Add(disp);
+                }
+            }
+            */
         }
 
         private void btnShow_Click(object sender, EventArgs e)
@@ -260,7 +309,9 @@ namespace WoWs_Randomizer.forms
                         }
                         else if (opt.ClassName.Equals(typeof(ShipMetrics).Name))
                         {
+
                             row[rowIdx] = GetFieldValue(metrics,opt.Value);
+                            //Console.WriteLine(opt.Value)
                         }
                     }
                     rowIdx++;
@@ -276,11 +327,18 @@ namespace WoWs_Randomizer.forms
         private object GetFieldValue(object clazz, string fieldName)
         {
             FieldInfo fld = clazz.GetType().GetField(fieldName, BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
-            if ( fld.FieldType.ToString().Equals("System.String"))
+            if ( fld == null )
             {
-                return (string)fld.GetValue(clazz);
+                MethodInfo mth = clazz.GetType().GetMethod(fieldName, BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
+                return mth.Invoke(clazz, new object[]{});
+            } else
+            {
+                if ( fld.FieldType.ToString().Equals("System.String"))
+                {
+                    return (string)fld.GetValue(clazz);
+                }
+                return Convert.ToDouble(fld.GetValue(clazz));
             }
-            return Convert.ToDouble(fld.GetValue(clazz));
         }
 
         private double SafeConvertToDouble(string value)

@@ -10,7 +10,7 @@ namespace WoWs_Randomizer.objects.ship.profile
     public class AntiAircraftMount
     {
         [JsonProperty("distance")]
-        public long Distance { get; set; }
+        public double Distance { get; set; }
         [JsonProperty("avg_damage")]
         public long Damage { get; set; }
         [JsonProperty("caliber")]

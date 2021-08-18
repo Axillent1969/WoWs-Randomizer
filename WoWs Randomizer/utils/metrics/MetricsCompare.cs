@@ -64,8 +64,6 @@ namespace WoWs_Randomizer.utils
                 biggerIsBetter.Add("Slot #" + i.ToString() + ": " + MetricsTableComposer.AA_CALIBER);
                 biggerIsBetter.Add("Slot #" + i.ToString() + ": " + MetricsTableComposer.AA_DAMAGE);
             }
-            //biggerIsBetter.Add(MetricsTableComposer.AA_CALIBER);
-            //biggerIsBetter.Add(MetricsTableComposer.AA_DAMAGE);
 
             smallerIsBetter.Add(MetricsTableComposer.RELOAD_MAIN);
             smallerIsBetter.Add(MetricsTableComposer.RELOAOD_SECONDARY);

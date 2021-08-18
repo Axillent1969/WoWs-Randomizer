@@ -39,7 +39,6 @@ namespace WoWs_Randomizer.utils
         public const string AA_CALIBER = "Caliber";
         public const string AA_DAMAGE = "Damage";
 
-
         public static void DrawTable(MetricsExctractor Extractor, MetricsDrawer Table)
         {
             ShipMetrics Metrics = Extractor.GetMetrics();
@@ -113,9 +112,7 @@ namespace WoWs_Randomizer.utils
                 Dictionary<string,AntiAircraftMount> mounts = Metrics.AntiAircraft.AAMounts;
                 foreach(KeyValuePair<string,AntiAircraftMount> entry in mounts)
                 {
-                    //Table.AppendFullRow(entry.Value.Name);
-                    Table.AppendRow("Slot #" + entry.Key.ToString() + ": " + AA_CALIBER, entry.Value.Caliber.ToString() + " mm",entry.Value.Guns.ToString() + " pcs of " + entry.Value.Name,"AA Mount #" + entry.Key.ToString());
-                    //Table.AppendRow("# guns", entry.Value.Guns.ToString());
+                    Table.AppendRow("Slot #" + entry.Key.ToString() + ": " + AA_CALIBER, entry.Value.Caliber.ToString() + " mm",entry.Value.Guns.ToString() + " x " + entry.Value.Name,"AA Mount #" + entry.Key.ToString());
                     Table.AppendRow("Slot #" + entry.Key.ToString() + ": " + AA_DAMAGE, entry.Value.Damage.ToString());
                 }
 

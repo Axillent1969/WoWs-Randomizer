@@ -275,7 +275,6 @@ namespace WoWs_Randomizer.utils
 
             foreach (long CurrentModuleID in ModuleID)
             {
-                //Console.WriteLine(CurrentModuleID + " : " + AllModules[CurrentModuleID.ToString()].Type + "=" + AllModules[CurrentModuleID.ToString()].Name);
                 Module ThisModule = Modules[CurrentModuleID.ToString()];
                 
                 if (ThisModule.NextModules != null)

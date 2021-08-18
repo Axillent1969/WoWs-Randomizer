@@ -104,22 +104,9 @@ namespace WoWs_Randomizer
             MessageImporter message = WGAPI.GetMessage();
             if (message.Status.Equals("ok"))
             {
-                /*                Console.WriteLine("StartDate: " + message.StartDate);
-                                Console.WriteLine("EndDate: " + message.EndDate);
-                                Console.WriteLine("ID: " + message.MessageID);
-                                Console.WriteLine("link: " + message.URL);
-                                Console.WriteLine("Message: " + message.Message);
-                                Console.WriteLine("Icons: " + message.Images.Count);
-                                foreach (KeyValuePair<string, string> kv in message.Images)
-                                {
-                                    Console.WriteLine(kv.Key + " = " + kv.Value);
-                                }*/
-
                 string dontshowId = Properties.Settings.Default.MessageBoxId;
                 LOG.Debug("Dont show MessageID: " + dontshowId);
                 LOG.Debug("Loaded MessageID: " + message.MessageID);
-
-
 
                 if (dontshowId.Trim().Equals(message.MessageID.Trim(), StringComparison.OrdinalIgnoreCase))
                 {
@@ -169,6 +156,7 @@ namespace WoWs_Randomizer
         }
         private void StartLoadingAnimation()
         {
+            MenuStrip.Enabled = false;
             LoadingImage.Dock = DockStyle.Fill;
             LoadingImage.Visible = true;
         }
@@ -210,6 +198,7 @@ namespace WoWs_Randomizer
             LoadExcludedShips();
             UpdateCounterLabels();
             AddConsumablesInfo();
+            MenuStrip.Enabled = true;
         }
 
         private void AddConsumablesInfo()

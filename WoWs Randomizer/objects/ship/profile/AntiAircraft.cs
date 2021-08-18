@@ -12,6 +12,9 @@ namespace WoWs_Randomizer.objects.ship.profile
         [JsonProperty("slots")]
         public Dictionary<string,AntiAircraftMount> AAMounts { get; set; }
 
+        [JsonProperty("defense")]
+        public long Defense { get; set; }
+
         override public string ToString()
         {
             if ( AAMounts == null ) { return ""; }

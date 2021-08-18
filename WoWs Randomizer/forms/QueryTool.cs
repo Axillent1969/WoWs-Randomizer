@@ -69,8 +69,6 @@ namespace WoWs_Randomizer.forms
         private void GatherExposedFieldNames(Type clazz)
         {
             FieldInfo[] fields = clazz.GetFields(BindingFlags.Instance | BindingFlags.NonPublic);
-            //MethodInfo[] methods = clazz.GetMethods( BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic );
-
 
             for (int i = 0; i < fields.Length; i++)
             {
@@ -93,30 +91,6 @@ namespace WoWs_Randomizer.forms
                     exposedFields.Add(disp);
                 }
             }
-
-            /*
-            for(int i = 0; i < methods.Length;i++)
-            {
-                string n = methods[i].Name;
-                string disp = n.Replace("k__BackingField", "").Replace("<", "").Replace(">", "");
-
-                var ex = clazz.GetProperty(disp);
-                bool isDefined = false;
-
-                if (ex != null)
-                {
-                    isDefined = Attribute.IsDefined(ex, typeof(Exposed));
-                }
-
-                if (isDefined)
-                {
-                    Exposed attr = (Exposed)Attribute.GetCustomAttribute(ex, typeof(Exposed));
-                    Option opt = new Option(disp, n, clazz.Name, methods[i].ReturnType.ToString(), attr.getName());
-                    this.mapping.Add(disp, opt);
-                    exposedFields.Add(disp);
-                }
-            }
-            */
         }
 
         private void btnShow_Click(object sender, EventArgs e)

@@ -38,12 +38,29 @@ namespace WoWs_Randomizer.utils
         public const string AA = "Anti Aircraft";
         public const string AA_CALIBER = "Caliber";
         public const string AA_DAMAGE = "Damage";
+        public const string SLOT_PREFIX = "Slot #";
+
+        private const string SECTION_GENERAL = "General";
+        private const string SECTION_MAIN_ARMAMENT = "Main Armament";
+        private const string SECTION_SEC_ARMAMENT = "Secondary Armament(s)";
+        private const string SECTION_TORPEDO_ARMAMENT = "Torpedo Armament";
+        private const string SECTION_PLANE_ARMAMENT = "Plane Armament";
+        private const string SECTION_MANOUVERABILITY = "Manouverability";
+        private const string SECTION_CONCEALMENT = "Concealment";
+        private const string SUFFIX_SEC = " sec";
+        private const string SUFFIX_KM = " km";
+        private const string SUFFIX_PCT = " %";
+        private const string SUFFIX_M = " m";
+        private const string SUFFIX_DEG = " deg/sec";
+        private const string SUFFIX_KNOTS = " knots";
+        private const string SUFFIX_MM = " mm";
+
 
         public static void DrawTable(MetricsExctractor Extractor, MetricsDrawer Table)
         {
             ShipMetrics Metrics = Extractor.GetMetrics();
             Table.SuspendLayout();
-            Table.AppendHeadline("General");
+            Table.AppendHeadline(SECTION_GENERAL);
 
             Table.AppendRow(SHIP_CLASS, Metrics.ShipClass);
             Table.AppendRow(SHIP_TIER, Metrics.Tier.ToString());
@@ -52,32 +69,32 @@ namespace WoWs_Randomizer.utils
 
             if (Metrics.MainCaliberName != null && !Metrics.MainCaliberName.Equals(""))
             {
-                Table.AppendHeadline("Main Armament");
+                Table.AppendHeadline(SECTION_MAIN_ARMAMENT);
                 Table.AppendFullRow(Metrics.MainCaliberName);
                 Table.AppendRow(GUN_CALIBER, Metrics.MainCaliber.ToString());
                 Table.AppendRow(AP_DAMAGE, Metrics.APDamage.ToString());
                 Table.AppendRow(HE_DAMAGE, Metrics.HEDamage.ToString());
 
-                Table.AppendRow(RELOAD_MAIN, Metrics.ReloadTimeMain().ToString() + " sec");
-                Table.AppendRow(RANGE_MAIN, Metrics.Distance.ToString() + " km");
-                Table.AppendRow(DISPERSION, Metrics.Dispersion.ToString() + " m");
+                Table.AppendRow(RELOAD_MAIN, Metrics.ReloadTimeMain().ToString() + SUFFIX_SEC);
+                Table.AppendRow(RANGE_MAIN, Metrics.Distance.ToString() + SUFFIX_KM);
+                Table.AppendRow(DISPERSION, Metrics.Dispersion.ToString() + SUFFIX_M);
 
-                Table.AppendRow(FIRECHANCE_MAIN, Metrics.FireChanceMain.ToString() + " %");
-                Table.AppendRow(TRAVERSE_SPEED, Metrics.RotationSpeed().ToString() + " deg/sec");
-                Table.AppendRow(TRAVERSE_SPEED_180, Metrics.RotationTime.ToString() + " sec");
+                Table.AppendRow(FIRECHANCE_MAIN, Metrics.FireChanceMain.ToString() + SUFFIX_PCT);
+                Table.AppendRow(TRAVERSE_SPEED, Metrics.RotationSpeed().ToString() + SUFFIX_DEG);
+                Table.AppendRow(TRAVERSE_SPEED_180, Metrics.RotationTime.ToString() + SUFFIX_SEC);
             }
 
             if (Metrics.Secondaries != null)
             {
-                Table.AppendHeadline("Secondary Armament(s)");
-                Table.AppendRow(RANGE_SECONDARY, Metrics.SecondaryRange.ToString() + " km");
+                Table.AppendHeadline(SECTION_SEC_ARMAMENT);
+                Table.AppendRow(RANGE_SECONDARY, Metrics.SecondaryRange.ToString() + SUFFIX_KM);
                 SecondariesData SecData = Metrics.Secondaries["0"];
                 int slot = 0;
                 while (SecData != null)
                 {
-                    Table.AppendFullRow("Slot #" + slot.ToString() + ": " + SecData.Name);
-                    Table.AppendRow(RELOAOD_SECONDARY, SecData.ReloadTime().ToString() + " sec", "", "", "Slot" + slot.ToString());
-                    Table.AppendRow(FIRECHANCE_SECONDARY, SecData.FireChance.ToString() + " %", "", "", "Slot" + slot.ToString());
+                    Table.AppendFullRow(SLOT_PREFIX + slot.ToString() + ": " + SecData.Name);
+                    Table.AppendRow(RELOAOD_SECONDARY, SecData.ReloadTime().ToString() + SUFFIX_SEC, "", "", "Slot" + slot.ToString());
+                    Table.AppendRow(FIRECHANCE_SECONDARY, SecData.FireChance.ToString() + SUFFIX_PCT, "", "", "Slot" + slot.ToString());
                     slot += 1;
                     try
                     {
@@ -99,11 +116,11 @@ namespace WoWs_Randomizer.utils
 
             if (Metrics.TorpedoReload != 0)
             {
-                Table.AppendHeadline("Torpedo Armament");
-                Table.AppendRow(TORPEDO_SPEED, Metrics.TorpedoSpeed.ToString() + " knots");
+                Table.AppendHeadline(SECTION_TORPEDO_ARMAMENT);
+                Table.AppendRow(TORPEDO_SPEED, Metrics.TorpedoSpeed.ToString() + SUFFIX_KNOTS);
                 Table.AppendRow(TORPEDO_DAMAGE, Metrics.TorpedoDamage.ToString());
-                Table.AppendRow(TORPEDO_RELOAD, Metrics.TorpedoReload.ToString() + " sec");
-                Table.AppendRow(TORPEDO_RANGE, Metrics.TorpedoDistance.ToString() + " km");
+                Table.AppendRow(TORPEDO_RELOAD, Metrics.TorpedoReload.ToString() + SUFFIX_SEC);
+                Table.AppendRow(TORPEDO_RANGE, Metrics.TorpedoDistance.ToString() + SUFFIX_KM);
             }
 
             if ( Metrics.AntiAircraft != null )
@@ -112,30 +129,30 @@ namespace WoWs_Randomizer.utils
                 Dictionary<string,AntiAircraftMount> mounts = Metrics.AntiAircraft.AAMounts;
                 foreach(KeyValuePair<string,AntiAircraftMount> entry in mounts)
                 {
-                    Table.AppendRow("Slot #" + entry.Key.ToString() + ": " + AA_CALIBER, entry.Value.Caliber.ToString() + " mm",entry.Value.Guns.ToString() + " x " + entry.Value.Name,"AA Mount #" + entry.Key.ToString());
-                    Table.AppendRow("Slot #" + entry.Key.ToString() + ": " + AA_DAMAGE, entry.Value.Damage.ToString());
+                    Table.AppendRow(SLOT_PREFIX + entry.Key.ToString() + ": " + AA_CALIBER, entry.Value.Caliber.ToString() + SUFFIX_MM,entry.Value.Guns.ToString() + " x " + entry.Value.Name,"AA Mount #" + entry.Key.ToString());
+                    Table.AppendRow(SLOT_PREFIX + entry.Key.ToString() + ": " + AA_DAMAGE, entry.Value.Damage.ToString(),"Avarage damage per second");
                 }
 
             }
 
             if (Metrics.FighterSquadrons != 0 || Metrics.BomberSquadrons != 0 || Metrics.TorpedoSquadrons != 0)
             {
-                Table.AppendHeadline("Plane Armament");
+                Table.AppendHeadline(SECTION_PLANE_ARMAMENT);
                 Table.AppendRow(FIGHTER_SQUADRONS, Metrics.FighterSquadrons.ToString());
                 Table.AppendRow(BOMBER_SQUADRONS, Metrics.BomberSquadrons.ToString());
                 Table.AppendRow(TORPEDO_SQUADRONS, Metrics.TorpedoSquadrons.ToString());
             }
 
-            Table.AppendHeadline("Manouverability");
-            Table.AppendRow(SHIP_SPEED, Metrics.Speed.ToString() + " knots", Metrics.Engine);
-            Table.AppendRow(RUDDER_SHIFT, Metrics.RudderTime.ToString() + " sec");
-            Table.AppendRow(TURNING_RADIUS, Metrics.TurningRadius.ToString() + " m");
+            Table.AppendHeadline(SECTION_MANOUVERABILITY);
+            Table.AppendRow(SHIP_SPEED, Metrics.Speed.ToString() + SUFFIX_KNOTS, Metrics.Engine);
+            Table.AppendRow(RUDDER_SHIFT, Metrics.RudderTime.ToString() + SUFFIX_SEC);
+            Table.AppendRow(TURNING_RADIUS, Metrics.TurningRadius.ToString() + SUFFIX_M);
 
             if (Metrics.SurfaceDetection != 0)
             {
-                Table.AppendHeadline("Concealment");
-                Table.AppendRow(SURFACE_DETECTION, Metrics.SurfaceDetection.ToString() + " km");
-                Table.AppendRow(AIR_DETECTION, Metrics.AirDetection.ToString() + " km");
+                Table.AppendHeadline(SECTION_CONCEALMENT);
+                Table.AppendRow(SURFACE_DETECTION, Metrics.SurfaceDetection.ToString() + SUFFIX_KM);
+                Table.AppendRow(AIR_DETECTION, Metrics.AirDetection.ToString() + SUFFIX_KM);
             }
             Table.ResumeLayout();
         }

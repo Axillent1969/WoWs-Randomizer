@@ -257,6 +257,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DDSkills.resx</DependentUpon>
     </Compile>
+    <Compile Include="Properties\SUBSkills.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SUBSkills.resx</DependentUpon>
+    </Compile>
     <Compile Include="utils\ConsumableControlsHandler.cs" />
     <Compile Include="utils\enums\ConsumableTypes.cs" />
     <Compile Include="objects\modules\ModuleArtillery.cs" />
@@ -410,6 +415,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Properties\SUBSkills.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SUBSkills.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
@@ -427,6 +436,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Anchor.ico" />
+    <None Include="Resources\watchful.png" />
+    <None Include="Resources\Notice_question.png" />
+    <None Include="Resources\improved_battery_efficiency.png" />
+    <None Include="Resources\improved_battery.png" />
+    <None Include="Resources\consumables_specialist.png" />
     <None Include="Resources\airstrike.png" />
     <None Include="Resources\swift_in_silence1.png" />
     <None Include="Resources\survivability_expert_cv.png" />

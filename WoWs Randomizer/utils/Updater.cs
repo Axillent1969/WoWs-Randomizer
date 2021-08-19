@@ -329,12 +329,10 @@ namespace WoWs_Randomizer.utils
                 foreach(KeyValuePair<string,ModuleAirstrike> airstrike in import.Airstrike)
                 {
                     long shipId = Convert.ToInt64(airstrike.Key);
-                    //Ship ship = Program.AllShips.Find(e => e.ID == id);
                     Ship ship = Program.AllShips.Find(e => e.ID == shipId);
                     if ( ship != null )
                     {
                         ship.Airstrike = airstrike.Value;
-                        //Console.WriteLine("Added airstrike on " + ship.Name);
                     }
                 }
                 UpdateUpgradesInfo();

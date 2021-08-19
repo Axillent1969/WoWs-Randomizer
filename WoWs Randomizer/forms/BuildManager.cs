@@ -289,28 +289,24 @@ namespace WoWs_Randomizer.forms
             skillsPictures.Add("sub13", Properties.DDSkills.consumables_specialist);
             skillsPictures.Add("sub14", Properties.DDSkills.priority_target);
             skillsPictures.Add("sub15", Properties.DDSkills.incoming_fire_alert);
-            skillsPictures.Add("sub16", Properties.SUBSkills.Notice_question);
 
             skillsPictures.Add("sub21", Properties.SUBSkills.improved_battery);
             skillsPictures.Add("sub22", Properties.SUBSkills.Notice_question);
             skillsPictures.Add("sub23", Properties.SUBSkills.Notice_question);
             skillsPictures.Add("sub24", Properties.DDSkills.preventive_maintenance);
             skillsPictures.Add("sub25", Properties.DDSkills.last_stand);
-            skillsPictures.Add("sub26", Properties.SUBSkills.Notice_question);
 
             skillsPictures.Add("sub31", Properties.SUBSkills.Notice_question);
             skillsPictures.Add("sub32", Properties.SUBSkills.Notice_question);
             skillsPictures.Add("sub33", Properties.DDSkills.consumables_enhancements);
             skillsPictures.Add("sub34", Properties.SUBSkills.watchful);
             skillsPictures.Add("sub35", Properties.DDSkills.superintendent);
-            skillsPictures.Add("sub36", Properties.SUBSkills.Notice_question);
 
             skillsPictures.Add("sub41", Properties.DDSkills.adrenaline_rush);
             skillsPictures.Add("sub42", Properties.SUBSkills.Notice_question);
             skillsPictures.Add("sub43", Properties.SUBSkills.Notice_question);
             skillsPictures.Add("sub44", Properties.SUBSkills.improved_battery_efficiency);
             skillsPictures.Add("sub45", Properties.SUBSkills.Notice_question);
-            skillsPictures.Add("sub46", Properties.SUBSkills.Notice_question);
         }
         private void pictureBox_Paint(object sender, PaintEventArgs e)
         {
@@ -446,23 +442,9 @@ namespace WoWs_Randomizer.forms
 
         private string AbbreviateShipType(string longShipType)
         {
-            if (longShipType.Equals("battleship"))
-            {
-                return "bb";
-            }
-            else if (longShipType.Equals("cruiser"))
-            {
-                return "ca";
-            }
-            else if (longShipType.Equals("destroyer"))
-            {
-                return "dd";
-            }
-            else if (longShipType.Equals("aircarrier"))
-            {
-                return "cv";
-            }
-            return "";
+
+            return ShipTypes.GetShipType(longShipType).Code;
+
         }
 
         private void pictureBox_Click(object sender, EventArgs e)

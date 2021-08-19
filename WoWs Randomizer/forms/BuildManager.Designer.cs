@@ -582,10 +582,11 @@
             this.ShipMetricsTable.ColumnCount = 2;
             this.ShipMetricsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.ShipMetricsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.ShipMetricsTable.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ShipMetricsTable.Location = new System.Drawing.Point(6, 27);
             this.ShipMetricsTable.Name = "ShipMetricsTable";
             this.ShipMetricsTable.RowCount = 1;
-            this.ShipMetricsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 714F));
+            this.ShipMetricsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 816F));
             this.ShipMetricsTable.Size = new System.Drawing.Size(219, 816);
             this.ShipMetricsTable.TabIndex = 0;
             // 

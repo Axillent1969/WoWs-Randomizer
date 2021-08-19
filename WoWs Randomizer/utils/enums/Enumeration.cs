@@ -10,11 +10,13 @@ namespace WoWs_Randomizer.utils
         public string Name { get; private set; }
 
         public String Abbreviation { get; private set; }
+        public string Code { get; private set; }
 
-        protected Enumeration(string abbreviation, string name)
+        protected Enumeration(string abbreviation, string name, string code)
         {
             Abbreviation = abbreviation;
             Name = name;
+            Code = code;
         }
 
         public override string ToString() => Abbreviation.ToLower();

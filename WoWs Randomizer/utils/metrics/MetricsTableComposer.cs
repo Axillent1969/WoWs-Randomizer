@@ -87,14 +87,15 @@ namespace WoWs_Randomizer.utils
             if (Metrics.Secondaries != null)
             {
                 Table.AppendHeadline(SECTION_SEC_ARMAMENT);
-                Table.AppendRow(RANGE_SECONDARY, Metrics.SecondaryRange.ToString() + SUFFIX_KM);
                 SecondariesData SecData = Metrics.Secondaries["0"];
+
+                Table.AppendRow(RANGE_SECONDARY, Metrics.SecondaryRange.ToString() + SUFFIX_KM, "Name: " + SecData.Name);
                 int slot = 0;
                 while (SecData != null)
                 {
-                    Table.AppendFullRow(SLOT_PREFIX + slot.ToString() + ": " + SecData.Name);
-                    Table.AppendRow(RELOAOD_SECONDARY, SecData.ReloadTime().ToString() + SUFFIX_SEC, "", "", "Slot" + slot.ToString());
-                    Table.AppendRow(FIRECHANCE_SECONDARY, SecData.FireChance.ToString() + SUFFIX_PCT, "", "", "Slot" + slot.ToString());
+                    //Table.AppendFullRow(SLOT_PREFIX + slot.ToString() + ": " + SecData.Name);
+                    Table.AppendRow(RELOAOD_SECONDARY, SecData.ReloadTime().ToString() + SUFFIX_SEC, SLOT_PREFIX + slot.ToString() + ": " + SecData.Name, "", "Slot" + slot.ToString());
+                    Table.AppendRow(FIRECHANCE_SECONDARY, SecData.FireChance.ToString() + SUFFIX_PCT, SLOT_PREFIX + slot.ToString() + ": " + SecData.Name, "", "Slot" + slot.ToString());
                     slot += 1;
                     try
                     {

@@ -27,7 +27,7 @@ namespace WoWs_Randomizer.utils
         public void AppendRow(string labelText, string value, string tooltipText = "", string tooltipTitle = "", string tag = "")
         {
             ShipMetricsTable.RowCount += 1;
-            ShipMetricsTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            ShipMetricsTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 18F));
             Label lbl = new Label();
             lbl.Text = labelText;
             lbl.TextAlign = ContentAlignment.MiddleLeft;
@@ -57,7 +57,7 @@ namespace WoWs_Randomizer.utils
         public void AppendFullRow(string text)
         {
             ShipMetricsTable.RowCount += 1;
-            ShipMetricsTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            ShipMetricsTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 18F));
             Label lbl = new Label();
             lbl.Text = text;
             lbl.Width = TABLEWIDTH;

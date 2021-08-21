@@ -6,6 +6,8 @@ namespace WoWs_Randomizer.utils
     class MetricsDrawer
     {
         private static readonly int TABLEWIDTH = 525;
+        private static readonly float ROWHEIGHT = 16F;
+
         private TableLayoutPanel ShipMetricsTable = null;
 
         public MetricsDrawer(TableLayoutPanel ShipMetricsTable)
@@ -27,7 +29,7 @@ namespace WoWs_Randomizer.utils
         public void AppendRow(string labelText, string value, string tooltipText = "", string tooltipTitle = "", string tag = "")
         {
             ShipMetricsTable.RowCount += 1;
-            ShipMetricsTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 18F));
+            ShipMetricsTable.RowStyles.Add(new RowStyle(SizeType.Absolute, ROWHEIGHT));
             Label lbl = new Label();
             lbl.Text = labelText;
             lbl.TextAlign = ContentAlignment.MiddleLeft;
@@ -57,7 +59,7 @@ namespace WoWs_Randomizer.utils
         public void AppendFullRow(string text)
         {
             ShipMetricsTable.RowCount += 1;
-            ShipMetricsTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 18F));
+            ShipMetricsTable.RowStyles.Add(new RowStyle(SizeType.Absolute, ROWHEIGHT));
             Label lbl = new Label();
             lbl.Text = text;
             lbl.Width = TABLEWIDTH;

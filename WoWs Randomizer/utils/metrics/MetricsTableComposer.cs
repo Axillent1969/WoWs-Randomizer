@@ -38,6 +38,7 @@ namespace WoWs_Randomizer.utils
         public const string AA = "Anti Aircraft";
         public const string AA_CALIBER = "Caliber";
         public const string AA_DAMAGE = "Damage";
+        public const string AA_RANGE = "AA Range";
         public const string SLOT_PREFIX = "Slot #";
 
         private const string SECTION_GENERAL = "General";
@@ -130,6 +131,7 @@ namespace WoWs_Randomizer.utils
                 Dictionary<string,AntiAircraftMount> mounts = Metrics.AntiAircraft.AAMounts;
                 foreach(KeyValuePair<string,AntiAircraftMount> entry in mounts)
                 {
+                    Table.AppendRow(SLOT_PREFIX + entry.Key.ToString() + ": " + AA_RANGE, entry.Value.Distance.ToString() + SUFFIX_KM, "", "AA Mount #" + entry.Key.ToString());
                     Table.AppendRow(SLOT_PREFIX + entry.Key.ToString() + ": " + AA_CALIBER, entry.Value.Caliber.ToString() + SUFFIX_MM,entry.Value.Guns.ToString() + " x " + entry.Value.Name,"AA Mount #" + entry.Key.ToString());
                     Table.AppendRow(SLOT_PREFIX + entry.Key.ToString() + ": " + AA_DAMAGE, entry.Value.Damage.ToString(),"Avarage damage per second");
                 }

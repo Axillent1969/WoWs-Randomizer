@@ -106,7 +106,7 @@ namespace WoWs_Randomizer.utils
                 }
                 Metrics.HP = hp;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 if (MData != null)
                 {
